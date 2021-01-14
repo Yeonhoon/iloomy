@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("user")
-public class UserController {
+public class UserController {  //hyunwoo
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @GetMapping(value = "regist")
+    @GetMapping(value = "regist") 
     public String form(){
         logger.info("실행 : /user/regist-get");
         return "";//regist.jsp 연결

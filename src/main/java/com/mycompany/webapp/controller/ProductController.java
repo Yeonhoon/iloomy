@@ -14,18 +14,18 @@ public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     
-    @GetMapping(value = "list")
+    @GetMapping(value = "list")  //jisun , no parameter
     public static String list(){
         logger.info("실행 : product/list");
         return "";//product/productList.jsp 연결
     }
-    @GetMapping(value = "detail")
+    @GetMapping(value = "detail") //jisun  , pramater no of list.. fulfill no
     public static String listDetail(int no){
         System.out.println(no);
         logger.info("실행 : product/detail");
         return "";//product/productDetail.jsp 연결
     }
-    @GetMapping(value = "cart")
+    @GetMapping(value = "cart")  //hyun woo 
     public static String cart(){
         logger.info("실행 : product/cart");
         return "";//product/cart.jsp 연결
