@@ -1,58 +1,74 @@
 package com.mycompany.webapp.dto;
 
 public class UserDTO {
-    private long no;
-    private String uId;
-    private String uPassword;
-    private String uNickname;
-    private String uName;
-    private String uAddr;
+    private String id;
+    private String passWord;
+    private String name;
+    private String phoneNumber;
+    private String email;
 
-    public long getNo() {
-        return no;
+    public UserDTO() {	}
+    public UserDTO(String id) {
+        super();
+        this.id = id;
     }
 
-    public void setNo(long no) {
-        this.no = no;
+    public UserDTO(String id, String passWord, String name, String phoneNumber, String email) {
+        this.id = id;
+        this.passWord = passWord;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 
-    public String getuId() {
-        return uId;
+    public String getId() {
+        return id;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getuPassword() {
-        return uPassword;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setuPassword(String uPassword) {
-        this.uPassword = uPassword;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
-    public String getuNickname() {
-        return uNickname;
+    public String getName() {
+        return name;
     }
 
-    public void setuNickname(String uNickname) {
-        this.uNickname = uNickname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getuName() {
-        return uName;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setuName(String uName) {
-        this.uName = uName;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getuAddr() {
-        return uAddr;
+    public String getEmail() {
+        return email;
     }
 
-    public void setuAddr(String uAddr) {
-        this.uAddr = uAddr;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id='" + id + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

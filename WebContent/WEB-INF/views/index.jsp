@@ -41,7 +41,7 @@
 	         		<a href="#">침실1</a>
 	         		<a href="#">침실1</a>
 	         	</div>
-	         </div>	
+	         </div>
 	         <a href="#">거실</a>
 	         <a href="#">주방</a>
 	         <a href="#">키즈룸</a>
@@ -56,7 +56,8 @@
          </div>
          <div id="left_bar" style="font-size: 0.8rem;">
             <div>
-	            <a onclick="document.getElementById('loginModal').style.display='block'">Login</a>
+               <!-- 로그인 추가 -->
+	            <a href="user/login" onclick="document.getElementById('loginModal').style.display='block'">Login</a>
 	            <a href="#">회원가입</a>
 	            <a href="#">주문</a>
 	            <a href="#">배송</a>
