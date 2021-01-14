@@ -17,17 +17,17 @@ public class ProductController {
     @GetMapping(value = "list")
     public static String list(){
         logger.info("실행 : product/list");
-        return "";//product/list.jsp 연결
+        return "";//product/productList.jsp 연결
     }
     @GetMapping(value = "detail")
     public static String listDetail(int no){
         System.out.println(no);
         logger.info("실행 : product/detail");
-        return "";//product/detail.jsp 연결
+        return "";//product/productDetail.jsp 연결
     }
     @GetMapping(value = "cart")
     public static String cart(){
-        logger.info("실행 : product/detail");
+        logger.info("실행 : product/cart");
         return "";//product/cart.jsp 연결
     }
 

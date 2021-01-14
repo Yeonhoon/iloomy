@@ -18,19 +18,24 @@ public class ManagerController {
         logger.info("실행 : /manager/enroll/product");
         return "redirect:/manager/enroll/next";
     }
-    @PostMapping(value = "update/product")
-    public String update(){
+    @PostMapping(value = "update/product") 
+    public String updatebotton(){
         logger.info("실행 : /manager/update/product");
         return "redirect:/manager/enroll/next";
     }
     @GetMapping(value = "enroll/next")
     public String back(){
         logger.info("실행 : /manager/enroll/next");
-        return "";//product/list.jsp 연결
+        return "";//product/productList.jsp 연결
     }
-    @GetMapping(value = "enroll/detail")
+    @GetMapping(value = "enroll/write")
     public String inform(){
-        logger.info("실행 : /manager/enroll/detail");
-        return "";//product update.jsp 연결
+        logger.info("실행 : /manager/enroll/write");
+        return "";//manager/writeForm.jsp 연결
+    }
+    @GetMapping(value = "update/product")
+    public String update(){
+        logger.info("실행 : /manager/update/product");
+        return "";//manager/updateDel.jsp 연결
     }
 }

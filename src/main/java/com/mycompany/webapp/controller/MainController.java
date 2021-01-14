@@ -14,7 +14,7 @@ public class MainController {
     @RequestMapping(value = "/")
     public static String index(){
         logger.info("실행 : main");
-        return "";//main.jsp 연결
+        return "index";
     }
 
 }
