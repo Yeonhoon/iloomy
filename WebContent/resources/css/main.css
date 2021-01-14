@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+
+* {
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+h1, #center>h1>a, h2 {
+	font-family: 'Jeju Gothic', serif sans-serif;
+}
+
+
+#right_bar a {
+	color: black;
+}
+
+#left_bar a {
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:visited, a:link {
+	color: black;
+}
+
+h1>a:visited, a:link {
+	color: red;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+header {
+	width: auto; /* 꽉채울때 auto */
+	display: flex;
+	padding: 30px;
+	justify-content: space-between;
+	background-color: #f1f3f5;
+	position: relative;
+	flex: 1;
+	margin-bottom: 50px;
+}
+
+header>div {
+	word-spacing: 10px;
+}
+
+#right_bar {
+	flex: 4;
+}
+
+#center {
+	flex: 1;
+	text-align: center;
+}
+
+#left_bar {
+	flex: 4;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+footer{
+	background-color: #f1f3f5;
+}
+
+

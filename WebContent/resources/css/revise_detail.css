@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* 	------------------ detail section --------------------------------- */
+#detail {
+	margin-top: 50px;
+	height: auto;
+	box-shadow:none;
+}
+
+
+.list_img {
+	box-shadow:none;
+	text-align: center;
+}
+
+.list_txt {
+	margin: 50px 50px;
+	text-align: center;
+
+	
+}
+
+.list_txt label{
+	margin: 50px 50px;
+	
+}
+
+#list{
+	padding-right: 400px; 
+	padding-left: 400px;
+	text-align: center;
+	box-sizing: border-box;
+	
+}
+
+
+.myText {
+	width: 500px;
+	border: 1px dotted black;
+}
+
+#img01, #img03, #img04 {
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+
+#btn {
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+#btn button {
+	margin: 10px;
+}
+
+#save {
+	margin-top: 10px;
+	padding: 10px;
+	width: 200px;
+	background-color: #f03e3e;
+	border: 1px solid grey;
+}
+
+#cancel {
+	margin-top: 10px;
+	padding: 10px;
+	width: 200px;
+	background-color: #495057;
+	border: 1px solid grey;
+}

@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/* main section--------------------------------------------------------- */\
+
+*{
+	box-sizing: border-box;
+	
+}
+
+#main {
+	display:flex;
+	flex-direction: row;
+}
+
+#main_image {
+	padding-left:100px;
+	flex:6;
+	display: block;
+	text-align: center;
+}
+
+#main_image label {
+	font-size: 2rem;
+}
+
+#main_image img {
+	max-width: 600px;
+	margin-bottom:30px;
+	
+}
+
+
+#main_image input {
+}
+
+#main_image {
+	width: 700px;
+	box-sizing: border-box;
+}
+
+#main
+
+#main_info {
+	padding-right:100px;	
+	flex: 4;
+	width: 0 auto;
+	box-sizing: border-box;
+}
+
+
+/* ---------------------------revise_list------------------------------------ */
+#reviseList {
+	list-style-type: none;
+	width: 400px;
+}
+
+#reviseList li:nth-child(2n) {
+	background-color: #f8f9fa;
+}
+
+reviseList li:nth-child(2n+1) {
+	background-color: #F3ECE3;
+}
+
+/* #c6d3e3: 블루, #e3dfd6: 레드 */
+
+/* .list_txt{
+				background-color:#c6d3e3;
+			} */
+
+li .addBtn {
+	width: 100px;
+}
+
+li .addBtn:hover {
+	background-color: #ffa8a8;
+	display: inline-block;
+	width: 100px;
+	background-color: #ffe3e3;
+}
+
+
+
+
+label {
+	font-size: 1rem;
+}
+
+footer {
+	/* margin: 0 auto; */
+	display: flex;
+	/* justify-content: space-around; */
+	justify-content: center;
+	width: 100%;
+}
+
+input>submit {
+	margin-top: 30px;
+	color: white;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+footer>div {
+	padding: 50px;
+	text-align: center;
+}
+
+.option {
+	padding-left: 30px;
+	margin-bottom: 10px;
+	border: 1px solid grey;
+}
+
+.option:hover {
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+section {
+	flex: 7;
+	height: auto;
+}
+
+
+#footer {
+	background-color: #f1f3f5;
+	flex: 2;
+}

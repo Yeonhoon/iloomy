@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+			header{
+				text-align: center;
+				margin-top: 100px;
+				margin-bottom: 100px;
+			}
+			
+			header h {
+				font-size: 2rem;
+			}
+			
+			body{
+				margin: auto;
+			}
+		
+			#index_main{
+				text-align: center;
+				margin-top:100px;
+			}
+			
+			#index_main:after{
+				content: url("https://www.iloom.com/upload/contents/20200417/S960_9b146211-323a-4be5-a633-9466e7f5cf92.jpg");
+				background-repeat:no-repeat;
+				background-position:center;
+				display:block;
+				top:0;
+				left:0;
+				opacity: 0.3!important; 
+				filter:alpha(opacity=30);
+				width: 100%;
+				height: 150%;
+				z-index:-1;
+				position: absolute;
+				margin-top: 200px;
+			}
+			
+			#index button{
+				margin: 50px 50px;
+			}
