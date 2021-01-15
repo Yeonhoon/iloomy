@@ -1,0 +1,33 @@
+@charset "EUC-KR";
+
+	#pList {
+		word-spacing: 50px;
+		text-align: center;
+		color: grey;
+		margin: 20px;
+		box-sizing: border-box;
+	}
+	#pList > a:hover {
+		color:red;
+	}
+	.container-fluid {
+		padding-left: 100px;
+		clear: both;
+		justify-content: space-around;
+		
+		
+	}
+	li {
+		list-style: none;
+		font-size: 0.8rem;
+	}
+
+	.col-lg-3 {
+		padding-right:80px;
+		margin-bottom: 20px;
+	}
+	#add {
+		float: right;
+		margin-right: 100px;
+		margin-bottom: 30px;
+	}

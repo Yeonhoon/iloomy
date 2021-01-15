@@ -38,3 +38,8 @@
 			#index button{
 				margin: 50px 50px;
 			}
+
+/* footer */			
+.footer {display: flex; width:100%; background-color: #f1f3f5;}
+.footer .box { padding: 50px; text-align: center;}
+			

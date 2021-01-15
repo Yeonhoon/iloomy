@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -17,15 +19,15 @@
 		<header>
 			<div id="right_bar">
 			<a href="#"><i class="fas fa-bars"></i></a>
-			<a href="#">침실</a>
-			<a href="#">거실</a>
-			<a href="#">주방</a>
-			<a href="#">키즈룸</a>
-			<a href="#">학생방</a>
-			<a href="#">서재</a> .
-			<a href="#">펫</a> .
-			<a href="#">시리즈</a> .
-			<a href="#">아울렛</a>
+			<a href="#">ì¹¨ì¤</a>
+			<a href="#">ê±°ì¤</a>
+			<a href="#">ì£¼ë°©</a>
+			<a href="#">í¤ì¦ë£¸</a>
+			<a href="#">íìë°©</a>
+			<a href="#">ìì¬</a> .
+			<a href="#">í«</a> .
+			<a href="#">ìë¦¬ì¦</a> .
+			<a href="#">ìì¸ë </a>
 			</div>
 			<div id="center">
 			<h1 style="color: red;"><a href="/team/homepage/home2.html">iloom</a></h1>
@@ -33,18 +35,18 @@
 			<div id="left_bar" style="font-size: 0.8rem;">
 				<div>
 					<a href="#">Login</a>
-					<a href="#">회원가입</a>
-					<a href="#">주문</a>
-					<a href="#">배송</a>
-					<a href="#">이벤트</a>
-					<a href="#">뉴스</a>
-					<a href="#">고객센터</a>
-					<a href="#">매장안내</a>
-					<a href="#">회사소개</a>
+					<a href="#">íìê°ì</a>
+					<a href="#">ì£¼ë¬¸</a>
+					<a href="#">ë°°ì¡</a>
+					<a href="#">ì´ë²¤í¸</a>
+					<a href="#">ë´ì¤</a>
+					<a href="#">ê³ ê°ì¼í°</a>
+					<a href="#">ë§¤ì¥ìë´</a>
+					<a href="#">íì¬ìê°</a>
 				</div>
 				<div id="left">
 					<p style="display: inline-block; width: 150px; border: 1px solid red;">
-					<a href="#">검색</a>
+					<a href="#">ê²ì</a>
 					</p>
 					<a href="#" ><i class="fas fa-search"></i></a>
 					<a href="/team/homepage/package.html"><i class="fas fa-shopping-bag"></i></a>
@@ -55,32 +57,32 @@
 			<nav>
 				<img src="/team/resources/img/l10.jpg" height="650px"/>
 				<div style="display: inline-block; margin-left: 50px; margin-bottom: 20px;">
-					<p id="list_name">쿠시노</p>
-					<p id="list_detail"><b>저상형 패밀리침대(인조가죽)</b></p>
-					<p id="list_price">1,009,000원</p>
+					<p id="list_name">ì¿ ìë¸</p>
+					<p id="list_detail"><b>ì ìí í¨ë°ë¦¬ì¹¨ë(ì¸ì¡°ê°ì£½)</b></p>
+					<p id="list_price">1,009,000ì</p>
 					<hr/>
-					<p style="font-size: 0.8rem"><b>배송기간</b> 약 10일 <b>배송비</b> 무료배송 
-					<b>배송방법</b> 설치배송 <b>제품코드</b> HB722501</p>
+					<p style="font-size: 0.8rem"><b>ë°°ì¡ê¸°ê°</b> ì½ 10ì¼ <b>ë°°ì¡ë¹</b> ë¬´ë£ë°°ì¡ 
+					<b>ë°°ì¡ë°©ë²</b> ì¤ì¹ë°°ì¡ <b>ì íì½ë</b> HB722501</p>
 					<br/>
 					<div id="option">
 						<select name="colorOption" id="colorOption">
-							<option value="">[필수]색상을 선택해주세요</option>
-							<option value="">브라운</option>
-							<option value="">베이지</option>
-							<option value="">그레이</option>
+							<option value="">[íì]ììì ì íí´ì£¼ì¸ì</option>
+							<option value="">ë¸ë¼ì´</option>
+							<option value="">ë² ì´ì§</option>
+							<option value="">ê·¸ë ì´</option>
 						</select>
 						<select name="productOption" id="productOption">
-							<option value="">[선택] 제품사양</option>
-							<option value="">쿠시노 침대가드 1000폭</option>
-							<option value="">쿠시노 침대풋보드 1000폭</option>
+							<option value="">[ì í] ì íì¬ì</option>
+							<option value="">ì¿ ìë¸ ì¹¨ëê°ë 1000í­</option>
+							<option value="">ì¿ ìë¸ ì¹¨ëíë³´ë 1000í­</option>
 						</select>
 					</div>
 					<hr/>
-					<p style="display: inline;"><b>총 구매가</b></p>
-					<p style="display: inline; color: red; padding-left: 300px;"><b>0 원</b></p>
+					<p style="display: inline;"><b>ì´ êµ¬ë§¤ê°</b></p>
+					<p style="display: inline; color: red; padding-left: 300px;"><b>0 ì</b></p>
 					<br/>
-					<button id="pay"> 결제하기 </button>
-					<button id="bag" onclick="location.href='package.html'"> 장바구니 </button>
+					<button id="pay"> ê²°ì íê¸° </button>
+					<button id="bag" onclick="location.href='package.html'"> ì¥ë°êµ¬ë </button>
 					<br/>
 					<a href="#" target="_black"><img src="/team/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
 					<a href="#" target="_black"><img src="/team/resources/img/l12.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
@@ -90,10 +92,10 @@
 			<article>
 				<table>
 					<tr style="color: #adb5bd; text-align: center;">
-						<td style="color: red;">상세정보</td>
-						<td>옵션</td>
-						<td>인테리어 팁</td>
-						<td>상품평</td>
+						<td style="color: red;">ìì¸ì ë³´</td>
+						<td>ìµì</td>
+						<td>ì¸íë¦¬ì´ í</td>
+						<td>ìíí</td>
 						<td>Q&A</td>
 					</tr>
 				</table>
@@ -101,21 +103,21 @@
 					
 				</div>
 				<div style="text-align: center; padding: 30px;">
-					<p style="font-size: 2rem;">쿠시노 저상형 패밀리 침대(인조가죽)</p>
-					<p>신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다.</p>
-					<p>싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.</p>
+					<p style="font-size: 2rem;">ì¿ ìë¸ ì ìí í¨ë°ë¦¬ ì¹¨ë(ì¸ì¡°ê°ì£½)</p>
+					<p>ì í¼ììë¶í° ìëì ì±ì¥ì ë°ë¼ ë¤ìíê² ì¬ì©í  ì ìë ì¿ ìë¸ ìë¦¬ì¦ìëë¤.</p>
+					<p>ì±ê¸ê³¼ í¸ ì¹¨ëë¡ êµ¬ì±ëì´ ìì¼ë©°, ê³µê°ì´ë íìì ë°ë¼ ê°ëë ì¡ì¸ìë¦¬ë¥¼ ì¶ê°í´ ì°ë¦¬ ê°ì¡±ë§ì í¨ë°ë¦¬ ì¹¨ëë¥¼ ìì±í´ë³´ì¸ì.</p>
 				</div>
 				<div id="list2">
 					<img src="/team/resources/img/l3.jpg" height="600px"/>
 					<img src="/team/resources/img/l2.jpg"  height="600px"/>
 					<img src="/team/resources/img/l4.jpg"  height="600px"/>
-					<p><b>안전을 위한 침대 가드</b></p>
-					<p>공간과 필요에 맞게 침대 가드/풋보드를 추가로 설치해 안전한 패밀리베드로 사용할 수 있습니다.</p>
-					<p style="font-size: 0.6rem; color: red;">*추가구매 아이템은 관련상품 참조</p>
+					<p><b>ìì ì ìí ì¹¨ë ê°ë</b></p>
+					<p>ê³µê°ê³¼ íìì ë§ê² ì¹¨ë ê°ë/íë³´ëë¥¼ ì¶ê°ë¡ ì¤ì¹í´ ìì í í¨ë°ë¦¬ë² ëë¡ ì¬ì©í  ì ììµëë¤.</p>
+					<p style="font-size: 0.6rem; color: red;">*ì¶ê°êµ¬ë§¤ ìì´íì ê´ë ¨ìí ì°¸ì¡°</p>
 					<img src="/team/resources/img/l5.jpg"  height="600px"/>
-					<p><b>가드 액세서리</b></p>
-					<p>가드 액세서리를 거치해 작은 소품을 수납할 수 있습니다.</p>
-					<p style="font-size: 0.6rem; color: red;">*추가구매 아이템은 관련상품 참조</p>
+					<p><b>ê°ë ì¡ì¸ìë¦¬</b></p>
+					<p>ê°ë ì¡ì¸ìë¦¬ë¥¼ ê±°ì¹í´ ìì ìíì ìë©í  ì ììµëë¤.</p>
+					<p style="font-size: 0.6rem; color: red;">*ì¶ê°êµ¬ë§¤ ìì´íì ê´ë ¨ìí ì°¸ì¡°</p>
 				</div>
 				<hr style="color: grey"/>
 				<div id="list2">
@@ -132,22 +134,22 @@
 			</div>
 			<div style="font-size: 0.8rem; flex: 2;">
 				<p>ABOUT</p>
-				<p>회사소개</p>
-				<p>매장안내</p>
-				<p>인재채용</p>
+				<p>íì¬ìê°</p>
+				<p>ë§¤ì¥ìë´</p>
+				<p>ì¸ì¬ì±ì©</p>
 			</div>
 			<div style="font-size: 0.8rem; flex: 2;">
 				<p>SUPPORT</p>
-				<p>고객샌터</p>
-				<p>대리점 개설안내</p>
+				<p>ê³ ê°ìí°</p>
+				<p>ëë¦¬ì  ê°ì¤ìë´</p>
 			</div>
 			<div style="font-size: 0.8rem; flex: 2;">
 				<p>INFO</p>
-				<p>이용약관</p>
-				<p><b>개인정보 처리방침</b></p>
+				<p>ì´ì©ì½ê´</p>
+				<p><b>ê°ì¸ì ë³´ ì²ë¦¬ë°©ì¹¨</b></p>
 			</div>
 			<div style="font-size: 0.8rem; flex: 2;">
-				<p style="text-align: left;">고객센터</p>
+				<p style="text-align: left;">ê³ ê°ì¼í°</p>
 					<a href="#">
 					<img src="/team/resources/img/a.JPG" width= "100px"/>
 					</a>
@@ -155,7 +157,7 @@
 					<img src="/team/resources/img/b.JPG" width= "100px"/>
 					</a>
 				<p style="text-align: left;">1577-5670</p>
-				<p style="text-align: left;">평일 09:30~17:30, 제품문의, 매장안내, AS, 분해설치</p>
+				<p style="text-align: left;">íì¼ 09:30~17:30, ì íë¬¸ì, ë§¤ì¥ìë´, AS, ë¶í´ì¤ì¹</p>
 			</div>
 		</footer>
 

@@ -17,7 +17,7 @@ public class ProductController {
     @GetMapping(value = "list")  //jisun , no parameter
     public static String list(){
         logger.info("실행 : product/list");
-        return "";//product/productList.jsp 연결
+        return "product/productList";//product/productList.jsp 연결
     }
     @GetMapping(value = "detail") //jisun  , pramater no of list.. fulfill no
     public static String listDetail(int no){

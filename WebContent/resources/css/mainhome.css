@@ -13,30 +13,17 @@
 	font-family: 'Nanum Gothic', sans-serif;
 }
 
-h1, #center>h1>a, h2 {
-	font-family: 'Jeju Gothic', serif sans-serif;
-}
+h1, #center>h1>a, h2 {font-family: 'Jeju Gothic', serif sans-serif;}
 
+#right_bar a {color: black;}
 
-#right_bar a {
-	color: black;
-}
+#left_bar a {color: black;}
+ h1 {color: red;}
+a:hover {text-decoration: none;}
 
-#left_bar a {
-	color: black;
-}
+a:visited, a:link {color: black;}
 
-a:hover {
-	text-decoration: none;
-}
-
-a:visited, a:link {
-	color: black;
-}
-
-h1>a:visited, a:link {
-	color: red;
-}
+h1>a:visited, a:link {color: red;}
 
 body {
 	display: flex;
@@ -44,7 +31,7 @@ body {
 	justify-content: center;
 }
 
-header {
+.header {
 	width: auto; /* 꽉채울때 auto */
 	display: flex;
 	padding: 30px;
@@ -55,7 +42,7 @@ header {
 	margin-bottom: 50px;
 }
 
-header>div {
+.header>div {
 	word-spacing: 10px;
 }
 
@@ -75,8 +62,21 @@ header>div {
 	align-items: flex-end;
 }
 
-footer{
-	background-color: #f1f3f5;
-}
+/* -------------------------------footer--------------------------------- */
+	.footer {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		background-color: #f1f3f5;
+	}
+	.footer > div {
+		padding: 50px;
+		text-align: center;
+	}
+	li,ul { list-style: none;}
+	#icon {color: #adb5bd; font-size: 2.5rem; flex: 4;}
+	.box {flex:2; font-size: 0.8rem;}
+	
+	.boxlist {text-align: left;}
 
 

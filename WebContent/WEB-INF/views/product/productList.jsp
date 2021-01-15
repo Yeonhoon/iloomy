@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -9,14 +11,15 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="/team/resources/css/main.css">
-		<link rel="stylesheet" href="/team/resources/css/product_list.css">
+		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/mainhomecss">
+		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/product_list.css">
+		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/homepage.css">
 	</head>
 	
 	<body>
 		<header>
 			<div id="right_bar">
-				<a href="#"><i class="fas fa-bars"></i></a>
+				<a href="<%=application.getContextPath()%>/product/list"><i class="fas fa-bars"></i></a>
 				<a href="#">침실</a>
 				<a href="#">거실</a>
 				<a href="#">주방</a>
