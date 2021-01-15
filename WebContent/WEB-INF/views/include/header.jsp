@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 		<div class="header">
          <div id="right_bar" >
          <!-- 2021/01/07 product List링크 -->
 	         <a href="<%=application.getContextPath()%>/product/list"><i class="fas fa-bars"></i></a>
 	         <div class="dropdown">
-	         <a class="dropA" id="bed" href="#">침실</a>
-	         	<div class="dropdown-content">
-	         		<a href="#">침실1</a>
-	         		<a href="#">침실1</a>
-	         	</div>
+		         <a class="dropA" id="bed" href="#">침실</a>
+		         	<div class="dropdown-content">
+		         		<a href="#">침실1</a>
+		         		<a href="#">침실1</a>
+		         	</div>
 	         </div>	
 	         <a href="#">거실</a>
 	         <a href="#">주방</a>
@@ -22,7 +23,7 @@
 	         <a href="#">아울렛</a>
          </div>
          <div id="center">
-        	 <h1><a href="/team/homepage/home2.html">iloom</a></h1>
+        	 <h1><a href="${root}/"><b>iloomy</b></a></h1>
          </div>
          <div id="left_bar" style="font-size: 0.8rem;">
             <div>
@@ -41,7 +42,7 @@
 	           	 <a href="#">검색</a>
 	            </p>
 	            <a href="#" ><i class="fas fa-search"></i></a>
-	            <a href="/team/homepage/package.html"><i class="fas fa-shopping-bag"></i></a>
+	            <a href="${root}/homepage/package.html"><i class="fas fa-shopping-bag"></i></a>
             </div>
          </div>
       </div>

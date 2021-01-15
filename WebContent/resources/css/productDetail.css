@@ -1,0 +1,76 @@
+@charset "EUC-KR";
+
+	nav{
+		display: flex;
+		margin: auto;
+		align-items: center;
+				justify-content: center;
+		/* text-align: center; */
+	}
+	nav > img {
+		float: left;
+	} 
+	#list {
+		background-image: url("/team/resources/img/L1.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		margin: 0 auto;
+		margin-top: 50px;
+		width: 60%; /* ²ËÃ¤¿ï¶§ auto */
+		height:600px;
+		box-sizing: border-box;
+	}
+	#list2 {
+		margin: 0 auto;
+		margin-top: 50px;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	#list2 > p {
+		padding: 50px;
+	}
+	table {
+		box-sizing: border-box;
+		clear: both;
+		width: 100%;
+		border-top: 2px solid grey;
+		border-bottom: 1px solid grey;
+		
+	}
+	#list_name {
+		text-align: left;
+	}
+	#list_detail {
+		font-size: 2rem;
+		text-align: left;
+	}
+	#list_price {
+		color: red;
+		text-align: left;
+	}
+	#pay:hover, #bag:hover {
+		cursor: pointer;
+	}
+	#pay {
+		margin-top: 40px;
+		padding: 10px;
+		width: 200px;
+		background-color: #f03e3e;
+		border: 1px solid grey;
+	}
+	#bag {
+		margin-top: 40px;
+		padding: 10px;
+		width: 200px;
+		background-color: #495057;
+		border: 1px solid grey;
+	}
+	#colorOption, #productOption {
+	margin-bottom: 10px;
+	}
+	
+	#option {
+		padding-left: 30px;
+		display: flex;
+		flex-direction: column;
+	}

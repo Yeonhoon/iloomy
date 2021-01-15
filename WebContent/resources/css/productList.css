@@ -7,15 +7,13 @@
 		margin: 20px;
 		box-sizing: border-box;
 	}
-	#pList > a:hover {
-		color:red;
-	}
+	a{color:black}
+	.listCatalog, .listCatalog:visied, .listCatalog:link {color: black;}
+	.listCatalog:hover {color:red;}
 	.container-fluid {
 		padding-left: 100px;
 		clear: both;
 		justify-content: space-around;
-		
-		
 	}
 	li {
 		list-style: none;

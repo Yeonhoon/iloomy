@@ -23,7 +23,7 @@ public class ProductController {
     public static String listDetail(int no){
         System.out.println(no);
         logger.info("실행 : product/detail");
-        return "";//product/productDetail.jsp 연결
+        return "product/productDetail";//product/productDetail.jsp 연결
     }
     @GetMapping(value = "cart")  //hyun woo 
     public static String cart(){
