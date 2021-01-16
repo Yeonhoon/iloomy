@@ -4,9 +4,7 @@ import com.mycompany.webapp.dto.QnADTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
@@ -50,6 +48,18 @@ public class QnaController {
         return "qna/detail";
     }
 
+    @GetMapping("board/new")
+    public String board(){
+        return "qna/write";
+    }
+
+    @PostMapping("board/new")
+    public String insert(@ModelAttribute QnADTO qna){
+        Date date = new Date();
+        qna.setQnaDatetime(date);
+        System.out.println(qna.toString());
+        return "redirect:/QnA/list";
+    }
 
 
 }

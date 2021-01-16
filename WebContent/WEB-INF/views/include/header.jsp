@@ -60,8 +60,18 @@
          </div>
          <div id="left_bar" style="font-size: 0.8rem;">
             <div>
-	            <a href="${root}/user/login">Login</a>
-	            <a href="#">회원가입</a>
+				<%--${userinfo.id}--%>
+				<c:if test="${userinfo.id eq 'admin'}">
+					<a href="${root}/QnA/board/new">QnA글쓰기</a>
+				</c:if>
+				<c:choose>
+					<c:when test="${userinfo.id ne null}">
+						<a><strong>${userinfo.id }</strong>님</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${root}/user/login">Login</a>
+					</c:otherwise>
+				</c:choose>
 	            <a href="#">주문</a>
 	            <a href="#">배송</a>
 	            <a href="#">이벤트</a>

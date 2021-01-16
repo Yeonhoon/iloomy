@@ -13,13 +13,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${root}/resources/css/mainhome.css"> <!-- footer, header css -->
     <script type="text/javascript">
 
     </script>
 </head>
 <body>
+<div class="headerwrap">
+    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+</div>
 
-<div class="container" align="center">
+
+<div class="container" align="center" >
     <div class="col-lg-6" align="center">
 
         <table border="1" style="text-align: center;">
@@ -46,6 +51,8 @@
 
     </div>
 </div>
-
+<div class="footerwrap">
+    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
