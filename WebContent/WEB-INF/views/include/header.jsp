@@ -27,7 +27,7 @@
          </div>
          <div id="left_bar" style="font-size: 0.8rem;">
             <div>
-	            <a href="#">Login</a>
+	            <a href="${root}/user/login">Login</a>
 	            <a href="#">회원가입</a>
 	            <a href="#">주문</a>
 	            <a href="#">배송</a>
