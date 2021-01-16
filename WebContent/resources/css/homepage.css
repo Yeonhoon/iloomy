@@ -1,17 +1,16 @@
 @charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-/*          .header {
-            background-image: url("/team/resources/img/iloom1.jpg");
-            background-repeat: no-repeat;
-            
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+
+          .header {
+            background-image: url("/iloomy/resources/img/iloom3.jpg");
+            background-repeat: no-repeat;    
             background-size: cover;
-            width: auto; 꽉채울때 auto
-            height: 880px;
-            display: flex;
-            padding: 30px;
-            justify-content: space-between;
-            position: relative;
-         } */
+            height: 600px;
+         }
 
          nav {
             margin: auto;
@@ -34,6 +33,7 @@
             border-collapse: collapse;
             margin: 0 auto;
             x-sizing: border-box;
+            font-family: 'Jeju Gothic', serif sans-serif;
          }   
          th {
          padding:0px;
@@ -45,11 +45,14 @@
             display: block;
          }
          td {
+         	font-size: 0.8rem;
             height: 20px;
             text-overflow: ellipsis;
             overflow: hidden; 
             white-space: nowrap;/* 글자가 길때 숨기기 */
          }
+         .maintableinfo {text-align: center;}
+         .maintableprice{color: red; text-align: center;}
          #quick_menu {
             text-align: center;
             font-size: 1.5rem;
@@ -70,7 +73,7 @@
             padding: 15px;
          }
          body {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		}

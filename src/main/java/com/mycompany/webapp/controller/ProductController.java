@@ -28,7 +28,7 @@ public class ProductController {
     @GetMapping(value = "cart")  //hyun woo 
     public static String cart(){
         logger.info("실행 : product/cart");
-        return "";//product/cart.jsp 연결
+        return "product/cart";//product/cart.jsp 연결
     }
 
 }

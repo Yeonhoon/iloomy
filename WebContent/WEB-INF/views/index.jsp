@@ -30,22 +30,22 @@
             <p><b>고객님을 위한 제품 추천</b></p>
             <table>
                <tr>
-                  <th><a href="#" >
-                  <img src="${root}/resources/img/link1.jpg" height= "275px"/></a></th>
-                  <th><a href="#" >
-                  <img src="${root}/resources/img/link2.jpg"  height= "275px"/></a></th>
-                  <th><a href="#" >
-                  <img src="${root}/resources/img/link3.jpg" width= "275px"/></a></th>
                   <th><a href="product/detail?no=1" >
-                  <img src="${root}/resources/img/link4.jpg" width= "275px"/></a></th>
+                  <img src="${root}/resources/img/indexlistphoto/link1.jpg" height= "275px"/></a></th>
+                  <th><a href="product/detail?no=2" >
+                  <img src="${root}/resources/img/indexlistphoto/link2.jpg"  height= "275px"/></a></th>
+                  <th><a href="product/detail?no=3" >
+                  <img src="${root}/resources/img/indexlistphoto/link3.jpg" width= "275px"/></a></th>
+                  <th><a href="product/detail?no=4" >
+                  <img src="${root}/resources/img/indexlistphoto/link4.jpg" width= "275px"/></a></th>
                </tr>
-               <tr style="text-align: center;">
-                  <td>[일룸] 에디키즈 PL박스 수납 책장 3단 14</td>
+               <tr class="maintableinfo">
+                  <td>[일룸] 에디키즈 PL박스 수납 책장 3단</td>
                   <td>[일룸] 이타카네오 독서실 책상(온라인몰)</td>
                   <td>[일룸] 리브레/이타카네오 1800폭 책상 (온라인몰)</td>
                   <td>[일룸] 링키플러스/이타카네오/로이 다리형 침대</td>
                </tr>
-               <tr style="color: red; text-align: center;">
+               <tr class="maintableprice">
                   <td>199,000</td>
                   <td>369,000</td>
                   <td>230,000</td>

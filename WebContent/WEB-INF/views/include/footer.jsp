@@ -40,8 +40,8 @@
 	<div class="box">
 		<ul>
 			<li class="boxlist"><a href="#">고객센터</a></li>
-			<li class="boxlist"><a href="#"> <img id="talktalk" src="${root}/resources/img/a.JPG" width= "100px"/></a></li>
-			<li class="boxlist"><a href="#"> <img id="kakao" src="${root}/resources/img/b.JPG" width= "100px"/></a></li>
+			<li class="boxlist"><a href="#"><i class="fas fa-chalkboard-teacher"></i> 톡톡 상담</a></li>
+			<li class="boxlist"><a href="#"><i class="fas fa-comment"></i> 카톡 상담</a></li>
 			<li class="boxlist">1577-5670</li>
 			<li class="boxlist">평일 09:30~17:30</li>
 			<li class="boxlist"><a href="#">제품문의, 매장안내, AS, 분해설치</a></li>

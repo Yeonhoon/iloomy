@@ -23,7 +23,7 @@
 		</div>
 		<section>
 			<nav>
-				<img src="/team/resources/img/l10.jpg" height="650px"/>
+				<img src="${root}/resources/img/l10.jpg" height="650px"/>
 				<div style="display: inline-block; margin-left: 50px; margin-bottom: 20px;">
 					<p id="list_name">쿠시노</p>
 					<p id="list_detail"><b>저상형 패밀리침대(인조가죽)</b></p>
@@ -49,12 +49,14 @@
 					<p style="display: inline;"><b>총 구매가</b></p>
 					<p style="display: inline; color: red; padding-left: 300px;"><b>0 원</b></p>
 					<br/>
-					<button id="pay"> 결제하기 </button>
-					<button id="bag" onclick="location.href='package.html'"> 장바구니 </button>
+					<form action="cart">
+						<button id="pay"> 결제하기 </button>
+						<button id="bag" > 장바구니 </button>
+					</form>
 					<br/>
-					<a href="#" target="_black"><img src="/team/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
-					<a href="#" target="_black"><img src="/team/resources/img/l12.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
-					<a href="#" target="_black"><img src="/team/resources/img/l13.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
+					<a href="#" target="_black"><img src="${root}/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
+					<a href="#" target="_black"><img src="${root}/resources/img/l12.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
+					<a href="#" target="_black"><img src="${root}/resources/img/l13.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
 				</div>
 			</nav>
 			<article>
@@ -76,13 +78,13 @@
 					<p>싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.</p>
 				</div>
 				<div id="list2">
-					<img src="/team/resources/img/l3.jpg" height="600px"/>
-					<img src="/team/resources/img/l2.jpg"  height="600px"/>
-					<img src="/team/resources/img/l4.jpg"  height="600px"/>
+					<img src="${root}/resources/img/l3.jpg" height="600px"/>
+					<img src="${root}/resources/img/l2.jpg"  height="600px"/>
+					<img src="${root}/resources/img/l4.jpg"  height="600px"/>
 					<p><b>안전을 위한 침대 가드</b></p>
 					<p>공간과 필요에 맞게 침대 가드/풋보드를 추가로 설치해 안전한 패밀리베드로 사용할 수 있습니다.</p>
 					<p style="font-size: 0.6rem; color: red;">*추가구매 아이템은 관련상품 참조</p>
-					<img src="/team/resources/img/l5.jpg"  height="600px"/>
+					<img src="${root}/resources/img/l5.jpg"  height="600px"/>
 					<p><b>가드 액세서리</b></p>
 					<p>가드 액세서리를 거치해 작은 소품을 수납할 수 있습니다.</p>
 					<p style="font-size: 0.6rem; color: red;">*추가구매 아이템은 관련상품 참조</p>
@@ -90,8 +92,8 @@
 				<hr style="color: grey"/>
 				<div id="list2">
 					<h1>Color</h1>
-					<img src="/team/resources/img/l7.jpg" height="300px"/>
-					<img src="/team/resources/img/l6.jpg"  height="300px"/>
+					<img src="${root}/resources/img/l7.jpg" height="300px"/>
+					<img src="${root}/resources/img/l6.jpg"  height="300px"/>
 					
 				</div>
 			</article>
