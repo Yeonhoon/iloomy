@@ -28,11 +28,12 @@
 		<h1 style="text-align: center;">주요 정보</h1><br /><br />
 		<article id="main">
 			<div id="main_image">
-				<label for="image" style="text-align:center;">대표 사진</label><br />
-				<img id="main_img" src="/team/resources/img/l10.jpg" height="400px" /><br />
-				<div id="new_img"></div>
-				<input type="file" class="btn btn-outline-light" accept="img/*" onchange="setImg(event);"
-					style="width:250px;" />
+				<form action="photoupload" method="post" enctype="mulipart/form-data">
+					<label for="image" style="text-align:center;">대표 사진</label><br />
+					<img id="main_img" src="<%=application.getContextPath()%>/resources/img/l10.jpg" height="400px" /><br />
+					<input type="file" class="btn btn-outline-light" name="uphoto" style="width:250px;" />
+					<input type="submit" class="btn btn-primary btn-sm" value="사진 저장"/>
+				</form>
 
 			</div>
 
@@ -64,8 +65,7 @@
 			<div class="detailList">
 				<div id="img01" class="list_img">
 					<img src="/team/resources/img/L1.jpg" alt="image01" />
-					<input type="file" class="btn btn-outline-light" accept="img/*" onchange="setImg1(event);"
-						style="width:250px;" />
+					<input type="file" class="btn btn-outline-light" accept="img/*" style="width:250px;" />
 				</div>
 				<div id="text01" class="list_txt">
 					<label for="" style="background-color:"><b>텍스트 입력</b></label><br />
@@ -78,8 +78,7 @@
 				<div id="img02" class="list_img">
 					<img src="/team/resources/img/iloomimg.png" height="600px" />
 					<img src="/team/resources/img/iloomimg2.png" height="600px" />
-					<input type="file" class="btn btn-outline-light" accept="img/*" onchange="setImg2(event);"
-						style="width:250px;" />
+					<input type="file" class="btn btn-outline-light" accept="img/*" style="width:250px;" />
 
 				</div>
 
@@ -93,8 +92,7 @@
 			<div class="detailList">
 				<div id="img03" class="list_img">
 					<img src="/team/resources/img/l4.jpg" height="600px" />
-					<input type="file" class="btn btn-outline-light" accept="img/*" onchange="setImg3(event);"
-						style="width:250px;" />
+					<input type="file" class="btn btn-outline-light" accept="img/*" style="width:250px;" />
 
 				</div>
 				<div id="text03" class="list_txt">

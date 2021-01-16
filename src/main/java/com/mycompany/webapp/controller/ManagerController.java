@@ -30,13 +30,14 @@ public class ManagerController {
         return "redirect:/manager/enroll/next";
     }
     
-    
+    //수정 페이지로 이동
     @GetMapping("update")  //hoon
     public String update(){
         logger.info("실행 : manager/update/");
         return "manager/update";
     }
     
+    //기본 정보 수정
     @GetMapping("mainInfoDto")
     public String mainInfoDto(Model model) {
     	UpdateDto dto = new UpdateDto();
@@ -57,50 +58,57 @@ public class ManagerController {
     }
     
     //사진 업로드 및 저장
-    @GetMapping("uploadphoto")
-    public String uploadPhoto(UpdatePhotoDto dto) {
-    	MultipartFile mpf = dto.getPhoto();
-    	if(!mpf.isEmpty()) {
+    @PostMapping("/photoupload")
+    public String fileUpload(UpdatePhotoDto user) {
+    	MultipartFile uphoto = user.getUphoto();
+    	if(!uphoto.isEmpty()) {
 			//원래 경로 설정해주기
-    		String originFilename = mpf.getOriginalFilename();
-			String fileType = mpf.getContentType();
-    		
+    		String originFilename = uphoto.getOriginalFilename();
+			String fileType = uphoto.getContentType();
+			
 			//파일저장경로 설정
-			String saveDir = "D:/MW/jyh/web/uploadedFiles";
-			String newFilename = new Date().getTime() + "_" + originFilename;
-			String filePath = saveDir + newFilename;
+			String saveDir = "D:/MW/uploadfiles/";
+			String fileName = new Date().getTime() + "-" +  originFilename;// 유일한 이름으로 바꿔줘야 함 방법1. 날짜 이용법, 2. 시간 ㅣ이용법
+			String filePath = saveDir + fileName;
 			File file = new File(filePath);
 			
+			logger.info("파일타입:" + fileType);
+
 			try {
-				mpf.transferTo(file);
-				return "return:/manager/update";
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
+				uphoto.transferTo(file);
+			} catch (Exception e) {
+				return "redirect:/manager/update";
 			}
-			
-    		
     	}
-    	return "return:/manager/update";
-    	
+    	return "redirect:/manager/update";
     }
     
-    @GetMapping("photolist")
+    //첨부한 사진리스트 보여주기
+    @GetMapping("/photolist")
     public String photoList(Model model) {
-    	String saveDir = "D:/MW/jyh/web/uploadedFiles";
+    	String saveDir = "D:/MW/uploadfiles";
     	File file = new File(saveDir);
-    	String[] fileList = file.list();
-    	model.addAttribute("fileList",fileList);
-    	logger.info("리스트 불러오기");
+    	String[] fileNames = file.list();
+    	model.addAttribute("fileNames",fileNames);
+    	
     	return "manager/updatePhotolist";
     }
     
+    //사진 다운로드
     
     
-    
+    //변경내용 저장
     @GetMapping(value = "saveupdate")    //hoon  , no parameter
-    public String back(){
+    public String save(){
         logger.info("실행 : /manager/enroll/next");
         return "product/productList";//product/productList.jsp 연결
+    }
+    
+    //수정 취소
+    @GetMapping("cancelupdate")
+    public String cancel() {
+    	logger.info("변경 취소");
+    	return "product/productList";
     }
     
     

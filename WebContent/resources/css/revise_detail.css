@@ -10,6 +10,10 @@
 .detailList{
 	border-bottom: 1px dotted black;
 	display: flex;
+	margin-right: 300px;
+	margin-left:300px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 .list_img {
