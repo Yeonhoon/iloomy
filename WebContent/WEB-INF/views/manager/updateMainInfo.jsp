@@ -1,31 +1,39 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 
+<div id="wrap">
+	<div id="main_image">
+		<form action="photoupload" method="post" enctype="mulipart/form-data">
+			<label for="image" style="text-align:center;">대표 사진</label><br />
+			<img id="main_img" src="<%=application.getContextPath()%>/resources/img/l10.jpg" height="400px" /><br />
+			<input type="file" class="btn btn-outline-light" name="uphoto" style="width:250px;" />
+			<input type="submit" class="btn btn-primary btn-sm" value="사진 저장"/>
+		</form>
+	</div>
 
 	<ul id="reviseList">
 		<li>
 			<label for="num"><b>게시물번호</b></label><br>
-			<input type="number" id="num" name="num" style="width: 260px;" value="${dto.num}"/>
-			<div id="uidError" class="error"></div><br />
-		</li>
-		
-		<li>
-			<label for="brand"><b>브랜드명</b></label><br>
-			<input type="text" id="brand" name="brand" style="width: 260px;" value="${dto.brand}"/>
+			<input type="number" id="num" name="num" style="width: 260px;" value="${dto.no}"/>
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_name"><b>제품명</b></label><br />
 			<input type="text" id="product_name" name="product_name" style="width: 250px;"
-				value="${dto.productName}" />
+				value="${dto.pName}" />
+			<div id="uidError" class="error"></div><br />
+		</li>
+		<li>
+			<label for="brand"><b>브랜드명</b></label><br>
+			<input type="text" id="brand" name="brand" style="width: 260px;" value="${dto.pCompany}"/>
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_price"><b>가격(원)</b></label><br />
 			<input type="number" id="product_price" name="product_price" style="width: 250px;"
-				value="${dto.price}" />
+				value="${dto.pPrice}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
-		<li>
+<%-- 		<li>
 			<label for="delivery_date"><b>배송기간</b></label><br />
 			<input type="text" id="delivery_date" name="delivery_date" style="width: 250px;"
 				value="${dto.deliveryDate}" />
@@ -43,17 +51,17 @@
 			<input type="text" id="delivery_method" name="delivery_method" style="width: 250px;"
 				value="${dto.deliveryMethod}" />
 			<div id="uidError" class="error"></div><br />
-		</li>
+		</li> --%>
 		<li>
 			<label for="product_code"><b>제품코드</b></label><br />
 			<input type="text" id="product_code" name="product_code" style="width: 250px;"
-				value="${dto.productCode}" />
+				value="${dto.pContext}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_color"><b>[필수]제품색상</b></label><br />
 			<input type="text" id="typeColor" name="product_color"
-				style="width: 250px; display:inline-block; " />
+				style="width: 250px; display:inline-block; " value="${dto.pColor}"/>
 			<input type="button" class="addBtn" onclick="addColor()" value="추가" /><br />
 			<div id="addColor" style=" margin-top:30px;">
 				<select name="color_select" id="color_select" style="width:350px;">
@@ -68,7 +76,7 @@
 		<li>
 			<label for="product_option"><b>[선택]제품사양</b></label><br />
 			<input type="text" id="typeOption" name="product_option"
-				style="width: 250px; display: inline-block;" />
+				style="width: 250px; display: inline-block;"  value="${dto.pOption}"/>
 			<input type="button" class="addBtn" onclick="addOption()" value="추가" /><br />
 			<div id="addColor" style=" margin-top:30px;">
 				<select name="productOption" id="productOption" style="width: 350px;">
@@ -78,3 +86,4 @@
 			</div>
 		</li>
 	</ul>
+</div>

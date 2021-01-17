@@ -21,22 +21,13 @@
 
 <body rightmargin="0">
       <div class="headerwrap">
-      	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+      	<jsp:include page="/WEB-INF/views/include/header.jsp"/>
       </div>
       
 	<section>
-		<h1 style="text-align: center;">주요 정보</h1><br /><br />
+		<h1 style="text-align: center;">주요 정보</h1>
+		<jsp:include page="/WEB-INF/views/manager/updateMainInfo.jsp"/>
 		<article id="main">
-			<div id="main_image">
-				<form action="photoupload" method="post" enctype="mulipart/form-data">
-					<label for="image" style="text-align:center;">대표 사진</label><br />
-					<img id="main_img" src="<%=application.getContextPath()%>/resources/img/l10.jpg" height="400px" /><br />
-					<input type="file" class="btn btn-outline-light" name="uphoto" style="width:250px;" />
-					<input type="submit" class="btn btn-primary btn-sm" value="사진 저장"/>
-				</form>
-
-			</div>
-
 			<div id="main_info">
 				<a href="javascript:mainInfoDto()" class="btn btn-danger btn-sm" style="color:white">세부사항 수정</a>
 				<script>

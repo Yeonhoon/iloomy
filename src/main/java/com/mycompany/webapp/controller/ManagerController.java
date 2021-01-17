@@ -1,10 +1,6 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mycompany.webapp.dto.UpdateDto;
-import com.mycompany.webapp.dto.UpdatePhotoDto;
+import com.mycompany.webapp.dto.ProductDTO;
 
 @Controller
 @RequestMapping("/manager")
@@ -40,26 +35,17 @@ public class ManagerController {
     //기본 정보 수정
     @GetMapping("mainInfoDto")
     public String mainInfoDto(Model model) {
-    	UpdateDto dto = new UpdateDto();
-    	dto.setNum("1");
-    	dto.setBrand("쿠시노");
-    	dto.setProductName("저상형 패밀리침대(인조가죽)");
-    	dto.setPrice(1009000);
-    	dto.setDeliveryDate("약 10일");
-    	dto.setDeliveryFee("10만원");
-    	dto.setDeliveryMethod("설치배송");
-    	dto.setProductCode("HB722501");
-    	dto.setColor("");
+    	ProductDTO dto = new ProductDTO();
+    	
+    	dto.setNo(1);
+    	dto.setpName("쿠시노");
+    	dto.setpPrice(1009000);
+    	dto.setpContext("설치배송");
+    	dto.setpColor("베이지");
+    	dto.setpOption("쿠시노 침대가드 1000폭");
     	
     	// 컬러, 상세제품 수정 필요
     	model.addAttribute("dto",dto);
-    	logger.info(dto.getNum());
-    	logger.info(dto.getBrand());
-    	logger.info(dto.getProductName());
-    	logger.info(dto.getDeliveryDate());
-    	logger.info(dto.getDeliveryFee());
-    	logger.info(dto.getDeliveryMethod());
-    	logger.info(dto.getProductCode());
     	logger.info("수정창 불러오기 성공");
     	return "manager/updateMainInfo";
     }
@@ -68,8 +54,8 @@ public class ManagerController {
     @GetMapping("/detailText")
     public String detailInfo(Model model) {
     	   	
-    		UpdateDto dto = new UpdateDto();
-    		dto.setDetail("쿠시노 저상형 패밀리 침대(인조가죽) 신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다. 싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.");
+    		ProductDTO dto = new ProductDTO();
+    		dto.setpDetail("쿠시노 저상형 패밀리 침대(인조가죽) 신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다. 싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.");
     		model.addAttribute("dto", dto);
     		logger.info("상세텍스트 불러오기 성공");
 

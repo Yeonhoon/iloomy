@@ -7,6 +7,20 @@
 	
 }
 
+
+/* ---------------------------revise_list------------------------------------ */
+#wrap{
+	display:flex;
+	padding-top: 50px;
+	
+}
+
+#main_image {
+	width: 700px;
+	box-sizing: border-box;
+	flex:5;
+}
+
 #main {
 	display:flex;
 	flex-direction: row;
@@ -28,28 +42,8 @@
 	margin-bottom:30px;
 	
 }
-
-
-#main_image input {
-}
-
-#main_image {
-	width: 700px;
-	box-sizing: border-box;
-}
-
-#main
-
-#main_info {
-	padding-right:100px;	
-	flex: 4;
-	width: 0 auto;
-	box-sizing: border-box;
-}
-
-
-/* ---------------------------revise_list------------------------------------ */
 #reviseList {
+	flex:5;
 	list-style-type: none;
 	width: 400px;
 }
@@ -78,8 +72,6 @@ li .addBtn:hover {
 	width: 100px;
 	background-color: #ffe3e3;
 }
-
-
 
 
 label {
@@ -119,13 +111,3 @@ footer>div {
 	border: 1px solid black;
 }
 
-section {
-	flex: 7;
-	height: auto;
-}
-
-
-#footer {
-	background-color: #f1f3f5;
-	flex: 2;
-}
