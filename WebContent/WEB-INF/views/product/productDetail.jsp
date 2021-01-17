@@ -45,7 +45,6 @@
 							<option value="">쿠시노 침대가드 1000폭</option>
 							<option value="">쿠시노 침대풋보드 1000폭</option>
 						</select>
-						<input type="number"/>
 					</div>
 					<hr/>
 					<p style="display: inline;"><b>총 구매가</b></p>

@@ -18,6 +18,7 @@
 		         	<div class="dropdown-content">
 		         		<a href="#">테이블</a>
 		         		<a href="#">수납장</a>
+		         		<a href="#">소파</a>
 		         		<a href="#">악세사리</a>
 		         	</div>
 	         </div>	
@@ -85,7 +86,7 @@
             		<input type="text" placeholder="검색" id="search" name="search"/>
             	</form>
 	            <a href="#" ><i class="fas fa-search"></i></a>
-	            <a href="${root}/product/cart"><i class="fas fa-shopping-bag"></i></a>
+	            <a href="${root}/product/cart2"><i class="fas fa-shopping-bag"></i></a>
             </div>
          </div>
       </div>

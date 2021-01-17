@@ -1,12 +1,17 @@
 package com.mycompany.webapp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mycompany.webapp.dto.ProductDTO;
 
 @Controller
 @RequestMapping("product")
@@ -25,11 +30,37 @@ public class ProductController {
         logger.info("실행 : product/detail");
         return "product/productDetail";//product/productDetail.jsp 연결
     }
-    @GetMapping(value = "cart")  //hyun woo 
-    public static String cart(int pno){
+    
+    @GetMapping(value = "cart2")  //연결 header에서 지선 추가
+    public static String cart2(){
+    	System.out.println();
+        logger.info("실행 : product/cart2");
+        return "product/cart";//product/cart.jsp 
+    }
+    
+    @GetMapping(value = "cart")  //hyun woo 지선 추가
+    public static String cart(int pno, HttpSession session){
+    	List <ProductDTO> list = new ArrayList<>();
+    	for (int i=1; i<=2; i++) {
+    		ProductDTO pDTO = new ProductDTO();
+    		pDTO.setNo(pno);
+    		pDTO.setpName("볼케" + i);
+    		pDTO.setpOption("브라운" + i);
+    		pDTO.setpPrice(123123123);
+    		list.add(pDTO);
+    	};
+    	session.setAttribute("plist", list);
     	System.out.println(pno);
         logger.info("실행 : product/cart");
         return "product/cart";//product/cart.jsp 연결
     }
+    
+    @GetMapping(value = "order")  //카트에서 checklist 받아오기
+    public static String order(){
+    	System.out.println();
+        logger.info("실행 : product/order");
+        return "product/cart";//product/cart.jsp
+    }
+    
 
 }

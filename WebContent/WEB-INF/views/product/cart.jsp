@@ -34,34 +34,48 @@
 			</div>
 			<table id="orderList">
 				<tr style="color: #adb5bd;">
-					<th><input type="checkbox" ng-model="all"/></th>
+					<th><input type="checkbox" name="checkAll" id="checkAll"/></th>
 					<th colspan="2">상품정보</th>
 					<th>단가</th>
 					<th>수량</th>
 					<th>상품금액</th>
 					<th>주문</th>
 				</tr>
-				 
-				<tr>
-					<td><input type="checkbox" ng-checked="all"></td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" ng-checked="all"></td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-					<td>sdf</td>
-				</tr>
+				 <c:forEach var="product" items="${plist}">
+				 	<tr>
+						<td><input type="checkbox" name="check" class="check"></td>
+						<td>${product.pName}</td>
+						<td>${product.pColor}</td>
+						<td>${product.pPrice}</td>
+						<td>${product.no}</td>
+						<td>${product.pPrice}</td>
+						<td>
+							<button type="button" class="btn btn-outline-danger btn-sm">바로 구매</button> <br/>
+							<button type="button" class="btn btn-outline-secondary btn-sm">위시리스트</button>
+						</td>
+					</tr>
+				 </c:forEach>
 			</table>
-			<div id="">
+			<!-- "checked" 속성은 기능관련 속성이라 prop 함수에서는 true/false로 출력 -->
+			<script type="text/javascript">
+				$("#checkAll").click(function() {
+					var ch = $("#checkAll").prop("checked");
+					
+					if(ch) {
+						$(".check").prop("checked", true);
+					} else {
+						$(".check").prop("checked", false);
+					}
+				})
+				
+				$(".check").click(function() {
+					$("#checkAll").prop("checked", false);
+				})
+				
+			</script>
+			<div id="cartOrder">
+				<a href="${root}/product/list" class="btn btn-danger btn-sm" style="color: white">결제 하기</a>
+				<a href="${root}/product/list" class="btn btn-info btn-sm" style="color: white">목록 보기</a>
 			</div>
 		</section>
 		<div class="footerwrap">

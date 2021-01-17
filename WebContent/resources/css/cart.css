@@ -12,11 +12,10 @@
 		 text-align: center;
 		 
 	}
-	#orderList {
+	#orderList, #cartOrder {
 		margin: 0 auto;
 		box-sizing: border-box;
 		width: 80%;
-		margin-bottom: 600px; /* 지우기 나중에 */
 	}
 	#orderList td, #orderList th{
 		text-align: center;
@@ -24,3 +23,7 @@
 		border-top: 2px solid grey;
 		border-bottom: 1px solid grey;
 	}
+	
+	#cartOrder a {float: right; margin: 10px;}
+	
+	td button {margin: 10px;}
