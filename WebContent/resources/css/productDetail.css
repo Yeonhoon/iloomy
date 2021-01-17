@@ -1,24 +1,22 @@
 @charset "EUC-KR";
-
+	ul, li {list-style: none;}
 	nav{
-		display: flex;
+		display:flex;
+		width: 80%;
 		margin: auto;
 		align-items: center;
-				justify-content: center;
+		justify-content: center;
 		/* text-align: center; */
 	}
-	nav > img {
-		float: left;
-	} 
-	#list {
-		background-image: url("/team/resources/img/L1.jpg");
-		background-repeat: no-repeat;
-		background-size: cover;
-		margin: 0 auto;
+	
+	#detail {height: 600px; width: 450px; display: inline-block; 
+	margin-left: 50px; margin-bottom: 20px; position: relative;} 
+	#list{
 		margin-top: 50px;
-		width: 60%; /* ²ËÃ¤¿ï¶§ auto */
+		margin: 0 auto;
 		height:600px;
 		box-sizing: border-box;
+		text-align: center;
 	}
 	#list2 {
 		margin: 0 auto;
@@ -26,9 +24,7 @@
 		box-sizing: border-box;
 		text-align: center;
 	}
-	#list2 > p {
-		padding: 50px;
-	}
+	#list2 > p {padding: 50px;}
 	table {
 		box-sizing: border-box;
 		clear: both;
@@ -37,20 +33,10 @@
 		border-bottom: 1px solid grey;
 		
 	}
-	#list_name {
-		text-align: left;
-	}
-	#list_detail {
-		font-size: 2rem;
-		text-align: left;
-	}
-	#list_price {
-		color: red;
-		text-align: left;
-	}
-	#pay:hover, #bag:hover {
-		cursor: pointer;
-	}
+	#list_name {text-align: left;}
+	#list_detail {font-size: 2rem;text-align: left;}
+	#list_price {color: red;text-align: right;}
+	#pay:hover, #bag:hover {cursor: pointer; color: white;}
 	#pay {
 		margin-top: 40px;
 		padding: 10px;

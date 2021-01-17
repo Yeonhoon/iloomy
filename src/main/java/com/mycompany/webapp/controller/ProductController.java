@@ -26,7 +26,8 @@ public class ProductController {
         return "product/productDetail";//product/productDetail.jsp 연결
     }
     @GetMapping(value = "cart")  //hyun woo 
-    public static String cart(){
+    public static String cart(int pno){
+    	System.out.println(pno);
         logger.info("실행 : product/cart");
         return "product/cart";//product/cart.jsp 연결
     }

@@ -22,36 +22,47 @@
 		<div class="headerwrap">
       		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 		</div>
-		<section>
-			<article>
+		<section>		
+			<div id="sec">
+				<p style="font-size: 3rem;">장바구니</p>
+			</div>
 				<div id="order">
-					01 장바구니 --- 02 주문서 작성 --- 03 주문완료
+				01 장바구니 --- 02 주문서 작성 --- 03 주문완료
 				</div>
-				<div id="sec">
-					<p style="font-size: 3rem;">장바구니</p>
-					<p style=" padding: 10px;"><b>주문하실 상품을 선택해주세요</b></p>
-				</div>
-				<button id="button" type="button" class="btn btn-danger btn-sm">공간제안 서비스</button>
-				<table id="orderList">
-					<tr style="color: #adb5bd;">
-						<td><i class="far fa-check-circle"></i></td>
-						<td>상품정보</td>
-						<td>단가</td>
-						<td>수량</td>
-						<td>상품금액</td>
-						<td>주문</td>
-					</tr>
-					<!-- 추가 하면 됨 
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr> -->
-				
-				</table>
-			</article>
+			<div id="sec">
+				<p style=" padding: 10px;"><b>주문하실 상품을 선택해주세요</b></p>
+			</div>
+			<table id="orderList">
+				<tr style="color: #adb5bd;">
+					<th><input type="checkbox" ng-model="all"/></th>
+					<th colspan="2">상품정보</th>
+					<th>단가</th>
+					<th>수량</th>
+					<th>상품금액</th>
+					<th>주문</th>
+				</tr>
+				 
+				<tr>
+					<td><input type="checkbox" ng-checked="all"></td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" ng-checked="all"></td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+					<td>sdf</td>
+				</tr>
+			</table>
+			<div id="">
+			</div>
 		</section>
 		<div class="footerwrap">
       		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>

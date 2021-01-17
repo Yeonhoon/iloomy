@@ -21,11 +21,12 @@
 		<div class="headerwrap">
       		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 		</div>
-		<section>
 			<nav>
-				<img src="${root}/resources/img/l10.jpg" height="650px"/>
-				<div style="display: inline-block; margin-left: 50px; margin-bottom: 20px;">
-					<p id="list_name">쿠시노</p>
+				<div id="detailphoto">
+					<img src="${root}/resources/img/l10.jpg" height="600px;"/>
+				</div>
+				<div id="detail">
+					<p id="list_name" >쿠시노</p>
 					<p id="list_detail"><b>저상형 패밀리침대(인조가죽)</b></p>
 					<p id="list_price">1,009,000원</p>
 					<hr/>
@@ -33,30 +34,57 @@
 					<b>배송방법</b> 설치배송 <b>제품코드</b> HB722501</p>
 					<br/>
 					<div id="option">
-						<select name="colorOption" id="colorOption">
+						<select name="pColor" id="colorOption">
 							<option value="">[필수]색상을 선택해주세요</option>
 							<option value="">브라운</option>
 							<option value="">베이지</option>
 							<option value="">그레이</option>
 						</select>
-						<select name="productOption" id="productOption">
+						<select name="pOption" id="productOption">
 							<option value="">[선택] 제품사양</option>
 							<option value="">쿠시노 침대가드 1000폭</option>
 							<option value="">쿠시노 침대풋보드 1000폭</option>
 						</select>
+						<input type="number"/>
 					</div>
 					<hr/>
 					<p style="display: inline;"><b>총 구매가</b></p>
-					<p style="display: inline; color: red; padding-left: 300px;"><b>0 원</b></p>
+					<p style="display: inline; color: red;"><b>0 원</b></p>
 					<br/>
-					<form action="cart">
-						<button id="pay"> 결제하기 </button>
-						<button id="bag" > 장바구니 </button>
-					</form>
+					<c:if test="${empty userinfo}">
+						<button id="pay" onclick="funno()" > 결제하기 </button>
+						<button id="bag" onclick="funno()" > 장바구니 </button>
+					</c:if>
+					<c:if test="${!empty userinfo}">
+						<button id="pay" onclick="payfun()" > 결제하기 </button>
+						<button id="bag" onclick="cartfun()" > 장바구니 </button>
+					</c:if>
+					
+					<script type="text/javascript">
+						function funno() {
+							alert("로그인 해주세요!");
+						}
+						function cartfun() {
+							var pass;
+								if (confirm("추가된 물품을 장바구니에서 확인하시겠습니까?")){
+								self.location.href = "cart?pno=1"
+								} else {
+									
+								}
+						}
+						
+						function payfun() {
+							var pass;
+							if (confirm("결제하시겠습니까?")){
+								self.location.href = "cart"
+							} else {
+								
+							}
+						}
+					</script>
 					<br/>
 					<a href="#" target="_black"><img src="${root}/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
 					<a href="#" target="_black"><img src="${root}/resources/img/l12.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
-					<a href="#" target="_black"><img src="${root}/resources/img/l13.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
 				</div>
 			</nav>
 			<article>
@@ -70,7 +98,7 @@
 					</tr>
 				</table>
 				<div id="list" >
-					
+					<img src="${root}/resources/img/L1.jpg"/>
 				</div>
 				<div style="text-align: center; padding: 30px;">
 					<p style="font-size: 2rem;">쿠시노 저상형 패밀리 침대(인조가죽)</p>
@@ -97,7 +125,7 @@
 					
 				</div>
 			</article>
-		</section>
+		
 		
 		<div class="footerwrap">
       		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>

@@ -85,7 +85,7 @@
             		<input type="text" placeholder="검색" id="search" name="search"/>
             	</form>
 	            <a href="#" ><i class="fas fa-search"></i></a>
-	            <a href="${root}/homepage/package.html"><i class="fas fa-shopping-bag"></i></a>
+	            <a href="${root}/product/cart"><i class="fas fa-shopping-bag"></i></a>
             </div>
          </div>
       </div>
