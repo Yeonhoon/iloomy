@@ -41,7 +41,7 @@ public class ManagerController {
     @GetMapping("mainInfoDto")
     public String mainInfoDto(Model model) {
     	UpdateDto dto = new UpdateDto();
-    	dto.setNum(1);
+    	dto.setNum("1");
     	dto.setBrand("쿠시노");
     	dto.setProductName("저상형 패밀리침대(인조가죽)");
     	dto.setPrice(1009000);
@@ -53,40 +53,59 @@ public class ManagerController {
     	
     	// 컬러, 상세제품 수정 필요
     	model.addAttribute("dto",dto);
+    	logger.info(dto.getNum());
+    	logger.info(dto.getBrand());
+    	logger.info(dto.getProductName());
+    	logger.info(dto.getDeliveryDate());
+    	logger.info(dto.getDeliveryFee());
+    	logger.info(dto.getDeliveryMethod());
+    	logger.info(dto.getProductCode());
     	logger.info("수정창 불러오기 성공");
     	return "manager/updateMainInfo";
     }
     
-    //사진 업로드 및 저장
-    @PostMapping("/photoupload")
-    public String fileUpload(UpdatePhotoDto user) {
-    	MultipartFile uphoto = user.getUphoto();
-    	if(!uphoto.isEmpty()) {
-			//원래 경로 설정해주기
-    		String originFilename = uphoto.getOriginalFilename();
-			String fileType = uphoto.getContentType();
-			
-			//파일저장경로 설정
-			String saveDir = "D:/MW/uploadfiles/";
-			String fileName = new Date().getTime() + "-" +  originFilename;// 유일한 이름으로 바꿔줘야 함 방법1. 날짜 이용법, 2. 시간 ㅣ이용법
-			String filePath = saveDir + fileName;
-			File file = new File(filePath);
-			
-			logger.info("파일타입:" + fileType);
+    //상세정보수정
+    @GetMapping("/detailText")
+    public String detailInfo(Model model) {
+    	   	
+    		UpdateDto dto = new UpdateDto();
+    		dto.setDetail("쿠시노 저상형 패밀리 침대(인조가죽) 신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다. 싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.");
+    		model.addAttribute("dto", dto);
+    		logger.info("상세텍스트 불러오기 성공");
 
-			try {
-				uphoto.transferTo(file);
-			} catch (Exception e) {
-				return "redirect:/manager/update";
-			}
-    	}
-    	return "redirect:/manager/update";
+    	return "manager/updateDetailText";
     }
     
+//    //사진 업로드 및 저장
+//    @PostMapping("/photoupload")
+//    public String fileUpload(UpdatePhotoDto user) {
+//    	MultipartFile uphoto = user.getUphoto();
+//    	if(!uphoto.isEmpty()) {
+//			//원래 경로 설정해주기
+//    		String originFilename = uphoto.getOriginalFilename();
+//			String fileType = uphoto.getContentType();
+//			
+//			//파일저장경로 설정
+//			String saveDir = "D:/MW/uploadfiles/";
+//			String fileName = new Date().getTime() + "-" +  originFilename;// 유일한 이름으로 바꿔줘야 함 방법1. 날짜 이용법, 2. 시간 ㅣ이용법
+//			String filePath = saveDir + fileName;
+//			File file = new File(filePath);
+//			
+//			logger.info("파일타입:" + fileType);
+//
+//			try {
+//				uphoto.transferTo(file);
+//			} catch (Exception e) {
+//				return "redirect:/manager/update";
+//			}
+//    	}
+//    	return "redirect:/manager/update";
+//    }
+//    
     //첨부한 사진리스트 보여주기
     @GetMapping("/photolist")
     public String photoList(Model model) {
-    	String saveDir = "D:/MW/uploadfiles";
+    	String saveDir = "D:/MW/uploadfiles/";
     	File file = new File(saveDir);
     	String[] fileNames = file.list();
     	model.addAttribute("fileNames",fileNames);
@@ -100,7 +119,7 @@ public class ManagerController {
     //변경내용 저장
     @GetMapping(value = "saveupdate")    //hoon  , no parameter
     public String save(){
-        logger.info("실행 : /manager/enroll/next");
+        logger.info("실행 : 변경내용을 저장하였습니다.");
         return "product/productList";//product/productList.jsp 연결
     }
     

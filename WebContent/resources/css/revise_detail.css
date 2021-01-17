@@ -3,53 +3,64 @@
 /* 	------------------ detail section --------------------------------- */
 #detail {
 	margin-top: 50px;
-	height: auto;
-	box-shadow:none;
 }
 
 .detailList{
 	border-bottom: 1px dotted black;
-	display: flex;
-	margin-right: 300px;
-	margin-left:300px;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	padding-right: 300px;
+	padding-left:300px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 .list_img {
 	box-shadow:none;
 	text-align: center;
+	display: block;
+	margin-right: 30px;
+}
+
+.list_img img {
+	max-width: 600px;
+	margin-right:100px;
+	margin-left: 100px;
+}
+
+
+.textButton a{
+	display:block;
+	color: white;
+	margin-left: 300px;
+	margin-right:300px;
 }
 
 .list_txt {
-	margin: 50px 50px;
+	margin: 20px 10px;
 	text-align: center;
-
-	
 }
 
-.list_txt label{
-	margin: 50px 50px;
-	
-}
-
-#list{
-	padding-right: 400px; 
-	padding-left: 400px;
-	text-align: center;
-	box-sizing: border-box;
-	
+#text_div{
+	display: block;
 }
 
 
 .myText {
-	width: 500px;
-	border: 1px dotted black;
+	border: 1px dashed black;
+	width: 100%;
+	heigth: 100px;
 }
 
-#img01, #img03, #img04 {
-	box-sizing: border-box;
-	overflow: hidden;
+
+#photoList{
+	width:60%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+	margin-right: 200px;
+	margin-left: 200px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 
@@ -58,7 +69,7 @@
 	text-align: center;
 	display: flex;
 	justify-content: center;
-	margin-bottom: 20px;
+	margin: 20px 20px;
 }
 
 #btn button {

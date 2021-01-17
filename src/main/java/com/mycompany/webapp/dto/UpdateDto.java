@@ -1,7 +1,7 @@
 package com.mycompany.webapp.dto;
 
 public class UpdateDto {
-	private long num;
+	private String num;
 
 	private String brand;
 	private String productName;
@@ -11,11 +11,14 @@ public class UpdateDto {
 	private String deliveryMethod;
 	private String productCode;
 	private String color;
+	private String option;
+	private String detail;
 	
-	public long getNum() {
+	
+	public String getNum() {
 		return num;
 	}
-	public void setNum(long num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 	
@@ -73,5 +76,13 @@ public class UpdateDto {
 	public void setOption(String option) {
 		this.option = option;
 	}
-	private String option;
+	
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	
+	
 }
