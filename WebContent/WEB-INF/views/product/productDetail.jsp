@@ -35,13 +35,13 @@
 					<br/>
 					<div id="option">
 						<select name="pColor" id="colorOption">
-							<option value="">[필수]색상을 선택해주세요</option>
+							<option value="none">[필수]색상을 선택해주세요</option>
 							<option value="">브라운</option>
 							<option value="">베이지</option>
 							<option value="">그레이</option>
 						</select>
 						<select name="pOption" id="productOption">
-							<option value="">[선택] 제품사양</option>
+							<option value="none">[선택] 제품사양</option>
 							<option value="">쿠시노 침대가드 1000폭</option>
 							<option value="">쿠시노 침대풋보드 1000폭</option>
 						</select>

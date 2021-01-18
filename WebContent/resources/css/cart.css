@@ -24,5 +24,4 @@
 		border-bottom: 1px solid grey;
 	}
 	.footerwrap {margin-top: 200px;}
-	
-	#cartOrder a {float: right; margin: 10px;}
+	#cartOrder button, #cartOrder a {float: right; margin: 10px;}
