@@ -23,7 +23,5 @@
 		border-top: 2px solid grey;
 		border-bottom: 1px solid grey;
 	}
-	
-	#cartOrder a {float: right; margin: 10px;}
-	
-	td button {margin: 10px;}
+	.footerwrap {margin-top: 200px;}
+	#cartOrder button, #cartOrder a {float: right; margin: 10px;}

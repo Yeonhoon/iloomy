@@ -3,11 +3,13 @@ package com.mycompany.webapp.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -46,7 +48,7 @@ public class ProductController {
     		pDTO.setNo(pno);
     		pDTO.setpName("볼케" + i);
     		pDTO.setpOption("브라운" + i);
-    		pDTO.setpPrice(123123123);
+    		pDTO.setpPrice(1009000);
     		list.add(pDTO);
     	};
     	session.setAttribute("plist", list);
@@ -55,12 +57,16 @@ public class ProductController {
         return "product/cart";//product/cart.jsp 연결
     }
     
-    @GetMapping(value = "order")  //카트에서 checklist 받아오기
-    public static String order(){
-    	System.out.println();
-        logger.info("실행 : product/order");
-        return "product/cart";//product/cart.jsp
-    }
+    
+    @GetMapping(value = "/order")
+	public String method1(HttpServletRequest request, ModelMap model) throws Exception {
+		String [] arr = request.getParameterValues("check");
+		for (String i : arr) {
+			System.out.println(i);
+		}
+		model.addAttribute("arr", arr);
+		return "product/productList";
+	}
     
 
 }
