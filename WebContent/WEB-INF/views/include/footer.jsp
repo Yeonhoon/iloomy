@@ -5,7 +5,7 @@
 
 <div id="sidebanner" style=" display: block; position:fixed; z-index: 1000; bottom:1%; right:1%; margin-left:500px; width:120px; height:150px; background:white; border: 1px solid black; text-align: center;">
 	<ul>
-		<li class="boxlist" style="margin-top: 8px;"><a href="${root}/QnA/list">고객센터</a></li>
+		<li class="boxlist" style="margin-top: 8px;"><a href="${root}/QnA/index">고객센터</a></li>
 		<li class="boxlist"><a href="#"> <img id="talktalk" src="${root}/resources/img/a.JPG" width= "100px"/></a></li>
 		<li class="boxlist"><a href="#"> <img id="kakao" src="${root}/resources/img/b.JPG" width= "100px"/></a></li>
 	</ul>
