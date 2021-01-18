@@ -46,7 +46,7 @@ public class ProductController {
     		pDTO.setNo(pno);
     		pDTO.setpName("볼케" + i);
     		pDTO.setpOption("브라운" + i);
-    		pDTO.setpPrice(123123123);
+    		pDTO.setpPrice(1009000);
     		list.add(pDTO);
     	};
     	session.setAttribute("plist", list);

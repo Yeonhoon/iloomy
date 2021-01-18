@@ -3,6 +3,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
@@ -32,6 +34,7 @@
 			<div id="sec">
 				<p style=" padding: 10px;"><b>주문하실 상품을 선택해주세요</b></p>
 			</div>
+			
 			<table id="orderList">
 				<tr style="color: #adb5bd;">
 					<th><input type="checkbox" name="checkAll" id="checkAll"/></th>
@@ -46,12 +49,12 @@
 						<td><input type="checkbox" name="check" class="check"></td>
 						<td>${product.pName}</td>
 						<td>${product.pColor}</td>
-						<td>${product.pPrice}</td>
+						<td><fmt:formatNumber value="${product.pPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
 						<td>${product.no}</td>
-						<td>${product.pPrice}</td>
+						<td><fmt:formatNumber value="${product.pPrice}" pattern="###,###,###"></fmt:formatNumber>원</td>
 						<td>
-							<button type="button" class="btn btn-outline-danger btn-sm">바로 구매</button> <br/>
-							<button type="button" class="btn btn-outline-secondary btn-sm">위시리스트</button>
+							<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
+							<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">위시리스트</a>
 						</td>
 					</tr>
 				 </c:forEach>
@@ -74,10 +77,12 @@
 				
 			</script>
 			<div id="cartOrder">
-				<a href="${root}/product/list" class="btn btn-danger btn-sm" style="color: white">결제 하기</a>
+				<a href="${root}/product/cart2" class="btn btn-danger btn-sm" style="color: white">결제 하기</a>
 				<a href="${root}/product/list" class="btn btn-info btn-sm" style="color: white">목록 보기</a>
 			</div>
+			
 		</section>
+		
 		<div class="footerwrap">
       		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 		</div>
