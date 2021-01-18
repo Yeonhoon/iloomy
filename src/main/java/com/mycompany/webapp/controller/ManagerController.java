@@ -22,6 +22,11 @@ public class ManagerController {
     @PostMapping(value = "enroll/product")  //hyemin, DTO
     public String enroll(){
         logger.info("실행 : /manager/enroll/product");
+
+
+
+
+
         return "redirect:/manager/enroll/next";
     }
     

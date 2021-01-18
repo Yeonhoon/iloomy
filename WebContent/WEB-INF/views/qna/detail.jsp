@@ -19,40 +19,33 @@
     </script>
 </head>
 <body>
-<div class="headerwrap">
-    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+
+
+<div id="detailAjax" >
+    <c:out value="${result.qnaContent}"/>
+
+<%--        <table border="1" style="text-align: center;">--%>
+<%--            <thead>--%>
+<%--            <tr>--%>
+<%--                <th>no</th>--%>
+<%--                <th>제목</th>--%>
+<%--                <th>내용</th>--%>
+<%--                <th>글쓴이</th>--%>
+<%--                <th>날짜</th>--%>
+<%--            </tr>--%>
+<%--            </thead>--%>
+<%--            <tbody>--%>
+<%--                <tr>--%>
+<%--                    <td><c:out value="${result.qnaNo}"/></td>--%>
+<%--                    <td><c:out value="${result.qnaTitle}"/></td>--%>
+<%--                    <td><c:out value="${result.qnaContent}"/></td>--%>
+<%--                    <td><c:out value="${result.qnaUserid}"/></td>--%>
+<%--                    <td><c:out value="${result.qnaDatetime}"/></td>--%>
+<%--                </tr>--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
+
 </div>
 
-
-<div class="container" align="center" >
-    <div class="col-lg-6" align="center">
-
-        <table border="1" style="text-align: center;">
-            <thead>
-            <tr>
-                <th>no</th>
-                <th>제목</th>
-                <th>내용</th>
-                <th>글쓴이</th>
-                <th>날짜</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><c:out value="${result.qnaNo}"/></td>
-                    <td><c:out value="${result.qnaTitle}"/></td>
-                    <td><c:out value="${result.qnaContent}"/></td>
-                    <td><c:out value="${result.qnaUserid}"/></td>
-                    <td><c:out value="${result.qnaDatetime}"/></td>
-                </tr>
-            </tbody>
-        </table>
-
-
-    </div>
-</div>
-<div class="footerwrap">
-    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-</div>
 </body>
 </html>

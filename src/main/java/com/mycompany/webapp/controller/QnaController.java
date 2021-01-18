@@ -33,6 +33,17 @@ public class QnaController {
         req.setAttribute("list", list);
         return "qna/list";
     }
+    @GetMapping("list2")
+    public String list2(HttpServletRequest req){
+
+        return "qna/list2";
+    }
+
+    @GetMapping("index")
+    public String index(HttpServletRequest req){
+
+        return "qna/index";
+    }
 
     @GetMapping("detail")
     public String detail(HttpServletRequest req, @RequestParam("no")int no){
