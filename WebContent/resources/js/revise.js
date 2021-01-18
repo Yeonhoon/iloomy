@@ -5,6 +5,19 @@ const imgChange = () =>{
 };
 
 
+function mainInfoDto(){
+    $.ajax({
+        url:"mainInfoDto",
+        method:"get",
+        
+        success:function(data){
+        	console.log("양식 불러오기 성공");
+            $("#main_infoForm").html(data);
+        }
+    });
+};
+
+
 const img = () => {
 	$("main_img").attr("src","https://media.magazine.ferrari.com/images/2019/03/25/112037181-ade321bc-2a1b-4a66-952f-d845c44073e8.jpg");
 	console.log("change");
@@ -53,9 +66,20 @@ const addOption = () =>{
 	}
 }
 
-const validityTest = () => {
-	console.log(event.target);
-	event.preventDefault();
+const detailText = function(){
+				    $.ajax({
+				        url:"detailText",
+				        method:"get",
+				        success: function(data){
+				            $(".textDiv").html(data);
+				        }
+				    })
+			}
+
+
+	const saveConfirm = function() {
+	console.log(event);
+	/* event.preventDefault(); */
 
 	const brand = $("#brand");
 	const productName = $("#product_name");
@@ -69,19 +93,21 @@ const validityTest = () => {
 		deliveryDate.val() === "" | deliveryFee.val() === "" | deliveryMethod.val() === "" | productCode.val() === "") {
 		const uidError = $("#uidError");
 		window.alert("모두 입력되어야합니다");
-		uidError.html("필수입력").css("color", "red");
 		return;
 	}
 	else {
 		//서버로 데이터 전송
-		const reviseForm = $("#reviseForm");
 		//const reviseForm = document.reviseForm; //form에 name 저장되어 있으면 바로 가져올 수 있음.
 		const result = window.confirm("수정을 완료하시겠습니까?");
-		if (result) {
-			reviseForm.submit();
-			document.location.href = "product_list.html";
-		} else {
-			document.location.href = "";
+		if(result){
+		    self.location.href="saveupdate";
+		    
+		/*$(function(){
+		        $.ajax({
+		            url:"saveupdate",
+		            method: "get"
+		        })
+		    }) */
 		}
 	}
 }

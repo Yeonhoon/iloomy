@@ -15,8 +15,7 @@
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/mainhome.css">
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/revise_main.css">
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/revise_detail.css">
-	<link rel="stylesheet" href= "<%=application.getContextPath()%>/resources/js/revise.js">
-	
+	<script src="${root}/resources/js/revise.js"></script>
 </head>
 
 <body rightmargin="0">
@@ -24,12 +23,10 @@
       	<jsp:include page="/WEB-INF/views/include/header.jsp"/>
       </div>
       
-	<section>
+	<section id="sec" style="padding-right: 200px; padding-left:200px;">
 		<h1 style="text-align: center;">주요 정보</h1>
-		<jsp:include page="/WEB-INF/views/manager/updateMainInfo.jsp"/>
-		<article id="main">
-			<div id="main_info">
-				<a href="javascript:mainInfoDto()" class="btn btn-danger btn-sm" style="color:white">세부사항 수정</a>
+				<a href="javascript:mainInfoDto()" class="btn btn-danger btn-sm" style="color:white">수정</a>
+		<article id="main" style="margin-left: 300px;">
 				<script>
 					function mainInfoDto(){
 					    $.ajax({
@@ -44,7 +41,6 @@
 					};
 				</script>
 				<div id="main_infoForm"></div>
-			</div>
 
 		</article>
 		<hr />
@@ -73,34 +69,20 @@
 					<div class="textDiv"></div>
 			</div>
 			<div class="detailList">
-			<%-- 	<div id="img03" class="list_img">
-					<img src="<%=application.getContextPath()%>/resources/img/l4.jpg" height="600px" />
-					<input type="file" class="btn btn-outline-light" accept="img/*" style="width:250px;" />
-
-				</div> --%>
 				<div class="textDiv"></div>
-				</div>
+			</div>
 			
 			<div class="detailList">
-<%-- 				<div id="img04" class="list_img">
-					<img src="<%=application.getContextPath()%>/resources/img/l5.jpg" height="600px" />
-					<input type="file" class="btn btn-outline-light" accept="img/*" onchange="setImg4(event);"
-						style="width:250px;" />
-				</div> --%>
 				<div class="textDiv"></div>
-
-				<div id="img05" class="list_img">
-					<h1>Color</h1>
-					<div id="pre_img05">
-						<img src="<%=application.getContextPath()%>/resources/img/l7.jpg" height="300px" />
-						<img src="<%=application.getContextPath()%>/resources/img/l6.jpg" height="300px" />
-					</div>
-					<input type="file" class="btn btn-outline-light" accept="img/*" onchange="setImg5(event);"
-						style="width:250px;"/>
-				</div>
 			</div>
-				
-<%--  				<script>
+			
+			<div class="detailList">
+				<div class="textDiv"></div>
+			</div>	
+			<div class="detailList">
+				<div class="textDiv"></div>
+			</div>
+			<%--  <script>
 					$(function(){
 					    $.ajax({
 					        url:"photolist",
@@ -123,7 +105,7 @@
 	<script>
 		const saveConfirm = function() {
 		console.log(event);
-/* 		event.preventDefault(); */
+		/* event.preventDefault(); */
 
 		const brand = $("#brand");
 		const productName = $("#product_name");
@@ -144,17 +126,18 @@
 			//const reviseForm = document.reviseForm; //form에 name 저장되어 있으면 바로 가져올 수 있음.
 			const result = window.confirm("수정을 완료하시겠습니까?");
 			if(result){
-			    $(function(){
+			    self.location.href="saveupdate";
+			    
+			/*$(function(){
 			        $.ajax({
 			            url:"saveupdate",
 			            method: "get"
 			        })
-			    })
+			    }) */
 			}
-	}
+		}
 	}
 	</script>
-	
 	
 	<div class="footerwrap">
       	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>

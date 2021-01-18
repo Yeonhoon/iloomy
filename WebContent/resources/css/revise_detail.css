@@ -6,11 +6,15 @@
 }
 
 .detailList{
-	border-bottom: 1px dotted black;
+	border-bottom: 1px solid #D1D1D1;
 	padding-right: 300px;
 	padding-left:300px;
-	padding-top: 50px;
+	padding-top: 10px;
 	padding-bottom: 50px;
+}
+
+.detailList:nth-child(2n+1){
+	background-color: #f1f3f5;
 }
 
 .list_img {
@@ -45,8 +49,8 @@
 
 
 .myText {
-	border: 1px dashed black;
-	width: 100%;
+	border: 1px solid grey;
+	width: 600px;
 	heigth: 100px;
 }
 

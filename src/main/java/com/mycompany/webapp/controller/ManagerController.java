@@ -43,7 +43,8 @@ public class ManagerController {
     	ProductDTO dto = new ProductDTO();
     	
     	dto.setNo(1);
-    	dto.setpName("쿠시노");
+    	dto.setpName("패밀리 소파-침대 일체형(가죽)");
+    	dto.setpCompany("쿠시노");
     	dto.setpPrice(1009000);
     	dto.setpContext("설치배송");
     	dto.setpColor("베이지");

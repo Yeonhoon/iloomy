@@ -1,40 +1,65 @@
 @charset "UTF-8";
 
-/* main section--------------------------------------------------------- */\
-
+/* main section--------------------------------------------------------- */
 *{
 	box-sizing: border-box;
-	
+
+}
+
+#main{
+	margin-right:100px;
+	margin-left:100px;
 }
 
 
-/* ---------------------------revise_list------------------------------------ */
-#wrap{
+#sec {
+	padding-right: 200px;
+	padding-left: 200px;
+}
+
+#sec h1{
+	margin-bottom: 50px;
+}
+
+#main_info a{
+	display:block;
+	color: white;
+}
+
+#main_infoForm{
 	display:flex;
-	padding-top: 50px;
-	
+	width: 100%;
 }
 
 #main_image {
-	width: 700px;
 	box-sizing: border-box;
 	flex:5;
+	margin-right: 100px;
 }
+
+/* ---------------------------revise_list------------------------------------ */
 
 #main {
 	display:flex;
 	flex-direction: row;
+	margin-left: 300px;
 }
 
-#main_image {
+#mainPhotoLabel{
+	margin-left: 140px;
+}
+
+/* #main_image {
 	padding-left:100px;
 	flex:6;
 	display: block;
 	text-align: center;
-}
+} */
 
 #main_image label {
 	font-size: 2rem;
+    margin-left: 130px;
+    font-weight: bolder;
 }
 
 #main_image img {
@@ -45,7 +70,6 @@
 #reviseList {
 	flex:5;
 	list-style-type: none;
-	width: 400px;
 }
 
 #reviseList li:nth-child(2n) {
@@ -74,9 +98,6 @@ li .addBtn:hover {
 }
 
 
-label {
-	font-size: 1rem;
-}
 
 footer {
 	/* margin: 0 auto; */

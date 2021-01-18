@@ -9,5 +9,7 @@
 
 	<div  class="list_txt">
 		<label style="font--size:1.6rem;"><b>텍스트 입력</b></label><br />
-		<textarea class="myText">"${dto.detail}"</textarea>
+		<textarea class="myText">"${dto.pDetail}"</textarea>
 	</div>
+
+	

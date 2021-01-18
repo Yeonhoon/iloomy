@@ -39,24 +39,29 @@
 
         /* 게시판 목록 */
         .board {width: 950px; }
-        .w70 {width:70px; }
-        .w500 {width:500px; }
-        .w120 {width:120px; }
-        .w100 {width:100px; }
+        .w70 {width:70px; height: 100px;}
+        .w500 {width:500px; height: 100px;}
+        .w120 {width:120px; height: 100px;}
+        .w100 {width:100px; height: 100px;}
         .w890 {width: 890px;}
         .title {
             height: 50px;
             line-height: 50px;
-            background:skyblue;
+            background: #F3ECE3;
             font-weight: bold;
         }
-        .t_line {border-right:solid 1px gray;}
-        .lt_line {border-bottom:solid 1px gray;}
+        .t_line {border-right:solid 0px #D7D7D7;}
+        .lt_line {border-bottom:solid 1px #D7D7D7;}
         .list {
             height: 40px;
             line-height: 40px;
-            background: #f3f3f3;
+            background: white;
         }
+        
+        .list:hover{
+        	background-color: #FCFAFA;
+        }
+        
     </style>
     <div class="uliltable">
         <!---기본 메뉴--->
@@ -69,7 +74,7 @@
         </ul>
         <c:if test="${list.size() == 0 }">
             <ul class="board">
-                현재 데이타가 없습니다.
+                <p>현재 데이타가 없습니다.</p>
             </ul>
         </c:if>
 
@@ -83,7 +88,7 @@
                 <li class="fl tc w100 list  lt_line">0</li>
             </ul>
             <ul id="panel${item.qnaNo}" style="display: none;">
-                <li  class="fl tc w890 list t_line lt_line"><c:out value="${item.qnaContent}"/>
+                <li  class="fl tc w890 list t_line lt_line" style="height: 120px;"><c:out value="${item.qnaContent}"/>
                 </li>
             </ul>
 

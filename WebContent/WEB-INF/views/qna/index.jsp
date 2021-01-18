@@ -15,7 +15,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="${root}/resources/css/mainhome.css"> <!-- footer, header css -->
+    <link rel="stylesheet" href="${root}/resources/css/mainhome.css">
+    <link rel="stylesheet" href="${root}/resources/css/qna.css"> <!-- footer, header css -->
+     <style type="text/css">
+    	.container a:hover{
+    		color:white;
+    	}
+    </style>
     <script type="text/javascript">
 
         function list() {
@@ -60,19 +66,21 @@
 </head>
 <body>
 <div class="headerwrap">
+
+
+
     <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 </div>
 
-
 <div class="container" align="center" style="margin-bottom: 100px;">
-    <button onclick="list()"> qna리스트가져오기</button>
-    <button onclick="list2()"> 반복질문 답변</button>
+    <a onclick="list()" class="btn btn-light" style=""> qna리스트가져오기</a>
+    <a onclick="list2()" class="btn btn-light"> 반복질문 답변</a>
     <div id="tabl1" style="margin-top: 5%;"></div>
 
 
 
 </div>
-<div class="footerwrap" style="position: absolute;">
+<div class="footerwrap" >
     <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 </div>
 </body>

@@ -1,16 +1,15 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 
-<div id="wrap">
-	<div id="main_image">
+	<div id="main_image" style="margin-right:100px;">
+		<label for="image" id="mainPhotoLabel">대표 사진</label><br/>
 		<form action="photoupload" method="post" enctype="mulipart/form-data">
-			<label for="image" style="text-align:center;">대표 사진</label><br />
 			<img id="main_img" src="<%=application.getContextPath()%>/resources/img/l10.jpg" height="400px" /><br />
 			<input type="file" class="btn btn-outline-light" name="uphoto" style="width:250px;" />
 			<input type="submit" class="btn btn-primary btn-sm" value="사진 저장"/>
 		</form>
 	</div>
 
-	<ul id="reviseList">
+	<ul id="reviseList" style="margin-left:100px;">
 		<li>
 			<label for="num"><b>게시물번호</b></label><br>
 			<input type="number" id="num" name="num" style="width: 260px;" value="${dto.no}"/>
@@ -86,4 +85,3 @@
 			</div>
 		</li>
 	</ul>
-</div>

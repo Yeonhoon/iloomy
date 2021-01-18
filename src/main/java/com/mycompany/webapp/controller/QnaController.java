@@ -21,11 +21,11 @@ public class QnaController {
     public String list(HttpServletRequest req){
         Date date = new Date();
         QnADTO[] qnADTOS = new QnADTO[5];
-        qnADTOS[0] = new QnADTO(0,"0번째","0번쨰내용","admin",date);
-        qnADTOS[1] = new QnADTO(1,"1번째","1번쨰내용","admin",date);
-        qnADTOS[2] = new QnADTO(2,"2번째","2번쨰내용","admin",date);
-        qnADTOS[3] = new QnADTO(3,"3번째","3번쨰내용","admin",date);
-        qnADTOS[4] = new QnADTO(4,"4번째","4번쨰내용","admin",date);
+        qnADTOS[0] = new QnADTO(0,"0번째","0번째내용","admin",date);
+        qnADTOS[1] = new QnADTO(1,"1번째","1번째내용","admin",date);
+        qnADTOS[2] = new QnADTO(2,"2번째","2번째내용","admin",date);
+        qnADTOS[3] = new QnADTO(3,"3번째","3번째내용","admin",date);
+        qnADTOS[4] = new QnADTO(4,"4번째","4번째내용","admin",date);
         ArrayList<QnADTO> list = new ArrayList<>();
         for(int i=0; i<qnADTOS.length; i++){
             list.add(qnADTOS[i]);
@@ -50,11 +50,11 @@ public class QnaController {
         System.out.println(no);
         Date date = new Date();
         QnADTO[] qnADTOS = new QnADTO[5];
-        qnADTOS[0] = new QnADTO(0,"0번째","0번쨰내용","admin",date);
-        qnADTOS[1] = new QnADTO(1,"1번째","1번쨰내용","admin",date);
-        qnADTOS[2] = new QnADTO(2,"2번째","2번쨰내용","admin",date);
-        qnADTOS[3] = new QnADTO(3,"3번째","3번쨰내용","admin",date);
-        qnADTOS[4] = new QnADTO(4,"4번째","4번쨰내용","admin",date);
+        qnADTOS[0] = new QnADTO(0,"0번째","0번째내용","admin",date);
+        qnADTOS[1] = new QnADTO(1,"1번째","1번째내용","admin",date);
+        qnADTOS[2] = new QnADTO(2,"2번째","2번째내용","admin",date);
+        qnADTOS[3] = new QnADTO(3,"3번째","3번째내용","admin",date);
+        qnADTOS[4] = new QnADTO(4,"4번째","4번째내용","admin",date);
         req.setAttribute("result", qnADTOS[no]);
         return "qna/detail";
     }
