@@ -83,7 +83,7 @@
 			</form>
 		</section>
 		
-		<div class="footerwrap">
+		<div class="footerwrap" style="position: absolute;">
       		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 		</div>
 	</body>
