@@ -31,20 +31,20 @@ $(document).ready(function() {
 		<form id="writeForm" method="post" action="">
 		<input type="hidden" name="act" id="act" value="">
 			<div class="form-group" align="left">
-				<label for="name">qnaNo</label>
+				<label for="name">no</label>
 				<input type="text" class="form-control" id="qnaNo" name="qnaNo" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="">qnaTitle</label>
+				<label for="">제목</label>
 				<input type="text" class="form-control" id="qnaTitle" name="qnaTitle" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="">qnaContent</label>
+				<label for="">글내용</label>
 				<input type="text" class="form-control" id="qnaContent" name="qnaContent" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="">qnaUserid</label>
-				<input type="text" class="form-control" id="qnaUserid" name="qnaUserid" placeholder="">
+				<label for="">아이디</label>
+				<input type="text" class="form-control" id="qnaUserid" name="qnaUserid" placeholder="admin" value="admin" readonly>
 			</div>
 			
 			<div class="form-group" align="center">
