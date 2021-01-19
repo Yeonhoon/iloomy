@@ -69,8 +69,9 @@ public class QnaController {
         Date date = new Date();
         qna.setQnaDatetime(date);
         System.out.println(qna.toString());
-        return "redirect:/QnA/list";
+        return "redirect:/QnA/index";
     }
+
 
 
 }
