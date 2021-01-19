@@ -35,24 +35,22 @@ public class ProductController {
     
     @GetMapping(value = "cart2")  //연결 header에서 지선 추가
     public static String cart2(){
-    	System.out.println();
         logger.info("실행 : product/cart2");
         return "product/cart";//product/cart.jsp 
     }
     
     @GetMapping(value = "cart")  //hyun woo 지선 추가
-    public static String cart(int pno, HttpSession session){
+    public static String cart(HttpSession session){
     	List <ProductDTO> list = new ArrayList<>();
     	for (int i=1; i<=2; i++) {
     		ProductDTO pDTO = new ProductDTO();
-    		pDTO.setNo(pno);
+    		pDTO.setNo(1);
     		pDTO.setpName("볼케" + i);
     		pDTO.setpOption("브라운" + i);
     		pDTO.setpPrice(1009000);
     		list.add(pDTO);
     	};
     	session.setAttribute("plist", list);
-    	System.out.println(pno);
         logger.info("실행 : product/cart");
         return "product/cart";//product/cart.jsp 연결
     }

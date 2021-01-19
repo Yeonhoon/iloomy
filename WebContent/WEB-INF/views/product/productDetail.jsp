@@ -34,17 +34,17 @@
 					<b>배송방법</b> 설치배송 <b>제품코드</b> HB722501</p>
 					<br/>
 					<div id="option">
-						<select name="pColor" id="colorOption">
-							<option value="none">[필수]색상을 선택해주세요</option>
-							<option value="brown">브라운</option>
-							<option value="beige">베이지</option>
-							<option value="grey">그레이</option>
-						</select>
-						<select name="pOption" id="productOption">
-							<option value="none">[선택] 제품사양</option>
-							<option value="basic">쿠시노 침대가드 1000폭</option>
-							<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
-						</select>
+							<select name="pColor" id="colorOption">
+								<option value="none">[필수]색상을 선택해주세요</option>
+								<option value="brown">브라운</option>
+								<option value="beige">베이지</option>
+								<option value="grey">그레이</option>
+							</select>
+							<select name="pOption" id="productOption">
+								<option value="none">[선택] 제품사양</option>
+								<option value="basic">쿠시노 침대가드 1000폭</option>
+								<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
+							</select>
 					</div>
 					<hr/>
 						
@@ -88,7 +88,7 @@
 								alert("옵션을 선택해주세요!");
 							} else {
 								if (confirm("추가된 물품을 장바구니에서 확인하시겠습니까?")){
-								self.location.href = "cart?pno=1"
+								self.location.href = "cart"
 								} else {
 									
 								}

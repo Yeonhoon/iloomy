@@ -73,7 +73,6 @@
 						<a href="${root}/user/login">Login</a>
 					</c:otherwise>
 				</c:choose>
-	            <a href="#">주문</a>
 	            <a href="#">배송</a>
 	            <a href="#">이벤트</a>
 	            <a href="#">뉴스</a>

@@ -7,7 +7,7 @@
 		margin: 20px;
 		box-sizing: border-box;
 	}
-	a{color:black}
+	#pList a{color:black}
 	.listCatalog, .listCatalog:visied, .listCatalog:link {color: black;}
 	.listCatalog:hover {color:red;}
 	.container-fluid {
