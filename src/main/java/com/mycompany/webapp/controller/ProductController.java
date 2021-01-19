@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.ProductDTO;
@@ -39,14 +40,22 @@ public class ProductController {
         return "product/cart";//product/cart.jsp 
     }
     
-    @GetMapping(value = "cart")  //hyun woo 지선 추가
-    public static String cart(HttpSession session){
-    	List <ProductDTO> list = new ArrayList<>();
+    @PostMapping(value = "cart")  //hyun woo 지선 추가
+    public static String cart(HttpSession session, HttpServletRequest req){
+    	String pColor = req.getParameter("colorOption");
+		String pOption = req.getParameter("productOption");
+		logger.info(pColor); 
+		logger.info(pOption);
+		session.setAttribute("pColor", pColor);
+		session.setAttribute("pOption", pOption);
+		
+		List <ProductDTO> list = new ArrayList<>();
     	for (int i=1; i<=2; i++) {
     		ProductDTO pDTO = new ProductDTO();
     		pDTO.setNo(1);
     		pDTO.setpName("볼케" + i);
-    		pDTO.setpOption("브라운" + i);
+    		pDTO.setpColor(pColor);
+    		pDTO.setpOption(pOption);
     		pDTO.setpPrice(1009000);
     		list.add(pDTO);
     	};

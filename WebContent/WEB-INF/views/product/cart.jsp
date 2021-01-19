@@ -39,7 +39,7 @@
 					<table id="orderList">
 						<tr style="color: #adb5bd;">
 							<th><input type="checkbox" name="checkAll" id="checkAll"/></th>
-							<th colspan="2">상품정보</th>
+							<th colspan="3">상품정보</th>
 							<th>단가</th>
 							<th>수량</th>
 							<th>상품금액</th>
@@ -49,6 +49,7 @@
 						 	<tr>
 								<td><input type="checkbox" name="check" class="check" value="${product.pName}"></td>
 								<td>${product.pName}</td>
+								<td>${product.pOption}</td>
 								<td>${product.pColor}</td>
 								<td><fmt:formatNumber value="${product.pPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
 								<td>${product.no}</td>

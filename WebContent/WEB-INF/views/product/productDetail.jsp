@@ -33,14 +33,15 @@
 					<p style="font-size: 0.8rem"><b>배송기간</b> 약 10일 <b>배송비</b> 무료배송 
 					<b>배송방법</b> 설치배송 <b>제품코드</b> HB722501</p>
 					<br/>
+					<form id="productCart" method="POST" action="">
 					<div id="option">
-							<select name="pColor" id="colorOption">
+							<select name="colorOption" id="colorOption">
 								<option value="none">[필수]색상을 선택해주세요</option>
 								<option value="brown">브라운</option>
 								<option value="beige">베이지</option>
 								<option value="grey">그레이</option>
 							</select>
-							<select name="pOption" id="productOption">
+							<select name="productOption" id="productOption">
 								<option value="none">[선택] 제품사양</option>
 								<option value="basic">쿠시노 침대가드 1000폭</option>
 								<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
@@ -53,28 +54,29 @@
 						<span><b>0 원</b> </span>
 					</div>
 					<br/>
-					<div id="detailBtn">
-						<c:if test="${empty userinfo}">
-							<button id="pay" onclick="funno()" > 결제하기 </button>
-							<button id="bag" onclick="funno()" > 장바구니 </button>
-						</c:if>
+
 						<c:if test="${!empty userinfo}">
-							<button id="pay" onclick="payfun()" > 결제하기 </button>
-							<button id="bag" onclick="cartfun()" > 장바구니 </button>
+							<div id="detailBtn">
+								<button id="pay" onclick="payfun();" > 결제하기 </button>
+								<button id="bag" onclick="cartfun();" > 장바구니 </button>
+							</div>	
 						</c:if>
-						
-					</div>
-					<script type="text/javascript">
-							const color = $("#colorOption option:selected").val();
-							const option = $("#productOption option:selected").val();
-					
+					</form>
+					<c:if test="${empty userinfo}">
+							<div id="detailBtn">
+								<button id="pay" onclick="funno();" > 결제하기 </button>
+								<button id="bag" onclick="funno();" > 장바구니 </button>
+							</div>	
+					</c:if>
+					<script type="text/javascript">					
 						function funno() {
 							const color = $("#colorOption option:selected").val();
 							const option = $("#productOption option:selected").val();
-							if (color == "none" && option == "none") {
+							if (color === "none" || option === "none") {
 								alert("옵션을 선택해주세요!");
+								return;
 							} else {
-								alert("로그인 해주세요!");
+								return alert("로그인 해주세요!");
 							}
 								
 							
@@ -84,16 +86,16 @@
 							
 							const color = $("#colorOption option:selected").val();
 							const option = $("#productOption option:selected").val();
-							if (color == "none" && option == "none") {
+							if (color === "none" || option === "none") {
 								alert("옵션을 선택해주세요!");
+								return;
 							} else {
 								if (confirm("추가된 물품을 장바구니에서 확인하시겠습니까?")){
-								self.location.href = "cart"
-								} else {
-									
+									 document.getElementById("productCart").action = "${root}/product/cart";
+						             document.getElementById("productCart").submit();
+								} else {	
 								}
-							}
-	
+							}	
 						}
 						
 						function payfun() {
@@ -102,14 +104,16 @@
 							const option = $("#productOption option:selected").val();
 							if (color == "none" && option == "none") {
 								alert("옵션을 선택해주세요!");
+								return;
 							} else {
 								if (confirm("결제하시겠습니까?")){
-								self.location.href = "cart"
+								document.getElementById("productCart").action = "${root}/product/cart";
+						         document.getElementById("productCart").submit();
 					
 							} else {
 								
 							}
-							}
+						}
 							
 						}
 					</script>
