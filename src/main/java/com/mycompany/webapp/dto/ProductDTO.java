@@ -16,9 +16,6 @@ public class ProductDTO {
 	private String pManufacture;
 	private String pOrigin;
 	
-	
-	
-
 
 	public ProductDTO() {
 		super();
@@ -143,5 +140,6 @@ public class ProductDTO {
 				+ ", pPhoto=" + pPhoto + ", pModel=" + pModel + ", pManufacture=" + pManufacture + ", pOrigin="
 				+ pOrigin + "]";
 	}
-	
+
+
 }

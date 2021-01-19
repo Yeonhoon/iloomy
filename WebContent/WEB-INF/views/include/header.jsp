@@ -80,6 +80,7 @@
 	            <a href="#">고객센터</a>
 	            <a href="#">매장안내</a>
 	            <a href="#">회사소개</a>
+	            <a href="#">로그아웃</a>
             </div>
             <div id="left" style="margin-top: 15px;">
             	<form class="search">

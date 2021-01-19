@@ -51,7 +51,7 @@ public class ManagerController {
     //수정 페이지로 이동
     @GetMapping("update")  //hoon
     public String update(){
-        logger.info("실행 : manager/update/");
+        logger.info("수정 페이지로 이동하기");
         return "manager/update";
     }
     
@@ -64,24 +64,28 @@ public class ManagerController {
     	dto.setpName("패밀리 소파-침대 일체형(가죽)");
     	dto.setpCompany("쿠시노");
     	dto.setpPrice(1009000);
-    	dto.setpContext("설치배송");
+    	dto.setpContext("이 제품은 소파입니다.");
+    	dto.setpOrigin("원산지");
+    	dto.setpManufacture("제조사");
     	dto.setpColor("베이지");
     	dto.setpOption("쿠시노 침대가드 1000폭");
     	
     	// 컬러, 상세제품 수정 필요
     	model.addAttribute("dto",dto);
     	logger.info("수정창 불러오기 성공");
+    	logger.info(dto.toString());
     	return "manager/updateMainInfo";
     }
     
     //상세정보수정
     @GetMapping("/detailText")
     public String detailInfo(Model model) {
-    	   	
-    		ProductDTO dto = new ProductDTO();
-    		dto.setpDetail("쿠시노 저상형 패밀리 침대(인조가죽) 신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다. 싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.");
-    		model.addAttribute("dto", dto);
-    		logger.info("상세텍스트 불러오기 성공");
+
+        ProductDTO dto = new ProductDTO();
+        dto.setpDetail("쿠시노 저상형 패밀리 침대(인조가죽) 신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다. 싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.");
+        model.addAttribute("dto", dto);
+        logger.info("상세텍스트 불러오기 성공");
+        logger.info(dto.getpDetail());
 
     	return "manager/updateDetailText";
     }

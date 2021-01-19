@@ -32,29 +32,23 @@
 				value="${dto.pPrice}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
-<%-- 		<li>
-			<label for="delivery_date"><b>배송기간</b></label><br />
+ 		<li>
+			<label for="product_context"><b>제품설명</b></label><br />
 			<input type="text" id="delivery_date" name="delivery_date" style="width: 250px;"
-				value="${dto.deliveryDate}" />
+				value="${dto.pContext}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 	
 		<li>
-			<label for="delivery_fee"><b>배송비</b></label><br />
+			<label for="product_madein"><b>원산지</b></label><br />
 			<input type="text" id="delivery_fee" name="delivery_fee" style="width: 250px;"
-				value="${dto.deliveryFee}" />
+				value="${dto.pOrigin}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
-			<label for="delivery_method"><b>배송방법</b></label><br />
+			<label for="product_manufacture"><b>제조사</b></label><br />
 			<input type="text" id="delivery_method" name="delivery_method" style="width: 250px;"
-				value="${dto.deliveryMethod}" />
-			<div id="uidError" class="error"></div><br />
-		</li> --%>
-		<li>
-			<label for="product_code"><b>제품코드</b></label><br />
-			<input type="text" id="product_code" name="product_code" style="width: 250px;"
-				value="${dto.pContext}" />
+				value="${dto.pManufacture}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>

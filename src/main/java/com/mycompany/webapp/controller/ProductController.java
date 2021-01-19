@@ -57,7 +57,6 @@ public class ProductController {
         return "product/cart";//product/cart.jsp 연결
     }
     
-    
     @GetMapping(value = "/order")
 	public String method1(HttpServletRequest request, ModelMap model) throws Exception {
 		String [] arr = request.getParameterValues("check");
