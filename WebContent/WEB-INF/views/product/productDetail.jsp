@@ -36,54 +36,88 @@
 					<div id="option">
 						<select name="pColor" id="colorOption">
 							<option value="none">[필수]색상을 선택해주세요</option>
-							<option value="">브라운</option>
-							<option value="">베이지</option>
-							<option value="">그레이</option>
+							<option value="brown">브라운</option>
+							<option value="beige">베이지</option>
+							<option value="grey">그레이</option>
 						</select>
 						<select name="pOption" id="productOption">
 							<option value="none">[선택] 제품사양</option>
-							<option value="">쿠시노 침대가드 1000폭</option>
-							<option value="">쿠시노 침대풋보드 1000폭</option>
+							<option value="basic">쿠시노 침대가드 1000폭</option>
+							<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
 						</select>
 					</div>
 					<hr/>
+						
 					<p style="display: inline;"><b>총 구매가</b></p>
-					<p style="display: inline; color: red;"><b>0 원</b></p>
+					<div id="detailPrice">
+						<span><b>0 원</b> </span>
+					</div>
 					<br/>
-					<c:if test="${empty userinfo}">
-						<button id="pay" onclick="funno()" > 결제하기 </button>
-						<button id="bag" onclick="funno()" > 장바구니 </button>
-					</c:if>
-					<c:if test="${!empty userinfo}">
-						<button id="pay" onclick="payfun()" > 결제하기 </button>
-						<button id="bag" onclick="cartfun()" > 장바구니 </button>
-					</c:if>
-					
+					<div id="detailBtn">
+						<c:if test="${empty userinfo}">
+							<button id="pay" onclick="funno()" > 결제하기 </button>
+							<button id="bag" onclick="funno()" > 장바구니 </button>
+						</c:if>
+						<c:if test="${!empty userinfo}">
+							<button id="pay" onclick="payfun()" > 결제하기 </button>
+							<button id="bag" onclick="cartfun()" > 장바구니 </button>
+						</c:if>
+						
+					</div>
 					<script type="text/javascript">
+							const color = $("#colorOption option:selected").val();
+							const option = $("#productOption option:selected").val();
+					
 						function funno() {
-							alert("로그인 해주세요!");
+							const color = $("#colorOption option:selected").val();
+							const option = $("#productOption option:selected").val();
+							if (color == "none" && option == "none") {
+								alert("옵션을 선택해주세요!");
+							} else {
+								alert("로그인 해주세요!");
+							}
+								
+							
 						}
 						function cartfun() {
 							var pass;
+							
+							const color = $("#colorOption option:selected").val();
+							const option = $("#productOption option:selected").val();
+							if (color == "none" && option == "none") {
+								alert("옵션을 선택해주세요!");
+							} else {
 								if (confirm("추가된 물품을 장바구니에서 확인하시겠습니까?")){
 								self.location.href = "cart?pno=1"
 								} else {
 									
 								}
+							}
+	
 						}
 						
 						function payfun() {
 							var pass;
-							if (confirm("결제하시겠습니까?")){
+							const color = $("#colorOption option:selected").val();
+							const option = $("#productOption option:selected").val();
+							if (color == "none" && option == "none") {
+								alert("옵션을 선택해주세요!");
+							} else {
+								if (confirm("결제하시겠습니까?")){
 								self.location.href = "cart"
+					
 							} else {
 								
 							}
+							}
+							
 						}
 					</script>
 					<br/>
-					<a href="#" target="_black"><img src="${root}/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
-					<a href="#" target="_black"><img src="${root}/resources/img/l12.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
+					<div id="detailImg">
+						<a href="#" target="_black"><img src="${root}/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
+						<a href="#" target="_black"><img src="${root}/resources/img/l12.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
+					</div>
 				</div>
 			</nav>
 			<article>

@@ -25,36 +25,26 @@
 		text-align: center;
 	}
 	#list2 > p {padding: 50px;}
-	table {
-		box-sizing: border-box;
-		clear: both;
-		width: 100%;
-		border-top: 2px solid grey;
-		border-bottom: 1px solid grey;
-		
-	}
+	table {box-sizing: border-box;clear: both;width: 100%;border-top: 2px solid grey;border-bottom: 1px solid grey;}
+	#detailBtn, #detailImg{text-align: center;}
 	#list_name {text-align: left;}
 	#list_detail {font-size: 2rem;text-align: left;}
 	#list_price {color: red;text-align: right;}
 	#pay:hover, #bag:hover {cursor: pointer; color: white;}
 	#pay {
-		margin-top: 40px;
 		padding: 10px;
 		width: 200px;
 		background-color: #f03e3e;
 		border: 1px solid grey;
 	}
 	#bag {
-		margin-top: 40px;
 		padding: 10px;
 		width: 200px;
 		background-color: #495057;
 		border: 1px solid grey;
 	}
-	#colorOption, #productOption {
-	margin-bottom: 10px;
-	}
-	
+	#colorOption, #productOption {margin-bottom: 10px;}
+	#detailPrice{color: red; text-align: right;}
 	#option {
 		padding-left: 30px;
 		display: flex;

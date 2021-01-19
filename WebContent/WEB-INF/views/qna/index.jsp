@@ -64,25 +64,20 @@
 
     </script>
 </head>
-<body>
-<div class="headerwrap">
-
-
-
-    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-</div>
-
-<div class="container" align="center" style="margin-bottom: 100px;">
-    <a onclick="list()" class="btn btn-light" style=""> qna리스트가져오기</a>
-    <a onclick="list2()" class="btn btn-light"> 자주 묻는 질문</a>
-    <div id="tabl1" style="margin-top: 5%;"></div>
-
-
-
-</div>
-<div class="footerwrap" >
-    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-</div>
-</body>
-
+	<body>
+		<div class="headerwrap">
+		    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		</div>
+	
+	<div id="row">
+		<div class="container" align="center" style="margin-bottom: 50px;">
+		    <a onclick="list()" class="btn btn-light" style=""> qna리스트가져오기</a>
+		    <a onclick="list2()" class="btn btn-light"> 자주 묻는 질문</a>
+		    <div id="tabl1" style="margin-top: 5%;"></div>
+		</div>
+	</div>	
+		<div class="footerwrap" style="margin-top: -100px;">
+		    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		</div>
+	</body>
 </html>

@@ -23,5 +23,9 @@
 		border-top: 2px solid grey;
 		border-bottom: 1px solid grey;
 	}
-	.footerwrap {margin-top: 200px;}
 	#cartOrder button, #cartOrder a {float: right; margin: 10px;}
+	
+	/*--------------- footer 고정-------------*/
+	html, body {height: 90%; margin: 0;}
+	.contain {padding-bottom: 100px;}
+	#row {min-height: 100%;}
