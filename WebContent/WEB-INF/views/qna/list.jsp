@@ -43,7 +43,7 @@
         .w500 {width:500px; height: 100px;}
         .w120 {width:120px; height: 100px;}
         .w100 {width:100px; height: 100px;}
-        .w890 {width: 890px;}
+        .w890 {width: 890px; height: 100px;}
         .title {
             height: 50px;
             line-height: 50px;
@@ -81,14 +81,14 @@
         <c:forEach var="item" items="${list}" varStatus="status">
             <ul class="board">
                 <li class="fl tc w70 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.qnaNo})"><c:out value="${item.qnaNo}"/></a></li>
-                <li class="fl tc w500 list t_line lt_line"><c:out value="${item.qnaTitle}"/></li>
+                <li class="fl tc w500 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.qnaNo})"><c:out value="${item.qnaTitle}"/></a></li>
                 <li class="fl tc w120 list t_line lt_line"><c:out value="${item.qnaUserid}"/></li>
                 <fmt:formatDate var="resultRegDt" value="${item.qnaDatetime}" pattern="yyyy-MM-dd"/>
                 <li class="fl tc w100 list t_line lt_line"><c:out value="${resultRegDt}"/></li>
                 <li class="fl tc w100 list  lt_line">0</li>
             </ul>
-            <ul id="panel${item.qnaNo}" style="display: none;">
-                <li  class="fl tc w890 list t_line lt_line" style="height: 120px;"><c:out value="${item.qnaContent}"/>
+            <ul class="board" id="panel${item.qnaNo}" style="display: none;">
+                <li  class="fl tc w890 list t_line lt_line" ><c:out value="${item.qnaContent}"/>
                 </li>
             </ul>
 

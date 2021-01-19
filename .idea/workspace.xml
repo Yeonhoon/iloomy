@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="iloomy:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94eb4db8-b0b0-4979-a765-80843cdba0b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/update.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/updateDetailText.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/updateDetailText.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/updateMainInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/updateMainInfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/updatePhotolist.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/detailT.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/detailT.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/list2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/qna/list2.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/resources/css/revise_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/css/revise_detail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/resources/css/revise_main.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/css/revise_main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/resources/js/revise.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/js/revise.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/QnaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/QnaController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +52,12 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="gradle.compiler" />
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.41" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/iloomy/" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
         <artifact name="iloomy:war exploded">
           <settings>
@@ -159,6 +156,7 @@
       <workItem from="1610954510012" duration="1683000" />
       <workItem from="1610962238517" duration="299000" />
       <workItem from="1610969512994" duration="598000" />
+      <workItem from="1611013520922" duration="5595000" />
     </task>
     <servers />
   </component>
