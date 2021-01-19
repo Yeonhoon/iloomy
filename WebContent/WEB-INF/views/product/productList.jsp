@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>product list</title>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet"
@@ -101,6 +102,35 @@ to {
 	<div class="headerwrap">
 		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	</div>
+	<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  	<img src="${root}/resources/img/p1.jpg" style="width:100%">
+  <div class="text">편안한 iloomy</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="${root}/resources/img/p2.jpg" style="width:100%">
+  <div class="text">가족같은 iloomy</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="${root}/resources/img/p3.jpg" style="width:100%">
+  <div class="text">아름다운 iloomy</div>
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+	
 
 	<section>
 		<nav>
