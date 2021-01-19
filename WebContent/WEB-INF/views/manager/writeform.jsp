@@ -113,6 +113,22 @@ pwtp8
 ;"/
 >
 }
+
+.blend{
+height:200px;
+border:5px;
+background-color:red green;
+background-size:cover;
+background-blend-mode:lighten;
+transition:background-color 10s;
+}
+.blendhover{
+background-color:rgba(255,0,01);};
+transition:background-color 2s;
+
+}
+
+
 </style>
 </head>
 
@@ -138,10 +154,17 @@ pwtp8
 
 
 	<h1 style="text-align: center; color: black;">상품등록 페이지</h1>
+	
 	<Br>
 	<Br>
 	<hr />
-	<div class="blend"></div>
+	<div class="blend" style="height:400px;
+border:5px;
+background-color:red;
+background-size:cover;
+background-blend-mode:difference;
+transition:background-color 2s;">
+	</div>
 	<div style="padding-left: 350px;">
 		<h3>상품 주요정보</h3>
 		<Br> <Br>
