@@ -42,6 +42,7 @@ public class ProductController {
     
     @PostMapping(value = "cart")  //hyun woo 지선 추가
     public static String cart(HttpSession session, HttpServletRequest req){
+    	System.out.println("hello");
     	String pColor = req.getParameter("colorOption");
 		String pOption = req.getParameter("productOption");
 		logger.info(pColor); 

@@ -42,8 +42,8 @@
 								<option value="grey">그레이</option>
 							</select>
 							<select name="productOption" id="productOption">
-								<option value="none">[선택] 제품사양</option>
-								<option value="basic">쿠시노 침대가드 1000폭</option>
+								<option value="none">[필수] 제품사양</option>
+								<option value="basic">쿠시노 침대가드 1000폭 (basic)</option>
 								<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
 							</select>
 						</div>
@@ -57,8 +57,8 @@
 
 						<c:if test="${!empty userinfo}">
 							<div id="detailBtn">
-								<button id="pay" onclick="payfun()" > 결제하기 </button>
-								<button id="bag" onclick="cartfun()" > 장바구니 </button>
+								<button id="pay" type="button"> 결제하기 </button>
+								<button id="bag" type="button"> 장바구니 </button>
 							</div>	
 						</c:if>
 					</form>
@@ -68,7 +68,7 @@
 								<button id="bag" onclick="funno()" > 장바구니 </button>
 							</div>	
 					</c:if>
-					<script type="text/javascript">					
+					<script type="text/javascript">		
 						function funno() {
 							const color = $("#colorOption option:selected").val();
 							const option = $("#productOption option:selected").val();
@@ -78,40 +78,6 @@
 							} else {
 								return alert("로그인 해주세요!");
 							}
-								
-							
-						}
-						function cartfun() {
-							var pass;
-							const color = $("#colorOption option:selected").val();
-							const option = $("#productOption option:selected").val();
-							if (color === "none" || option === "none") {
-								alert("옵션을 선택해주세요!");
-								return false;
-							} else {
-								if (confirm("추가된 물품을 장바구니에서 확인하시겠습니까?")){
-									 document.getElementById("productCart").action = "${root}/product/cart";
-						             document.getElementById("productCart").submit();
-								} else {	
-								}
-							}	
-						}
-						
-						function payfun() {
-							var pass;
-							const color = $("#colorOption option:selected").val();
-							const option = $("#productOption option:selected").val();
-							if (color == "none" && option == "none") {
-								alert("옵션을 선택해주세요!");
-								return false;
-							} else {
-								if (confirm("결제하시겠습니까?")){
-								document.getElementById("productCart").action = "${root}/product/cart";
-						         document.getElementById("productCart").submit();
-					
-								} 
-							}
-							
 						}
 					</script>
 					<br/>
@@ -166,4 +132,38 @@
 		</div>
 
 	</body>
+	
+	<script>
+		$(document).ready(function() {
+			$("#bag").click(function() {
+				var pass;
+				const color = $("#colorOption option:selected").val();
+				const option = $("#productOption option:selected").val();
+				
+				if (color === "none" || option === "none") {
+					alert("옵션을 선택해주세요!");
+					return;
+				} else {
+					if (confirm("추가된 물품을 장바구니에서 확인하시겠습니까?")){
+						$("#productCart").attr("action", "${root}/product/cart").submit();	
+					}
+				}
+			});
+			
+			$("#pay").click(function() {
+				var pass;
+				const color = $("#colorOption option:selected").val();
+				const option = $("#productOption option:selected").val();
+				if (color == "none" || option == "none") {
+					alert("옵션을 선택해주세요!");
+					return;
+				} else {
+					if (confirm("결제하시겠습니까?")){
+					document.getElementById("productCart").action = "${root}/product/cart";
+			         document.getElementById("productCart").submit();
+					} 
+				}
+			});
+		});
+	</script>
 </html>
