@@ -39,7 +39,7 @@ public class UserController {
         String phoneNumber = req.getParameter("userphonenumber");
         String email = req.getParameter("useremail");
         user = new UserDTO(id, password, name, phoneNumber, email);
-        mService.regist(user);
+//        mService.regist(user);
         System.out.println(user);
         return "redirect:/user/login";
     }

@@ -52,7 +52,7 @@
 								<td>${product.pOption}</td>
 								<td>${product.pColor}</td>
 								<td><fmt:formatNumber value="${product.pPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
-								<td>${product.no}</td>
+								<td><a href="#"><i class="fas fa-chevron-up"></i></a>${product.no}<a href="#"><i class="fas fa-angle-down"></i></a></td>
 								<td><fmt:formatNumber value="${product.pPrice}" pattern="###,###,###"></fmt:formatNumber>원</td>
 								<td>
 									<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
