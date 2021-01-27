@@ -53,25 +53,28 @@
 						transition:background-color 2s;">
 					</div>
 					<br />
-					<form action="" method="post" id="productWrite">
-							<label for="uproduct" >품명:</label><br> <input type="text"
-								id="uproduct" name="uproduct"><br /> <label for="uprice">가격:</label><br>
-							<input type="text" id="uprice" name="uprice"><br /> <label
-								for="umodel"> 모델명:</label><br> <input type="text" id="umodel"
-								name="umodel"><br /> <label for="ubrand"> 브랜드:</label><br>
-							<input type="text" id="ubrand" name="ubrand"><br /> <label
-								for="umnc"> 제조사:</label><br> <input type="text" id="umnc"
-								name="umnc"><br /> <br /> <label for="uorigin">원산지:</label>
-							<input type="radio" id="udomes" name="uorigin">국산 <input
-								type="radio" id="uimp" name="uorigin" />수입<br /> <br /> 이미지 첨부 <input
-								type="file" id="main_image" name="main_image" value="이미지 첨부" /><br />
-							<br /> <br /> <br />
-							<div style="margin-bottom: 50px;">
-								<a href="javascript:saveConfirm()" id="savebtn" type="submit" class="btn btn-primary" style="color: white">저장</a>
-								<button class="btn btn-danger" onclick="location.href='${root}/man'">취소</button>
-							</div>
+					<form enctype="multipart-form/data" action="write" method="post" id="productWrite">
+						<label for="uproduct">품명:</label><br> 
+							<input type="text"id="uproduct" name="uproduct"><br /> 
+						<label for="uprice">가격:</label><br> 
+							<input type="text" id="uprice" name="uprice"><br /> 
+						<label for="umodel"> 모델명:</label><br> 
+							<input type="text" id="umodel" name="umodel"><br /> 
+						<label for="ubrand"> 브랜드:</label><br> 
+							<input type="text" id="ubrand" name="ubrand"><br />
+						<label for="umnc"> 제조사:</label><br> 
+							<input type="text" id="umnc"name="umnc"><br /> <br /> 
+						<label for="uorigin">원산지:</label> 
+							<input type="radio" id="udomes" name="uorigin">국산 
+							<input type="radio" id="uimp" name="uorigin" />수입<br /> <br /> 
+						<label for="uphoto">이미지 첨부 </label>
+							<input type="file" id="main_image" name="main_image" value="이미지 첨부" /><br /> <br />
+						<div style="margin-bottom: 50px;">
+							<a href="javascript:saveConfirm()" id="savebtn" type="submit" class="btn btn-primary" style="color: white">저장</a>
+							<button class="btn btn-danger" onclick="location.href='${root}/product/productList'">취소</button>
+						</div>
 					</form>
-				</div>
+							</div>
 														
 			<div class="footerwrap">
 	      		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>

@@ -3,6 +3,7 @@ package com.mycompany.webapp.controller;
 import java.io.File;
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.ProductDTO;
+import com.mycompany.webapp.service.BoardService;
 
 @Controller
 @RequestMapping("/manager")
@@ -23,13 +25,15 @@ public class ManagerController {
     private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
     
     
-    @GetMapping("write")
-    public String write(Model model) {	
+    //글 작성 페이지로 이동
+    @GetMapping("/write")
+    public String writeForm(Model model) {	
     	
-    	return "manager/writeform2";
+    	return "manager/writeform";
     }
-    @PostMapping("write")
-    public String productDto(Model model, HttpServletRequest req) {
+    
+    @PostMapping("/write")
+    public String write(Model model, HttpServletRequest req) {
     	String id = req.getParameter("uproduct");
     	System.out.println(id);
     	ProductDTO dto = new ProductDTO((int)0,"품명","브랜드",111111,"제품설명","빨강","폭넓이","부연설명","사진","ISBN","제조사","원산지");
@@ -43,17 +47,29 @@ public class ManagerController {
     	return "redirect:/manager/productLists ";
     }
     
-    @GetMapping("productLists")
+    @GetMapping("/productLists")
     public String productLists() {
     	return "product/productList";
     }
     
     //수정 페이지로 이동
-    @GetMapping("update")  //hoon
+    @GetMapping("/update")  //hoon
     public String update(){
         logger.info("수정 페이지로 이동하기");
         return "manager/update";
     }
+    
+    //제품 삭제
+    @Resource
+    private BoardService boardService;
+    
+    @PostMapping("/delete")
+    public String delete(int bno) {
+    	boardService.delete(bno);
+    	return "redirect:/product/productList";
+    	
+    }
+    
     
     //기본 정보 수정
     @GetMapping("mainInfoDto")

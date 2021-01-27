@@ -13,29 +13,32 @@
 	</head>
 	
 	<body>
-		<div class="wrap">
-			<%--헤더 --%>
-			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-			<%-- 아래와 같은 방법은 복사 붙여넣기라서 동일한 내용이 있으면 에러가 난다.
+	<div class="wrap">
+		<%--헤더 --%>
+		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<%-- 아래와 같은 방법은 복사 붙여넣기라서 동일한 내용이 있으면 에러가 난다.
 			<%@ include file="/WEB-INF/views/include/header.jsp" %> --%>
-			
-			<%--내용 --%>
-			<div class="mainCenter">
-				
-					<div class="content">
-						
-						<div class="sector">
-							<h5>DTO의 객체 데이터 읽기</h5>
-							<div>
-							<%-- ${ }가 EL --%>
-								<div>품명: ${BestSeller.uproduct} </div>
-								<div>가격: ${BestSeller.uprice}</div>
-								<div>모델명: ${BestSeller.umodel}</div>
-								<div>브랜드: ${BestSeller.ubrand}</div>
-								<div>제조사: ${BestSeller.umnc}</div>
-								<div>원산지: ${BestSeller.uorigin}</div>
-							</div>
-						</div>
+
+		<%--내용 --%>
+		<div class="mainCenter">
+
+			<div class="content">
+
+				<div class="sector">
+					<h5>DTO의 객체 데이터 읽기</h5>
+					<div>
+						<%-- ${ }가 EL --%>
+						<div>품명: ${BestSeller.uproduct}</div>
+						<div>가격: ${BestSeller.uprice}</div>
+						<div>모델명: ${BestSeller.umodel}</div>
+						<div>브랜드: ${BestSeller.ubrand}</div>
+						<div>제조사: ${BestSeller.umnc}</div>
+						<div>원산지: ${BestSeller.uorigin}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

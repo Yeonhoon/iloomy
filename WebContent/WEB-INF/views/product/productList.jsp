@@ -129,9 +129,8 @@ to {
 			</div>
 			<hr />
 		</nav>
-		<button onclick="location.href=${pageContext.request.contextPath}/resources/manager/write" id="add"
-			type="button" class="btn btn-outline-primary btn-sm">글쓰기</button>
-
+		<a class="btn btn-sm btn-primary" href="${root}/manager/write">글쓰기</a>
+		
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-3">
