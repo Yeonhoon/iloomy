@@ -13,7 +13,7 @@ public class MemberRepo {
 	private SqlSessionTemplate sst;
 	
 	public int regist(UserDTO user) {
-		int tmp = 0;
+		int tmp = sst.insert("members.regist",user);
 		return tmp;
 	}
 
