@@ -48,7 +48,7 @@
                 type: "get"
             }).done(function (result) {
                 console.log("결과확인");
-
+				
                 var html = jQuery('<div>').html(result);
                 var contents = html.find("div#indexListAjax").html();
                 $("#tabl1").html(contents);

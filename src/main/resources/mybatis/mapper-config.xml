@@ -2,12 +2,12 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="employee" type="com.mycompany.webapp.dto.Ch14EmployeeDto"/> <!-- 이 엘리아스는 employee.xml에서 사용됨 -->
-		<typeAlias alias="board" type="com.mycompany.webapp.dto.Ch14BoardDto"/> <!-- 이 엘리아스는 employee.xml에서 사용됨 -->
+		<!-- <typeAlias alias="employee" type="com.mycompany.webapp.dto.Ch14EmployeeDto"/> 이 엘리아스는 employee.xml에서 사용됨
+		<typeAlias alias="board" type="com.mycompany.webapp.dto.Ch14BoardDto"/> 이 엘리아스는 employee.xml에서 사용됨
 		<typeAlias alias="pager" type="com.mycompany.webapp.dto.Ch14Pager"/>
 		<typeAlias alias="member" type="com.mycompany.webapp.dto.Ch14MemberDto"/>
 		
-		<typeAlias alias = "prac" type="com.mycompany.webapp.dto.PracDto"/>
+		<typeAlias alias = "prac" type="com.mycompany.webapp.dto.PracDto"/> -->
 	</typeAliases>
 	
 	
