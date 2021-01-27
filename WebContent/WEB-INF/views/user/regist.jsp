@@ -66,16 +66,22 @@ $(document).ready(function() {
 			</div>
 
 			<div class="form-group" align="left">
-				<label for="tel">전화번호</label><br>
+				<label for="tel">도시</label><br>
 				<div id="tel" class="custom-control-inline">
-				<input type="text" class="form-control" id="userphonenumber" name="userphonenumber" placeholder="">
+				<input type="text" class="form-control" id="city" name="city" placeholder="">
 				</div>
 			</div>
 			
 			<div class="form-group" align="left">
-				<label for="email">이메일</label><br>
+				<label for="email">도로명</label><br>
 				<div id="email" class="custom-control-inline">
-				<input type="text" class="form-control" id="useremail" name="useremail" placeholder="">
+				<input type="text" class="form-control" id="street" name="street" placeholder="">
+				</div>
+			</div>
+			<div class="form-group" align="left">
+				<label for="tel">우편변호</label><br>
+				<div id="tel" class="custom-control-inline">
+				<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="">
 				</div>
 			</div>
 			

@@ -45,11 +45,11 @@
         <form id="loginform" method="post" action="">
             <input type="hidden" name="act" value="login">
             <div class="form-group" align="left" style="margin-top: 50px">
-                <label for="">아이디</label> <input type="text" class="form-control" id="userid" name="userid" placeholder="">
+                <label for="">아이디</label> <input type="text" class="form-control" id="userid" name="id" placeholder="">
             </div>
 
             <div class="form-group" align="left">
-                <label for="">비밀번호</label> <input type="password" class="form-control" id="userpassword" name="userpassword" placeholder="">
+                <label for="">비밀번호</label> <input type="password" class="form-control" id="userpassword" name="passWord" placeholder="">
             </div>
 
             <div class="form-group" align="right">

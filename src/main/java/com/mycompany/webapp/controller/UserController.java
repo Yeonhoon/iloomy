@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 
+import com.mycompany.webapp.dto.AddressDTO;
 import com.mycompany.webapp.dto.UserDTO;
 import com.mycompany.webapp.service.MemberService;
 
@@ -20,6 +21,7 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserDTO user;
+    private AddressDTO address;
     @Autowired
     MemberService mService;
     
@@ -36,11 +38,15 @@ public class UserController {
         String id = req.getParameter("userid");
         String password = req.getParameter("userpassword");
         String name = req.getParameter("username");
-        String phoneNumber = req.getParameter("userphonenumber");
-        String email = req.getParameter("useremail");
-        user = new UserDTO(id, password, name, phoneNumber, email);
-//        mService.regist(user);
-        System.out.println(user);
+        String city = req.getParameter("city");
+        String street = req.getParameter("street");
+        String zipcode = req.getParameter("zipcode");
+        
+        address = new AddressDTO(city, street, zipcode);
+        user = new UserDTO(id, password, name, address);
+        
+        mService.regist(user);
+        
         return "redirect:/user/login";
     }
 
@@ -50,21 +56,35 @@ public class UserController {
         return "user/login";
     }
     @PostMapping("login") 
-    public String login(HttpServletRequest req){
+    public String login(UserDTO users, HttpSession session){
         logger.info("실행 : /user/login");
-        String userid = req.getParameter("userid");
-        String userpwd = req.getParameter("userpassword");
-        System.out.println(userid+" "+userpwd);
-        HttpSession session = req.getSession();
-        user = new UserDTO(userid);
-        session.setAttribute("userinfo", user);  //세션추가
+        System.out.println(users.toString());
+        
+        
+        String result = mService.selectById(users);
+        
+        
+		if(result.equals("success")) session.setAttribute("userinfo", users.getId());        
+
         return "redirect:/";
     }
     
+//    @PostMapping("login2") 
+//    public String login2(UserDTO users, HttpSession session){
+//        logger.info("실행 : /user/login2");
+//        System.out.println(users.toString());
+//        
+//        
+//        String result = mService.selectById2(users);
+//        
+//		if(result.equals("success")) session.setAttribute("userinfo", users.getId());        
+//
+//        return "redirect:/";
+//    }
+    
     @GetMapping(value ="logout")  //됐고
-    public String logout(HttpServletRequest req){
+    public String logout(HttpServletRequest req,  HttpSession session){
         logger.info("실행 : /user/logout");
-        HttpSession session = req.getSession();
         session.invalidate();
         return "redirect:/";
     }

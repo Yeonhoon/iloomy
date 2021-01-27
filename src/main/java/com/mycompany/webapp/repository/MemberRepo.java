@@ -1,9 +1,10 @@
 package com.mycompany.webapp.repository;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.UserDTO;
@@ -18,6 +19,16 @@ public class MemberRepo {
 		int tmp = sst.insert("members.regist",user);
 		return tmp;
 	}
+
+	public Map<String, String> selectById(String id) {
+		Map<String, String> member = sst.selectOne("members.selectById", id);
+		return member;
+	}
+	
+//	public UserDTO selectById2(String id) {
+//		UserDTO member = sst.selectOne("members.selec", id);
+//		return member;
+//	}
 
 
 }

@@ -5,8 +5,9 @@ public class UserDTO {
     private String id;
     private String passWord;
     private String name;
-    private String phoneNumber;
-    private String email;
+   
+    private AddressDTO address;
+    
 
     public UserDTO() {	}
     public UserDTO(String id) {
@@ -14,16 +15,20 @@ public class UserDTO {
         this.id = id;
     }
 
-    public UserDTO(String id, String passWord, String name, String phoneNumber, String email) {
+    public UserDTO(String id, String passWord) {
         this.id = id;
         this.passWord = passWord;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
     }
     
-
-    public String getId() {
+    
+    public UserDTO(String id, String passWord, String name, AddressDTO address) {
+		super();
+		this.id = id;
+		this.passWord = passWord;
+		this.name = name;
+		this.address = address;
+	}
+	public String getId() {
         return id;
     }
 
@@ -47,30 +52,15 @@ public class UserDTO {
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "id='" + id + '\'' +
-                ", passWord='" + passWord + '\'' +
-                ", name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+    public AddressDTO getAddress() {
+		return address;
+	}
+	public void setAddress(AddressDTO address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", passWord=" + passWord + ", name=" + name + ", address=" + address + "]";
+	}
+	
 }

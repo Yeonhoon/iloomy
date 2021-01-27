@@ -62,12 +62,12 @@
          <div id="left_bar" style="font-size: 0.8rem;">
             <div>
 				<%--${userinfo.id}--%>
-				<c:if test="${userinfo.id eq 'admin'}">
+				<c:if test="${userinfo eq 'admin'}">
 					<a href="${root}/QnA/board/new">QnA글쓰기</a>
 				</c:if>
 				<c:choose>
-					<c:when test="${userinfo.id ne null}">
-						<a><strong>${userinfo.id }</strong>님</a>
+					<c:when test="${userinfo ne null}">
+						<a><strong>${userinfo }</strong>님</a>
 					</c:when>
 					<c:otherwise>
 						<a href="${root}/user/login">Login</a>
@@ -79,7 +79,7 @@
 	            <a href="#">고객센터</a>
 	            <a href="#">매장안내</a>
 	            <a href="#">회사소개</a>
-                    <c:if test="${userinfo.id ne null}">
+                    <c:if test="${userinfo ne null}">
                         <a href="${root}/user/logout">로그아웃</a>
                     </c:if>
             </div>

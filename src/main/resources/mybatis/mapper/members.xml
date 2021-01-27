@@ -6,9 +6,30 @@
 	
 	<insert id="regist" parameterType="member">
 		insert into members
-			(members_id, members_name, members_password, members_city, members_street,members_zipcode)
+			(members_id, members_name, members_password, members_city, members_street, members_zipcode)
 			values
-			(#{mid}, #{mname}, #{mpassword})
+			(#{id}, #{name}, #{passWord}, #{address.city}, #{address.street}, #{address.zipcode})
 	</insert>
+	
+
+  
+  	<select id="selectById" parameterType="string" resultType="java.util.HashMap" >
+		select members_id, members_name, members_password from members
+		where members_id=#{id}
+	</select>
+
+	
+<!-- 	<resultMap type="address" id="testTableResultMap"> 
+		<result property="city" column="members_city" /> 
+		<result property="street" column="members_street" /> 
+		<result property="zipcode" column="members_zipcode" /> 
+	</resultMap>  -->
+
+
+<!-- 	<select id="selec" parameterType="string" resultType="testTableResultMap" >
+		select * from members
+		where members_id=#{id}
+	</select> -->
+	
 	
 </mapper>
