@@ -11,9 +11,6 @@ import com.mycompany.webapp.dto.UserDTO;
 @Repository
 public class MemberRepo {
 
-<<<<<<< HEAD
-
-=======
 	@Resource
 	private SqlSessionTemplate sst;
 	
@@ -21,6 +18,6 @@ public class MemberRepo {
 		int tmp = sst.insert("members.regist",user);
 		return tmp;
 	}
->>>>>>> branch 'master' of https://github.com/Yeonhoon/iloomy.git
+
 
 }
