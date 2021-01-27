@@ -2,8 +2,11 @@ package com.mycompany.webapp.controller;
 
 
 import com.mycompany.webapp.dto.UserDTO;
+import com.mycompany.webapp.service.MemberService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,18 +16,21 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("user")
-public class UserController {  //hyunwoo
+public class UserController {  
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserDTO user;
+    @Autowired
+    MemberService mService;
+    
 
-    @GetMapping(value = "regist")  //됐고
+    @GetMapping(value = "regist")  
     public String form(){
         logger.info("실행 : /user/regist-get");
         return "user/regist";
     }
 
-    @PostMapping(value = "regist")  //됐고
+    @PostMapping(value = "regist")  
     public String regist(HttpServletRequest req){
         logger.info("실행 : /user/regist-post");
         String id = req.getParameter("userid");
@@ -33,6 +39,7 @@ public class UserController {  //hyunwoo
         String phoneNumber = req.getParameter("userphonenumber");
         String email = req.getParameter("useremail");
         user = new UserDTO(id, password, name, phoneNumber, email);
+        mService.regist(user);
         System.out.println(user);
         return "redirect:/user/login";
     }
