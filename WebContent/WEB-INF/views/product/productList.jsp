@@ -129,7 +129,11 @@ to {
 			</div>
 			<hr />
 		</nav>
-		<a class="btn btn-sm btn-primary" href="${root}/manager/write">글쓰기</a>
+		<c:if test="${userinfo eq 'admin'}">
+			<div class="d-flex justify-content-right align-items-center">
+				<a class="btn btn-sm btn-primary " href="${root}/manager/write" style="color: white">글쓰기</a>
+			</div>
+		</c:if>>
 		
 		<div class="container-fluid">
 			<div class="row">
@@ -140,8 +144,6 @@ to {
 						<li>1인 리클라이너 소파 (H가죽,전동)</li>
 						<li style="color: red;">1,989,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p2.jpg" width=350px;>
@@ -150,8 +152,6 @@ to {
 						<li>펫 3인 SET(패브릭)(온라인몰 전용)</li>
 						<li style="color: red;">1,099,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p3.jpg" width=350px;>
@@ -160,8 +160,6 @@ to {
 						<li>코너(가죽)</li>
 						<li style="color: red;">2,540,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p4.jpg" width=350px;>
@@ -170,8 +168,6 @@ to {
 						<li>3인(가죽)</li>
 						<li style="color: red;">1,190,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 
 			</div>
@@ -183,8 +179,6 @@ to {
 						<li>펫 2인 SET(패브릭)(온라인몰 전용)</li>
 						<li style="color: red;">999,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p6.jpg" width=350px;>
@@ -193,8 +187,6 @@ to {
 						<li>1인 리클라이너 소파</li>
 						<li style="color: red;">2,499,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p7.jpg" width=350px;>
@@ -203,8 +195,6 @@ to {
 						<li>코너 소파(가죽)</li>
 						<li style="color: red;">4,140,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p8.jpg" width=350px;>
@@ -213,8 +203,6 @@ to {
 						<li>3인(가죽)</li>
 						<li style="color: red;">1,870,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 			</div>
 			<div class="row">
@@ -225,8 +213,6 @@ to {
 						<li>2인(패브릭)</li>
 						<li style="color: red;">690,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p10.jpg" width=350px;>
@@ -235,8 +221,6 @@ to {
 						<li>4인 소파(가죽)</li>
 						<li style="color: red;">2,690,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/p11.jpg" width=350px;>
@@ -245,8 +229,6 @@ to {
 						<li>4인 리클라이너 소파(가죽)</li>
 						<li style="color: red;">3,290,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 				<div class="col-lg-3">
 					<img src="${root}/resources/img/ready.jpg" width=350px;
@@ -256,8 +238,6 @@ to {
 						<li>????</li>
 						<li style="color: red;">?,???,000원</li>
 					</ul>
-					<a href="${root}/manager/update" class= "btn btn-link" style="float:right">수정</a>
-					<button type="button" class="btn btn-link" style="float: right;">삭제</button>
 				</div>
 			</div>
 		</div>

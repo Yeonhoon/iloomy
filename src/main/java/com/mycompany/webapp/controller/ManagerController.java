@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mycompany.webapp.dto.ProductDTO;
+import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.service.BoardService;
 
 @Controller
@@ -36,19 +36,20 @@ public class ManagerController {
     public String write(Model model, HttpServletRequest req) {
     	String id = req.getParameter("uproduct");
     	System.out.println(id);
-    	ProductDTO dto = new ProductDTO((int)0,"품명","브랜드",111111,"제품설명","빨강","폭넓이","부연설명","사진","ISBN","제조사","원산지");
-    	dto.setpName("품명");
-    	dto.setpPrice(11111111);
-    	dto.setpModel("모델명");
-    	dto.setpCompany("브랜드");
-    	dto.setpManufacture("제조사");
-	    dto.setpOrigin("원산지");
-    	model.addAttribute("BestSeller", dto);
+//    	ItemsDTO dto = new ItemsDTO((int)0,"품명","브랜드",111111,"제품설명","빨강","폭넓이","부연설명","사진","ISBN","제조사","원산지");
+//    	dto.setpName("품명");
+//    	dto.setpPrice(11111111);
+//    	dto.setpModel("모델명");
+//    	dto.setpCompany("브랜드");
+//    	dto.setpManufacture("제조사");
+//	    dto.setpOrigin("원산지");
+//    	model.addAttribute("BestSeller", dto);
     	return "redirect:/manager/productLists ";
     }
     
-    @GetMapping("/productLists")
-    public String productLists() {
+    // 제품 목록으로 돌아가기
+    @GetMapping("/productList")
+    public String productList() {
     	return "product/productList";
     }
     
@@ -74,17 +75,8 @@ public class ManagerController {
     //기본 정보 수정
     @GetMapping("mainInfoDto")
     public String mainInfoDto(Model model) {
-    	ProductDTO dto = new ProductDTO();
+    	ItemsDTO dto = new ItemsDTO();
     	
-    	dto.setNo(1);
-    	dto.setpName("패밀리 소파-침대 일체형(가죽)");
-    	dto.setpCompany("쿠시노");
-    	dto.setpPrice(1009000);
-    	dto.setpContext("이 제품은 소파입니다.");
-    	dto.setpOrigin("원산지");
-    	dto.setpManufacture("제조사");
-    	dto.setpColor("베이지");
-    	dto.setpOption("쿠시노 침대가드 1000폭");
     	
     	// 컬러, 상세제품 수정 필요
     	model.addAttribute("dto",dto);
@@ -97,11 +89,9 @@ public class ManagerController {
     @GetMapping("/detailText")
     public String detailInfo(Model model) {
 
-        ProductDTO dto = new ProductDTO();
-        dto.setpDetail("쿠시노 저상형 패밀리 침대(인조가죽) 신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다. 싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.");
+    	ItemsDTO dto = new ItemsDTO();
         model.addAttribute("dto", dto);
         logger.info("상세텍스트 불러오기 성공");
-        logger.info(dto.getpDetail());
 
     	return "manager/updateDetailText";
     }
