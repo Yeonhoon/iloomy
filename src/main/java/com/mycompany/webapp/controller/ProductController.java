@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.webapp.dto.ProductDTO;
+import com.mycompany.webapp.dto.ItemsDTO;
 
 @Controller
 @RequestMapping("product")
@@ -50,9 +50,9 @@ public class ProductController {
 		session.setAttribute("pColor", pColor);
 		session.setAttribute("pOption", pOption);
 		
-		List <ProductDTO> list = new ArrayList<>();
+		List <ItemsDTO> list = new ArrayList<>();
     	for (int i=1; i<=2; i++) {
-    		ProductDTO pDTO = new ProductDTO();
+    		ItemsDTO pDTO = new ItemsDTO();
     		pDTO.setNo(1);
     		pDTO.setpName("볼케" + i);
     		pDTO.setpColor(pColor);
