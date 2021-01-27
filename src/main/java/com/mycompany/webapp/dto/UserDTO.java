@@ -1,5 +1,6 @@
 package com.mycompany.webapp.dto;
 
+
 public class UserDTO {
     private String id;
     private String passWord;
@@ -20,6 +21,7 @@ public class UserDTO {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+    
 
     public String getId() {
         return id;

@@ -37,12 +37,12 @@ public class UserController {  //hyunwoo
         return "redirect:/user/login";
     }
 
-    @GetMapping("login")  //됐고
+    @GetMapping("login")  
     public String getLogin(){
         logger.info("실행 : /user/login");
         return "user/login";
     }
-    @PostMapping("login")  //됐고
+    @PostMapping("login") 
     public String login(HttpServletRequest req){
         logger.info("실행 : /user/login");
         String userid = req.getParameter("userid");
@@ -53,6 +53,7 @@ public class UserController {  //hyunwoo
         session.setAttribute("userinfo", user);  //세션추가
         return "redirect:/";
     }
+    
     @GetMapping(value ="logout")  //됐고
     public String logout(HttpServletRequest req){
         logger.info("실행 : /user/logout");

@@ -26,7 +26,7 @@ public class ManagerController {
     @GetMapping("write")
     public String write(Model model) {	
     	
-    	return "manager/writeform";
+    	return "manager/writeform2";
     }
     @PostMapping("write")
     public String productDto(Model model, HttpServletRequest req) {
@@ -168,7 +168,7 @@ public class ManagerController {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-		return "redirect:/manager/writeform";
+		return "redirect:/manager/writeform2";
 		
 	}
 			return filePath;
@@ -179,6 +179,6 @@ public class ManagerController {
     @GetMapping(value = "상품등록완료")  //hymin  , get parameter(number of imagelist), fulfill random
     public String update(int random){
         logger.info(" 실행 : /manager/update/product");
-        return "manager/writeform"; 
+        return "manager/writeform2"; 
     }
 }

@@ -2,10 +2,9 @@
 
 	<div id="main_image" style="margin-right:100px;">
 		<label for="image" id="mainPhotoLabel">대표 사진</label><br/>
-		<form action="photoupload" method="post" enctype="mulipart/form-data">
+		<form action="photoupload" method="post">
 			<img id="main_img" src="<%=application.getContextPath()%>/resources/img/l10.jpg" height="400px" /><br />
 			<input type="file" class="btn btn-outline-light" name="uphoto" style="width:250px;" />
-			<input type="submit" class="btn btn-primary btn-sm" value="사진 저장"/>
 		</form>
 	</div>
 
@@ -28,27 +27,23 @@
 		</li>
 		<li>
 			<label for="product_price"><b>가격(원)</b></label><br />
-			<input type="number" id="product_price" name="product_price" style="width: 250px;"
-				value="${dto.pPrice}" />
+			<input type="number" id="product_price" name="product_price" style="width: 250px;"value="${dto.pPrice}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
  		<li>
 			<label for="product_context"><b>제품설명</b></label><br />
-			<input type="text" id="delivery_date" name="delivery_date" style="width: 250px;"
-				value="${dto.pContext}" />
+			<input type="text" id="delivery_date" name="delivery_date" style="width: 250px;" value="${dto.pContext}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 	
 		<li>
 			<label for="product_madein"><b>원산지</b></label><br />
-			<input type="text" id="delivery_fee" name="delivery_fee" style="width: 250px;"
-				value="${dto.pOrigin}" />
+			<input type="text" id="delivery_fee" name="delivery_fee" style="width: 250px;"	value="${dto.pOrigin}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_manufacture"><b>제조사</b></label><br />
-			<input type="text" id="delivery_method" name="delivery_method" style="width: 250px;"
-				value="${dto.pManufacture}" />
+			<input type="text" id="delivery_method" name="delivery_method" style="width: 250px;" value="${dto.pManufacture}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>

@@ -33,7 +33,7 @@
 					    $.ajax({
 					        url:"mainInfoDto",
 					        method:"get",
-					        
+
 					        success:function(data){
 				            	console.log("양식 불러오기 성공");
 					            $("#main_infoForm").html(data);
@@ -96,12 +96,20 @@
 			
 
 			<div id="btn">
-				<a href="javascript:saveConfirm()" id="savebtn" type="submit" class="btn btn-danger">저장</a>
-				<a href="cancelupdate" class="btn btn-secondary">취소</a>
+				<form action="" method="post" id="buttonForm">
+					<button onclick="javascript:saveConfirm();" id="savebtn" class="btn btn-danger">저장</button> 
+					<a href="javascript:history.back();" class="btn btn-secondary">취소</a>
+				</form>
 			</div>
 		</article>
 	</section>
 	
+
+	
+	<div class="footerwrap">
+      	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+    </div>
+</body>
 	<script>
 		const saveConfirm = function() {
 		console.log(event);
@@ -120,28 +128,17 @@
 			const uidError = $("#uidError");
 			window.alert("모두 입력되어야합니다");
 			return;
-		}
+		} 
 		else {
 			//서버로 데이터 전송
-			//const reviseForm = document.reviseForm; //form에 name 저장되어 있으면 바로 가져올 수 있음.
 			const result = window.confirm("수정을 완료하시겠습니까?");
 			if(result){
-			    self.location.href="saveupdate";
-			    
-			/*$(function(){
-			        $.ajax({
-			            url:"saveupdate",
-			            method: "get"
-			        })
-			    }) */
+			    $("#buttonForm").attr("action","${root}/manager/saveupdate");
+			    $("#buttonForm").submit();
+				}
 			}
 		}
-	}
 	</script>
-	
-	<div class="footerwrap">
-      	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-    </div>
-</body>
+
 
 </html>
