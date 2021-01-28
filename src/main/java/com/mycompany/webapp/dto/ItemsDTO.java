@@ -17,7 +17,6 @@ public class ItemsDTO {
     private String itemsDetail;
     private String itemsModel;
     private int itemsStock;
-
 	private String itemsManufacture;
 	private String itemsOrigin;
 	private MultipartFile itemsAttach;

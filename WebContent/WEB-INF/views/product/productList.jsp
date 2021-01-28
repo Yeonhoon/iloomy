@@ -129,12 +129,6 @@ to {
 			</div>
 			<hr />
 		</nav>
-		<c:if test="${userinfo eq 'admin'}">
-			<div class="d-flex justify-content-right align-items-center">
-				<a class="btn btn-sm btn-primary " href="${root}/manager/write" style="color: white">글쓰기</a>
-			</div>
-		</c:if>
-		
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-3">

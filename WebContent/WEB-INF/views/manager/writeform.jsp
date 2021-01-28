@@ -65,7 +65,7 @@
 						<label for="itemsContext">제품 설명: </label><br />
 							<input type="text" id="itemsContext" name="itemsContext"/><br />
 						<label for="itemsDetail">상세설명: </label><br />
-							<input type="text" id="itemsDetail" name="itemsDetail"/><br />
+						<textarea name="itemsDetail" id="itemsDetail" cols="100" rows="10"></textarea><br />
 						<label for="itemsManufacture"> 제조사:</label><br> 
 							<input type="text" id="itemsManufacture"name="itemsManufacture"><br /> <br /> 
 						<label for="itemsOrigin">원산지:</label> 
@@ -81,7 +81,7 @@
 							<input type="file" id="itemsAttach" name="itemsAttach" value="이미지 첨부" /><br /> <br />
 						<div style="margin-bottom: 50px;">
 							<a href="javascript:saveConfirm()" id="savebtn" type="submit" class="btn btn-primary" style="color: white">저장</a>
-							<button class="btn btn-danger" onclick="location.href='${root}/product/productList'">취소</button>
+							<a href="javascript:history.back()" class="btn btn-danger">취소</a>
 						</div>
 					</form>
 							</div>

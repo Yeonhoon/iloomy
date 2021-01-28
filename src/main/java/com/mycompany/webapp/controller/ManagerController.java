@@ -61,11 +61,14 @@ public class ManagerController {
 
     //수정 페이지로 이동
     @GetMapping("/update")  //hoon
-    public String update(){
+    public String updateform(){
         logger.info("수정 페이지로 이동하기");
         return "manager/update";
     }
 
+    // 수정 내용 저장
+    
+    
     //제품 삭제
     @Resource
     private ItemsService itemsService;
