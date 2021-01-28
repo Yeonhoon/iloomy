@@ -1,5 +1,7 @@
 package com.mycompany.webapp.repository;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -22,6 +24,16 @@ public class ItemsRepo {
 	public ItemsDTO selectByPk(int no) {
 		ItemsDTO item = sst.selectOne("items.selectByPk", no);
 		return item;
+	}
+
+	public int update(ItemsDTO dto) {
+		int rows = sst.update("items.update",dto);
+		return rows;
+	}
+
+	public List<ItemsDTO> selectAll() {
+		List<ItemsDTO> list = sst.selectList("items.selectAll");
+		return list;
 	}
 
 //	public int delete(int bno) {

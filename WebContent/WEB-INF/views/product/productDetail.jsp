@@ -107,7 +107,7 @@
 					
 					<!-- 로그인 상태에서만 보이기 -->
 					<c:if test="${userinfo eq 'admin'}">
-						<a class="btn btn-warning ml-3" href="${root}/manager/update">수정</a>
+						<a class="btn btn-warning ml-3" href="${root}/manager/update?itemsNo=${items.itemsNo}">수정</a>
 						<a class="btn btn-danger ml-3" href="${root}/manager/delete" style="color:black;">삭제</a>
 					</c:if>
 				</div>

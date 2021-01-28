@@ -26,9 +26,10 @@
       
 	<section id="sec" style="padding-right: 200px; padding-left:200px;">
 		<h1 style="text-align: center;">주요 정보</h1>
-				<a href="javascript:mainInfoDto()" class="btn btn-danger btn-sm" style="color:white">수정</a>
+			<a href="javascript:mainInfoDto()" class="btn btn-danger btn-sm" style="color:white">수정</a>
+				
 		<article id="main" style="margin-left: 300px;">
-				<script>
+				<%-- <script>
 					function mainInfoDto(){
 					    $.ajax({
 					        url:"mainInfoDto",
@@ -40,8 +41,88 @@
 					        }
 					    });
 					};
-				</script>
-				<div id="main_infoForm"></div>
+				</script> --%>
+				<%-- <div id="main_infoForm"></div> --%>
+			
+			<div id="main_image" style="margin-right:100px;">
+				<form action="photoupload" method="post">
+					<label for="itemsAttach" id="mainPhotoLabel">대표 사진</label><br/>
+					<img id="main_img" src="" height="400px" /><br />
+					<input type="file" class="btn btn-outline-light" name="uphoto" style="width:250px;" />
+				</form>
+			</div>
+
+	<ul id="reviseList" style="margin-left:100px;">
+		<li>
+			<label for="num"><b>게시물번호</b></label><br>
+				<input type="hidden" name="itemsNo" style="width: 260px;" value="${items.itemsNo}"/>
+			<div id="uidError" class="error"></div><br />
+		</li>
+		<li>
+			<label for="product_name"><b>제품명</b></label><br />
+			<input type="text" id="product_name" name="product_name" style="width: 250px;"
+				value="${items.itemsNo}" />
+			<div id="uidError" class="error"></div><br />
+		</li>
+		<li>
+			<label for="product_price"><b>가격(원)</b></label><br />
+			<input type="number" id="product_price" name="product_price" style="width: 250px;"value="${items.itemsNo}" />
+			<div id="uidError" class="error"></div><br />
+		</li>
+		<li>
+			<label for="brand"><b>브랜드명</b></label><br>
+			<input type="text" id="brand" name="brand" style="width: 260px;" value="${items.itemsNo}"/>
+			<div id="uidError" class="error"></div><br />
+		</li>
+ 		<li>
+			<label for="product_context"><b>제품설명</b></label><br />
+			<input type="text" id="delivery_date" name="delivery_date" style="width: 250px;" value="${items.itemsNo}" />
+			<div id="uidError" class="error"></div><br />
+		</li>
+		<li>
+			<label for="product_manufacture"><b>제조사</b></label><br />
+			<input type="text" id="delivery_method" name="delivery_method" style="width: 250px;" value="${items.itemsNo}" />
+			<div id="uidError" class="error"></div><br />
+		</li>
+		<li>
+			<label for="product_madein"><b>원산지</b></label><br />
+			<input type="text" id="delivery_fee" name="delivery_fee" style="width: 250px;"	value="${items.itemsNo}" />
+			<div id="uidError" class="error"></div><br />
+		</li>
+		<li>
+			<label for="product_color"><b>[필수]제품색상</b></label><br />
+			<input type="text" id="typeColor" name="product_color"
+				style="width: 250px; display:inline-block; " value="${items.itemsNo}"/>
+			<input type="button" class="addBtn" onclick="addColor()" value="추가" /><br />
+			<div id="addColor" style=" margin-top:30px;">
+				<select name="color_select" id="color_select" style="width:350px;">
+					<option id="베이지" value="">베이지</option>
+					<option id="그레이" value="">그레이</option>
+				</select>
+				<br />
+				<!-- <input type="button" onclick="removeColor()" value="삭제" /> -->
+			</div>
+			<div id="uidError" class="error"></div> <br />
+		</li>
+		<li>
+			<label for="product_option"><b>[선택]제품사양</b></label><br />
+			<input type="text" id="typeOption" name="product_option"
+				style="width: 250px; display: inline-block;"  value="${items.itemsNo}"/>
+			<input type="button" class="addBtn" onclick="addOption()" value="추가" /><br />
+		</li>
+		<li>
+			<label for=""></label>
+		</li>
+			<div id="addColor" style=" margin-top:30px;">
+				<select name="productOption" id="productOption" style="width: 350px;">
+					<option value="">쿠시노 침대가드 1000폭</option>
+					<option value="">쿠시노 침대풋보드 1000폭</option>
+				</select>
+			</div>
+		</li>
+	</ul>
+				
+				
 
 		</article>
 		<hr />
@@ -133,7 +214,7 @@
 			//서버로 데이터 전송
 			const result = window.confirm("수정을 완료하시겠습니까?");
 			if(result){
-			    $("#buttonForm").attr("action","${root}/manager/saveupdate");
+			    $("#buttonForm").attr("action","${root}/manager/itemupdate");
 			    $("#buttonForm").submit();
 				}
 			}

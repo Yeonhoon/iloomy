@@ -59,14 +59,32 @@ public class ManagerController {
     	return "product/productList";
     }
 
-    //수정 페이지로 이동
-    @GetMapping("/update")  //hoon
-    public String updateform(){
+    // 수정페이지 이동: 입력된 제품 정보를 수정페이지에 불러오기
+    @GetMapping("/itemupdate")  //hoon
+    public String updateform(int no, Model model){
         logger.info("수정 페이지로 이동하기");
+        ItemsDTO items = itemsService.getItem(no);
+        model.addAttribute("items", items);
         return "manager/update";
     }
 
+    
     // 수정 내용 저장
+    @PostMapping("/itemupdate")    //hoon  , no parameter
+    public String itemupdate(ItemsDTO dto){
+    	itemsService.updateItem(dto);
+    	logger.info("update success");
+    	return "redirect:/manager/productList";//product/productList.jsp 연결
+    }
+    
+    //수정 취소
+    @GetMapping("cancelupdate")
+    public String cancel() {
+    	logger.info("변경 취소");
+    	return "product/productList";
+    }
+
+    
     
     
     //제품 삭제
@@ -78,7 +96,6 @@ public class ManagerController {
     	itemsService.delete(bno);
     	return "redirect:/product/productList";
     }
-
 
     //기본 정보 수정
     @GetMapping("mainInfoDto")
@@ -142,20 +159,6 @@ public class ManagerController {
 
     //사진 다운로드
 
-
-    //변경내용 저장
-    @GetMapping(value = "saveupdate")    //hoon  , no parameter
-    public String save(){
-        logger.info("실행 : 변경내용을 저장하였습니다.");
-        return "product/productList";//product/productList.jsp 연결
-    }
-
-    //수정 취소
-    @GetMapping("cancelupdate")
-    public String cancel() {
-    	logger.info("변경 취소");
-    	return "product/productList";
-    }
 
 
     @GetMapping(value = "이미지 첨부")  //hyemin  , no parameter

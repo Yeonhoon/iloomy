@@ -1,5 +1,7 @@
 package com.mycompany.webapp.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,9 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
+import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.OrdersDTO;
 import com.mycompany.webapp.service.ItemsService;
 
@@ -25,8 +27,10 @@ public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     
-    @GetMapping(value = "list")  //jisun , no parameter
-    public String list(){
+    @GetMapping("/list")  //jisun , no parameter
+    public String itemslist(Model model){
+    	List<ItemsDTO> list = itemsService.getItemsList();
+    	model.addAttribute("list", list);
         logger.info("실행 : product/list");
         return "product/productList";//product/productList.jsp 연결
     }

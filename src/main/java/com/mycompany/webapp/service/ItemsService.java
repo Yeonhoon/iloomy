@@ -1,5 +1,7 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +28,15 @@ public class ItemsService {
 	public ItemsDTO getItem(int no) {
 		ItemsDTO item = itemsRepo.selectByPk(no);
 		return item;
+	}
+
+	public void updateItem(ItemsDTO dto) {
+		itemsRepo.update(dto);
+	}
+
+	public List<ItemsDTO> getItemsList() {
+		List<ItemsDTO> list = itemsRepo.selectAll();
+		return list;
 	}
 
 

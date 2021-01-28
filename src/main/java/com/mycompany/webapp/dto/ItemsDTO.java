@@ -14,7 +14,6 @@ public class ItemsDTO {
     private String itemsContext;
     private String itemsColor;
     private String itemsOption;
-    private String itemsDetail;
     private String itemsModel;
     private int itemsStock;
 	private String itemsManufacture;
@@ -65,12 +64,6 @@ public class ItemsDTO {
 	}
 	public void setItemsOption(String itemsOption) {
 		this.itemsOption = itemsOption;
-	}
-	public String getItemsDetail() {
-		return itemsDetail;
-	}
-	public void setItemsDetail(String itemsDetail) {
-		this.itemsDetail = itemsDetail;
 	}
 	public String getItemsModel() {
 		return itemsModel;
@@ -128,7 +121,6 @@ public class ItemsDTO {
 	public String toString() {
 		return "ItemsDTO [itemsNo=" + itemsNo + ", itemsName=" + itemsName + ", itemsCompany=" + itemsCompany
 				+ ", itemsPrice=" + itemsPrice + ", itemsContext=" + itemsContext + ", itemsColor=" + itemsColor
-				+ ", itemsOption=" + itemsOption + ", itemsDetail=" + itemsDetail + ", itemsModel=" + itemsModel
 				+ ", itemsStock=" + itemsStock + ", itemsManufacture=" + itemsManufacture + ", itemsOrigin="
 				+ itemsOrigin + ", itemsAttach=" + itemsAttach + ", itemsAttachtype=" + itemsAttachtype
 				+ ", itemsAttachOname=" + itemsAttachOname + ", itemsAttachSname=" + itemsAttachSname + "]";
