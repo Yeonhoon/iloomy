@@ -24,4 +24,12 @@ public class ItemsService {
 	}
 
 
+	public ItemsDTO getItem(int no) {
+		ItemsDTO item = itemsRepo.selectByPk(no);
+		return item;
+	}
+
+
+
+
 }

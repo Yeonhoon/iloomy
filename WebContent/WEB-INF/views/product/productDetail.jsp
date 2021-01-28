@@ -54,32 +54,11 @@
 							<span><b>0 원</b> </span>
 						</div>
 						<br/>	
-
-						<c:if test="${!empty userinfo}">
-							<div id="detailBtn">
-								<button id="pay" type="button"> 결제하기 </button>
-								<button id="bag" type="button"> 장바구니 </button>
-							</div>	
-						</c:if>
+						<div id="detailBtn">
+							<button id="pay" type="button"> 결제하기 </button>
+							<button id="bag" type="button"> 장바구니 </button>
+						</div>	
 					</form>
-					<c:if test="${empty userinfo}">
-							<div id="detailBtn">
-								<button id="pay" onclick="funno()" > 결제하기 </button>
-								<button id="bag" onclick="funno()" > 장바구니 </button>
-							</div>	
-					</c:if>
-					<script type="text/javascript">		
-						function funno() {
-							const color = $("#colorOption option:selected").val();
-							const option = $("#productOption option:selected").val();
-							if (color === "none" || option === "none") {
-								alert("옵션을 선택해주세요!");
-								return;
-							} else {
-								return alert("로그인 해주세요!");
-							}
-						}
-					</script>
 					<br/>
 					<div id="detailImg">
 						<a href="#" target="_black"><img src="${root}/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
@@ -90,7 +69,7 @@
 			<article>
 				<table>
 					<tr style="color: #adb5bd; text-align: center;">
-						<td style="color: red;">상세정보</td>
+						<td>상세정보</td>
 						<td>옵션</td>
 						<td>인테리어 팁</td>
 						<td>상품평</td>

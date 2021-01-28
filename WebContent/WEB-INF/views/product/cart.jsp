@@ -45,39 +45,29 @@
 							<th>상품금액</th>
 							<th>주문</th>
 						</tr>
-						 <c:forEach var="product" items="${plist}">
-						 	<tr>
-								<td><input type="checkbox" name="check" class="check" value="${product.pName}"></td>
-								<td>${product.pName}</td>
-								<td>${product.pOption}</td>
-								<td>${product.pColor}</td>
-								<td><fmt:formatNumber value="${product.pPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
-								<td><a href="#"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>${product.no}<a href="#"><i class="fas fa-caret-up fa-lg ml-2"></i></a></td>
-								<td><fmt:formatNumber value="${product.pPrice}" pattern="###,###,###"></fmt:formatNumber>원</td>
-								<td>
-									<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
-									<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">위시리스트</a>
-								</td>
-							</tr>
-						 </c:forEach>
+
+					 	<tr>
+							<td><input type="checkbox" name="check" class="check" value="${pDTO.items_no}"></td>
+							<td>${pDTO.items_Name}</td>
+							<td>${pDTO.items_Option}</td>
+							<td>${pDTO.items_Color}</td>
+							<td><fmt:formatNumber value="${pDTO.items_Price}" pattern="###,###,###"></fmt:formatNumber>원 </td>
+							<td>
+								<a href="javascript:" class="countdown"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
+								<span id="count">${pDTO.items_no}</span>
+								<a class="countup"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
+							</td>
+							<td><fmt:formatNumber value="${pDTO.items_Price}" pattern="###,###,###"></fmt:formatNumber>원</td>
+							<td>
+								
+								<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
+								<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">삭제</a>
+							</td>
+						</tr>
+
 					</table>
 					<!-- "checked" 속성은 기능관련 속성이라 prop 함수에서는 true/false로 출력 -->
-					<script type="text/javascript">
-						$("#checkAll").click(function() {
-							var ch = $("#checkAll").prop("checked");
-							
-							if(ch) {
-								$(".check").prop("checked", true);
-							} else {
-								$(".check").prop("checked", false);
-							}
-						})
-						
-						$(".check").click(function() {
-							$("#checkAll").prop("checked", false);
-						})
-						
-					</script>
+					
 					<div id="cartOrder">
 						<button id="chkbtn" class="btn btn-danger btn-sm" style="color: white">결제 하기</button>
 						<a href="${root}/product/list" class="btn btn-info btn-sm" style="color: white">목록 보기</a>
@@ -90,4 +80,47 @@
       		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 		</div>
 	</body>
+	<script type="text/javascript">
+						
+		$(".countdown").on("click",function (e) {
+			var count = $("#count").text();
+			if (count === '1') {
+				e.preventDefault();
+				alert("최소수량입니다.");
+				count = 1;
+				return;
+			} else {
+				count --;
+				$("#count").text(count);
+			}
+		});
+		
+		$(".countup").on("click",function (e) {
+			var count = $("#count").text();
+			if (count === '10') {
+				e.preventDefault();
+				alert("최대수량입니다.");
+				return;
+			} else {
+				count ++;
+				$("#count").text(count);
+			}
+		});
+		$("#checkAll").click(function() {
+			var ch = $("#checkAll").prop("checked");
+			
+			if(ch) {
+				$(".check").prop("checked", true);
+			} else {
+				$(".check").prop("checked", false);
+			}
+		})
+		
+		$(".check").click(function() {
+			$("#checkAll").prop("checked", false);
+		})
+	
+	</script>
+	
+	
 </html>

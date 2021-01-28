@@ -1,102 +1,100 @@
 package com.mycompany.webapp.dto;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class ItemsDTO {
-    private int items_no;
-    private String items_Name;
-    private String items_Company;
-    private long items_Price;
-    private String items_Context;
-    private String items_Color;
-    private String items_Option;
-    private String items_Detail;
-    private String items_Mainphoto;
-    private String items_Model;
-	private String items_Manufacture;
-	private String items_Origin;
-	
-	public int getItems_no() {
-		return items_no;
+    private int itemsNo;
+    private String itemsName;
+    private String itemsCompany;
+    private long itemsPrice;
+    private String itemsContext;
+    private String itemsColor;
+    private String itemsOption;
+    private String itemsDetail;
+    private String itemsMainphoto;
+    private String itemsModel;
+	private String itemsManufacture;
+	private String itemsOrigin;
+	public int getItemsNo() {
+		return itemsNo;
 	}
-	public void setItems_no(int items_no) {
-		this.items_no = items_no;
+	public void setItemsNo(int itemsNo) {
+		this.itemsNo = itemsNo;
 	}
-	public String getItems_Name() {
-		return items_Name;
+	public String getItemsName() {
+		return itemsName;
 	}
-	public void setItems_Name(String items_Name) {
-		this.items_Name = items_Name;
+	public void setItemsName(String itemsName) {
+		this.itemsName = itemsName;
 	}
-	public String getItems_Company() {
-		return items_Company;
+	public String getItemsCompany() {
+		return itemsCompany;
 	}
-	public void setItems_Company(String items_Company) {
-		this.items_Company = items_Company;
+	public void setItemsCompany(String itemsCompany) {
+		this.itemsCompany = itemsCompany;
 	}
-	public long getItems_Price() {
-		return items_Price;
+	public long getItemsPrice() {
+		return itemsPrice;
 	}
-	public void setItems_Price(long items_Price) {
-		this.items_Price = items_Price;
+	public void setItemsPrice(long itemsPrice) {
+		this.itemsPrice = itemsPrice;
 	}
-	public String getItems_Context() {
-		return items_Context;
+	public String getItemsContext() {
+		return itemsContext;
 	}
-	public void setItems_Context(String items_Context) {
-		this.items_Context = items_Context;
+	public void setItemsContext(String itemsContext) {
+		this.itemsContext = itemsContext;
 	}
-	public String getItems_Color() {
-		return items_Color;
+	public String getItemsColor() {
+		return itemsColor;
 	}
-	public void setItems_Color(String items_Color) {
-		this.items_Color = items_Color;
+	public void setItemsColor(String itemsColor) {
+		this.itemsColor = itemsColor;
 	}
-	public String getItems_Option() {
-		return items_Option;
+	public String getItemsOption() {
+		return itemsOption;
 	}
-	public void setItems_Option(String items_Option) {
-		this.items_Option = items_Option;
+	public void setItemsOption(String itemsOption) {
+		this.itemsOption = itemsOption;
 	}
-	public String getItems_Detail() {
-		return items_Detail;
+	public String getItemsDetail() {
+		return itemsDetail;
 	}
-	public void setItems_Detail(String items_Detail) {
-		this.items_Detail = items_Detail;
+	public void setItemsDetail(String itemsDetail) {
+		this.itemsDetail = itemsDetail;
 	}
-
-	public String getItems_Mainphoto() {
-		return items_Mainphoto;
+	public String getItemsMainphoto() {
+		return itemsMainphoto;
 	}
-	public void setItems_Mainphoto(String items_Mainphoto) {
-		this.items_Mainphoto = items_Mainphoto;
+	public void setItemsMainphoto(String itemsMainphoto) {
+		this.itemsMainphoto = itemsMainphoto;
 	}
-	public String getItems_Model() {
-		return items_Model;
+	public String getItemsModel() {
+		return itemsModel;
 	}
-	public void setItems_Model(String items_Model) {
-		this.items_Model = items_Model;
+	public void setItemsModel(String itemsModel) {
+		this.itemsModel = itemsModel;
 	}
-	public String getItems_Manufacture() {
-		return items_Manufacture;
+	public String getItemsManufacture() {
+		return itemsManufacture;
 	}
-	public void setItems_Manufacture(String items_Manufacture) {
-		this.items_Manufacture = items_Manufacture;
+	public void setItemsManufacture(String itemsManufacture) {
+		this.itemsManufacture = itemsManufacture;
 	}
-	public String getItems_Origin() {
-		return items_Origin;
+	public String getItemsOrigin() {
+		return itemsOrigin;
 	}
-	public void setItems_Origin(String items_Origin) {
-		this.items_Origin = items_Origin;
+	public void setItemsOrigin(String itemsOrigin) {
+		this.itemsOrigin = itemsOrigin;
 	}
 	@Override
 	public String toString() {
-		return "ItemsDTO [items_no=" + items_no + ", items_Name=" + items_Name + ", items_Company=" + items_Company
-				+ ", items_Price=" + items_Price + ", items_Context=" + items_Context + ", items_Color=" + items_Color
-				+ ", items_Option=" + items_Option + ", items_Detail=" + items_Detail + ", items_Mainphoto="
-				+ items_Mainphoto + ", items_Model=" + items_Model + ", items_Manufacture=" + items_Manufacture
-				+ ", items_Origin=" + items_Origin + "]";
+		return "ItemsDTO [itemsNo=" + itemsNo + ", itemsName=" + itemsName + ", itemsCompany=" + itemsCompany
+				+ ", itemsPrice=" + itemsPrice + ", itemsContext=" + itemsContext + ", itemsColor=" + itemsColor
+				+ ", itemsOption=" + itemsOption + ", itemsDetail=" + itemsDetail + ", itemsMainphoto=" + itemsMainphoto
+				+ ", itemsModel=" + itemsModel + ", itemsManufacture=" + itemsManufacture + ", itemsOrigin="
+				+ itemsOrigin + "]";
 	}
+	
+	
 	
 	
 

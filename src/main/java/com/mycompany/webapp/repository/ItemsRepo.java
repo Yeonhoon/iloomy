@@ -14,10 +14,15 @@ public class ItemsRepo {
 	private SqlSessionTemplate sst;
 	
 	public int insert(ItemsDTO dto) {
-		int rows = sst.insert("boards.insert", dto);
+		int rows = sst.insert("items.insert", dto);
 		return rows;
 	}
 //
+
+	public ItemsDTO selectByPk(int no) {
+		ItemsDTO item = sst.selectOne("items.selectByPk", no);
+		return item;
+	}
 
 //	public int delete(int bno) {
 //		int rows = sst.delete("", bno);
