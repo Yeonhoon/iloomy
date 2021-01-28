@@ -63,7 +63,7 @@
             <div>
 				<%--${userinfo.id}--%>
 				<c:if test="${userinfo eq 'admin'}">
-					<a href="${root}/QnA/board/new">QnA글쓰기</a>
+					<a href="${root}/Notice/board/new">QnA글쓰기</a>
 				</c:if>
 				<c:choose>
 					<c:when test="${userinfo ne null}">

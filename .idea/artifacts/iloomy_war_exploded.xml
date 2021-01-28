@@ -36,6 +36,7 @@
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.1" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.1" />
           <element id="library" level="project" name="Maven: com.googlecode.log4jdbc:log4jdbc:1.2" />
+          <element id="library" level="project" name="Maven: org.json:json:20201115" />
         </element>
       </element>
       <element id="directory" name="META-INF">

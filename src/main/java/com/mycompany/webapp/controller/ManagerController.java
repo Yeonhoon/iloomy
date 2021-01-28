@@ -23,15 +23,15 @@ import com.mycompany.webapp.service.BoardService;
 public class ManagerController {
 
     private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
-    
-    
+
+
     //글 작성 페이지로 이동
     @GetMapping("/write")
-    public String writeForm(Model model) {	
-    	
+    public String writeForm(Model model) {
+
     	return "manager/writeform";
     }
-    
+
     @PostMapping("/write")
     public String write(Model model, HttpServletRequest req) {
     	String id = req.getParameter("uproduct");
@@ -46,45 +46,45 @@ public class ManagerController {
 //    	model.addAttribute("BestSeller", dto);
     	return "redirect:/manager/productLists ";
     }
-    
+
     // 제품 목록으로 돌아가기
     @GetMapping("/productList")
     public String productList() {
     	return "product/productList";
     }
-    
+
     //수정 페이지로 이동
     @GetMapping("/update")  //hoon
     public String update(){
         logger.info("수정 페이지로 이동하기");
         return "manager/update";
     }
-    
+
     //제품 삭제
     @Resource
     private BoardService boardService;
-    
+
     @PostMapping("/delete")
     public String delete(int bno) {
     	boardService.delete(bno);
     	return "redirect:/product/productList";
-    	
+
     }
-    
-    
+
+
     //기본 정보 수정
     @GetMapping("mainInfoDto")
     public String mainInfoDto(Model model) {
     	ItemsDTO dto = new ItemsDTO();
-    	
-    	
+
+
     	// 컬러, 상세제품 수정 필요
     	model.addAttribute("dto",dto);
     	logger.info("수정창 불러오기 성공");
     	logger.info(dto.toString());
     	return "manager/updateMainInfo";
     }
-    
+
     //상세정보수정
     @GetMapping("/detailText")
     public String detailInfo(Model model) {
@@ -95,7 +95,7 @@ public class ManagerController {
 
     	return "manager/updateDetailText";
     }
-    
+
 //    //사진 업로드 및 저장
 //    @PostMapping("/photoupload")
 //    public String fileUpload(UpdatePhotoDto user) {
@@ -104,13 +104,13 @@ public class ManagerController {
 //			//원래 경로 설정해주기
 //    		String originFilename = uphoto.getOriginalFilename();
 //			String fileType = uphoto.getContentType();
-//			
+//
 //			//파일저장경로 설정
 //			String saveDir = "D:/MW/uploadfiles/";
 //			String fileName = new Date().getTime() + "-" +  originFilename;// 유일한 이름으로 바꿔줘야 함 방법1. 날짜 이용법, 2. 시간 ㅣ이용법
 //			String filePath = saveDir + fileName;
 //			File file = new File(filePath);
-//			
+//
 //			logger.info("파일타입:" + fileType);
 //
 //			try {
@@ -121,7 +121,7 @@ public class ManagerController {
 //    	}
 //    	return "redirect:/manager/update";
 //    }
-//    
+//
     //첨부한 사진리스트 보여주기
     @GetMapping("/photolist")
     public String photoList(Model model) {
@@ -129,43 +129,43 @@ public class ManagerController {
     	File file = new File(saveDir);
     	String[] fileNames = file.list();
     	model.addAttribute("fileNames",fileNames);
-    	
+
     	return "manager/updatePhotolist";
     }
-    
+
     //사진 다운로드
-    
-    
+
+
     //변경내용 저장
     @GetMapping(value = "saveupdate")    //hoon  , no parameter
     public String save(){
         logger.info("실행 : 변경내용을 저장하였습니다.");
         return "product/productList";//product/productList.jsp 연결
     }
-    
+
     //수정 취소
     @GetMapping("cancelupdate")
     public String cancel() {
     	logger.info("변경 취소");
     	return "product/productList";
     }
-    
-    
+
+
     @GetMapping(value = "이미지 첨부")  //hyemin  , no parameter
     public <UpdatePhotoDto, ProductDto> String fileUpload(ProductDto user, MultipartFile uphoto) {
-    	
-			
+
+
 			String originalFileName = uphoto.getOriginalFilename();
 			String contentType = uphoto.getContentType();
 			long size = uphoto.getSize();
-			
+
 			logger.info("originalFileName: " + originalFileName);
 			logger.info("contentType: " + contentType);
 			logger.info("size: " + size);
-			
-			
+
+
 			String saveDirPath = "D:/MyWorkspace/uploadfiles/";
-			
+
 			String fileName = new Date().getTime() + "-" + originalFileName;
 			String filePath = saveDirPath + fileName;
 			File file = new File(filePath);
@@ -175,16 +175,16 @@ public class ManagerController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		return "redirect:/manager/writeform2";
-		
+
 	}
 			return filePath;
-		
+
     }
-		
-    
+
+
     @GetMapping(value = "상품등록완료")  //hymin  , get parameter(number of imagelist), fulfill random
     public String update(int random){
         logger.info(" 실행 : /manager/update/product");
-        return "manager/writeform2"; 
+        return "manager/writeform2";
     }
 }

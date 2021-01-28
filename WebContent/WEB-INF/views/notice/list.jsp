@@ -80,15 +80,15 @@
 
         <c:forEach var="item" items="${list}" varStatus="status">
             <ul class="board">
-                <li class="fl tc w70 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.qnaNo})"><c:out value="${item.qnaNo}"/></a></li>
-                <li class="fl tc w500 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.qnaNo})"><c:out value="${item.qnaTitle}"/></a></li>
-                <li class="fl tc w120 list t_line lt_line"><c:out value="${item.qnaUserid}"/></li>
-                <fmt:formatDate var="resultRegDt" value="${item.qnaDatetime}" pattern="yyyy-MM-dd"/>
+                <li class="fl tc w70 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})"><c:out value="${item.noticeNo}"/></a></li>
+                <li class="fl tc w500 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})"><c:out value="${item.noticeTitle}"/></a></li>
+                <li class="fl tc w120 list t_line lt_line"><c:out value="${item.noticeUser}"/></li>
+                <fmt:formatDate var="resultRegDt" value="${item.noticeDatetime}" pattern="yyyy-MM-dd"/>
                 <li class="fl tc w100 list t_line lt_line"><c:out value="${resultRegDt}"/></li>
                 <li class="fl tc w100 list  lt_line">0</li>
             </ul>
-            <ul class="board" id="panel${item.qnaNo}" style="display: none;">
-                <li  class="fl tc w890 list t_line lt_line" ><c:out value="${item.qnaContent}"/>
+            <ul class="board" id="panel${item.noticeNo}" style="display: none;">
+                <li  class="fl tc w890 list t_line lt_line" ><c:out value="${item.noticeContent}"/>
                 </li>
             </ul>
 

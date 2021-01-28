@@ -16,7 +16,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#writeBtn").click(function() {
-		$("#writeForm").attr("action", "${root}/QnA/board/new").submit();
+		$("#writeForm").attr("action", "${root}/Notice/board/new").submit();
 	});
 });
 
@@ -30,27 +30,19 @@ $(document).ready(function() {
 		<h3> 글쓰기 </h3>
 		<form id="writeForm" method="post" action="">
 		<input type="hidden" name="act" id="act" value="">
-			<div class="form-group" align="left">
-				<label for="name">no</label>
-				<input type="text" class="form-control" id="qnaNo" name="qnaNo" placeholder="">
-			</div>
+
 			<div class="form-group" align="left">
 				<label for="">제목</label>
-				<input type="text" class="form-control" id="qnaTitle" name="qnaTitle" placeholder="">
+				<input type="text" class="form-control" id="noticeTitle" name="noticeTitle" placeholder="">
 			</div>
 			<div class="form-group" align="left">
 				<label for="">글내용</label>
-				<input type="text" class="form-control" id="qnaContent" name="qnaContent" placeholder="">
+				<textarea class="form-control" id="noticeContent" name="noticeContent" rows="10" placeholder=""></textarea>
 			</div>
-			<div class="form-group" align="left">
-				<label for="">아이디</label>
-				<input type="text" class="form-control" id="qnaUserid" name="qnaUserid" placeholder="admin" value="admin" readonly>
-			</div>
-			
 			<div class="form-group" align="center">
 				<button type="button" class="btn btn-primary" id="writeBtn">글 저장</button>
 			</div>
-			
+			<input type="hidden" name="noticeUser" value="admin" />
 		</form>
 	</div>
 </div>

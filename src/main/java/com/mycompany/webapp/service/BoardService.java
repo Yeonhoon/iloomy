@@ -12,11 +12,11 @@ public class BoardService {
 
 	@Resource
 	private BoardRepo boardrepo;
-	
-	
+
+
 	public void delete(int bno) {
-		boardrepo.delete(bno);
+//		boardrepo.delete(bno);
 	}
-	
+
 
 }

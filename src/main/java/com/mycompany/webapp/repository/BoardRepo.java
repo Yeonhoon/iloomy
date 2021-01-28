@@ -7,13 +7,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardRepo {
+//
+//	@Resource
+//	private SqlSessionTemplate sst;
 
-	@Resource
-	private SqlSessionTemplate sst;
-	
-	public int delete(int bno) {
-		int rows = sst.delete("", bno);
-		return rows;
-	}
+//	public int delete(int bno) {
+//		int rows = sst.delete("", bno);
+//		return rows;
+//	}
 
 }

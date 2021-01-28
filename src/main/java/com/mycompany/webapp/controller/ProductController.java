@@ -51,15 +51,15 @@ public class ProductController {
 		session.setAttribute("pOption", pOption);
 		
 		List <ItemsDTO> list = new ArrayList<>();
-    	for (int i=1; i<=2; i++) {
-    		ItemsDTO pDTO = new ItemsDTO();
-    		pDTO.setNo(1);
-    		pDTO.setpName("볼케" + i);
-    		pDTO.setpColor(pColor);
-    		pDTO.setpOption(pOption);
-    		pDTO.setpPrice(1009000);
-    		list.add(pDTO);
-    	};
+//    	for (int i=1; i<=2; i++) {
+//    		ItemsDTO pDTO = new ItemsDTO();
+//    		pDTO.setNo(1);
+//    		pDTO.setpName("볼케" + i);
+//    		pDTO.setpColor(pColor);
+//    		pDTO.setpOption(pOption);
+//    		pDTO.setpPrice(1009000);
+//    		list.add(pDTO);
+//    	};
     	session.setAttribute("plist", list);
         logger.info("실행 : product/cart");
         return "product/cart";//product/cart.jsp 연결

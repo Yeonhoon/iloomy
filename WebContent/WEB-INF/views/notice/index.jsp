@@ -26,7 +26,7 @@
 
         function list() {
             $.ajax({
-                url: "${root}/QnA/list",
+                url: "${root}/Notice/list",
                 type: "get"
             }).done(function (result) {
                 console.log("결과확인");
@@ -44,7 +44,7 @@
         }
         function list2() {
             $.ajax({
-                url: "${root}/QnA/list2",
+                url: "${root}/Notice/list2",
                 type: "get"
             }).done(function (result) {
                 console.log("결과확인");
