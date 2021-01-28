@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Date;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.ItemsDTO;
-import com.mycompany.webapp.service.BoardService;
+import com.mycompany.webapp.service.ItemsService;
 
 @Controller
 @RequestMapping("/manager")
@@ -32,18 +32,15 @@ public class ManagerController {
     	return "manager/writeform";
     }
 
+    
+    //작성 글 저장
     @PostMapping("/write")
-    public String write(Model model, HttpServletRequest req) {
-    	String id = req.getParameter("uproduct");
-    	System.out.println(id);
-//    	ItemsDTO dto = new ItemsDTO((int)0,"품명","브랜드",111111,"제품설명","빨강","폭넓이","부연설명","사진","ISBN","제조사","원산지");
-//    	dto.setpName("품명");
-//    	dto.setpPrice(11111111);
-//    	dto.setpModel("모델명");
-//    	dto.setpCompany("브랜드");
-//    	dto.setpManufacture("제조사");
-//	    dto.setpOrigin("원산지");
-//    	model.addAttribute("BestSeller", dto);
+    public String write(HttpSession session, ItemsDTO dto) {
+    		
+    	session.getAttribute("sessionMid");
+    	
+    	itemsService.saveBoard(dto);
+    	
     	return "redirect:/manager/productLists ";
     }
 
@@ -62,11 +59,11 @@ public class ManagerController {
 
     //제품 삭제
     @Resource
-    private BoardService boardService;
+    private ItemsService itemsService;
 
     @PostMapping("/delete")
     public String delete(int bno) {
-    	boardService.delete(bno);
+    	itemsService.delete(bno);
     	return "redirect:/product/productList";
 
     }
