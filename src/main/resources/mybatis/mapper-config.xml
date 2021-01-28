@@ -6,13 +6,11 @@
 	</settings>
 
 	<typeAliases>
-		<!-- <typeAlias alias="employee" type="com.mycompany.webapp.dto.Ch14EmployeeDto"/> 이 엘리아스는 employee.xml에서 사용됨
-		<typeAlias alias="board" type="com.mycompany.webapp.dto.Ch14BoardDto"/> 이 엘리아스는 employee.xml에서 사용됨
-		<typeAlias alias="pager" type="com.mycompany.webapp.dto.Ch14Pager"/>
-		<typeAlias alias = "prac" type="com.mycompany.webapp.dto.PracDto"/> -->
+
 		<typeAlias alias="member" type="com.mycompany.webapp.dto.UserDTO"/>
 		<typeAlias alias="Address" type="com.mycompany.webapp.dto.AddressDTO"/>
 		<typeAlias alias="notice" type="com.mycompany.webapp.dto.NoticeDTO"/>
+		<typeAlias alias="pager" type="com.mycompany.webapp.dto.PagerDTO"/>
 		<typeAlias alias="item" type="com.mycompany.webapp.dto.ItemsDTO"/>
 	</typeAliases>
 	

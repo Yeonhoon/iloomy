@@ -29,34 +29,31 @@
 		where NOTICE_NO = #{no}
 	</select>
 
+	<select id="countAll" resultType="int">
+		select count(*) from notice
+	</select>
+
+	<select id="selectByPage" parameterType="pager" resultType="notice">
+		select eno, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER, NOTICE_ATTACH_SNAME, NOTICE_ATTACH_ONAME, NOTICE_ATTACH_Type
+		from(
+				select ROWNUM AS eno, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER, NOTICE_ATTACH_SNAME, NOTICE_ATTACH_ONAME, NOTICE_ATTACH_Type
+				from (select
+						  NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER, NOTICE_ATTACH_SNAME, NOTICE_ATTACH_ONAME, NOTICE_ATTACH_Type
+					  from notice
+					  order by NOTICE_NO desc)
+				where ROWNUM &lt;= #{endRowNo})
+		where eno &gt;= #{startRowNo}
+	</select>
+
     <!--	<update id="update" parameterType="notice">-->
 <!--		update notice -->
 <!--		set NOTICE_TITLE=#{noticeTitle}, NOTICE_CONTENT=#{noticeContent}-->
 <!--		where NOTICE_NO=#{nno} -->
 <!--	</update>-->
 <!--	-->
-<!--	<delete id="delete" parameterType="int">-->
-<!--		delete notice where NOTICE_NO =#{nno}-->
-<!--	</delete>-->
-<!--	-->
 
-<!--	-->
-<!--	&lt;!&ndash; 전체 행수 가져오기 &ndash;&gt;-->
-<!--	<select id="countAll" resultType="int">-->
-<!--		select count(*) from notice-->
-<!--	</select>-->
-	
-<!--	<select id="selectByPage" parameterType="pager" resultType="board">-->
-<!--		select eno, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER-->
-<!--		from(-->
-<!--			    select ROWNUM AS eno, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER-->
-<!--			    from (select -->
-<!--			    		NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER-->
-<!--						from notice -->
-<!--						order by NOTICE_NO desc)-->
-<!--			    where ROWNUM &lt;= #{endRowNo}) -->
-<!--		where eno &gt;= #{startRowNo}-->
-<!--	</select>-->
+
+
 	
 
 

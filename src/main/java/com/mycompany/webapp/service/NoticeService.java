@@ -1,6 +1,7 @@
 package com.mycompany.webapp.service;
 
 import com.mycompany.webapp.dto.NoticeDTO;
+import com.mycompany.webapp.dto.PagerDTO;
 import com.mycompany.webapp.repository.NoticeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,10 @@ public class NoticeService {
         List<NoticeDTO> list = nRepo.getNoticeList();
         return list;
     }
+    public List<NoticeDTO> getNoticeList(PagerDTO pager) {
+        List<NoticeDTO> list = nRepo.getNoticeList(pager);
+        return list;
+    }
 
     public void delete(int no) {
         int tmp = nRepo.delete(no);
@@ -29,5 +34,10 @@ public class NoticeService {
     public NoticeDTO getImage(int no) {
         NoticeDTO notice = nRepo.selectByNo(no);
         return notice;
+    }
+
+    public int getTotalRows() {
+        int total = nRepo.countAll();
+        return total;
     }
 }

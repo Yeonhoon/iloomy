@@ -9,16 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3265bf6-0717-4085-a8be-dd85a795a2ed" name="Default Changelist" comment="tes">
+    <list default="true" id="c3265bf6-0717-4085-a8be-dd85a795a2ed" name="Default Changelist" comment="notice">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/dto/PagerDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/detail.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/detailT.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/write.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/write.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/NoticeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/dto/NoticeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/dto/NoticeDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/NoticeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/NoticeRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/NoticeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/notices.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/notices.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -302,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611794612553</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="notice">
+      <created>1611801856572</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611801856572</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +327,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="tes" />
-    <option name="LAST_COMMIT_MESSAGE" value="tes" />
+    <MESSAGE value="notice" />
+    <option name="LAST_COMMIT_MESSAGE" value="notice" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

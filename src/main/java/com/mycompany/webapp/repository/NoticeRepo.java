@@ -1,6 +1,7 @@
 package com.mycompany.webapp.repository;
 
 import com.mycompany.webapp.dto.NoticeDTO;
+import com.mycompany.webapp.dto.PagerDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +21,10 @@ public class NoticeRepo {
 
     public List<NoticeDTO> getNoticeList() {
         List<NoticeDTO> list = sst.selectList("notices.selectAll");
-        System.out.println("list : "+ list);
+        return list;
+    }
+    public List<NoticeDTO> getNoticeList(PagerDTO pager) {
+        List<NoticeDTO> list = sst.selectList("notices.selectByPage",pager);
         return list;
     }
 
@@ -32,5 +36,10 @@ public class NoticeRepo {
     public NoticeDTO selectByNo(int no) {
         NoticeDTO notice = sst.selectOne("notices.selectByNo",no);
         return notice;
+    }
+
+    public int countAll() {
+        int tmp = sst.selectOne("notices.countAll");
+        return tmp;
     }
 }
