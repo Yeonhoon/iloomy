@@ -134,7 +134,7 @@
 					return;
 				} else {
 					if (confirm("추가된 물품을 장바구니에서 확인하시겠습니까?")){
-						$("#productCart").attr("action", "${root}/product/cart").submit();	
+						$("#productCart").attr("action", "${root}/product/cart?pno=${pno}").submit();	
 					}
 				}
 			});
@@ -148,7 +148,7 @@
 					return;
 				} else {
 					if (confirm("결제하시겠습니까?")){
-					document.getElementById("productCart").action = "${root}/product/cart";
+					document.getElementById("productCart").action = "${root}/product/cart?pno=${pno}";
 			         document.getElementById("productCart").submit();
 					} 
 				}

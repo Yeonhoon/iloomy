@@ -45,21 +45,29 @@
 							<th>상품금액</th>
 							<th>주문</th>
 						</tr>
+						
+<%-- <input type="hidden" name="bno" value="${pDTO.}" /> --%>
 
 					 	<tr>
-							<td><input type="checkbox" name="check" class="check" value="${pDTO.items_no}"></td>
-							<td>${pDTO.items_Name}</td>
-							<td>${pDTO.items_Option}</td>
-							<td>${pDTO.items_Color}</td>
-							<td><fmt:formatNumber value="${pDTO.items_Price}" pattern="###,###,###"></fmt:formatNumber>원 </td>
 							<td>
-								<a href="javascript:" class="countdown"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
-								<span id="count">${pDTO.items_no}</span>
-								<a class="countup"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
-							</td>
-							<td><fmt:formatNumber value="${pDTO.items_Price}" pattern="###,###,###"></fmt:formatNumber>원</td>
-							<td>
+								<input type="checkbox" name="check" class="check" value="${pDTO.itemsNo}">
 								
+							</td>
+							<td>${pDTO.itemsName}</td>
+							<td>${pDTO.itemsOption}</td>
+							<td>${pDTO.itemsColor}</td>
+							<td><fmt:formatNumber value="${pDTO.itemsPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
+							<td>
+								<a class="countdown" style="color:black"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
+								<span id="count"><%-- ${pDTO.itemsNo} default로로로롤--%>1</span>
+								<input type="hidden" id="orderItemsCount" name="orderItemsCount" value="1"/>
+								<a class="countup"  style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
+							</td>
+							<td>
+								<span id="totalPrice"> ${pDTO.itemsPrice}</span>원
+								<input type="hidden" id="orderItemsPrice" name="orderItemsPrice" value="${pDTO.itemsPrice}"/>
+							</td>
+							<td>
 								<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
 								<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">삭제</a>
 							</td>
@@ -81,9 +89,10 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-						
+		var price = ${pDTO.itemsPrice};
 		$(".countdown").on("click",function (e) {
 			var count = $("#count").text();
+			var total = $("#totalPrice").text();
 			if (count === '1') {
 				e.preventDefault();
 				alert("최소수량입니다.");
@@ -91,7 +100,11 @@
 				return;
 			} else {
 				count --;
+				total = price*count;
 				$("#count").text(count);
+				$("#totalPrice").text(total);
+				$("#orderItemsCount").val(count);
+				$("#orderItemsPrice").val(count);
 			}
 		});
 		
@@ -103,7 +116,11 @@
 				return;
 			} else {
 				count ++;
+				total = price*count;
 				$("#count").text(count);
+				$("#totalPrice").text(total);
+				$("#orderItemsCount").val(count);
+				$("#orderItemsPrice").val(total);
 			}
 		});
 		$("#checkAll").click(function() {

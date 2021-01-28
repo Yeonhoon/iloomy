@@ -7,12 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.ItemsDTO;
+import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.service.ItemsService;
 
 @Controller
@@ -27,14 +29,16 @@ public class ProductController {
         return "product/productList";//product/productList.jsp 연결
     }
     
-    @Resource private  ItemsService itemsService;
+    @Resource private ItemsService itemsService;
     
     @GetMapping(value = "detail") //jisun  , pramater no of list.. fulfill no
-    public String listDetail(int no){
+    public String listDetail(int no, Model model){
         System.out.println(no);
         logger.info("실행 : product/detail");
-        ItemsDTO item = itemsService.getItem(no);
-        System.out.println(item.getItemsName());
+//        ItemsDTO item = itemsService.getItem(no);
+//        System.out.println(item.toString());
+//        model.addAttribute("item", item);
+        model.addAttribute("pno", no);
         return "product/productDetail";//product/productDetail.jsp 연결
     }
     
@@ -45,7 +49,7 @@ public class ProductController {
     }
     
     @PostMapping(value = "cart")  //hyun woo 지선 추가
-    public String cart(HttpSession session, HttpServletRequest req){
+    public String cart(int pno, HttpSession session, HttpServletRequest req){
     	String pColor = req.getParameter("colorOption");
 		String pOption = req.getParameter("productOption");
 //		logger.info(pColor); 
@@ -53,8 +57,11 @@ public class ProductController {
 //		session.setAttribute("pColor", pColor);
 //		session.setAttribute("pOption", pOption);
 		
+		//product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거 list로 받아 와야하낭? 
+		System.out.println("pno" + pno);
+		
 		ItemsDTO pDTO = new ItemsDTO();
-		pDTO.setItemsNo(1);
+		pDTO.setItemsNo(pno);
 		pDTO.setItemsName("볼케");
 		pDTO.setItemsColor(pColor);
 		pDTO.setItemsOption(pOption);
@@ -67,8 +74,9 @@ public class ProductController {
     }
     
     @GetMapping(value = "/order")
-	public String method1(HttpServletRequest request, ModelMap model) throws Exception {
+	public String method1(OrderItemsDTO orderItem, HttpServletRequest request, ModelMap model) throws Exception {
 		String [] arr = request.getParameterValues("check");
+		System.out.println(orderItem.toString());
 		for (String i : arr) {
 			System.out.println(i);
 		}

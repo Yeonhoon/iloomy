@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @charset "EUC-KR";
-
+	.countdown:hover, .countup:hover {cursor: pointer;}
 	#sec {
 		padding: 1.5rem;
 		text-align: center;
