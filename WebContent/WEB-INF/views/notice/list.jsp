@@ -43,6 +43,7 @@
         .w500 {width:500px; height: 100px;}
         .w120 {width:120px; height: 100px;}
         .w100 {width:100px; height: 100px;}
+        .w790 {width: 790px; height: 100px;}
         .w890 {width: 890px; height: 100px;}
         .title {
             height: 50px;
@@ -54,6 +55,11 @@
         .lt_line {border-bottom:solid 1px #D7D7D7;}
         .list {
             height: 40px;
+            line-height: 40px;
+            background: white;
+        }
+        .listImage {
+            height: 400px;
             line-height: 40px;
             background: white;
         }
@@ -70,8 +76,15 @@
             <li class="fl tc w500 title t_line">제목</li>
             <li class="fl tc w120 title t_line">글쓴이</li>
             <li class="fl tc w100 title t_line">작성일</li>
-            <li class="fl tc w100 title ">조회수</li>
+            <c:if test="${userinfo eq 'admin'}">
+                <li class="fl tc w100 title ">기능</li>
+            </c:if>
+            <c:if test="${userinfo ne 'admin'}">
+                <li class="fl tc w100 title ">조회수</li>
+            </c:if>
+
         </ul>
+
         <c:if test="${list.size() == 0 }">
             <ul class="board">
                 <p>현재 데이타가 없습니다.</p>
@@ -85,13 +98,47 @@
                 <li class="fl tc w120 list t_line lt_line"><c:out value="${item.noticeUser}"/></li>
                 <fmt:formatDate var="resultRegDt" value="${item.noticeDatetime}" pattern="yyyy-MM-dd"/>
                 <li class="fl tc w100 list t_line lt_line"><c:out value="${resultRegDt}"/></li>
-                <li class="fl tc w100 list  lt_line">0</li>
-            </ul>
-            <ul class="board" id="panel${item.noticeNo}" style="display: none;">
-                <li  class="fl tc w890 list t_line lt_line" ><c:out value="${item.noticeContent}"/>
-                </li>
-            </ul>
+                <c:if test="${userinfo eq 'admin'}">
+                    <li class="fl tc w100 list  lt_line"><a style="color: red" href="${root}/Notice/delete?no=${item.noticeNo}">삭제</a></li>
+                </c:if>
+                <c:if test="${userinfo ne 'admin'}">
+                    <li class="fl tc w100 list  lt_line">0</li>
+                </c:if>
 
+            </ul>
+            <c:choose>
+                <c:when test="${userinfo eq 'admin'}">
+                    <ul class="board" id="panel${item.noticeNo}" style="display: none;">
+                        <c:if test="${item.noticeAttachSname ne null}">
+                            <li  class="fl tc w890 listImage t_line lt_line" >
+                                <c:out value="${item.noticeContent}"/> <br>
+                                <img class="rounded" src="${root}/Notice/noticeAttach?no=${item.noticeNo}" width="200px"> <br/>
+                            </li>
+                        </c:if>
+                        <c:if test="${item.noticeAttachSname eq null}">
+                            <li  class="fl tc w890 list t_line lt_line" >
+                                <c:out value="${item.noticeContent}"/> <br>
+                            </li>
+                        </c:if>
+
+                    </ul>
+                </c:when>
+                <c:otherwise>
+                    <ul class="board" id="panel${item.noticeNo}" style="display: none;">
+                        <c:if test="${item.noticeAttachSname ne null}">
+                            <li  class="fl tc w890 listImage t_line lt_line" >
+                                <c:out value="${item.noticeContent}"/> <br>
+                                <img class="rounded" src="${root}/Notice/noticeAttach?no=${item.noticeNo}" width="200px"> <br/>
+                            </li>
+                        </c:if>
+                        <c:if test="${item.noticeAttachSname eq null}">
+                            <li  class="fl tc w890 list t_line lt_line" >
+                                <c:out value="${item.noticeContent}"/> <br>
+                            </li>
+                        </c:if>
+                    </ul>
+                </c:otherwise>
+            </c:choose>
         </c:forEach>
 
     </div>

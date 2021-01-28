@@ -23,4 +23,14 @@ public class NoticeRepo {
         System.out.println("list : "+ list);
         return list;
     }
+
+    public int delete(int no) {
+        int tmp = sst.delete("notices.delete",no);
+        return tmp;
+    }
+
+    public NoticeDTO selectByNo(int no) {
+        NoticeDTO notice = sst.selectOne("notices.selectByNo",no);
+        return notice;
+    }
 }

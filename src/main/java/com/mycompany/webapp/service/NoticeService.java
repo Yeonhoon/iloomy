@@ -21,4 +21,13 @@ public class NoticeService {
         List<NoticeDTO> list = nRepo.getNoticeList();
         return list;
     }
+
+    public void delete(int no) {
+        int tmp = nRepo.delete(no);
+    }
+
+    public NoticeDTO getImage(int no) {
+        NoticeDTO notice = nRepo.selectByNo(no);
+        return notice;
+    }
 }

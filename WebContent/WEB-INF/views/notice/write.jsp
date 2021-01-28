@@ -28,7 +28,7 @@ $(document).ready(function() {
 	<div class="col-lg-6" align="center">
 		<br>
 		<h3> 글쓰기 </h3>
-		<form id="writeForm" method="post" action="">
+		<form  enctype="multipart/form-data" id="writeForm" method="post" action="">
 		<input type="hidden" name="act" id="act" value="">
 
 			<div class="form-group" align="left">
@@ -38,6 +38,10 @@ $(document).ready(function() {
 			<div class="form-group" align="left">
 				<label for="">글내용</label>
 				<textarea class="form-control" id="noticeContent" name="noticeContent" rows="10" placeholder=""></textarea>
+			</div>
+			<div class="form-group">
+				<label for="">첨부</label><br/>
+				<input type="file" id="noticeAttach" name="noticeAttach"/>
 			</div>
 			<div class="form-group" align="center">
 				<button type="button" class="btn btn-primary" id="writeBtn">글 저장</button>

@@ -4,17 +4,32 @@
 
 
 	<insert id="insert" parameterType="notice">
-		insert into notice(NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER)
-		values (notice_seq.nextval, #{noticeTitle}, #{noticeContent}, sysdate, #{noticeUser})
+		<if test="noticeAttachSname == null">
+			insert into notice(NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER)
+			values (notice_seq.nextval, #{noticeTitle}, #{noticeContent}, sysdate, #{noticeUser})
+		</if>
+		<if test="noticeAttachSname != null">
+			insert into notice (NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER, NOTICE_ATTACH_SNAME, NOTICE_ATTACH_ONAME, NOTICE_ATTACH_Type)
+			values (notice_seq.nextval, #{noticeTitle}, #{noticeContent}, sysdate, #{noticeUser}, #{noticeAttachSname}, #{noticeAttachOname}, #{noticeAttachType})
+		</if>
 	</insert>
 
 	<select id="selectAll" resultType="notice">
-		select NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER
+		select NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER, NOTICE_ATTACH_SNAME, NOTICE_ATTACH_ONAME, NOTICE_ATTACH_Type
 		from notice
 		order by NOTICE_NO desc
 	</select>
-	
-<!--	<update id="update" parameterType="notice">-->
+	<delete id="delete" parameterType="int">
+		delete notice where NOTICE_NO = #{noticeNo}
+	</delete>
+
+	<select id="selectByNo" parameterType="int" resultType="notice">
+		select NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER, NOTICE_ATTACH_SNAME, NOTICE_ATTACH_ONAME, NOTICE_ATTACH_Type
+		from notice
+		where NOTICE_NO = #{no}
+	</select>
+
+    <!--	<update id="update" parameterType="notice">-->
 <!--		update notice -->
 <!--		set NOTICE_TITLE=#{noticeTitle}, NOTICE_CONTENT=#{noticeContent}-->
 <!--		where NOTICE_NO=#{nno} -->
@@ -43,10 +58,6 @@
 <!--		where eno &gt;= #{startRowNo}-->
 <!--	</select>-->
 	
-<!--	<select id="selectByNo" parameterType="int" resultType="board">-->
-<!--		select NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_USER-->
-<!--		from notice-->
-<!--		where NOTICE_NO = #{nno}-->
-<!--	</select>-->
+
 
 </mapper>
