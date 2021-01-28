@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
+import com.mycompany.webapp.dto.OrdersDTO;
 import com.mycompany.webapp.service.ItemsService;
 
 @Controller
@@ -76,6 +78,17 @@ public class ProductController {
     @GetMapping(value = "/order")
 	public String method1(OrderItemsDTO orderItem, HttpServletRequest request, ModelMap model) throws Exception {
 		String [] arr = request.getParameterValues("check");
+//		1.orderoderno 가져와고
+//		2. itemsItemsNo 가졍고
+//		3. orderItem.set(1);
+//						set(2);
+//						dao.save(orderItem);
+    	orderItem.setItemsOrder(1, 2);
+    	
+    	OrdersDTO dtoa = new OrdersDTO();
+    	dtoa.setOrderStatus(OrderStatus.Cart);
+    	System.out.println(dtoa.toString());
+    	
 		System.out.println(orderItem.toString());
 		for (String i : arr) {
 			System.out.println(i);

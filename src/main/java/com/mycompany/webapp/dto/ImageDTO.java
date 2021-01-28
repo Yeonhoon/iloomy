@@ -5,7 +5,7 @@ public class ImageDTO {
 	private String image1;
 	private String image2;
 	private String image3;
-	private int items_items_no;
+	private int itemsItemsNo;
 	public int getImage_no() {
 		return image_no;
 	}
@@ -30,12 +30,18 @@ public class ImageDTO {
 	public void setImage3(String image3) {
 		this.image3 = image3;
 	}
-	public int getItems_items_no() {
-		return items_items_no;
+	public int getItemsItemsNo() {
+		return itemsItemsNo;
 	}
-	public void setItems_items_no(int items_items_no) {
-		this.items_items_no = items_items_no;
+	public void setItemsItemsNo(int itemsItemsNo) {
+		this.itemsItemsNo = itemsItemsNo;
 	}
+	@Override
+	public String toString() {
+		return "ImageDTO [image_no=" + image_no + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3
+				+ ", itemsItemsNo=" + itemsItemsNo + "]";
+	}
+
 	
 	
 	

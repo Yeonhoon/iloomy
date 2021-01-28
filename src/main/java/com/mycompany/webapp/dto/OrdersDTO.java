@@ -3,44 +3,70 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 public class OrdersDTO {
-	private int order_no;
-	private Date order_datetime;
-	private String order_status;
-	private int delivery_delivery_no;
-	private String members_members_id;
-	public int getOrder_no() {
-		return order_no;
-	}
-	public void setOrder_no(int order_no) {
-		this.order_no = order_no;
+	private int orderNo;
+	private Date orderDatetime;
+	private OrderStatus orderStatus;
+	private int deliveryDeliveryNo;
+	private String membersMembersId;
+
+	public OrdersDTO() {
+		super();
 	}
 
-	public Date getOrder_datetime() {
-		return order_datetime;
-	}
-	public void setOrder_datetime(Date order_datetime) {
-		this.order_datetime = order_datetime;
-	}
-	public String getOrder_status() {
-		return order_status;
-	}
-	public void setOrder_status(String order_status) {
-		this.order_status = order_status;
-	}
-	public int getDelivery_delivery_no() {
-		return delivery_delivery_no;
-	}
-	public void setDelivery_delivery_no(int delivery_delivery_no) {
-		this.delivery_delivery_no = delivery_delivery_no;
-	}
-	public String getMembers_members_id() {
-		return members_members_id;
-	}
-	public void setMembers_members_id(String members_members_id) {
-		this.members_members_id = members_members_id;
+	public OrdersDTO(int orderNo, Date orderDatetime, OrderStatus orderStatus, int deliveryDeliveryNo,
+			String membersMembersId) {
+		super();
+		this.orderNo = orderNo;
+		this.orderDatetime = orderDatetime;
+		this.orderStatus = orderStatus;
+		this.deliveryDeliveryNo = deliveryDeliveryNo;
+		this.membersMembersId = membersMembersId;
 	}
 
-	
-	
-	
+	public int getOrderNo() {
+		return orderNo;
+	}
+
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
+	}
+
+	public Date getOrderDatetime() {
+		return orderDatetime;
+	}
+
+	public void setOrderDatetime(Date orderDatetime) {
+		this.orderDatetime = orderDatetime;
+	}
+
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public int getDeliveryDeliveryNo() {
+		return deliveryDeliveryNo;
+	}
+
+	public void setDeliveryDeliveryNo(int deliveryDeliveryNo) {
+		this.deliveryDeliveryNo = deliveryDeliveryNo;
+	}
+
+	public String getMembersMembersId() {
+		return membersMembersId;
+	}
+
+	public void setMembersMembersId(String membersMembersId) {
+		this.membersMembersId = membersMembersId;
+	}
+
+	@Override
+	public String toString() {
+		return "OrdersDTO [orderNo=" + orderNo + ", orderDatetime=" + orderDatetime + ", orderStatus=" + orderStatus
+				+ ", deliveryDeliveryNo=" + deliveryDeliveryNo + ", membersMembersId=" + membersMembersId + "]";
+	}
+
 }

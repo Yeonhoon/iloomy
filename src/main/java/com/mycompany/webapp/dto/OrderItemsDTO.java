@@ -38,6 +38,12 @@ public class OrderItemsDTO {
 	public void setItemsItemsNo(int itemsItemsNo) {
 		this.itemsItemsNo = itemsItemsNo;
 	}
+	
+	public void setItemsOrder(int orderOrderNo, int itemsItemsNo) {
+		this.orderOrderNo = orderOrderNo;
+		this.itemsItemsNo = itemsItemsNo;
+
+	}
 	@Override
 	public String toString() {
 		return "OrderItemsDTO [orderItemsNo=" + orderItemsNo + ", orderItemsCount=" + orderItemsCount

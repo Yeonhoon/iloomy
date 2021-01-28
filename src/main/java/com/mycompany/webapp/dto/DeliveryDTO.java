@@ -1,41 +1,48 @@
 package com.mycompany.webapp.dto;
 
 public class DeliveryDTO {
-	private int delivery_no;
-	private String delivery_city;
-	private String delivery_street;
-	private String delivert_zipcode;
-	private String status;
-	public int getDelivery_no() {
-		return delivery_no;
+	private int deliveryNo;
+	private String deliveryCity;
+	private String deliveryStreet;
+	private String deliveryZipcode;
+	private DeliveryStatus deliveryStatus;
+	public int getDeliveryNo() {
+		return deliveryNo;
 	}
-	public void setDelivery_no(int delivery_no) {
-		this.delivery_no = delivery_no;
+	public void setDeliveryNo(int deliveryNo) {
+		this.deliveryNo = deliveryNo;
 	}
-	public String getDelivery_city() {
-		return delivery_city;
+	public String getDeliveryCity() {
+		return deliveryCity;
 	}
-	public void setDelivery_city(String delivery_city) {
-		this.delivery_city = delivery_city;
+	public void setDeliveryCity(String deliveryCity) {
+		this.deliveryCity = deliveryCity;
 	}
-	public String getDelivery_street() {
-		return delivery_street;
+	public String getDeliveryStreet() {
+		return deliveryStreet;
 	}
-	public void setDelivery_street(String delivery_street) {
-		this.delivery_street = delivery_street;
+	public void setDeliveryStreet(String deliveryStreet) {
+		this.deliveryStreet = deliveryStreet;
 	}
-	public String getDelivert_zipcode() {
-		return delivert_zipcode;
+	public String getDeliveryZipcode() {
+		return deliveryZipcode;
 	}
-	public void setDelivert_zipcode(String delivert_zipcode) {
-		this.delivert_zipcode = delivert_zipcode;
+	public void setDeliveryZipcode(String deliveryZipcode) {
+		this.deliveryZipcode = deliveryZipcode;
 	}
-	public String getStatus() {
-		return status;
+	public DeliveryStatus getDeliveryStatus() {
+		return deliveryStatus;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setDeliveryStatus(DeliveryStatus deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
 	}
+	
+	@Override
+	public String toString() {
+		return "DeliveryDTO [deliveryNo=" + deliveryNo + ", deliveryCity=" + deliveryCity + ", deliveryStreet="
+				+ deliveryStreet + ", deliveryZipcode=" + deliveryZipcode + ", deliveryStatus=" + deliveryStatus + "]";
+	}
+	
 	
 	
 }
