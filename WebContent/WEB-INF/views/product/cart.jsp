@@ -30,7 +30,7 @@
 					<p style="font-size: 3rem;">장바구니</p>
 				</div>
 					<div id="order">
-					01 장바구니 --- 02 주문서 작성 --- 03 주문완료
+						<span style="color:red">01 장바구니</span> --- 02 주문서 작성 --- 03 주문완료
 					</div>
 				<div id="sec">
 					<p style=" padding: 10px;"><b>주문하실 상품을 선택해주세요</b></p>
@@ -45,13 +45,10 @@
 							<th>상품금액</th>
 							<th>주문</th>
 						</tr>
-						
-<%-- <input type="hidden" name="bno" value="${pDTO.}" /> --%>
 
 					 	<tr>
 							<td>
 								<input type="checkbox" name="check" class="check" value="${pDTO.itemsNo}">
-								
 							</td>
 							<td>${pDTO.itemsName}</td>
 							<td>${pDTO.itemsOption}</td>
@@ -75,7 +72,6 @@
 
 					</table>
 					<!-- "checked" 속성은 기능관련 속성이라 prop 함수에서는 true/false로 출력 -->
-					
 					<div id="cartOrder">
 						<button id="chkbtn" class="btn btn-danger btn-sm" style="color: white">결제 하기</button>
 						<a href="${root}/product/list" class="btn btn-info btn-sm" style="color: white">목록 보기</a>
