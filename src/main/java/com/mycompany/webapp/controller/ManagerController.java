@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -35,13 +36,21 @@ public class ManagerController {
     
     //작성 글 저장
     @PostMapping("/write")
-    public String write(HttpSession session, ItemsDTO dto) {
+    public String write(HttpSession session, ItemsDTO dto) throws IllegalStateException, IOException {
+    	MultipartFile mf = dto.getItemsAttach();
+    	System.out.println(dto.toString());
+    	// 사진 저장
+    	if(!mf.isEmpty()) {
+    		dto.setItemsAttachOname(mf.getOriginalFilename());
+    		String saveName = new Date().getTime() + "-" + mf.getOriginalFilename();
+    		dto.setItemsAttachSname(saveName);
+    		dto.setItemsAttachtype(mf.getContentType());
     		
-    	session.getAttribute("sessionMid");
-    	
+    		File saveFile = new File("D:/MW/uploadfiles/board/" + saveName);
+    		mf.transferTo(saveFile);
+    	}
     	itemsService.saveBoard(dto);
-    	
-    	return "redirect:/manager/productLists ";
+    	return "redirect:/manager/productList";
     }
 
     // 제품 목록으로 돌아가기
@@ -65,7 +74,6 @@ public class ManagerController {
     public String delete(int bno) {
     	itemsService.delete(bno);
     	return "redirect:/product/productList";
-
     }
 
 
@@ -74,12 +82,11 @@ public class ManagerController {
     public String mainInfoDto(Model model) {
     	ItemsDTO dto = new ItemsDTO();
 
-
-    	// 컬러, 상세제품 수정 필요
-    	model.addAttribute("dto",dto);
-    	logger.info("수정창 불러오기 성공");
-    	logger.info(dto.toString());
-    	return "manager/updateMainInfo";
+	// 컬러, 상세제품 수정 필요
+	model.addAttribute("dto",dto);
+	logger.info("수정창 불러오기 성공");
+	logger.info(dto.toString());
+	return "manager/updateMainInfo";
     }
 
     //상세정보수정

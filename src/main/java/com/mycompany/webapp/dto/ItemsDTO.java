@@ -1,5 +1,11 @@
 package com.mycompany.webapp.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
+/**
+ * @author COM
+ *
+ */
 public class ItemsDTO {
     private int itemsNo;
     private String itemsName;
@@ -9,10 +15,16 @@ public class ItemsDTO {
     private String itemsColor;
     private String itemsOption;
     private String itemsDetail;
-    private String itemsMainphoto;
     private String itemsModel;
+    private int itemsStock;
+
 	private String itemsManufacture;
 	private String itemsOrigin;
+	private MultipartFile itemsAttach;
+	private String itemsAttachtype;
+	private String itemsAttachOname;
+	private String itemsAttachSname;
+	
 	public int getItemsNo() {
 		return itemsNo;
 	}
@@ -61,12 +73,6 @@ public class ItemsDTO {
 	public void setItemsDetail(String itemsDetail) {
 		this.itemsDetail = itemsDetail;
 	}
-	public String getItemsMainphoto() {
-		return itemsMainphoto;
-	}
-	public void setItemsMainphoto(String itemsMainphoto) {
-		this.itemsMainphoto = itemsMainphoto;
-	}
 	public String getItemsModel() {
 		return itemsModel;
 	}
@@ -85,15 +91,50 @@ public class ItemsDTO {
 	public void setItemsOrigin(String itemsOrigin) {
 		this.itemsOrigin = itemsOrigin;
 	}
+	
+	public MultipartFile getItemsAttach() {
+		return itemsAttach;
+	}
+	public void setItemsAttach(MultipartFile itemsAttach) {
+		this.itemsAttach = itemsAttach;
+	}
+	
+	public String getItemsAttachtype() {
+		return itemsAttachtype;
+	}
+	public void setItemsAttachtype(String itemsAttachtype) {
+		this.itemsAttachtype = itemsAttachtype;
+	}
+	public String getItemsAttachOname() {
+		return itemsAttachOname;
+	}
+	public void setItemsAttachOname(String itemsAttachOname) {
+		this.itemsAttachOname = itemsAttachOname;
+	}
+	public String getItemsAttachSname() {
+		return itemsAttachSname;
+	}
+	public void setItemsAttachSname(String itemsAttachSname) {
+		this.itemsAttachSname = itemsAttachSname;
+	}
+	
+    public int getItemsStock() {
+		return itemsStock;
+	}
+	public void setItemsStock(int itemsStock) {
+		this.itemsStock = itemsStock;
+	}
+	
 	@Override
 	public String toString() {
 		return "ItemsDTO [itemsNo=" + itemsNo + ", itemsName=" + itemsName + ", itemsCompany=" + itemsCompany
 				+ ", itemsPrice=" + itemsPrice + ", itemsContext=" + itemsContext + ", itemsColor=" + itemsColor
-				+ ", itemsOption=" + itemsOption + ", itemsDetail=" + itemsDetail + ", itemsMainphoto=" + itemsMainphoto
-				+ ", itemsModel=" + itemsModel + ", itemsManufacture=" + itemsManufacture + ", itemsOrigin="
-				+ itemsOrigin + "]";
+				+ ", itemsOption=" + itemsOption + ", itemsDetail=" + itemsDetail + ", itemsModel=" + itemsModel
+				+ ", itemsStock=" + itemsStock + ", itemsManufacture=" + itemsManufacture + ", itemsOrigin="
+				+ itemsOrigin + ", itemsAttach=" + itemsAttach + ", itemsAttachtype=" + itemsAttachtype
+				+ ", itemsAttachOname=" + itemsAttachOname + ", itemsAttachSname=" + itemsAttachSname + "]";
 	}
-	
+
 	
 	
 	

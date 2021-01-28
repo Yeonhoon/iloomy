@@ -18,7 +18,6 @@ public class ItemsService {
 //		boardrepo.delete(bno);
 	}
 
-
 	public void saveBoard(ItemsDTO dto) {
 		itemsRepo.insert(dto);
 	}

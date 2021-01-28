@@ -133,7 +133,7 @@ to {
 			<div class="d-flex justify-content-right align-items-center">
 				<a class="btn btn-sm btn-primary " href="${root}/manager/write" style="color: white">글쓰기</a>
 			</div>
-		</c:if>>
+		</c:if>
 		
 		<div class="container-fluid">
 			<div class="row">

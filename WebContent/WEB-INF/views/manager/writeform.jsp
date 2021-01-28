@@ -53,28 +53,32 @@
 						transition:background-color 2s;">
 					</div>
 					<br />
-					<form enctype="multipart-form/data" action="write" method="post" id="productWrite">
-						<label for="items_Name;">품명:</label><br> 
-							<input type="text"id="items_Name" name="items_Name"/><br /> 
-						<label for="items_Price">가격:</label><br> 
-							<input type="text" id="items_Price" name="items_Price"/><br /> 
-						<label for="items_Model"> 모델명:</label><br> 
-							<input type="text" id="items_Model" name="items_Model"><br /> 
-						<label for="items_Company"> 브랜드:</label><br> 
-							<input type="text" id="items_Company" name="items_Company"/><br />
-						<label for="items_Context">제품 설명: </label><br />
-							<input type="text" id="items_Context" name="items_Context"/><br />
-						<label for="items_Manufacture"> 제조사:</label><br> 
-							<input type="text" id="items_Manufacture"name="items_Manufacture"><br /> <br /> 
-						<label for="items_Origin">원산지:</label> 
-							<input type="radio" id="udomes" name="items_Origin">국산 
-							<input type="radio" id="uimp" name="items_Origin" />수입<br /> <br /> 
-						<label for="items_Option">제품 옵션:</label><br />
-							<input type="text" id="items_Option" name="items_Option"/><br />
-						<label for="items_Color">제품 색상:</label>	
-							<input type="text" id="items_Color" name="items_Color"/>
-						<label for="items_Mainphoto">이미지 첨부 </label>
-							<input type="file" id="items_Mainphoto" name="items_Mainphoto" value="이미지 첨부" /><br /> <br />
+					<form enctype="multipart/form-data" method="post" id="productWrite">
+						<label for="itemsName;">품명:</label><br> 
+							<input type="text"id="itemsName" name="itemsName"/><br /> 
+						<label for="itemsPrice">가격:</label><br> 
+							<input type="text" id="itemsPrice" name="itemsPrice"/><br /> 
+						<label for="itemsModel"> 모델명:</label><br> 
+							<input type="text" id="itemsModel" name="itemsModel"><br /> 
+						<label for="itemsCompany"> 브랜드:</label><br> 
+							<input type="text" id="itemsCompany" name="itemsCompany"/><br />
+						<label for="itemsContext">제품 설명: </label><br />
+							<input type="text" id="itemsContext" name="itemsContext"/><br />
+						<label for="itemsDetail">상세설명: </label><br />
+							<input type="text" id="itemsDetail" name="itemsDetail"/><br />
+						<label for="itemsManufacture"> 제조사:</label><br> 
+							<input type="text" id="itemsManufacture"name="itemsManufacture"><br /> <br /> 
+						<label for="itemsOrigin">원산지:</label> 
+							<input type="radio" id="udomes" name="itemsOrigin">국산 
+							<input type="radio" id="uimp" name="itemsOrigin" />수입<br /> <br /> 
+						<label for="itemsOption">제품 옵션:</label><br />
+							<input type="text" id="itemsOption" name="itemsOption"/><br /><br />
+						<label for="itemsColor">제품 색상:</label>	<br />
+							<input type="text" id="itemsColor" name="itemsColor"/><br /><br />
+						<label for="itemsStock">제품 수량</label><br />
+							<input type="text" id="itemsStock" name="itemsStock" /><br /><br />
+						<label for="itemsAttach">이미지 첨부 </label>
+							<input type="file" id="itemsAttach" name="itemsAttach" value="이미지 첨부" /><br /> <br />
 						<div style="margin-bottom: 50px;">
 							<a href="javascript:saveConfirm()" id="savebtn" type="submit" class="btn btn-primary" style="color: white">저장</a>
 							<button class="btn btn-danger" onclick="location.href='${root}/product/productList'">취소</button>
