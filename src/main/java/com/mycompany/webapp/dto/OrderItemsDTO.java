@@ -15,17 +15,18 @@ public class OrderItemsDTO {
 		super();
 	}
 	
-	public OrderItemsDTO(int orderItemsCount, long orderItemsPrice) {
+	public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, int itemsItemsNo ) {
 		super();
 		this.orderItemsCount = orderItemsCount;
 		this.orderItemsPrice = orderItemsPrice;
+		this.itemsItemsNo = itemsItemsNo;
 	}
 	
 	public void setItemsOrder(int orderOrderNo, int itemsItemsNo) {
 		this.orderOrderNo = orderOrderNo;
 		this.itemsItemsNo = itemsItemsNo;
-
 	}
+	
 	
 	public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, List<ItemsDTO> itemList) {
 		super();

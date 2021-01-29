@@ -43,7 +43,7 @@ public class ItemsRepo {
 
 	public ItemsDTO selectItem(Map<String, String> map) {
 		ItemsDTO item = sst.selectOne("items.selectItem",map);
-		return null;
+		return item;
 	}
 
 //	public int delete(int bno) {

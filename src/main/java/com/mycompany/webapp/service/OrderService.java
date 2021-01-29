@@ -41,18 +41,8 @@ public class OrderService {
 		int orderNo = orderDTO.getOrderNo(); //xml에서 받음
 		orderItemsDTO.setOrderOrderNo(orderNo); //orders FK 받음
 		System.out.println("service_orderNo: "+ orderNo);
-		
-		
-		ItemsDTO itemdto = itemsRepo.selectByPk(1); // items PK를 이용해 가져 오기
-		
-		
-		/////////////////////////////
-		
-		
-		
-		orderItemsDTO.setItemsItemsNo(itemdto.getItemsNo()); //items FK 받음
-		System.out.println("service_getItemsNo: "+ itemdto.getItemsNo());
 		orderRepo.saveOrderItem(orderItemsDTO);
+		System.out.println(orderItemsDTO.toString());
 	}
 
 	public List<OrderItemsDTO> getItemCart() {

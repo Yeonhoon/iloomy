@@ -112,7 +112,7 @@ public class ProductController {
 
     @PostMapping(value = "cart") 
     public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req){
-    	
+    	System.out.println("cartcart컴온");
 		//user
 		String userId = (String)session.getAttribute("userinfo");
 		UserDTO users = memberService.selectAddress(userId);
@@ -120,7 +120,7 @@ public class ProductController {
      	//delivery
 		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Before);
 //		deliveryService.saveDelivery(deliveryDTO);  //세이브 확인
-//		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
+		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
 		
 		//orders
 		OrdersDTO orderDTO = new OrdersDTO();
@@ -128,7 +128,7 @@ public class ProductController {
 		orderDTO.setDeliveryDeliveryNo(deliveryDTO.getDeliveryNo());
 		orderDTO.setOrderStatus(OrderStatus.Cart);	
 //		orderService.saveOrder(orderDTO);  //세이브 확인
-//		System.out.println("3. orderDTO : "+orderDTO.toString());
+		System.out.println("3. orderDTO : "+orderDTO.toString());
 		
 		//items정보 가져오기 (itemsName, option, color)
 		String itemsColor = req.getParameter("itemsColor");
@@ -137,14 +137,17 @@ public class ProductController {
 		map.put("itemsName", itemsName);
 		map.put("itemsColor", itemsColor);
 		map.put("itemsOption", itemsOption);
-		ItemsDTO item = itemsService.selectItem(map);
 		
-    	//order_items
-		OrderItemsDTO orderItemsDTO =  new OrderItemsDTO(1, item.getItemsPrice());
+		System.out.println(itemsName+" "+itemsColor+" "+itemsOption);
+		
+		ItemsDTO item = itemsService.selectItem(map);  
+		System.out.println("4. ItemsDTO : "+item.toString());
+		
+    	//order_items저장  items FK, count, price 받음
+		OrderItemsDTO orderItemsDTO =  new OrderItemsDTO(1, item.getItemsPrice(), item.getItemsNo());  
 		orderService.order(userId, deliveryDTO, orderDTO, orderItemsDTO);
-		System.out.println("1. orderItemsDTO : "+orderItemsDTO.toString());
-		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
-		System.out.println("3. orderDTO : "+orderDTO.toString());
+		System.out.println("5. orderItemsDTO : "+orderItemsDTO.toString());
+
 		
 		//order_items를 불러와서 orders의 status가 카트인것만 보여주기
 		//product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
@@ -152,8 +155,9 @@ public class ProductController {
 		// status=cart에 있는거 list로 받아옴
 		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
 		session.setAttribute("orderItemLists", orderItemLists);
-
+		System.out.println("6. OrderItemsDTO : "+orderItemLists.toString());
 		
+		session.setAttribute("orderItemLists", orderItemLists);
 		ItemsDTO pDTO = new ItemsDTO();
 		pDTO.setItemsNo(lno);
 		pDTO.setItemsName(itemsName);

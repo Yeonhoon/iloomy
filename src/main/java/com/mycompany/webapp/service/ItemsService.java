@@ -41,6 +41,7 @@ public class ItemsService {
 	}
 	
 	public ItemsDTO selectItem(Map<String, String> map) {
+		System.out.println("service");
 		ItemsDTO item = itemsRepo.selectItem(map);
 		return item;
 	}
