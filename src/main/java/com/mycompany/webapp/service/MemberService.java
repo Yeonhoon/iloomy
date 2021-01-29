@@ -22,25 +22,19 @@ public class MemberService {
 
 	public String selectById(UserDTO user) {
 		System.out.println(user.getId());
-		Map<String, String> tmp = mRepo.selectById(user.getId());
-		
+		UserDTO tmp = mRepo.selectById(user.getId());
+		System.out.println("UserDTO : " + tmp.toString());
+		System.out.println("UserDTO.주소 : "+ tmp.getAddress().toString());
 		if (tmp == null) {
 			return "wrongId";
 		}
-		else if (tmp.get("MEMBERS_PASSWORD").equals(user.getPassWord())) {
+		else if (tmp.getPassWord().equals(user.getPassWord())) {
 			return "success";
 		} 
 			else {
 			return "wrongMpassword";
 		}
 	}
-	
-//	public String selectById2(UserDTO user) {
-//		System.out.println(user.getId());
-//		UserDTO tmp = mRepo.selectById2(user.getId());
-//		System.out.println(tmp.toString());
-//		return "wrongId";
-//		
-//	}
+
 
 }

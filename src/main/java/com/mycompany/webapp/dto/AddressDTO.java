@@ -4,6 +4,7 @@ public class AddressDTO {
 	private String city;
 	private String street;
 	private String zipcode;
+
 	public String getCity() {
 		return city;
 	}

@@ -19,16 +19,12 @@ public class MemberRepo {
 		int tmp = sst.insert("members.regist",user);
 		return tmp;
 	}
-
-	public Map<String, String> selectById(String id) {
-		Map<String, String> member = sst.selectOne("members.selectById", id);
+	
+	public UserDTO selectById(String id) {
+		UserDTO member = sst.selectOne("members.selectById", id);
+		System.out.println(member.toString());
 		return member;
 	}
-	
-//	public UserDTO selectById2(String id) {
-//		UserDTO member = sst.selectOne("members.selec", id);
-//		return member;
-//	}
 
 
 }

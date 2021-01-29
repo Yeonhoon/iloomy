@@ -59,25 +59,23 @@ public class UserController {
     public String login(UserDTO users, HttpSession session){
         logger.info("실행 : /user/login");
         System.out.println(users.toString());
-        
-        
+
         String result = mService.selectById(users);
-        
-        
+
 		if(result.equals("success")) session.setAttribute("userinfo", users.getId());        
 
         return "redirect:/";
     }
     
-//    @PostMapping("login2") 
+//    @PostMapping("login2")
 //    public String login2(UserDTO users, HttpSession session){
 //        logger.info("실행 : /user/login2");
 //        System.out.println(users.toString());
-//        
-//        
+//
+//
 //        String result = mService.selectById2(users);
-//        
-//		if(result.equals("success")) session.setAttribute("userinfo", users.getId());        
+//
+//        System.out.println("result : "+ result);
 //
 //        return "redirect:/";
 //    }
