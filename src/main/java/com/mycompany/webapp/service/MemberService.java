@@ -36,5 +36,10 @@ public class MemberService {
 		}
 	}
 
+	public UserDTO selectAddress(String userId) {
+		UserDTO tmp = mRepo.selectById(userId);
+		return tmp;
+	}
+
 
 }

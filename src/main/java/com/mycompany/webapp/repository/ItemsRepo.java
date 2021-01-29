@@ -19,7 +19,6 @@ public class ItemsRepo {
 		int rows = sst.insert("items.insert", dto);
 		return rows;
 	}
-//
 
 	public ItemsDTO selectByPk(int no) {
 		ItemsDTO item = sst.selectOne("items.selectByPk", no);

@@ -13,12 +13,9 @@ public class OrdersDTO {
 		super();
 	}
 
-	public OrdersDTO(int orderNo, Date orderDatetime, OrderStatus orderStatus, int deliveryDeliveryNo,
+	public OrdersDTO(int deliveryDeliveryNo,
 			String membersMembersId) {
 		super();
-		this.orderNo = orderNo;
-		this.orderDatetime = orderDatetime;
-		this.orderStatus = orderStatus;
 		this.deliveryDeliveryNo = deliveryDeliveryNo;
 		this.membersMembersId = membersMembersId;
 	}

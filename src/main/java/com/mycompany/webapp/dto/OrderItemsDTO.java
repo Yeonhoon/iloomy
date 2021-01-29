@@ -8,6 +8,16 @@ public class OrderItemsDTO {
 	private int orderOrderNo;
 	private int itemsItemsNo;
 	
+	public OrderItemsDTO() {
+		super();
+	}
+	
+	public OrderItemsDTO(int orderItemsCount, int orderItemsPrice) {
+		super();
+		this.orderItemsCount = orderItemsCount;
+		this.orderItemsPrice = orderItemsPrice;
+	}
+	
 	public int getOrderItemsNo() {
 		return orderItemsNo;
 	}
@@ -44,6 +54,8 @@ public class OrderItemsDTO {
 		this.itemsItemsNo = itemsItemsNo;
 
 	}
+	
+
 	@Override
 	public String toString() {
 		return "OrderItemsDTO [orderItemsNo=" + orderItemsNo + ", orderItemsCount=" + orderItemsCount

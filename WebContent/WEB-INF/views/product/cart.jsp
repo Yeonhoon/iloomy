@@ -45,7 +45,7 @@
 							<th>상품금액</th>
 							<th>주문</th>
 						</tr>
-
+					<c:if test=""></c:if>
 					 	<tr>
 							<td>
 								<input type="checkbox" name="check" class="check" value="${pDTO.itemsNo}">

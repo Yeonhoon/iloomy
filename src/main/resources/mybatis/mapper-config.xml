@@ -4,7 +4,7 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-
+	
 	<typeAliases>
 		<typeAlias alias="delivery" type="com.mycompany.webapp.dto.DeliveryDTO"/>
 		<typeAlias alias="member" type="com.mycompany.webapp.dto.UserDTO"/>
@@ -12,8 +12,13 @@
 		<typeAlias alias="notice" type="com.mycompany.webapp.dto.NoticeDTO"/>
 		<typeAlias alias="pager" type="com.mycompany.webapp.dto.PagerDTO"/>
 		<typeAlias alias="item" type="com.mycompany.webapp.dto.ItemsDTO"/>
+		<typeAlias alias="order" type="com.mycompany.webapp.dto.OrdersDTO"/>
+		<typeAlias alias="orderitem" type="com.mycompany.webapp.dto.OrderItemsDTO"/>
 	</typeAliases>
 	
-	
+	<typeHandlers>        
+	     <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.mycompany.webapp.dto.OrderStatus" />      
+	     <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.mycompany.webapp.dto.DeliveryStatus" />    
+	 </typeHandlers>
 	
 </configuration>

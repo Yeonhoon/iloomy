@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,8 @@ import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.OrdersDTO;
+import com.mycompany.webapp.dto.UserDTO;
+import com.mycompany.webapp.service.DeliveryService;
 import com.mycompany.webapp.service.ItemsService;
 import com.mycompany.webapp.service.MemberService;
 import com.mycompany.webapp.service.OrderService;
@@ -31,6 +34,16 @@ import com.mycompany.webapp.service.OrderService;
 public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+    
+    @Resource 
+    OrderService orderService;
+    @Resource 
+    MemberService memberService;
+    @Resource 
+    DeliveryService deliveryService;
+    @Autowired
+    MemberService mService;
+    
     
     @GetMapping("/list")  //jisun , no parameter
     public String itemslist(Model model){
@@ -59,23 +72,34 @@ public class ProductController {
         logger.info("실행 : product/cart2");
         return "product/cart";
     }
-    @Resource OrderService orderService;
-    @Resource MemberService memberService;
- 
-    @PostMapping(value = "cart")  //hyun woo 지선 추가
-    public String cart(int lno, HttpSession session, HttpServletRequest req){
-    	String pColor = req.getParameter("colorOption");
-		String pOption = req.getParameter("productOption");
-		String userId = (String)session.getAttribute("userinfo");
-		AddressDTO address = new AddressDTO("안성시","고수2로","123456");
-		OrdersDTO dtoa = new OrdersDTO();
-     	dtoa.setOrderStatus(OrderStatus.Cart);
 
-     	
-		DeliveryDTO deliveryDTO = new DeliveryDTO(address, DeliveryStatus.Ready);
-		orderService.saveDelivery(deliveryDTO);
+ 
+    @PostMapping(value = "cart") 
+    public String cart(int lno, HttpSession session, HttpServletRequest req){
+    	
+		//user
+		String userId = (String)session.getAttribute("userinfo");
+		UserDTO users = memberService.selectAddress(userId);
+		
+     	//delivery
+		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Ready);
+//		deliveryService.saveDelivery(deliveryDTO);  //세이브 확인
+//		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
+		
+		//orders
+		OrdersDTO orderDTO = new OrdersDTO();
+		orderDTO.setMembersMembersId(userId);
+		orderDTO.setDeliveryDeliveryNo(deliveryDTO.getDeliveryNo());
+		orderDTO.setOrderStatus(OrderStatus.Cart);	
+//		orderService.saveOrder(orderDTO);  //세이브 확인
+//		System.out.println("3. orderDTO : "+orderDTO.toString());
+		
+		
+		//items
 		//product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거 list로 받아 와야하낭? 
-		System.out.println("lno: " + lno);
+		String pColor = req.getParameter("colorOption");
+		String pOption = req.getParameter("productOption");
+//		System.out.println("4. lno: " + lno);
 		
 		ItemsDTO pDTO = new ItemsDTO();
 		pDTO.setItemsNo(lno);
@@ -83,10 +107,16 @@ public class ProductController {
 		pDTO.setItemsColor(pColor);
 		pDTO.setItemsOption(pOption);
 		pDTO.setItemsPrice(1009000);
-
-
-    	session.setAttribute("pDTO", pDTO);
-        logger.info("실행 : product/cart");
+		
+    	//order_items
+		OrderItemsDTO orderItemsDTO =  new OrderItemsDTO(1, 1009000);
+		orderService.order(userId, deliveryDTO, orderDTO, orderItemsDTO);
+		System.out.println("1. orderItemsDTO : "+orderItemsDTO.toString());
+		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
+		System.out.println("3. orderDTO : "+orderDTO.toString());
+		
+    	
+		session.setAttribute("pDTO", pDTO);
         return "product/cart";//product/cart.jsp 연결
     }
     
