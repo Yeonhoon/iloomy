@@ -62,6 +62,7 @@ public class ProductController {
         logger.info("실행 : product/detail");
         ItemsDTO item = itemsService.getItem(no); // dto에서 정보 받기
         model.addAttribute("item", item);
+        model.addAttribute("lno", no);
         return "product/productDetail";
     }
 
