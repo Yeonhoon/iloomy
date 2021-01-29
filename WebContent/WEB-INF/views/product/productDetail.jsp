@@ -23,7 +23,7 @@
 		</div>
 			<nav>
 				<div id="detailphoto">
-					<img id="itemsAttach" src="itemsAttach?itemsNo=${item.itemsNo}" height="600px;"/>
+					<img id="itemsAttach" src="${root}/product/itemsAttach?no=${item.itemsNo}" height="600px;"/>
 				</div>
 				<div id="detail">
 					<input type="hidden" name="itemsNo" value="${item.itemsNo}"/>

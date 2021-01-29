@@ -1,9 +1,13 @@
 package com.mycompany.webapp.controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,11 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.webapp.dto.AddressDTO;
 import com.mycompany.webapp.dto.DeliveryDTO;
 import com.mycompany.webapp.dto.DeliveryStatus;
 import com.mycompany.webapp.dto.ItemsDTO;
@@ -55,14 +59,45 @@ public class ProductController {
         return "product/productList";
     }
     
+    //사진 정보 불러오기
+    @GetMapping(value = "/itemsAttach")
+    public void itemsAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+    	
+    	ItemsDTO item = itemsService.getItem(no);
+        String filePath = null;
+
+        
+        if(item.getItemsAttachOname() != null) {
+        	String itemAttach = item.getItemsAttachSname();
+        	filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+        	
+        	response.setContentType(item.getItemsAttachtype());
+        	
+        	String oname = item.getItemsAttachOname();
+        	oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+        	response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+        } else {
+        	filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+        	response.setContentType("image/jpg");
+        }
+
+        OutputStream os = response.getOutputStream();
+        InputStream is = new FileInputStream(filePath);
+        FileCopyUtils.copy(is,os);
+        os.flush();
+        os.close();
+        is.close();
+    }
+    
     
     //상세보기 페이지로 이동
     @GetMapping("/detail")
     public String itemsDetail(int no, Model model){
         logger.info("실행 : product/detail");
         ItemsDTO item = itemsService.getItem(no); // dto에서 정보 받기
-        model.addAttribute("item", item);
         model.addAttribute("lno", no);
+        model.addAttribute("item", item);
+        System.out.println(item.toString());
         return "product/productDetail";
     }
 

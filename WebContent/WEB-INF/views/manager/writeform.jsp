@@ -77,8 +77,7 @@
 							<label for="itemsManufacture"> 제조사:</label> 
 								<input type="text" id="itemsManufacture"name="itemsManufacture"><br /> <br /> 
 							<label for="itemsOrigin">원산지:</label> 
-								<input type="radio" id="udomes" name="itemsOrigin">국산 
-								<input type="radio" id="uimp" name="itemsOrigin" />수입<br /> <br /> 
+								<input type="text" id="itemsOrigin" name="itemsOrigin"><br /><br />
 							<label for="itemsOption">제품 옵션:</label>
 								<input type="text" id="itemsOption" name="itemsOption"/><br /><br />
 							<label for="itemsColor">제품 색상:</label>

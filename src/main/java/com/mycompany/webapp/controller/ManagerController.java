@@ -44,7 +44,7 @@ public class ManagerController {
     		String saveName = new Date().getTime() + "-" + mf.getOriginalFilename();
     		dto.setItemsAttachSname(saveName);
     		dto.setItemsAttachtype(mf.getContentType());
-    		File saveFile = new File("D:/MW/uploadfiles/board/" + saveName);
+    		File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
     		mf.transferTo(saveFile);
     	}
     	System.out.println(dto.toString());

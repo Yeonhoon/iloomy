@@ -25,16 +25,16 @@
 			<div class="content">
 
 				<div class="sector">
-					<h5>DTO의 객체 데이터 읽기</h5>
-					<div>
-						<%-- ${ }가 EL --%>
-						<div>품명: ${BestSeller.uproduct}</div>
-						<div>가격: ${BestSeller.uprice}</div>
-						<div>모델명: ${BestSeller.umodel}</div>
-						<div>브랜드: ${BestSeller.ubrand}</div>
-						<div>제조사: ${BestSeller.umnc}</div>
-						<div>원산지: ${BestSeller.uorigin}</div>
+					<h5>상세 설명</h5>
+					<div class="detailBlock">
+						<label for="detail">사진 업로드</label>
+						<textarea name="detail" id="detail" cols="30" rows="30"></textarea>
 					</div>
+					<a href="javascript:addDetail()" class="btn btn-small btn-primary">상세설명 추가</a>
+					<script>
+						
+					</script>
+					
 				</div>
 			</div>
 		</div>

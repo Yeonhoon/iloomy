@@ -131,20 +131,20 @@ to {
 		</nav>
 		<div class="container-fluid">
 			<div class="row">
-				<a href="detail?itemsNo= ${items.itemsNo}">
+				<div class="col-lg-3">
 					<c:forEach var="item" items="${list}">
-						<div class="col-lg-3">
-						<c:if test="${item.itemsAttachSname != null}">
-							<img src="itemsAttach?itemsNo=${item.itemsNo}" width=350px;>
-						</c:if>
-							<ul style="float: left;">
-								<li><b>${item.itemsName}</b></li>
-								<li>${item.itemsCompany}</li>
-								<li style="color: red;">${item.itemsPrice}원</li>
-							</ul>
-						</div>
+						<a href="${root}/product/detail?no=${item.itemsNo}">
+							<c:if test="${item.itemsAttachSname != null}">
+								<img src="${root}/product/itemsAttach?no=${item.itemsNo}" width=350px;>
+							</c:if>
+								<ul style="float: left;">
+									<li><b>${item.itemsName}</b></li>
+									<li>${item.itemsCompany}</li>
+									<li style="color: red;">${item.itemsPrice}원</li>
+								</ul>
+						</a>
 					</c:forEach>
-				</a>
+				</div>
 			</div>
 		</div>
 
