@@ -22,9 +22,6 @@
 			</association>
 	</resultMap>
 
-
-
-
 	<select id="selectById" parameterType="string" resultMap="tableResultMap" >
 		select members_id as id,
 		       members_name as name,
@@ -35,6 +32,23 @@
 		from members
 		where members_id=#{id}
 	</select>
-	
-	
+
+
+	<select id="searchPw" parameterType="hashmap" resultType="string" >
+		select members_password
+		from members
+		where members_id=#{id}
+			and members_name=#{name}
+	</select>
+
+	<update id="updateUser" parameterType="hashmap">
+		update members set members_name = #{userdto.name},
+		                   members_password = #{userdto.passWord},
+		                   members_city = #{userdto.address.city},
+		                   members_street = #{userdto.address.street},
+		                   members_zipcode = #{userdto.address.zipcode}
+		where members_id =#{userid}
+	</update>
+
+
 </mapper>

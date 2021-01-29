@@ -90,7 +90,7 @@
                 <p>현재 데이타가 없습니다.</p>
             </ul>
         </c:if>
-
+        <div id="testtest">
         <c:forEach var="item" items="${list}" varStatus="status">
             <ul class="board">
                 <li class="fl tc w70 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})"><c:out value="${item.noticeNo}"/></a></li>
@@ -139,7 +139,7 @@
                 </c:otherwise>
             </c:choose>
         </c:forEach>
-
+        </div>
     </div>
     <div>
         <a href="${root}/Notice/list?pageNo=1" class="btn btn-outline-info btn-sm mr-1">처음 </a>
@@ -159,6 +159,7 @@
         </c:if>
         <a href="${root}/Notice/list?pageNo=${pager.totalPageNo}" class="btn btn-outline-info btn-sm mr-1">맨끝 </a>
     </div>
+    <button id="addBtn" onclick="moreList();"><span>더보기</span></button>
     <script>
         function myShowFunction(no) {
             console.log(no)
@@ -175,6 +176,40 @@
             return false;
 
             // document.getElementById("panel").style.display = "block";
+        }
+
+        function moreList() {
+
+            var startNum = $("#listBody tr").length;  //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
+            var addListHtml = "";
+            console.log("startNum", startNum); //콘솔로그로 startNum에 값이 들어오는지 확인
+
+            $.ajax({
+                url: "${root}/Notice/listPlus",
+                type: "get",
+                success : function(data) {
+                    if(data.length < 10){
+                        $("#addBtn").remove();   // 더보기 버튼을 div 클래스로 줘야 할 수도 있음
+                    }else{
+                        var addListHtml ="";
+                        if(data.length > 0){
+                            console.log(data);
+                            // for(var i=0; i<data.length;i++) {
+                            //
+                            //     var idx = Number(startNum)+Number(i)+1;
+                            //     // 글번호 : startNum 이  10단위로 증가되기 때문에 startNum +i (+1은 i는 0부터 시작하므로 )
+                            //     addListHtml += "<tr>";
+                            //     addListHtml += "<td>"+ idx + "</td>";
+                            //     addListHtml += "<td>"+ data[i].title + "</td>";
+                            //     addListHtml += "<td>"+ data[i].description + "</td>";
+                            //     addListHtml += "</tr>";
+                            // }
+                            // $("#listBody").append(addListHtml);
+                        }
+                    }
+                }
+            });
+
         }
     </script>
 </div>

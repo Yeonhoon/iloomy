@@ -42,4 +42,18 @@ public class MemberService {
 	}
 
 
+    public String searchPw(Map<String, String> map) {
+		String tmp = mRepo.searchPw(map);
+		return tmp;
+    }
+
+	public UserDTO userInform(String userId) {
+		UserDTO tmp = mRepo.selectById(userId);
+		return tmp;
+	}
+
+	public int updateUser(Map<String, Object> map) {
+		int tmp = mRepo.updateUser(map);
+		return tmp;
+	}
 }

@@ -3,6 +3,8 @@ package com.mycompany.webapp.controller;
 import com.mycompany.webapp.dto.NoticeDTO;
 import com.mycompany.webapp.dto.PagerDTO;
 import com.mycompany.webapp.service.NoticeService;
+import org.apache.ibatis.ognl.ParseException;
+import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,13 @@ public class NoticeController {
         model.addAttribute("list", list);
         model.addAttribute("pager",pager);
 
+        return "notice/list";
+    }
+
+    @GetMapping("listPlus")
+    public String listtest(Model model) {
+        List<NoticeDTO> list = nService.getNoticeList();
+        model.addAttribute("list", list);
         return "notice/list";
     }
 
@@ -106,5 +115,29 @@ public class NoticeController {
         is.close();
     }
 
+//
+//    @ResponseBody
+//    @RequestMapping("/getMoreContents_ajax.do")
+//    public void getMoreContents(SearchVO paramVO
+//            , HttpServletRequest req
+//            , HttpServletResponse res
+//            , HttpSession session) throws ParseException, IOException{
+//
+//// resultList와 resultCnt 를 만들어줘야한다.
+////DB에서 값을 가져와 불러오거나
+////REST_API를 사용할경우 해당 JSON 값을 가져와
+////JSONArray로 만들어 json으로 전송해야한다.
+////사용자가 구현해야할 부분
+//
+//        JSONArray resultList = nService.getNoticeList();
+//        long resultCnt =
+//
+//                json.put("resultList", resultList);
+//        json.put("resultCnt", resultCnt);
+//
+//        res.setContentType("application/json; charset=utf-8");
+//        res.getWriter().write(json.toString());
+//
+//    }
 
 }

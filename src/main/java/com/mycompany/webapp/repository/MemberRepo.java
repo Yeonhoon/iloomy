@@ -27,4 +27,13 @@ public class MemberRepo {
 	}
 
 
+    public String searchPw(Map<String, String> map) {
+		String tmp = sst.selectOne("members.searchPw", map);
+		return tmp;
+    }
+
+	public int updateUser(Map<String, Object> map) {
+		int tmp = sst.update("members.updateUser",map);
+		return tmp;
+	}
 }
