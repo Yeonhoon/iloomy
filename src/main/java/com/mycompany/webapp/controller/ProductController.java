@@ -44,28 +44,28 @@ public class ProductController {
     @Autowired
     MemberService mService;
     
+    @Resource private ItemsService itemsService;
     
-    @GetMapping("/list")  //jisun , no parameter
+  //제품 목록 보여주기
+    @GetMapping("/list") 
     public String itemslist(Model model){
     	List<ItemsDTO> list = itemsService.getItemsList();
     	model.addAttribute("list", list);
         logger.info("실행 : product/list");
         return "product/productList";
     }
-   
     
-    @Resource private ItemsService itemsService;
     
-    @GetMapping(value = "detail")
-    public String listDetail(int no, Model model){
-        System.out.println(no);
+    //상세보기 페이지로 이동
+    @GetMapping("/detail")
+    public String itemsDetail(int no, Model model){
         logger.info("실행 : product/detail");
-//        ItemsDTO item = itemsService.getItem(no);
-//        System.out.println(item.toString());
-//        model.addAttribute("item", item);
-        model.addAttribute("lno", no);
+        ItemsDTO item = itemsService.getItem(no); // dto에서 정보 받기
+        model.addAttribute("item", item);
         return "product/productDetail";
     }
+
+     //------------------------------------------------------------------------------
     
     @GetMapping(value = "cart2")  //연결 header에서 지선 추가
     public String cart2(){

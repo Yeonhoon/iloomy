@@ -27,9 +27,9 @@
 	#list2 > p {padding: 50px;}
 	table {box-sizing: border-box;clear: both;width: 100%;border-top: 2px solid grey;border-bottom: 1px solid grey;}
 	#detailBtn, #detailImg{text-align: center;}
-	#list_name {text-align: left;}
-	#list_detail {font-size: 2rem;text-align: left;}
-	#list_price {color: red;text-align: right;}
+	#itemsName {text-align: left;}
+	#itemsContext {font-size: 2rem;text-align: left;}
+	#itemsPrice {color: red;text-align: right;}
 	#pay:hover, #bag:hover {cursor: pointer; color: white;}
 	#pay {
 		padding: 10px;

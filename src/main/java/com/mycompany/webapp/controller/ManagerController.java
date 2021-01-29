@@ -38,18 +38,18 @@ public class ManagerController {
     @PostMapping("/write")
     public String write(HttpSession session, ItemsDTO dto) throws IllegalStateException, IOException {
     	MultipartFile mf = dto.getItemsAttach();
-    	System.out.println(dto.toString());
     	// 사진 저장
     	if(!mf.isEmpty()) {
     		dto.setItemsAttachOname(mf.getOriginalFilename());
     		String saveName = new Date().getTime() + "-" + mf.getOriginalFilename();
     		dto.setItemsAttachSname(saveName);
     		dto.setItemsAttachtype(mf.getContentType());
-    		
     		File saveFile = new File("D:/MW/uploadfiles/board/" + saveName);
     		mf.transferTo(saveFile);
     	}
+    	System.out.println(dto.toString());
     	itemsService.saveBoard(dto);
+    	
     	return "redirect:/manager/productList";
     }
 

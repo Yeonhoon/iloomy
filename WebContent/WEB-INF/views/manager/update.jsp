@@ -54,6 +54,12 @@
 
 	<ul id="reviseList" style="margin-left:100px;">
 		<li>
+			<label for="itemsAttachSname"><b>게시물 사진</b></label>
+				<img src="${items.itemsAttachSname}" />
+				<input type="file" name="itemsAttach" value="이미지 변경"/>
+		</li>
+	
+		<li>
 			<label for="num"><b>게시물번호</b></label><br>
 				<input type="hidden" name="itemsNo" style="width: 260px;" value="${items.itemsNo}"/>
 			<div id="uidError" class="error"></div><br />
@@ -61,38 +67,38 @@
 		<li>
 			<label for="product_name"><b>제품명</b></label><br />
 			<input type="text" id="product_name" name="product_name" style="width: 250px;"
-				value="${items.itemsNo}" />
+				value="${items.itemsName}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_price"><b>가격(원)</b></label><br />
-			<input type="number" id="product_price" name="product_price" style="width: 250px;"value="${items.itemsNo}" />
+			<input type="number" id="product_price" name="items" style="width: 250px;"value="${items.itemsPrice}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="brand"><b>브랜드명</b></label><br>
-			<input type="text" id="brand" name="brand" style="width: 260px;" value="${items.itemsNo}"/>
+			<input type="text" id="brand" name="brand" style="width: 260px;" value="${items.itemsCompany}"/>
 			<div id="uidError" class="error"></div><br />
 		</li>
  		<li>
 			<label for="product_context"><b>제품설명</b></label><br />
-			<input type="text" id="delivery_date" name="delivery_date" style="width: 250px;" value="${items.itemsNo}" />
+			<input type="text" id="delivery_date" name="delivery_date" style="width: 250px;" value="${items.itemsContext}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_manufacture"><b>제조사</b></label><br />
-			<input type="text" id="delivery_method" name="delivery_method" style="width: 250px;" value="${items.itemsNo}" />
+			<input type="text" id="delivery_method" name="delivery_method" style="width: 250px;" value="${items.itemsManufacture}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_madein"><b>원산지</b></label><br />
-			<input type="text" id="delivery_fee" name="delivery_fee" style="width: 250px;"	value="${items.itemsNo}" />
+			<input type="text" id="delivery_fee" name="delivery_fee" style="width: 250px;"	value="${items.itemsOrigin}" />
 			<div id="uidError" class="error"></div><br />
 		</li>
 		<li>
 			<label for="product_color"><b>[필수]제품색상</b></label><br />
 			<input type="text" id="typeColor" name="product_color"
-				style="width: 250px; display:inline-block; " value="${items.itemsNo}"/>
+				style="width: 250px; display:inline-block; " value="${items.itemsColor}"/>
 			<input type="button" class="addBtn" onclick="addColor()" value="추가" /><br />
 			<div id="addColor" style=" margin-top:30px;">
 				<select name="color_select" id="color_select" style="width:350px;">
@@ -100,25 +106,23 @@
 					<option id="그레이" value="">그레이</option>
 				</select>
 				<br />
-				<!-- <input type="button" onclick="removeColor()" value="삭제" /> -->
 			</div>
 			<div id="uidError" class="error"></div> <br />
 		</li>
 		<li>
 			<label for="product_option"><b>[선택]제품사양</b></label><br />
 			<input type="text" id="typeOption" name="product_option"
-				style="width: 250px; display: inline-block;"  value="${items.itemsNo}"/>
+				style="width: 250px; display: inline-block;"  value="${items.itemsOption}"/>
 			<input type="button" class="addBtn" onclick="addOption()" value="추가" /><br />
 		</li>
 		<li>
-			<label for=""></label>
-		</li>
 			<div id="addColor" style=" margin-top:30px;">
 				<select name="productOption" id="productOption" style="width: 350px;">
 					<option value="">쿠시노 침대가드 1000폭</option>
 					<option value="">쿠시노 침대풋보드 1000폭</option>
 				</select>
 			</div>
+		
 		</li>
 	</ul>
 				

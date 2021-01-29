@@ -22,8 +22,8 @@ public class ItemsService {
 
 	public void saveBoard(ItemsDTO dto) {
 		itemsRepo.insert(dto);
+		
 	}
-
 
 	public ItemsDTO getItem(int no) {
 		ItemsDTO item = itemsRepo.selectByPk(no);

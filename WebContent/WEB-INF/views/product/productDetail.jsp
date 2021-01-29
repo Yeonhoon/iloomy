@@ -23,12 +23,18 @@
 		</div>
 			<nav>
 				<div id="detailphoto">
-					<img src="${root}/resources/img/l10.jpg" height="600px;"/>
+					<img id="itemsAttach" src="itemsAttach?itemsNo=${item.itemsNo}" height="600px;"/>
 				</div>
 				<div id="detail">
-					<p id="list_name" >쿠시노</p>
-					<p id="list_detail"><b>저상형 패밀리침대(인조가죽)</b></p>
-					<p id="list_price">1,009,000원</p>
+					<input type="hidden" name="itemsNo" value="${item.itemsNo}"/>
+					<p id="itemsName">${item.itemsName}</p>
+					<p id="itemsCompany">${item.itemsCompany }</p>
+					<p id="itemsContext"><b>${item.itemsContext}</b></p>
+					<p id="itemsPrice">${item.itemsPrice}</p>
+					<p id="itemsModel">${item.itemsModel}</p>
+					<p id="itemsOrigin">${item.itemsOrigin}</p>
+					<p id="itemsStock">${item.itemsStock}</p>
+					<p id="itemsManufacture">${item.itemsManufacture}</p>
 					<hr/>
 					<p style="font-size: 0.8rem"><b>배송기간</b> 약 10일 <b>배송비</b> 무료배송 
 					<b>배송방법</b> 설치배송 <b>제품코드</b> HB722501</p>

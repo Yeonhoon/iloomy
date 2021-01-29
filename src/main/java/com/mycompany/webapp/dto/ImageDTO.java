@@ -6,6 +6,9 @@ public class ImageDTO {
 	private String image2;
 	private String image3;
 	private int itemsItemsNo;
+	
+	
+	
 	public int getImage_no() {
 		return image_no;
 	}
@@ -36,6 +39,7 @@ public class ImageDTO {
 	public void setItemsItemsNo(int itemsItemsNo) {
 		this.itemsItemsNo = itemsItemsNo;
 	}
+	
 	@Override
 	public String toString() {
 		return "ImageDTO [image_no=" + image_no + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3
