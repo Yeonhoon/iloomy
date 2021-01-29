@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dto.ItemsDTO;
+import com.mycompany.webapp.dto.ItemsImagesDTO;
 import com.mycompany.webapp.repository.ItemsRepo;
 
 @Service
@@ -21,11 +22,19 @@ public class ItemsService {
 //		boardrepo.delete(bno);
 	}
 
+	//
 	public void saveBoard(ItemsDTO dto) {
 		itemsRepo.insert(dto);
 		
 	}
 
+	public void getPk(ItemsDTO dto, ItemsImagesDTO imagesDTO) {
+		//ItemsDTO에서 itemsNo 가져오기. 왜냐하면 PK이므로.
+		int itemsNo = dto.getItemsNo();
+		imagesDTO.setItemsItemsNo(itemsNo);
+		System.out.println(itemsNo);
+	}
+	
 	public ItemsDTO getItem(int no) {
 		ItemsDTO item = itemsRepo.selectByPk(no);
 		return item;
@@ -45,6 +54,7 @@ public class ItemsService {
 		ItemsDTO item = itemsRepo.selectItem(map);
 		return item;
 	}
+
 
 
 }

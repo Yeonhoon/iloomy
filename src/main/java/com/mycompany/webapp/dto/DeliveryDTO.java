@@ -19,7 +19,6 @@ public class DeliveryDTO {
 		this.deliveryStatus = deliveryStatus;
 	}
 
-
 	public int getDeliveryNo() {
 		return deliveryNo;
 	}

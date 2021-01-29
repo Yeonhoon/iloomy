@@ -17,12 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.ItemsDTO;
+import com.mycompany.webapp.dto.ItemsImagesDTO;
+import com.mycompany.webapp.service.ImagesService;
 import com.mycompany.webapp.service.ItemsService;
 
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
 
+	@Resource private ItemsService itemsService;
+	@Resource private ImagesService imagesService;
+
+	
     private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
 
 
@@ -33,10 +39,12 @@ public class ManagerController {
     	return "manager/writeform";
     }
 
+    //이미지 만들기
     
     //작성 글 저장
     @PostMapping("/write")
     public String write(HttpSession session, ItemsDTO dto) throws IllegalStateException, IOException {
+    	
     	MultipartFile mf = dto.getItemsAttach();
     	// 사진 저장
     	if(!mf.isEmpty()) {
@@ -50,9 +58,32 @@ public class ManagerController {
     	System.out.println(dto.toString());
     	itemsService.saveBoard(dto);
     	
-    	return "redirect:/manager/productList";
+    	
+    	return "redirect:/manager/writeDetail";
     }
+    
+    @GetMapping("/writeDetail")
+    public String writeDetail() {
+//        logger.info(dto.getItemsimages().getDetail1());
+//        logger.info(dto.getItemsimages().getDetail2());
+//        logger.info(dto.getItemsimages().getDetail3());
 
+        return "manager/writeDetail";
+    }
+    
+    
+
+    // 상세 이미지 업로드 시 미리보기
+    @GetMapping("/imagepreview") //메소드는 get방식으로 가져오기
+	public String imagePr(Model model) {
+		String saveDirPath = "D:/MW/uploadfiles/write";
+		File dir = new File(saveDirPath);
+		String [] fileNames = dir.list(); // 폴더 안에 있는 모든 파일 명을 배열로 내놓음
+		model.addAttribute("fileNames",fileNames);
+		
+		return "manager/imagepreview";
+	}
+    
     // 제품 목록으로 돌아가기
     @GetMapping("/productList")
     public String productList() {
@@ -85,11 +116,7 @@ public class ManagerController {
     }
 
     
-    
-    
     //제품 삭제
-    @Resource
-    private ItemsService itemsService;
 
     @PostMapping("/delete")
     public String delete(int bno) {

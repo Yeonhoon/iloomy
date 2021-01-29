@@ -1,6 +1,6 @@
 package com.mycompany.webapp.dto;
 
-public class ImageDTO {
+public class ItemsImagesDTO {
 	private int detail_no;
 	private int itemsItemsNo;
 	private String detail1;
@@ -8,14 +8,13 @@ public class ImageDTO {
 	private String detail3;
 	private String image1Attachtype;
 	private String image1AttachOname;
-	private String image1ATtachSname;
+	private String image1AttachSname;
 	private String image2Attachtype;
 	private String image2AttachOname;
-	private String image2ATtachSname;
+	private String image2AttachSname;
 	private String image3Attachtype;
 	private String image3AttachOname;
-	private String image3ATtachSname;
-	
+	private String image3AttachSname;
 	
 	public int getDetail_no() {
 		return detail_no;
@@ -59,11 +58,11 @@ public class ImageDTO {
 	public void setImage1AttachOname(String image1AttachOname) {
 		this.image1AttachOname = image1AttachOname;
 	}
-	public String getImage1ATtachSname() {
-		return image1ATtachSname;
+	public String getImage1AttachSname() {
+		return image1AttachSname;
 	}
-	public void setImage1ATtachSname(String image1aTtachSname) {
-		image1ATtachSname = image1aTtachSname;
+	public void setImage1AttachSname(String image1AttachSname) {
+		this.image1AttachSname = image1AttachSname;
 	}
 	public String getImage2Attachtype() {
 		return image2Attachtype;
@@ -77,11 +76,11 @@ public class ImageDTO {
 	public void setImage2AttachOname(String image2AttachOname) {
 		this.image2AttachOname = image2AttachOname;
 	}
-	public String getImage2ATtachSname() {
-		return image2ATtachSname;
+	public String getImage2AttachSname() {
+		return image2AttachSname;
 	}
-	public void setImage2ATtachSname(String image2aTtachSname) {
-		image2ATtachSname = image2aTtachSname;
+	public void setImage2AttachSname(String image2AttachSname) {
+		this.image2AttachSname = image2AttachSname;
 	}
 	public String getImage3Attachtype() {
 		return image3Attachtype;
@@ -95,27 +94,23 @@ public class ImageDTO {
 	public void setImage3AttachOname(String image3AttachOname) {
 		this.image3AttachOname = image3AttachOname;
 	}
-	public String getImage3ATtachSname() {
-		return image3ATtachSname;
+	public String getImage3AttachSname() {
+		return image3AttachSname;
 	}
-	public void setImage3ATtachSname(String image3aTtachSname) {
-		image3ATtachSname = image3aTtachSname;
+	public void setImage3AttachSname(String image3AttachSname) {
+		this.image3AttachSname = image3AttachSname;
 	}
 	
 	@Override
 	public String toString() {
-		return "ImageDTO [detail_no=" + detail_no + ", itemsItemsNo=" + itemsItemsNo + ", detail1=" + detail1
+		return "ItemsImagesDTO [detail_no=" + detail_no + ", itemsItemsNo=" + itemsItemsNo + ", detail1=" + detail1
 				+ ", detail2=" + detail2 + ", detail3=" + detail3 + ", image1Attachtype=" + image1Attachtype
-				+ ", image1AttachOname=" + image1AttachOname + ", image1ATtachSname=" + image1ATtachSname
+				+ ", image1AttachOname=" + image1AttachOname + ", image1AttachSname=" + image1AttachSname
 				+ ", image2Attachtype=" + image2Attachtype + ", image2AttachOname=" + image2AttachOname
-				+ ", image2ATtachSname=" + image2ATtachSname + ", image3Attachtype=" + image3Attachtype
-				+ ", image3AttachOname=" + image3AttachOname + ", image3ATtachSname=" + image3ATtachSname + "]";
+				+ ", image2AttachSname=" + image2AttachSname + ", image3Attachtype=" + image3Attachtype
+				+ ", image3AttachOname=" + image3AttachOname + ", image3AttachSname=" + image3AttachSname + "]";
 	}
 	
-
 	
 	
-	
-	
-	
-}
+	}
