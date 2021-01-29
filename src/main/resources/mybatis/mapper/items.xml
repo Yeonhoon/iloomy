@@ -46,6 +46,25 @@
 		items_attachsname =	#{itemsAttachSname}, items_attachtype = #{itemsAttachtype}
 	</update>
 
+	<select id="listByPk" parameterType="int" resultType="item">
+		select 
+			items_no, items_name, items_company,
+			items_price,items_context, items_color, items_stock,
+			items_model, items_manufacture, items_origin, items_option,
+			items_attachtype, items_attachoname, items_attachsname 
+		from items 
+		where items_no = #{itemsNo}
+	</select>
+	
+	<select id="selectItem" parameterType="hashmap" resultType="item">
+		select 
+			items_no, items_name, items_company,
+			items_price,items_context, items_color, items_stock,
+			items_model, items_manufacture, items_origin, items_option,
+			items_attachtype, items_attachoname, items_attachsname 
+		from items 
+		where items_name = #{itemsName} AND items_color=#{itemsColor} AND items_option = #{itemsOption}
+	</select>
 
 
 </mapper>

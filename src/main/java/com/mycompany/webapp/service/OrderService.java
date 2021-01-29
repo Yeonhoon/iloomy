@@ -1,15 +1,15 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.mycompany.webapp.dto.AddressDTO;
 import com.mycompany.webapp.dto.DeliveryDTO;
 import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrdersDTO;
-import com.mycompany.webapp.repository.DeliveryRepo;
 import com.mycompany.webapp.repository.ItemsRepo;
 import com.mycompany.webapp.repository.OrderRepo;
 
@@ -53,10 +53,15 @@ public class OrderService {
 		orderItemsDTO.setItemsItemsNo(itemdto.getItemsNo()); //items FK 받음
 		System.out.println("service_getItemsNo: "+ itemdto.getItemsNo());
 		orderRepo.saveOrderItem(orderItemsDTO);
-		
-		
-		
-		
+	}
+
+	public List<OrderItemsDTO> getItemCart() {
+		List<OrderItemsDTO> orderItemLists =  orderRepo.selectItemCart();
+		for (OrderItemsDTO orderitem : orderItemLists) {
+			List <ItemsDTO> itemList = itemsRepo.listByPk(orderitem.getItemsItemsNo());
+			orderitem.setItemList(itemList);
+		}
+		return orderItemLists;
 	}
 	
 	

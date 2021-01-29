@@ -3,7 +3,9 @@ package com.mycompany.webapp.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -109,16 +110,15 @@ public class ProductController {
         return "product/cart";
     }
 
- 
     @PostMapping(value = "cart") 
-    public String cart(int lno, HttpSession session, HttpServletRequest req){
+    public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req){
     	
 		//user
 		String userId = (String)session.getAttribute("userinfo");
 		UserDTO users = memberService.selectAddress(userId);
 		
      	//delivery
-		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Ready);
+		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Before);
 //		deliveryService.saveDelivery(deliveryDTO);  //세이브 확인
 //		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
 		
@@ -130,42 +130,58 @@ public class ProductController {
 //		orderService.saveOrder(orderDTO);  //세이브 확인
 //		System.out.println("3. orderDTO : "+orderDTO.toString());
 		
-		
-		//items
-		//product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거 list로 받아 와야하낭? 
-		String pColor = req.getParameter("colorOption");
-		String pOption = req.getParameter("productOption");
-//		System.out.println("4. lno: " + lno);
-		
-		ItemsDTO pDTO = new ItemsDTO();
-		pDTO.setItemsNo(lno);
-		pDTO.setItemsName("볼케");
-		pDTO.setItemsColor(pColor);
-		pDTO.setItemsOption(pOption);
-		pDTO.setItemsPrice(1009000);
+		//items정보 가져오기 (itemsName, option, color)
+		String itemsColor = req.getParameter("itemsColor");
+		String itemsOption = req.getParameter("itemsOption");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("itemsName", itemsName);
+		map.put("itemsColor", itemsColor);
+		map.put("itemsOption", itemsOption);
+		ItemsDTO item = itemsService.selectItem(map);
 		
     	//order_items
-		OrderItemsDTO orderItemsDTO =  new OrderItemsDTO(1, 1009000);
+		OrderItemsDTO orderItemsDTO =  new OrderItemsDTO(1, item.getItemsPrice());
 		orderService.order(userId, deliveryDTO, orderDTO, orderItemsDTO);
 		System.out.println("1. orderItemsDTO : "+orderItemsDTO.toString());
 		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
 		System.out.println("3. orderDTO : "+orderDTO.toString());
 		
+		//order_items를 불러와서 orders의 status가 카트인것만 보여주기
+		//product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
+		//pDTO를 for each
+		// status=cart에 있는거 list로 받아옴
+		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+		session.setAttribute("orderItemLists", orderItemLists);
+
+		
+		ItemsDTO pDTO = new ItemsDTO();
+		pDTO.setItemsNo(lno);
+		pDTO.setItemsName(itemsName);
+		pDTO.setItemsColor(itemsColor);
+		pDTO.setItemsOption(itemsOption);
+		pDTO.setItemsPrice(1009000);
     	
 		session.setAttribute("pDTO", pDTO);
         return "product/cart";//product/cart.jsp 연결
     }
     
     @GetMapping(value = "/order")
- 	public String method1(OrderItemsDTO orderItem, HttpServletRequest request, ModelMap model, int hidden) throws Exception {
- 		String [] arr = request.getParameterValues("check");
+ 	public String method1(OrderItemsDTO orderItem, HttpServletRequest request, Model model) throws Exception {
+ 		String [] arr = request.getParameterValues("check"); //itemsNo
+ 		for (String i : arr) {
+ 			System.out.println(i);
+ 		}
+ 
+ 		//테이블이 order_items, orders(status:cart), delivery(status:before)
+ 		//count랑 price 받아옴
+ 		
 // 		if(hidden ==1) {
 // 			
 // 		}else if(hidden==2) {
 // 			
 // 		}
  		
-// 		1.orderoderno 가져와고
+// 		1.orderorderno 가져와고
 // 		2. itemsItemsNo 가졍고
 // 		3. orderItem.set(1);
 // 						set(2);
@@ -177,12 +193,11 @@ public class ProductController {
      	System.out.println(dtoa.toString());
      	
  		System.out.println(orderItem.toString());
- 		for (String i : arr) {
- 			System.out.println(i);
- 		}
+ 		
  		model.addAttribute("arr", arr);
- 		return "product/productList";
+ 		return "product/order";
  	}
     
 
 }
+

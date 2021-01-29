@@ -20,4 +20,10 @@
 		values (order_seq.nextval, #{orderItemsCount}, #{orderItemsPrice}, #{orderOrderNo}, #{itemsItemsNo})
 		
 	</insert>
+	
+	<select id="selectItemCart" resultType="orderitem">
+		select a.order_items_no, a.order_items_count, a.order_items_price, a.orders_order_no, a.items_items_no
+		from order_items a join orders b on a.orders_order_no = b.order_no
+		where b.status =0
+	</select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.mycompany.webapp.repository;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -29,5 +31,10 @@ public class OrderRepo {
 	public void saveOrderItem(OrderItemsDTO orderItemsDTO) {
 		sst.insert("orders.saveOrderItem", orderItemsDTO);
 		
+	}
+
+	public List<OrderItemsDTO> selectItemCart() {
+		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemCart");
+		return orderItemLists;
 	}
 }

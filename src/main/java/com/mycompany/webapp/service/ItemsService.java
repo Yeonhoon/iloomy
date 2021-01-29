@@ -1,6 +1,7 @@
 package com.mycompany.webapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -37,6 +38,11 @@ public class ItemsService {
 	public List<ItemsDTO> getItemsList() {
 		List<ItemsDTO> list = itemsRepo.selectAll();
 		return list;
+	}
+	
+	public ItemsDTO selectItem(Map<String, String> map) {
+		ItemsDTO item = itemsRepo.selectItem(map);
+		return item;
 	}
 
 

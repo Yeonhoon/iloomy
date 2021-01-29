@@ -41,13 +41,13 @@
 					<br/>
 					<form id="productCart" method="POST" action="">
 						<div id="option">
-							<select name="colorOption" id="colorOption">
+							<select name="itemsColor" id="itemsColor">
 								<option value="none">[필수]색상을 선택해주세요</option>
 								<option value="brown">브라운</option>
 								<option value="beige">베이지</option>
 								<option value="grey">그레이</option>
 							</select>
-							<select name="productOption" id="productOption">
+							<select name="itemsOption" id="itemsOption">
 								<option value="none">[필수] 제품사양</option>
 								<option value="basic">쿠시노 침대가드 1000폭 (basic)</option>
 								<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
@@ -132,8 +132,8 @@
 		$(document).ready(function() {
 			$("#bag").click(function() {
 				var pass;
-				const color = $("#colorOption option:selected").val();
-				const option = $("#productOption option:selected").val();
+				const color = $("#itemsColor option:selected").val();
+				const option = $("#itemsOption option:selected").val();
 				
 				if (color === "none" || option === "none") {
 					alert("옵션을 선택해주세요!");
@@ -147,8 +147,8 @@
 			
 			$("#pay").click(function() {
 				var pass;
-				const color = $("#colorOption option:selected").val();
-				const option = $("#productOption option:selected").val();
+				const color = $("#itemsColor option:selected").val();
+				const option = $("#itemsOption option:selected").val();
 				if (color == "none" || option == "none") {
 					alert("옵션을 선택해주세요!");
 					return;

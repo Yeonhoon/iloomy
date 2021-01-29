@@ -1,6 +1,7 @@
 package com.mycompany.webapp.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -33,6 +34,16 @@ public class ItemsRepo {
 	public List<ItemsDTO> selectAll() {
 		List<ItemsDTO> list = sst.selectList("items.selectAll");
 		return list;
+	}
+
+	public List<ItemsDTO> listByPk(int itemsItemsNo) {
+		List<ItemsDTO> list = sst.selectList("items.listByPk", itemsItemsNo);
+		return list;
+	}
+
+	public ItemsDTO selectItem(Map<String, String> map) {
+		ItemsDTO item = sst.selectOne("items.selectItem",map);
+		return null;
 	}
 
 //	public int delete(int bno) {
