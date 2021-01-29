@@ -42,7 +42,7 @@ public class OrderService {
 		orderItemsDTO.setOrderOrderNo(orderNo); //orders FK 받음
 		System.out.println("service_orderNo: "+ orderNo);
 		orderRepo.saveOrderItem(orderItemsDTO);
-		System.out.println(orderItemsDTO.toString());
+		System.out.println("orderItemsDTO: "+orderItemsDTO.toString());
 	}
 
 	public List<OrderItemsDTO> getItemCart() {

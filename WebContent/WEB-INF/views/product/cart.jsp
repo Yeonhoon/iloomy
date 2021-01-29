@@ -26,6 +26,7 @@
 		</div>
 		<section id="row">		
 			<div class="contain">
+
 				<div id="sec">
 					<p style="font-size: 3rem;">장바구니</p>
 				</div>
@@ -45,31 +46,36 @@
 							<th>상품금액</th>
 							<th>주문</th>
 						</tr>
-					<c:if test=""></c:if>
-					 	<tr>
-							<td>
-								<input type="checkbox" name="check" class="check" value="${pDTO.itemsNo}">
-							</td>
-							<td>${pDTO.itemsName}</td>
-							<td>${pDTO.itemsOption}</td>
-							<td>${pDTO.itemsColor}</td>
-							<td><fmt:formatNumber value="${pDTO.itemsPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
+					<c:forEach var="orderItem" items="${orderItemLists}">
+			<%-- 						${orderItem}
+				${orderItem.options.get(0)}
+				${orderItem.options.get(1)}
+				${orderItem.options.get(2)}
+				${orderItem.orderItemsPrice}
+				${orderItem.orderItemsCount}
+				${orderItem.orderItemsNo} --%>
+					<tr>
+							<td><input type="checkbox" name="check" class="check" value="${orderItem.orderItemsNo}"></td>
+							<td>${orderItem.options.get(2)}</td>
+							<td>${orderItem.options.get(0)}</td>
+							<td>${orderItem.options.get(1)}</td>
+							<td><fmt:formatNumber value="${orderItem.orderItemsPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
 							<td>
 								<a class="countdown" style="color:black"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
-								<span id="count"><%-- ${pDTO.itemsNo} default로로로롤--%>1</span>
+								<span id="count">${orderItem.orderItemsCount}</span>
 								<input type="hidden" id="orderItemsCount" name="orderItemsCount" value="1"/>
 								<a class="countup"  style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
 							</td>
 							<td>
-								<span id="totalPrice"> ${pDTO.itemsPrice}</span>원
-								<input type="hidden" id="orderItemsPrice" name="orderItemsPrice" value="${pDTO.itemsPrice}"/>
+								<span id="totalPrice"> ${orderItem.orderItemsPrice}</span>원
+								<input type="hidden" id="orderItemsPrice" name="orderItemsPrice" value="${orderItem.orderItemsPrice}"/>
 							</td>
 							<td>
 								<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
 								<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">삭제</a>
 							</td>
-						</tr>
-
+						</tr> 
+					</c:forEach>
 					</table>
 					<!-- "checked" 속성은 기능관련 속성이라 prop 함수에서는 true/false로 출력 -->
 					<div id="cartOrder">

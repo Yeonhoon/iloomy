@@ -3,6 +3,7 @@ package com.mycompany.webapp.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,7 +113,6 @@ public class ProductController {
 
     @PostMapping(value = "cart") 
     public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req){
-    	System.out.println("cartcart컴온");
 		//user
 		String userId = (String)session.getAttribute("userinfo");
 		UserDTO users = memberService.selectAddress(userId);
@@ -151,21 +151,49 @@ public class ProductController {
 		
 		//order_items를 불러와서 orders의 status가 카트인것만 보여주기
 		//product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
-		//pDTO를 for each
 		// status=cart에 있는거 list로 받아옴
 		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
-		session.setAttribute("orderItemLists", orderItemLists);
-		System.out.println("6. OrderItemsDTO : "+orderItemLists.toString());
 		
-		session.setAttribute("orderItemLists", orderItemLists);
-		ItemsDTO pDTO = new ItemsDTO();
-		pDTO.setItemsNo(lno);
-		pDTO.setItemsName(itemsName);
-		pDTO.setItemsColor(itemsColor);
-		pDTO.setItemsOption(itemsOption);
-		pDTO.setItemsPrice(1009000);
-    	
-		session.setAttribute("pDTO", pDTO);
+		///////////////////////////////////////////////////////////////
+		List<Map<String, Object>>list  = new ArrayList<>();
+		Map<String, Object> orderTest = new HashMap<String, Object>();
+		for (int i=0; i<orderItemLists.size(); i++) {
+			OrderItemsDTO ord = orderItemLists.get(i); 
+			int orderItemsNo = ord.getOrderItemsNo();
+			int orderItemsCount = ord.getOrderItemsCount();
+			long orderItemsPrice = ord.getOrderItemsPrice();
+			orderTest.put("orderItemsCount", orderItemsCount); //
+			orderTest.put("orderItemsPrice", orderItemsPrice);//
+			orderTest.put("orderItemsNo", orderItemsNo);
+			List<String> test = new ArrayList<String>();
+			for(int j =0; j<ord.getItemList().size(); j++) {
+				ItemsDTO ite = ord.getItemList().get(j);
+				String color = ite.getItemsColor(); //
+				String option = ite.getItemsOption(); //
+				String name = ite.getItemsName();
+				test.add(option);
+				test.add(color);
+				test.add(name);
+			}
+			orderTest.put("options", test);//
+			list.add(orderTest);
+		}
+		
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+		
+		//////////////////////////////////////////////////////////////
+		session.setAttribute("orderItemLists", list);
+//		System.out.println("6. OrderItemsDTO : "+orderItemLists.toString());
+//		ItemsDTO pDTO = new ItemsDTO();
+//		pDTO.setItemsNo(lno);
+//		pDTO.setItemsName(itemsName);
+//		pDTO.setItemsColor(itemsColor);
+//		pDTO.setItemsOption(itemsOption);
+//		pDTO.setItemsPrice(1009000);
+//    	
+//		session.setAttribute("pDTO", pDTO);
         return "product/cart";//product/cart.jsp 연결
     }
     
