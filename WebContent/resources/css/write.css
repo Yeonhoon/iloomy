@@ -18,10 +18,15 @@
 	background-color: rgba(255, 0, 01);
 }
 
-;
-transition:background-color 2s ;
+.list{
+	width: 200px;
+	text-align: center;
+}
 
-.body {
+.input{
+	width: 300px;
+}
+#mainform {
 	padding-right: 300px;
 	padding-left: 300px;
 }
@@ -30,14 +35,5 @@ transition:background-color 2s ;
 	margin: 30px 30px;
 }
 
-#writeDetail {
-	display: flex;
-}
 
-#imageinput {
-	flex: 6;
-}
 
-#imagepreview {
-	flex: 4;
-}

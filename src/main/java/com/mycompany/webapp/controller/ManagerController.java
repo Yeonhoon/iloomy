@@ -57,13 +57,12 @@ public class ManagerController {
     	}
     	System.out.println(dto.toString());
     	itemsService.saveBoard(dto);
-    	
-    	
     	return "redirect:/manager/writeDetail";
     }
     
+    //상세 내용 작성페이지로 이동
     @GetMapping("/writeDetail")
-    public String writeDetail() {
+    public String toDetail() {
 //        logger.info(dto.getItemsimages().getDetail1());
 //        logger.info(dto.getItemsimages().getDetail2());
 //        logger.info(dto.getItemsimages().getDetail3());
@@ -71,6 +70,32 @@ public class ManagerController {
         return "manager/writeDetail";
     }
     
+    //상세내용 저장
+    @PostMapping("/writeDetail")
+    public String writeDetail(HttpSession session, ItemsImagesDTO dto) throws IllegalStateException, IOException {
+    	ItemsDTO items = new ItemsDTO();
+//    	String detail1 = dto.getDetail1();
+//    	String oname = dto.getImage1AttachOname();
+//    	String sname = dto.getImage1AttachSname();
+//    	String type = dto.getImage1Attachtype();
+    	
+    	MultipartFile mf1 = dto.getImagesAttach();
+    	// 사진 저장
+    	if(!mf1.isEmpty()) {
+    		dto.setImage1AttachOname(mf1.getOriginalFilename());
+    		String saveName = new Date().getTime() + "-" + mf1.getOriginalFilename();
+    		dto.setImage1AttachSname(saveName);
+    		dto.setImage1Attachtype(mf1.getContentType());
+    		File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
+    		mf1.transferTo(saveFile);
+    	}
+    	dto.setItemsItemsNo(items.getItemsNo());
+    	System.out.println(dto.toString());
+		
+    	imagesService.saveImages(dto);
+    	
+    	return "redirect:/product/productList";
+    }
     
 
     // 상세 이미지 업로드 시 미리보기

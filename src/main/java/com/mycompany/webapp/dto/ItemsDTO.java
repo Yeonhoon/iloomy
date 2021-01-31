@@ -30,6 +30,7 @@ public class ItemsDTO {
 	public void setItemsNo(int itemsNo) {
 		this.itemsNo = itemsNo;
 	}
+	
 	public String getItemsName() {
 		return itemsName;
 	}

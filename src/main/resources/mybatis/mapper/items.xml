@@ -15,16 +15,17 @@
 		select items_no, items_name, items_company,
 		items_price,items_context, items_color, items_stock,
 		items_model, items_manufacture, items_origin, items_option,
-		items_attachtype, items_attachoname, items_attachsname from
-		items where items_no = #{itemsNo}
+		items_attachtype, items_attachoname, items_attachsname 
+		from items
+		where items_no = #{itemsNo}
 	</select>
-
+	
 	<insert id="insert" parameterType="item">
-<!-- 		<selectKey keyProperty="itemsNo" resultType="int" order="BEFORE">
-			select items_seq from dual;
-		</selectKey> -->
-		insert into items 
-			(items_no, items_name, items_company,
+		<selectKey keyProperty="itemsNo" resultType="int" order="BEFORE">
+			select items_seq.nextval from dual
+		</selectKey>
+		insert into items
+		(items_no, items_name, items_company,
 			items_price, items_context, items_color, items_stock,
 			items_option, items_model, items_manufacture, items_origin,
 			items_attachoname, items_attachsname, items_attachtype)
@@ -34,6 +35,23 @@
 			#{itemsOption}, #{itemsModel}, #{itemsManufacture},
 			#{itemsOrigin}, #{itemsAttachOname}, #{itemsAttachSname},
 			#{itemsAttachtype})
+	</insert>
+	
+	<insert id="insertimages" parameterType="itemimages">
+		insert into items
+			(detail_no,
+			items_items_no,
+			detail1,
+			image1_attachtype,
+			image1_attachoname,
+			image1_attachsname)
+		values
+			(itemsimages_seq.nextval,
+			#{itemsItemsNo},
+			#{detail1},
+			#{image1Attachtype},
+			#{image1AttachOname},
+			#{image1AttachSname})
 	</insert>
  
 	<update id="update" parameterType="item">

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#title{
+	margin: 30px 30px;
+}
+
+#detail{
+	padding-right:300px;
+	padding-left: 300px;
+}
+
+#detail .table td{
+	vertical-align: middle;
+	text-align: center;
+}

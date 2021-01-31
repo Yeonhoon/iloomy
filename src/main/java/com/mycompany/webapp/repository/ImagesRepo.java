@@ -15,7 +15,7 @@ public class ImagesRepo {
 	private SqlSessionTemplate sst;
 	
 	public int saveImages(ItemsImagesDTO imagesDTO) {
-		int rows = sst.insert("items.insertImages",imagesDTO);
+		int rows = sst.insert("items.insertimages", imagesDTO);
 		return rows;
 	}
 
