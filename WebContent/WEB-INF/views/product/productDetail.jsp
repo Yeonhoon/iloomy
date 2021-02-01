@@ -2,6 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 
 <html>
@@ -21,16 +22,15 @@
 		<div class="headerwrap">
       		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 		</div>
-			<nav>
-				<div id="detailphoto">
+			<article id="main">
+				<div id="mainphoto">
 					<img id="itemsAttach" src="${root}/product/itemsAttach?no=${item.itemsNo}" height="600px;"/>
 				</div>
-				<div id="detail">
+				<div id="maininfo">
 					<input type="hidden" name="itemsNo" value="${item.itemsNo}"/>
 					<p id="itemsName">${item.itemsName}</p>
 					<p id="itemsCompany">${item.itemsCompany }</p>
 					<p id="itemsContext"><b>${item.itemsContext}</b></p>
-					<p id="itemsPrice">${item.itemsPrice}</p>
 					<p id="itemsModel">${item.itemsModel}</p>
 					<p id="itemsOrigin">${item.itemsOrigin}</p>
 					<p id="itemsStock">${item.itemsStock}</p>
@@ -39,40 +39,39 @@
 					<p style="font-size: 0.8rem"><b>배송기간</b> 약 10일 <b>배송비</b> 무료배송 
 					<b>배송방법</b> 설치배송 <b>제품코드</b> HB722501</p>
 					<br/>
-					<form id="productCart" method="POST" action="">
-						<div id="option">
-							<select name="itemsColor" id="itemsColor">
-								<option value="none">[필수]색상을 선택해주세요</option>
-								<option value="brown">브라운</option>
-								<option value="beige">베이지</option>
-								<option value="grey">그레이</option>
-							</select>
-							<select name="itemsOption" id="itemsOption">
-								<option value="none">[필수] 제품사양</option>
-								<option value="basic">쿠시노 침대가드 1000폭 (basic)</option>
-								<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
-							</select>
-						</div>
+					<div id="option">
+						<select name="itemsColor" id="itemsColor">
+							<option value="none">[필수]색상을 선택해주세요</option>
+							<option value="brown">브라운</option>
+							<option value="beige">베이지</option>
+							<option value="grey">그레이</option>
+						</select>
+						<select name="itemsOption" id="itemsOption">
+							<option value="none">[필수] 제품사양</option>
+							<option value="basic">쿠시노 침대가드 1000폭 (basic)</option>
+							<option value="addFoot">쿠시노 침대풋보드 1000폭</option>
+						</select>
+					</div>
 						<hr/>
 							
 						<p style="display: inline;"><b>총 구매가</b></p>
-						<div id="detailPrice">
-							<span><b>0 원</b> </span>
+						<div id="itemsPrice">
+							<span><b><fmt:formatNumber value="${item.itemsPrice}" type="number"/>원</b></span>
 						</div>
 						<br/>	
 						<div id="detailBtn">
 							<button id="pay" type="button"> 결제하기 </button>
 							<button id="bag" type="button"> 장바구니 </button>
 						</div>	
-					</form>
 					<br/>
 					<div id="detailImg">
 						<a href="#" target="_black"><img src="${root}/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
 						<a href="#" target="_black"><img src="${root}/resources/img/l12.jpg" width="400px" style="margin-bottom: 20px;"/></a><br/>
 					</div>
 				</div>
-			</nav>
-			<article>
+			</article>
+			<hr />	
+			<article id="detail">
 				<table>
 					<tr style="color: #adb5bd; text-align: center;">
 						<td>상세정보</td>
@@ -82,10 +81,23 @@
 						<td>Q&A</td>
 					</tr>
 				</table>
- 				<div id="list" >
-					<img src="${root}/product/imageattach?no=${image.detailNo}"/>
-					<p>${image.detail1}</p>
-				</div>
+	 				<div id="list" >
+						<img src="${root}/product/imageattach?no=${image.detailNo}"/>
+						<p class="detailinfo" style="text-align: center;">${image.detail1}</p>
+					</div>
+					<c:if test="${image.detail2 != null}">
+						<div id="list2">
+							<img src="${root}/product/imageattach?no=${image.detailNo}"/>
+							<p class="detailinfo" style="text-align: center;">${image.detail2}</p>
+						</div>
+					</c:if>
+					<c:if test="${image.detail3 != null}">
+					<div id="list3">
+						<img src="${root}/product/imageattach?no=${image.detailNo}"/>
+						<p class="detailinfo" style="text-align: center;">${image.detail3}</p>
+					</div>
+					</c:if>
+					
 				<%--<div style="text-align: center; padding: 30px;">
 					<p style="font-size: 2rem;">쿠시노 저상형 패밀리 침대(인조가죽)</p>
 					<p>신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다.</p>
@@ -114,7 +126,7 @@
 					
 					<!-- 로그인 상태에서만 보이기 -->
 					<c:if test="${userinfo eq 'admin'}">
-						<a class="btn btn-warning ml-3" href="${root}/manager/update?itemsNo=${item.itemsNo}">수정</a>
+						<a class="btn btn-warning ml-3" href="${root}/manager/update?no=${item.itemsNo}">수정</a>
 						<a class="btn btn-danger ml-3" href="${root}/manager/delete" style="color:black;">삭제</a>
 					</c:if>
 				</div>

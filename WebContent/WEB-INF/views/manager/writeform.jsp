@@ -72,7 +72,7 @@
 									</tr>
 									<tr>
 										<td class="list"><label for="itemsAttach">이미지 첨부 </label></td>
-										<td class="input"><input type="file" id="itemsAttach" name="itemsAttach" value="이미지 첨부" /></td>
+										<td class="input"><input type="file" id="itemsAttach" name="itemsAttach" value="이미지 첨부"/></td>
 									</tr>
 									
 								</tbody>

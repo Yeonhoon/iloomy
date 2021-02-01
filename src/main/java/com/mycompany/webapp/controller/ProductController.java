@@ -66,78 +66,79 @@ public class ProductController {
 		return "product/productList";
 	}
 
-	// 사진 정보 불러오기
-	@GetMapping(value = "/itemsAttach")
-	public void itemsAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+	//사진 정보 불러오기
+    @GetMapping(value = "/itemsAttach")
+    public void itemsAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+    	
+    	ItemsDTO item = itemsService.getItem(no);
+        String filePath = null;
 
-		ItemsDTO item = itemsService.getItem(no);
-		String filePath = null;
+        
+        if(item.getItemsAttachOname() != null) {
+        	String itemAttach = item.getItemsAttachSname();
+        	filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+        	
+        	response.setContentType(item.getItemsAttachtype());
+        	
+        	String oname = item.getItemsAttachOname();
+        	oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+        	response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+        } else {
+        	filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+        	response.setContentType("image/jpg");
+        }
 
-		if (item.getItemsAttachOname() != null) {
-			String itemAttach = item.getItemsAttachSname();
-			filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+        OutputStream os = response.getOutputStream();
+        InputStream is = new FileInputStream(filePath);
+        FileCopyUtils.copy(is,os);
+        os.flush();
+        os.close();
+        is.close();
+    }
+    
+    
+    //상세보기 페이지로 이동
+    @GetMapping("/detail")
+    public String itemsDetail(int no, Model model){
+        logger.info("실행 : product/detail");
+        ItemsDTO item = itemsService.getItem(no); // main 사진 불러오기
+        model.addAttribute("lno", no);
+        model.addAttribute("item", item);
+        
+        ItemsImagesDTO image = imagesService.getMainImage(no);
+        model.addAttribute("image", image);
+        System.out.println(item.toString());
+        System.out.println(image.toString());
+        return "product/productDetail";
+    }
 
-			response.setContentType(item.getItemsAttachtype());
-
-			String oname = item.getItemsAttachOname();
-			oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-			response.setHeader("Content-Disposition", "attachment; filename=\"" + oname + "\"");
-		} else {
-			filePath = "D:/MW/uploadfiles/items/defaultimage.jpg";
-			response.setContentType("image/jpg");
-		}
-
-		OutputStream os = response.getOutputStream();
-		InputStream is = new FileInputStream(filePath);
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
-	}
-
-	// 상세보기 페이지로 이동
-	@GetMapping("/detail")
-	public String itemsDetail(int no, Model model) {
-		logger.info("실행 : product/detail");
-		ItemsDTO item = itemsService.getItem(no); // dto에서 정보 받기
-		model.addAttribute("lno", no);
-		model.addAttribute("item", item);
-
-		ItemsImagesDTO image = imagesService.getMainImage(no);
-		model.addAttribute("image", image);
-		System.out.println(item.toString());
-		System.out.println(image.toString());
-		return "product/productDetail";
-	}
-
-	// detail image 불러오기
-	@GetMapping("/imageattach")
-	public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
-
-		ItemsImagesDTO images = imagesService.getDetailImage(no);
-		String filePath = null;
-
-		if (images.getImage1AttachOname() != null) {
-			String itemAttach = images.getImage1AttachSname();
-			filePath = "D:/MW/uploadfiles/items/" + itemAttach;
-
-			response.setContentType(images.getImage1Attachtype());
-
-			String oname = images.getImage1AttachOname();
-			oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-			response.setHeader("Content-Disposition", "attachment; filename=\"" + oname + "\"");
-		} else {
-			filePath = "D:/MW/uploadfiles/items/defaultimage.jpg";
-			response.setContentType("image/jpg");
-		}
-
-		OutputStream os = response.getOutputStream();
-		InputStream is = new FileInputStream(filePath);
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
-	}
+  //detail image 불러오기
+    @GetMapping("/imageattach")
+    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+    	
+    	ItemsImagesDTO images = imagesService.getDetailImage(no);
+    	String filePath = null;
+    	
+    	if(images.getImage1AttachOname() != null) {
+    		String itemAttach = images.getImage1AttachSname();
+    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+    		
+    		response.setContentType(images.getImage1Attachtype());
+    		
+    		String oname = images.getImage1AttachOname();
+    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+    	} else {
+    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+    		response.setContentType("image/jpg");
+    	}
+    	OutputStream os = response.getOutputStream();
+    	InputStream is = new FileInputStream(filePath);
+    	FileCopyUtils.copy(is,os);
+    	os.flush();
+    	os.close();
+    	is.close();
+    }
 
 	// ------------------------------------------------------------------------------
 

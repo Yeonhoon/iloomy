@@ -1,35 +1,33 @@
 @charset "EUC-KR";
+	
+	
 	ul, li {list-style: none;}
-	nav{
+	#main{
+		margin-top: 100px;
 		display:flex;
-		width: 80%;
-		margin: auto;
-		align-items: center;
-		justify-content: center;
+		padding-right: 300px;
+		padding-left: 300px;
 		/* text-align: center; */
 	}
 	
-	#detail {height: 600px; width: 450px; display: inline-block; 
-	margin-left: 50px; margin-bottom: 20px; position: relative;} 
-	#list{
-		margin-top: 50px;
-		margin: 0 auto;
-		height:600px;
-		box-sizing: border-box;
-		text-align: center;
+	#mainphoto{
+		flex:5;
+		width: 600px;
+		position: relative;
+		clear: left;
 	}
-	#list2 {
-		margin: 0 auto;
-		margin-top: 50px;
-		box-sizing: border-box;
-		text-align: center;
+	
+	#maininfo{
+		flex:4;
+		width: 400px;
+		position: relative;
 	}
-	#list2 > p {padding: 50px;}
-	table {box-sizing: border-box;clear: both;width: 100%;border-top: 2px solid grey;border-bottom: 1px solid grey;}
+	
 	#detailBtn, #detailImg{text-align: center;}
-	#itemsName {text-align: left;}
-	#itemsContext {font-size: 2rem;text-align: left;}
-	#itemsPrice {color: red;text-align: right;}
+	#itemsName {text-align: left; font-size:2rem;}
+	#itemsContext, #itemsCompany {font-size: 1rem; text-align: left;}
+	#itemsPrice {color: red; text-align: right;}
+	#itemsOrigin, #itemsManufacture, #itemsStock{font-size:1rem; }
 	#pay:hover, #bag:hover {cursor: pointer; color: white;}
 	#pay {
 		padding: 10px;
@@ -37,6 +35,43 @@
 		background-color: #f03e3e;
 		border: 1px solid grey;
 	}
+	
+	#detail {
+		
+		display: inline-block; 
+		width: 1000px;
+		margin-left: 50px; margin-bottom: 20px; position: relative;
+		margin: 50px 50px;
+		margin-right: 300px;
+		margin-left: 300px;
+	} 
+	
+	.detailinfo {
+		margin: 50px 50px;
+	}
+	
+	#list{
+		margin-top: 50px;
+		margin: 0 auto;
+		height:600px;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	
+	#list2 {
+		margin: 0 auto;
+		margin-top: 50px;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	
+	
+	#list2 > p {padding: 50px;}
+	table {
+	box-sizing: border-box;clear: both;width: 100%;border-top: 2px solid grey;border-bottom: 1px solid grey;
+	margin-bottom:70px;
+	}
+
 	#bag {
 		padding: 10px;
 		width: 200px;

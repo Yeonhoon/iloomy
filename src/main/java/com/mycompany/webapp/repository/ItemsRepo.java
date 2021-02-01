@@ -46,6 +46,11 @@ public class ItemsRepo {
 		return item;
 	}
 
+	public ItemsDTO selectJoin(int no) {
+		ItemsDTO item = sst.selectOne("items.selectJoin",no);
+		return item;
+	}
+
 
 //	public int delete(int bno) {
 //		int rows = sst.delete("", bno);

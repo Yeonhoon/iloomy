@@ -41,18 +41,18 @@
 									cols="50" rows="10"></textarea></td>
 							<td><input type="file" id="image1" name="imagesAttach" /></td>
 						</tr>
-<!-- 						<tr>
+ 						<tr>
 							<td><label for="detail2">상세설명2</label><br /></td>
 							<td><textarea name="detail2" id="detail2"
 									cols="50" rows="10"></textarea></td>
-							<td><input type="file" id="image2" name="image2" /></td>
+							<td><input type="file" id="image2" name="imageAttach2" /></td>
 						</tr>
 						<tr>
 							<td><label for="detail3">상세설명3</label></td>
 							<td><textarea name="detail3" id="detail3"
 									cols="50" rows="10"></textarea></td>
-							<td><input type="file" id="image3" name="image3" /></td>
-						</tr> -->
+							<td><input type="file" id="image3" name="imageAttach3" /></td>
+						</tr>
 					</tbody>
 				</table>
 			</form>

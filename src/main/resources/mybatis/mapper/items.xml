@@ -20,11 +20,17 @@
 		where items_no = #{itemsNo}
 	</select>
 	
+	<select id="selectJoin" parameterType="int" resultType="item">
+		select i.*, m.detail_no 
+		from items i, items_images m 
+        where i.items_no = m.items_items_no and m.items_items_no = #{itemsNo}
+	</select>
+	
 	<!-- items items_no로 불러오기 -->
 	<select id="selectByItemsItemsNo" parameterType="int" resultType="itemimages">
 		select detail_no, detail1, image1_attachtype, image1_attachoname, image1_attachsname, items_items_no
 		from items_images
-		where items_items_no = #{items_items_no}
+		where items_items_no = #{itemsItemsNo}
 	</select>
 	
 	<select id="selectByDetailNo" parameterType="int" resultType="itemimages">
@@ -67,15 +73,27 @@
 			#{image1AttachSname})
 	</insert>
  
+ 	<!-- 메인 부분 업데이트 -->
 	<update id="update" parameterType="item">
-		update items set items_name = #{itemsName}, items_company =
-		#{itemsCompany}, items_price = #{itemsPrice}, items_color=
-		#{itemsColor}, items_option= #{itemsOption}, items_stock =
-		#{itemsStock}, items_model = #{itemsModel}, items_maunfacture =
-		#{itemsManufacture}, items_origin = #{itemsOrigin},
-		items_attachoname = #{itemsAttachOname}, items_attachsname =
-		#{itemsAttachSname}, items_attachtype = #{itemsAttachtype}
+		update items
+		set items_name = #{itemsName}, items_company = #{itemsCompany},	items_price = #{itemsPrice}, 
+		items_color= #{itemsColor}, items_option= #{itemsOption}, items_stock =	#{itemsStock}, 
+		items_model = #{itemsModel}, items_manufacture = #{itemsManufacture}, items_origin = #{itemsOrigin},
+ 		items_attachoname = #{itemsAttachOname}, items_attachsname = #{itemsAttachSname}, items_attachtype = #{itemsAttachtype}
+		where items_no = #{itemsNo}
 	</update>
+	
+ 	<!-- 디테일 업데이트 -->
+	<update id="updateDetail" parameterType="itemimages">
+		update items_images 
+		set 
+		detail1 = #{detail1},
+		image1_attachtype = #{image1Attachtype},
+		image1_attachoname = #{image1AttachOname},
+		image1_attachsname = #{image1AttachSname}
+		where detail_no = #{detailNo}
+	</update>
+	
 
 	<select id="listByPk" parameterType="int" resultType="item">
 		select items_no, items_name, items_company,

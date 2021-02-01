@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 
 <html>
@@ -131,20 +133,18 @@ to {
 		</nav>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-3">
 					<c:forEach var="item" items="${list}">
-						<a href="${root}/product/detail?no=${item.itemsNo}">
+						<a class="productCell" href="${root}/product/detail?no=${item.itemsNo}" style="margin:50px">
 							<c:if test="${item.itemsAttachSname != null}">
 								<img src="${root}/product/itemsAttach?no=${item.itemsNo}" width=350px;>
 							</c:if>
-								<ul style="float: left;">
-									<li><b>${item.itemsName}</b></li>
-									<li>${item.itemsCompany}</li>
-									<li style="color: red;">${item.itemsPrice}원</li>
-								</ul>
+						<div class="brief">
+							<span><b>${item.itemsName}</b></span><br />
+							<span>${item.itemsCompany}</span><br />
+							<span style="color:red;"><fmt:formatNumber value="${item.itemsPrice}" type="number"/>원</span><br />
+						</div>
 						</a>
 					</c:forEach>
-				</div>
 			</div>
 		</div>
 

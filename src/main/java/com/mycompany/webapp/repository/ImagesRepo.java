@@ -28,5 +28,10 @@ public class ImagesRepo {
 		int rows = sst.insert("items.insertimages", imagesDTO);
 		return rows;
 	}
+
+	public int updateImage(ItemsImagesDTO imagesDTO) {
+		int rows = sst.update("items.updateDetail", imagesDTO);
+		return rows;
+	}
 	
 }

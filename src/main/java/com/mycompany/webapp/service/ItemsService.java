@@ -39,6 +39,10 @@ public class ItemsService {
 		ItemsDTO item = itemsRepo.selectByPk(no);
 		return item;
 	}
+	public ItemsDTO getItemJoin(int no) {
+		ItemsDTO item = itemsRepo.selectJoin(no);
+		return item;
+	}
 
 	public void updateItem(ItemsDTO dto) {
 		itemsRepo.update(dto);
@@ -54,7 +58,5 @@ public class ItemsService {
 		ItemsDTO item = itemsRepo.selectItem(map);
 		return item;
 	}
-
-
 
 }

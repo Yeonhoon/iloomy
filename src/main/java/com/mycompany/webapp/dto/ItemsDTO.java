@@ -23,7 +23,14 @@ public class ItemsDTO {
 	private String itemsAttachtype;
 	private String itemsAttachOname;
 	private String itemsAttachSname;
+	private String itemsItemsNo;
 	
+	public String getItemsItemsNo() {
+		return itemsItemsNo;
+	}
+	public void setItemsItemsNo(String itemsItemsNo) {
+		this.itemsItemsNo = itemsItemsNo;
+	}
 	public int getItemsNo() {
 		return itemsNo;
 	}

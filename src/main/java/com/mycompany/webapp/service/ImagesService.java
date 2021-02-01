@@ -33,6 +33,12 @@ public class ImagesService {
 		return image;
 	}
 
+	//세부 내용 수정
+	public void updateItem(ItemsImagesDTO imagesDTO) {
+		imagesRepo.updateImage(imagesDTO);
+		
+	}
+
 
 	
 	
