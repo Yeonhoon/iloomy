@@ -5,6 +5,7 @@ import com.mycompany.webapp.dto.AddressDTO;
 import com.mycompany.webapp.dto.UserDTO;
 import com.mycompany.webapp.service.MemberService;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,7 +87,7 @@ public class UserController {
         String id = (String) session.getAttribute("userinfo");
         UserDTO user = mService.userInform(id);
         System.out.println("/user/detail : " + user.toString());
-        model.addAttribute("userInfom",user);
+        model.addAttribute("userInform",user);
         return "user/detail";
     }
 
@@ -112,16 +116,30 @@ public class UserController {
     }
 
     @PostMapping("findpw")
-    public String findpw(UserDTO users){
-        String tmp="";
+    public void findpw(UserDTO users, HttpServletResponse res) throws IOException {
+
+        System.out.println(users.toString());
 
         Map<String, String> map = new HashMap<>();
         map.put("id",users.getId());
         map.put("name", users.getName());
 
-        tmp = mService.searchPw(map);
-        System.out.println(tmp);
-        return tmp;
+        String result = mService.searchPw(map);
+
+        res.setContentType("application/json; charset=UTF-8");
+        JSONObject object = new JSONObject();
+        object.put("result", result);
+        PrintWriter pw = res.getWriter();
+        pw.println(object.toString());
+
+        pw.flush();
+        pw.close();
+
+        System.out.println(result);
+    }
+    @GetMapping("findpwd")
+    public String findpwForm(){
+        return "user/findPwd";
     }
 
 
