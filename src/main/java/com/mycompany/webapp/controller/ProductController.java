@@ -140,124 +140,135 @@ public class ProductController {
     	is.close();
     }
 
-	// ------------------------------------------------------------------------------
+ // ------------------------------------------------------------------------------
 
-	@GetMapping(value = "cart2") // 연결 header에서 지선 추가
-	public String cart2(HttpSession session) {
-		session.removeAttribute("orderItemLists");
-		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
-		session.setAttribute("orderItemLists", orderItemLists);
-		logger.info("실행 : product/cart2");
-		return "product/cart";
-	}
+ 	@GetMapping(value = "cart2") // 연결 header에서 지선 추가
+ 	public String cart2(HttpSession session) {
+ 		session.removeAttribute("orderItemLists");
+ 		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+ 		session.setAttribute("orderItemLists", orderItemLists);
+ 		logger.info("실행 : product/cart2");
+ 		return "product/cart";
+ 	}
 
-	@PostMapping(value = "cart")
-	public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req) {
-		// user
-		String userId = (String) session.getAttribute("userinfo");
-		UserDTO users = memberService.selectAddress(userId);
+ 	@PostMapping(value = "cart")
+ 	public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req) {
+ 		// user
+ 		String userId = (String) session.getAttribute("userinfo");
+ 		UserDTO users = memberService.selectAddress(userId);
 
-		// delivery
-		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Before);
-//		deliveryService.saveDelivery(deliveryDTO);  //세이브 확인
-//		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
+ 		// delivery
+ 		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Before);
+// 		deliveryService.saveDelivery(deliveryDTO);  //세이브 확인
+// 		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
 
-		// orders
-		OrdersDTO orderDTO = new OrdersDTO();
-		orderDTO.setMembersMembersId(userId);
-		orderDTO.setDeliveryDeliveryNo(deliveryDTO.getDeliveryNo());
-		orderDTO.setOrderStatus(OrderStatus.Cart);
-//		orderService.saveOrder(orderDTO);  //세이브 확인
-//		System.out.println("3. orderDTO : "+orderDTO.toString());
+ 		// orders
+ 		OrdersDTO orderDTO = new OrdersDTO();
+ 		orderDTO.setMembersMembersId(userId);
+ 		orderDTO.setDeliveryDeliveryNo(deliveryDTO.getDeliveryNo());
+ 		orderDTO.setStatus(OrderStatus.Cart);
+// 		orderService.saveOrder(orderDTO);  //세이브 확인
+// 		System.out.println("3. orderDTO : "+orderDTO.toString());
 
-		// items정보 가져오기 (itemsName, option, color)
-		String itemsColor = req.getParameter("itemsColor");
-		String itemsOption = req.getParameter("itemsOption");
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("itemsName", itemsName);
-		map.put("itemsColor", itemsColor);
-		map.put("itemsOption", itemsOption);
-		ItemsDTO item = itemsService.selectItem(map);
-//		System.out.println("4. ItemsDTO : "+item.toString());
+ 		// items정보 가져오기 (itemsName, option, color)
+ 		String itemsColor = req.getParameter("itemsColor");
+ 		String itemsOption = req.getParameter("itemsOption");
+ 		Map<String, String> map = new HashMap<String, String>();
+ 		map.put("itemsName", itemsName);
+ 		map.put("itemsColor", itemsColor);
+ 		map.put("itemsOption", itemsOption);
+ 		ItemsDTO item = itemsService.selectItem(map);
+// 		System.out.println("4. ItemsDTO : "+item.toString());
 
-		// order_items저장 items FK, count, price 받음
-//		public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, int itemsItemsNo )
-		OrderItemsDTO orderItemsDTO = new OrderItemsDTO(1, item.getItemsPrice(), item.getItemsNo());
-		orderService.order(userId, deliveryDTO, orderDTO, orderItemsDTO);
-//		System.out.println("5. orderItemsDTO : "+orderItemsDTO.toString());
+ 		// order_items저장 items FK, count, price 받음
+// 		public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, int itemsItemsNo )
+ 		OrderItemsDTO orderItemsDTO = new OrderItemsDTO(1, item.getItemsPrice(), item.getItemsNo());
+ 		orderService.order(userId, deliveryDTO, orderDTO, orderItemsDTO);
+// 		System.out.println("5. orderItemsDTO : "+orderItemsDTO.toString());
 
-		// order_items를 불러와서 orders의 status가 카트인것만 보여주기
-		// product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
-		// status=cart에 있는거 list로 받아옴
-		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+ 		// order_items를 불러와서 orders의 status가 카트인것만 보여주기
+ 		// product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
+ 		// status=cart에 있는거 list로 받아옴
+ 		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
 
-		///////////////////////////////////////////////////////////////
-//		List<Map<String, Object>>list  = new ArrayList<>();
-//		Map<String, Object> orderTest = new HashMap<String, Object>();
-//		
-//		for (int i=0; i<orderItemLists.size(); i++) {
-//			OrderItemsDTO ord = orderItemLists.get(i); 
-//			int orderItemsNo = ord.getOrderItemsNo();
-//			int orderItemsCount = ord.getOrderItemsCount();
-//			long orderItemsPrice = ord.getOrderItemsPrice();
-//			orderTest.put("orderItemsCount", orderItemsCount); //
-//			orderTest.put("orderItemsPrice", orderItemsPrice+i);//
-//			orderTest.put("orderItemsNo", orderItemsNo);
-//			
-//			ItemsDTO ite = ord.getItem();
-//			List<String> test = new ArrayList<String>();
-//			String color = ite.getItemsColor(); 
-//			String option = ite.getItemsOption(); 
-//			String name = ite.getItemsName();
-//			test.add(option);
-//			test.add(color);
-//			test.add(name);
-////			for(int j =0; j<ord.getItemList().size(); j++) {
-////				ItemsDTO ite = ord.getItemList().get(j);
-////				String color = ite.getItemsColor(); //
-////				String option = ite.getItemsOption(); //
-////				String name = ite.getItemsName();
-////				test.add(option);
-////				test.add(color);
-////				test.add(name);
-////			}
-//			orderTest.put("options", test);//
-//			list.add(orderTest);
-//		}
-		//////////////////////////////////////////////////////////////
-		session.setAttribute("orderItemLists", orderItemLists);
-		return "product/cart";// product/cart.jsp 연결
-	}
+ 		///////////////////////////////////////////////////////////////
+// 		List<Map<String, Object>>list  = new ArrayList<>();
+// 		Map<String, Object> orderTest = new HashMap<String, Object>();
+// 		
+// 		for (int i=0; i<orderItemLists.size(); i++) {
+// 			OrderItemsDTO ord = orderItemLists.get(i); 
+// 			int orderItemsNo = ord.getOrderItemsNo();
+// 			int orderItemsCount = ord.getOrderItemsCount();
+// 			long orderItemsPrice = ord.getOrderItemsPrice();
+// 			orderTest.put("orderItemsCount", orderItemsCount); //
+// 			orderTest.put("orderItemsPrice", orderItemsPrice+i);//
+// 			orderTest.put("orderItemsNo", orderItemsNo);
+// 			
+// 			ItemsDTO ite = ord.getItem();
+// 			List<String> test = new ArrayList<String>();
+// 			String color = ite.getItemsColor(); 
+// 			String option = ite.getItemsOption(); 
+// 			String name = ite.getItemsName();
+// 			test.add(option);
+// 			test.add(color);
+// 			test.add(name);
+//// 			for(int j =0; j<ord.getItemList().size(); j++) {
+//// 				ItemsDTO ite = ord.getItemList().get(j);
+//// 				String color = ite.getItemsColor(); //
+//// 				String option = ite.getItemsOption(); //
+//// 				String name = ite.getItemsName();
+//// 				test.add(option);
+//// 				test.add(color);
+//// 				test.add(name);
+//// 			}
+// 			orderTest.put("options", test);//
+// 			list.add(orderTest);
+// 		}
+ 		//////////////////////////////////////////////////////////////
+ 		session.setAttribute("orderItemLists", orderItemLists);
+ 		return "product/cart";// product/cart.jsp 연결
+ 	}
 
-	@GetMapping(value = "/order")
-	public String method1(HttpServletRequest request, Model model, HttpSession session) throws Exception {
+ 	@GetMapping(value = "/order")
+ 	public String method1(HttpServletRequest request, Model model, HttpSession session) throws Exception {
 
-		//
-		if (request.getParameterValues("check") != null) {
+ 		//
+ 		if (request.getParameterValues("check") != null) {
 
-			String[] arr = request.getParameterValues("check"); // orderItemsNo
-			for (String i : arr) {
-				int orderItemsNo = Integer.parseInt(request.getParameter("orderItemsNo" + i));
-				int ordersOrderNo = Integer.parseInt(request.getParameter("ordersOrderNo" + i));
-				int itemsItemsNo = Integer.parseInt(request.getParameter("itemsItemsNo" + i));
-				System.out.println(orderItemsNo);
-				int orderItemsCount = Integer.parseInt(request.getParameter("orderItemsCount" + i));
-				long orderItemsPrice = Long.parseLong(request.getParameter("orderItemsPrice" + i));
-				System.out.println("count: " + orderItemsCount);
-				System.out.println("price: " + orderItemsPrice);
-				OrderItemsDTO orderItem = new OrderItemsDTO(orderItemsNo, orderItemsCount, orderItemsPrice,
-						ordersOrderNo, itemsItemsNo);
-				orderService.updateOrder(orderItem);
-				System.out.println(orderItem.toString());
-			}
-		}
-		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
-		System.out.println("orderItemLists: " + orderItemLists);
-		session.setAttribute("orderItemLists", orderItemLists);
-		
-		//order에서 status 랑 date 가져오기
-		
-		return "product/order";
-	}
+ 			String[] arr = request.getParameterValues("check"); // orderItemsNo
+ 			for (String i : arr) {
+ 				int orderItemsNo = Integer.parseInt(request.getParameter("orderItemsNo" + i));
+ 				int ordersOrderNo = Integer.parseInt(request.getParameter("ordersOrderNo" + i));
+ 				int itemsItemsNo = Integer.parseInt(request.getParameter("itemsItemsNo" + i));
+ 				System.out.println(orderItemsNo);
+ 				int orderItemsCount = Integer.parseInt(request.getParameter("orderItemsCount" + i));
+ 				long orderItemsPrice = Long.parseLong(request.getParameter("orderItemsPrice" + i));
+ 				System.out.println("count: " + orderItemsCount);
+ 				System.out.println("price: " + orderItemsPrice);
+ 				OrderItemsDTO orderItem = new OrderItemsDTO(orderItemsNo, orderItemsCount, orderItemsPrice,
+ 						ordersOrderNo, itemsItemsNo);
+ 				orderService.updateOrder(orderItem);
+ 				System.out.println(orderItem.toString());
+ 			}
+ 		}
+ 		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
+ 		
+ 		
+ 		//order에서 date, delivery에서 status가져오기
+ 		for (OrderItemsDTO ordItem : orderItemLists) {
+ 			OrdersDTO order = orderService.selectByPk(ordItem.getOrdersOrderNo());
+ 			System.out.println(order);
+ 			ordItem.setOrder(order);
+ 			DeliveryDTO delivery = deliveryService.selectByPk(ordItem.getOrdersOrderNo());
+ 			System.out.println(delivery);
+ 			ordItem.setDelivery(delivery);
+ 		}
+ 		System.out.println("orderItemLists: " + orderItemLists);
+ 		session.setAttribute("orderItemLists", orderItemLists);
+ 		
+ 		
+ 		//delivery에서 status
+ 		return "product/order";
+ 	}
 
-}
+ }

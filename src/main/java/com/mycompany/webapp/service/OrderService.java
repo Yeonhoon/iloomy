@@ -82,6 +82,12 @@ public class OrderService {
 		
 		return orderItemLists;
 	}
+
+
+	public OrdersDTO selectByPk(int ordersOrderNo) {
+		OrdersDTO order = orderRepo.selectOrder(ordersOrderNo);
+		return order;
+	}
 	
 	
 }

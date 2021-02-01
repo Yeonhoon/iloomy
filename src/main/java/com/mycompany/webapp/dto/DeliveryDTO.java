@@ -2,21 +2,18 @@ package com.mycompany.webapp.dto;
 
 public class DeliveryDTO {
 	private int deliveryNo;
-	 private AddressDTO address;
-	private DeliveryStatus deliveryStatus;
-	
-	
-	
+	private AddressDTO address;
+	private DeliveryStatus status;
 	
 	public DeliveryDTO() {
 		super();
 	}
 	
 	
-	public DeliveryDTO( AddressDTO address, DeliveryStatus deliveryStatus) {
+	public DeliveryDTO( AddressDTO address, DeliveryStatus status) {
 		super();
 		this.address = address;
-		this.deliveryStatus = deliveryStatus;
+		this.status = status;
 	}
 
 	public int getDeliveryNo() {
@@ -31,22 +28,24 @@ public class DeliveryDTO {
 	public void setAddress(AddressDTO address) {
 		this.address = address;
 	}
-	public DeliveryStatus getDeliveryStatus() {
-		return deliveryStatus;
+
+
+	public DeliveryStatus getStatus() {
+		return status;
 	}
-	public void setDeliveryStatus(DeliveryStatus deliveryStatus) {
-		this.deliveryStatus = deliveryStatus;
+
+
+	public void setStatus(DeliveryStatus status) {
+		this.status = status;
 	}
 
 
 	@Override
 	public String toString() {
-		return "DeliveryDTO [deliveryNo=" + deliveryNo + ", addressDTO=" + address + ", deliveryStatus="
-				+ deliveryStatus + "]";
+		return "DeliveryDTO [deliveryNo=" + deliveryNo + ", address=" + address + ", status=" + status + "]";
 	}
-	
-	
-	
+
+
 	
 	
 }

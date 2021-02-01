@@ -5,7 +5,7 @@
 		
 		insert into delivery (delivery_no, delivery_city, delivery_street, delivery_zipcode, status)
 		values (deli_seq.nextval, #{address.city}, #{address.street}, #{address.zipcode}, 
-		#{deliveryStatus, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler} )
+		#{status, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler} )
 	</insert>
 	
 	<insert id="insertDelivery" parameterType="delivery">
@@ -14,6 +14,23 @@
 		</selectKey>
 		insert into delivery (delivery_no, delivery_city, delivery_street, delivery_zipcode, status)
 		values (#{deliveryNo}, #{address.city}, #{address.street}, #{address.zipcode}, 
-		#{deliveryStatus, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler} )
+		#{status, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler} )
 	</insert>
+	
+	<!-- property>>Class column >> DB -->
+	<resultMap type="delivery" id="tableResultMap">
+		<id property="deliveryNo" column="deliveryNo" />
+		<id property="status" column="status" />
+			<association property="address"  javaType="AddressDTO" >
+				<result property="city" column="city" />
+				<result property="street" column="street" />
+				<result property="zipcode" column="zipcode" />
+			</association>
+	</resultMap>
+	
+	<select id="selecyByPk" parameterType="int" resultMap="tableResultMap">
+		select d.delivery_no as deliveryNo, d.delivery_city as city, d.delivery_street as street, d.delivery_zipcode as zipcode, d.status as status
+		from orders o join delivery d on o.delivery_delivery_no=d.delivery_no join order_items OI on OI.orders_order_no = o.order_no
+		where OI.orders_order_no = #{ordersOrderNo}
+	</select>
 </mapper>

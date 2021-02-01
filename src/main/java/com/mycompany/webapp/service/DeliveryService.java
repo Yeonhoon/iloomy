@@ -20,5 +20,10 @@ public class DeliveryService {
 		
 	}
 
+	public DeliveryDTO selectByPk(int ordersOrderNo) {
+		DeliveryDTO delivery = dRepo.selectByPk(ordersOrderNo);
+		return delivery;
+	}
+
 	
 }

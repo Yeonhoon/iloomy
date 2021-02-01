@@ -11,6 +11,8 @@ public class OrderItemsDTO {
 	private int itemsItemsNo;
 //	private List<ItemsDTO> itemList;
 	private ItemsDTO item;
+	private OrdersDTO order;
+	private DeliveryDTO delivery;
 	
 	public OrderItemsDTO() {
 		super();
@@ -46,6 +48,26 @@ public class OrderItemsDTO {
 	}
 
 
+
+	public DeliveryDTO getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(DeliveryDTO delivery) {
+		this.delivery = delivery;
+	}
+
+	public OrdersDTO getOrder() {
+		return order;
+	}
+
+	public void setOrder(OrdersDTO order) {
+		this.order = order;
+	}
+
+	public void setOrdersOrderNo(int ordersOrderNo) {
+		this.ordersOrderNo = ordersOrderNo;
+	}
 
 	public int getOrderItemsNo() {
 		return orderItemsNo;

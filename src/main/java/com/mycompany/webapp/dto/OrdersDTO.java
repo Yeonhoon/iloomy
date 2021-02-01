@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class OrdersDTO {
 	private int orderNo;
-	private Date orderDatetime;
-	private OrderStatus orderStatus;
+	private Date ordersDatetime;
+	private OrderStatus status;
 	private int deliveryDeliveryNo;
 	private String membersMembersId;
 
@@ -28,20 +28,22 @@ public class OrdersDTO {
 		this.orderNo = orderNo;
 	}
 
-	public Date getOrderDatetime() {
-		return orderDatetime;
+	
+
+	public Date getOrdersDatetime() {
+		return ordersDatetime;
 	}
 
-	public void setOrderDatetime(Date orderDatetime) {
-		this.orderDatetime = orderDatetime;
+	public void setOrdersDatetime(Date ordersDatetime) {
+		this.ordersDatetime = ordersDatetime;
 	}
 
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
+	public OrderStatus getStatus() {
+		return status;
 	}
 
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
+	public void setStatus(OrderStatus status) {
+		this.status = status;
 	}
 
 	public int getDeliveryDeliveryNo() {
@@ -62,8 +64,10 @@ public class OrdersDTO {
 
 	@Override
 	public String toString() {
-		return "OrdersDTO [orderNo=" + orderNo + ", orderDatetime=" + orderDatetime + ", orderStatus=" + orderStatus
+		return "OrdersDTO [orderNo=" + orderNo + ", ordersDatetime=" + ordersDatetime + ", status=" + status
 				+ ", deliveryDeliveryNo=" + deliveryDeliveryNo + ", membersMembersId=" + membersMembersId + "]";
 	}
+
+	
 
 }

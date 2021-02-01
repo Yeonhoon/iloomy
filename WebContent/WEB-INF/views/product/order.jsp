@@ -38,32 +38,37 @@
 			</div>
 			<div id="sec">
 				<p style="padding: 10px;">
-					<b>주문하실 상품을 선택해주세요</b>
+					<b>주문 목록</b>
 				</p>
 			</div>
 			<form id="chk" method="get" action="order">
 				<table id="orderList">
 					<tr style="color: #adb5bd;">
-						<th>주문 상태</th>
+						<th>목록</th>
 						<th colspan="3">상품정보</th>
 						<th>주문 날짜</th>
 						<th>수량</th>
 						<th>주문금액</th>
+						<th>배송 현황</th>
 					</tr>
-					
-					<c:forEach var="orderItemList" items="${orderItemLists}">
+					<c:forEach var="orderItemList" items="${orderItemLists}" varStatus="status">
 						<tr>
-							
+							<td>${status.count}</td>
 							<td>${orderItemList.item.itemsName}</td>
 							<td>${orderItemList.item.itemsOption}</td>
 							<td>${orderItemList.item.itemsColor}</td>
-							<td><fmt:formatDate value="" pattern="yyyy-MM-dd" /></td>
+							<td><fmt:formatDate value="${orderItemList.order.ordersDatetime}" pattern="yyyy-MM-dd" /></td>
 							<td><span id="totalPrice">
 									${orderItemList.orderItemsCount}</span></td>
-							<td><fmt:formatNumber
+							<td>
+								<fmt:formatNumber
 									value="${orderItemList.orderItemsPrice}" pattern="###,###,###"></fmt:formatNumber>원
 							</td>
+							<td>
+								<b>${orderItemList.delivery.status}</b>
+							</td>
 						</tr> 
+					
 					</c:forEach>
 				</table>
 				<!-- "checked" 속성은 기능관련 속성이라 prop 함수에서는 true/false로 출력 -->

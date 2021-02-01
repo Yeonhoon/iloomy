@@ -59,4 +59,9 @@ public class OrderRepo {
 		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemOrder");
 		return orderItemLists;
 	}
+
+	public OrdersDTO selectOrder(int ordersOrderNo) {
+		OrdersDTO order = sst.selectOne("orders.selectOrder", ordersOrderNo);
+		return order;
+	}
 }

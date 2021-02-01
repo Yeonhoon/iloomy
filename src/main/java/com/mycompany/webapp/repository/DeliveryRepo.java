@@ -20,4 +20,9 @@ public class DeliveryRepo {
 		
 	}
 
+	public DeliveryDTO selectByPk(int ordersOrderNo) {
+		DeliveryDTO delivery = sst.selectOne("delivery.selecyByPk", ordersOrderNo);
+		return delivery;
+	}
+
 }
