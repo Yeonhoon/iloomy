@@ -16,6 +16,7 @@
    <link rel="stylesheet" href="${root}/resources/css/login.css">
     <script type="text/javascript">
         function login() {
+            var keyCode = window.event.keyCode;
             if (document.getElementById("userid").value == "") {
                 alert("아이디 입력!!!");
                 return;
@@ -27,7 +28,11 @@
                 document.getElementById("loginform").submit();
             }
         }
-
+        function enterkey() {
+            if (window.event.keyCode == 13) {
+                login();
+            }
+        }
         function moveJoin() {
             document.location.href = "${root}/user/regist";
         }
@@ -49,10 +54,11 @@
             </div>
 
             <div class="form-group" align="left">
-                <label for="">비밀번호</label> <input type="password" class="form-control" id="userpassword" name="passWord" placeholder="">
+                <label for="">비밀번호</label> <input onkeydown="enterkey()" type="password" class="form-control" id="userpassword" name="passWord" placeholder="">
             </div>
 
             <div class="form-group" align="right">
+<%--                <button type="button" class="btn btn-danger" onclick="javascript:login();">로그인</button>--%>
                 <button type="button" class="btn btn-danger" onclick="javascript:login();">로그인</button>
                 <button type="button" class="btn btn-primary" onclick="javascript:moveJoin();">회원가입</button><br/>
                 <a id="pw" href="#" type="button" onclick="javascript:moveFindPwd();">비밀번호찾기</a>
