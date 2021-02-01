@@ -81,39 +81,8 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "detail")
-    public String detail(HttpSession session, Model model){
-        logger.info("실행 : /user/detail");
-        String id = (String) session.getAttribute("userinfo");
-        UserDTO user = mService.userInform(id);
-        System.out.println("/user/detail : " + user.toString());
-        model.addAttribute("userInform",user);
-        return "user/detail";
-    }
-
-    @PostMapping("update")
-    public String update(HttpSession session, HttpServletRequest req){
-        System.out.println("helloupdate");
-        String id = req.getParameter("userid");
-        String password = req.getParameter("userpassword");
-        String name = req.getParameter("username");
-        String city = req.getParameter("city");
-        String street = req.getParameter("street");
-        String zipcode = req.getParameter("zipcode");
-
-        address = new AddressDTO(city, street, zipcode);
-        user = new UserDTO(id, password, name, address);
 
 
-        Map<String, Object> map = new HashMap<>();
-//        String id = (String) session.getAttribute("userinfo");
-//        map.put("userid",id);
-        map.put("userid","hw");
-        map.put("userdto",user);
-        int num = mService.updateUser(map);
-        System.out.println(num);
-        return "redirect:/user/detail";
-    }
 
     @PostMapping("findpw")
     public void findpw(UserDTO users, HttpServletResponse res) throws IOException {
@@ -142,6 +111,38 @@ public class UserController {
         return "user/findPwd";
     }
 
+    @GetMapping(value = "detail")
+    public String detail(HttpSession session, Model model){
+        logger.info("실행 : /user/detail");
+        String id = (String) session.getAttribute("userinfo");
+        UserDTO user = mService.userInform(id);
+        System.out.println("/user/detail : " + user.toString());
+        model.addAttribute("userInform",user);
+        return "user/detail";
+    }
+
+    @PostMapping("update")
+    public String update(HttpSession session, HttpServletRequest req){
+        System.out.println("helloupdate");
+        String id = (String) session.getAttribute("userinfo");
+        String password = req.getParameter("userpassword");
+        String name = req.getParameter("username");
+        String city = req.getParameter("city");
+        String street = req.getParameter("street");
+        String zipcode = req.getParameter("zipcode");
+
+        address = new AddressDTO(city, street, zipcode);
+        user = new UserDTO(id, password, name, address);
+
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("userid",id);
+        map.put("userdto",user);
+        int num = mService.updateUser(map);
+        System.out.println(num);
+        return "redirect:/";
+    }
 
 
     

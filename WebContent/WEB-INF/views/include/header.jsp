@@ -69,6 +69,7 @@
 				<c:choose>
 					<c:when test="${userinfo ne null}">
 						<a><strong>${userinfo }</strong>님</a>
+						<a href="${root}/user/detail">회원정보</a>
 					</c:when>
 					<c:otherwise>
 						<a href="${root}/user/login">Login</a>
