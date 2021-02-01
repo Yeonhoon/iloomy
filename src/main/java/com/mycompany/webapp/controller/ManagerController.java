@@ -94,7 +94,7 @@ public class ManagerController {
 		
     	imagesService.saveImages(dto);
     	
-    	return "redirect:/product/productList";
+    	return "redirect:/manager/productList";
     }
     
 

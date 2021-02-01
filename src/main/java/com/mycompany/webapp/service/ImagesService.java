@@ -21,6 +21,18 @@ public class ImagesService {
 		
 	}
 
+	//메인이미지 불러오기
+	public ItemsImagesDTO getMainImage(int no) {
+		ItemsImagesDTO image = imagesRepo.selectByItemsItemsNo(no);
+		return image;
+	}
+	
+	//세부 이미지 불러오기
+	public ItemsImagesDTO getDetailImage(int no) {
+		ItemsImagesDTO image = imagesRepo.selectByDetailNo(no);
+		return image;
+	}
+
 
 	
 	

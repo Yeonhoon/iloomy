@@ -3,7 +3,7 @@ package com.mycompany.webapp.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ItemsImagesDTO {
-	private int detail_no;
+	private int detailNo;
 	private int itemsItemsNo;
 	private String detail1;
 //	private String detail2;
@@ -29,12 +29,15 @@ public class ItemsImagesDTO {
 	public void setImagesAttach(MultipartFile imagesAttach) {
 		this.imagesAttach = imagesAttach;
 	}
-	public int getDetail_no() {
-		return detail_no;
+	
+	public int getDetailNo() {
+		return detailNo;
 	}
-	public void setDetail_no(int detail_no) {
-		this.detail_no = detail_no;
+
+	public void setDetailNo(int detailNo) {
+		this.detailNo = detailNo;
 	}
+
 	public int getItemsItemsNo() {
 		return itemsItemsNo;
 	}
@@ -116,9 +119,9 @@ public class ItemsImagesDTO {
 
 	@Override
 	public String toString() {
-		return "ItemsImagesDTO [detail_no=" + detail_no + ", itemsItemsNo=" + itemsItemsNo + ", detail1=" + detail1
+		return "ItemsImagesDTO [detailNo=" + detailNo + ", itemsItemsNo=" + itemsItemsNo + ", detail1=" + detail1
 				+ ", image1Attachtype=" + image1Attachtype + ", image1AttachOname=" + image1AttachOname
-				+ ", image1AttachSname=" + image1AttachSname + ", imagesAttach=" + imagesAttach + "]";
+				+ ", image1AttachSname=" + image1AttachSname + "]";
 	}
 	
 	

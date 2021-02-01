@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author COM
  *
  */
+
 public class ItemsDTO {
     private int itemsNo;
     private String itemsName;
@@ -22,7 +23,6 @@ public class ItemsDTO {
 	private String itemsAttachtype;
 	private String itemsAttachOname;
 	private String itemsAttachSname;
-	
 	
 	public int getItemsNo() {
 		return itemsNo;

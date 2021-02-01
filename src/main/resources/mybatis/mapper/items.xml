@@ -20,6 +20,19 @@
 		where items_no = #{itemsNo}
 	</select>
 	
+	<!-- items items_no로 불러오기 -->
+	<select id="selectByItemsItemsNo" parameterType="int" resultType="itemimages">
+		select detail_no, detail1, image1_attachtype, image1_attachoname, image1_attachsname, items_items_no
+		from items_images
+		where items_items_no = #{items_items_no}
+	</select>
+	
+	<select id="selectByDetailNo" parameterType="int" resultType="itemimages">
+		select detail_no, detail1, image1_attachtype, image1_attachoname, image1_attachsname, items_items_no
+		from items_images
+		where detail_no = #{detailNo}
+	</select>	
+	
 	<insert id="insert" parameterType="item">
 		<selectKey keyProperty="itemsNo" resultType="int" order="BEFORE">
 			select items_seq.nextval from dual
@@ -38,7 +51,7 @@
 	</insert>
 	
 	<insert id="insertimages" parameterType="itemimages">
-		insert into items
+		insert into items_images
 			(detail_no,
 			items_items_no,
 			detail1,

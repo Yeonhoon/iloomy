@@ -26,11 +26,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.webapp.dto.DeliveryDTO;
 import com.mycompany.webapp.dto.DeliveryStatus;
 import com.mycompany.webapp.dto.ItemsDTO;
+import com.mycompany.webapp.dto.ItemsImagesDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.OrdersDTO;
 import com.mycompany.webapp.dto.UserDTO;
 import com.mycompany.webapp.service.DeliveryService;
+import com.mycompany.webapp.service.ImagesService;
 import com.mycompany.webapp.service.ItemsService;
 import com.mycompany.webapp.service.MemberService;
 import com.mycompany.webapp.service.OrderService;
@@ -51,6 +53,7 @@ public class ProductController {
     MemberService mService;
     
     @Resource private ItemsService itemsService;
+    @Resource private ImagesService imagesService;
     
   //제품 목록 보여주기
     @GetMapping("/list") 
@@ -99,10 +102,43 @@ public class ProductController {
         ItemsDTO item = itemsService.getItem(no); // dto에서 정보 받기
         model.addAttribute("lno", no);
         model.addAttribute("item", item);
+        
+        ItemsImagesDTO image = imagesService.getMainImage(no);
+        model.addAttribute("image", image);
         System.out.println(item.toString());
+        System.out.println(image.toString());
         return "product/productDetail";
     }
 
+  //detail image 불러오기
+    @GetMapping("/imageattach")
+    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+    	
+    	ItemsImagesDTO images = imagesService.getDetailImage(no);
+    	String filePath = null;
+    	
+    	if(images.getImage1AttachOname() != null) {
+    		String itemAttach = images.getImage1AttachSname();
+    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+    		
+    		response.setContentType(images.getImage1Attachtype());
+    		
+    		String oname = images.getImage1AttachOname();
+    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+    	} else {
+    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+    		response.setContentType("image/jpg");
+    	}
+
+    	OutputStream os = response.getOutputStream();
+    	InputStream is = new FileInputStream(filePath);
+    	FileCopyUtils.copy(is,os);
+    	os.flush();
+    	os.close();
+    	is.close();
+    }
+    
      //------------------------------------------------------------------------------
     
     @GetMapping(value = "cart2")  //연결 header에서 지선 추가

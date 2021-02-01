@@ -82,10 +82,11 @@
 						<td>Q&A</td>
 					</tr>
 				</table>
-				<div id="list" >
-					<img src="${root}/resources/img/L1.jpg"/>
+ 				<div id="list" >
+					<img src="${root}/product/imageattach?no=${image.detailNo}"/>
+					<p>${image.detail1}</p>
 				</div>
-				<div style="text-align: center; padding: 30px;">
+				<%--<div style="text-align: center; padding: 30px;">
 					<p style="font-size: 2rem;">쿠시노 저상형 패밀리 침대(인조가죽)</p>
 					<p>신혼에서부터 자녀의 성장에 따라 다양하게 사용할 수 있는 쿠시노 시리즈입니다.</p>
 					<p>싱글과 퀸 침대로 구성되어 있으며, 공간이나 필요에 따라 가드나 액세서리를 추가해 우리 가족만의 패밀리 침대를 완성해보세요.</p>
@@ -107,7 +108,7 @@
 					<h1>Color</h1>
 					<img src="${root}/resources/img/l7.jpg" height="300px"/>
 					<img src="${root}/resources/img/l6.jpg"  height="300px"/>
-				</div>
+				</div> --%>
 				<div class="d-flex justify-content-center align-items-center">
 					<a class="btn btn-secondary ml-3" href="${root}/manager/productList" style="color:black;">목록</a>
 					
