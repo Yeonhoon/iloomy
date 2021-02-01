@@ -87,6 +87,7 @@ public class ManagerController {
     		File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
     		mf1.transferTo(saveFile);
     	}
+    	
     	dto.setItemsItemsNo(items.getItemsNo());
     	System.out.println(dto.toString());
 		
@@ -118,7 +119,9 @@ public class ManagerController {
     public String updateform(int no, Model model){
         logger.info("수정 페이지로 이동하기");
         ItemsDTO items = itemsService.getItemJoin(no);
+        ItemsImagesDTO image = new ItemsImagesDTO();
         model.addAttribute("items", items);
+        model.addAttribute("image", image);
         logger.info(items.toString());
         return "manager/update";
     }
@@ -153,22 +156,22 @@ public class ManagerController {
     
     // 메인 업데이트 저장 후 다음 페이지로 이동
     @PostMapping("/updatedetail")
-    public String itemupdate(ItemsDTO dto) throws IllegalStateException, IOException{
+    public String itemupdate(ItemsDTO dto, ItemsImagesDTO image, Model model) throws IllegalStateException, IOException{
     	
     	//업데이트한 사진 저장
-    	MultipartFile mf = dto.getItemsAttach();
-    	dto.setItemsAttachOname(mf.getOriginalFilename());
-		String saveName = new Date().getTime() + "-" + mf.getOriginalFilename();
-		dto.setItemsAttachSname(saveName);
-		dto.setItemsAttachtype(mf.getContentType());
-		File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
-		mf.transferTo(saveFile);
-		
-    	ItemsImagesDTO image = new ItemsImagesDTO();
-    	logger.info("세부 수정페이지로 이동");
+//    	MultipartFile mf = dto.getItemsAttach();
+//    	if(!mf.isEmpty()) {
+//			dto.setItemsAttachOname(mf.getOriginalFilename());
+//			String saveName = new Date().getTime() + "-" + mf.getOriginalFilename();
+//			dto.setItemsAttachSname(saveName);
+//			dto.setItemsAttachtype(mf.getContentType());
+//			File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
+//			mf.transferTo(saveFile);
+//    	}
     	itemsService.updateItem(dto);
-    	System.out.println(dto.toString());
-    	int num = image.getItemsItemsNo();
+    	logger.info(dto.toString());
+    	logger.info("세부 수정페이지로 이동");
+    	int num = dto.getItemsItemsNo();
     	String str ="redirect:/manager/toDetail?no=" + num;
     	return str;
     }
@@ -228,11 +231,10 @@ public class ManagerController {
 
     
     //제품 삭제
-
     @PostMapping("/delete")
-    public String delete(int bno) {
-    	itemsService.delete(bno);
-    	return "redirect:/product/productList";
+    public String delete(int no) {
+    	itemsService.delete(no);
+    	return "redirect:/manager/productList";
     }
 
 //    //사진 업로드 및 저장
@@ -298,7 +300,6 @@ public class ManagerController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		return "redirect:/manager/writeform2";
-
 	}
 			return filePath;
 

@@ -3,88 +3,62 @@
 /* main section--------------------------------------------------------- */
 *{
 	box-sizing: border-box;
-
-}
-
-#main{
-	margin-right:100px;
-	margin-left:100px;
 }
 
 
 #sec {
-	padding-right: 200px;
-	padding-left: 200px;
+	padding-right: 300px;
+	padding-left: 300px;
+
+}
+
+#main{
+	display: flex;
 }
 
 #sec h1{
 	margin-bottom: 50px;
 }
 
-#main_info a{
+#mainIinfo a{
 	display:block;
 	color: white;
 }
-
-#main_infoForm{
-	display:flex;
-	width: 100%;
-}
-
-#main_image {
+#mainImage {
 	box-sizing: border-box;
 	flex:5;
 	margin-right: 100px;
 }
 
-/* ---------------------------revise_list------------------------------------ */
-
-#main {
-	display:flex;
-	flex-direction: row;
-	margin-left: 300px;
-}
-
-#mainPhotoLabel{
-	margin-left: 140px;
-}
-
-/* #main_image {
-	padding-left:100px;
-	flex:6;
-	display: block;
-	text-align: center;
-} */
-
-#main_image label {
+#mainImage label {
 	font-size: 2rem;
-    margin-left: 130px;
     font-weight: bolder;
 }
 
-#main_image img {
+#mainImage img {
 	max-width: 600px;
 	margin-bottom:30px;
-	
-}
-#reviseList {
-	flex:5;
-	list-style-type: none;
 }
 
-#reviseList li:nth-child(2n) {
+#mainInfo{
+	width: 600px;
+	flex: 5;
+}
+
+#form{
+	width: 600px;
+}
+
+#form tbody tr:nth-child(2n){
 	background-color: #f8f9fa;
 }
-
-reviseList li:nth-child(2n+1) {
+#form tbody tr:nth-child(2n+1){
 	background-color: #F3ECE3;
 }
 
-/* #c6d3e3: 블루, #e3dfd6: 레드 */
 
-/* .list_txt{
-				background-color:#c6d3e3;
-			} */
+/* ---------------------------revise_list------------------------------------ */
+
 
 li .addBtn {
 	width: 100px;

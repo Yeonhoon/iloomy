@@ -23,12 +23,12 @@ public class ItemsDTO {
 	private String itemsAttachtype;
 	private String itemsAttachOname;
 	private String itemsAttachSname;
-	private String itemsItemsNo;
+	private int itemsItemsNo;
 	
-	public String getItemsItemsNo() {
+	public int getItemsItemsNo() {
 		return itemsItemsNo;
 	}
-	public void setItemsItemsNo(String itemsItemsNo) {
+	public void setItemsItemsNo(int itemsItemsNo) {
 		this.itemsItemsNo = itemsItemsNo;
 	}
 	public int getItemsNo() {
@@ -125,15 +125,17 @@ public class ItemsDTO {
 	public void setItemsStock(int itemsStock) {
 		this.itemsStock = itemsStock;
 	}
-	
 	@Override
 	public String toString() {
 		return "ItemsDTO [itemsNo=" + itemsNo + ", itemsName=" + itemsName + ", itemsCompany=" + itemsCompany
 				+ ", itemsPrice=" + itemsPrice + ", itemsContext=" + itemsContext + ", itemsColor=" + itemsColor
-				+ ", itemsStock=" + itemsStock + ", itemsManufacture=" + itemsManufacture + ", itemsOrigin="
-				+ itemsOrigin + ", itemsAttach=" + itemsAttach + ", itemsAttachtype=" + itemsAttachtype
-				+ ", itemsAttachOname=" + itemsAttachOname + ", itemsAttachSname=" + itemsAttachSname + "]";
+				+ ", itemsOption=" + itemsOption + ", itemsModel=" + itemsModel + ", itemsStock=" + itemsStock
+				+ ", itemsManufacture=" + itemsManufacture + ", itemsOrigin=" + itemsOrigin + ", itemsAttach="
+				+ itemsAttach + ", itemsAttachtype=" + itemsAttachtype + ", itemsAttachOname=" + itemsAttachOname
+				+ ", itemsAttachSname=" + itemsAttachSname + ", itemsItemsNo=" + itemsItemsNo + "]";
 	}
+	
+	
 
 	
 	

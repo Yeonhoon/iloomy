@@ -127,11 +127,11 @@
 					<!-- 로그인 상태에서만 보이기 -->
 					<c:if test="${userinfo eq 'admin'}">
 						<a class="btn btn-warning ml-3" href="${root}/manager/update?no=${item.itemsNo}">수정</a>
-						<a class="btn btn-danger ml-3" href="${root}/manager/delete" style="color:black;">삭제</a>
+						<form action="manager/delete" method="post">
+							<a class="btn btn-danger ml-3" href="${root}/manager/delete?no=${item.itemsNo}" style="color:white;">삭제</a>
+						</form>
 					</c:if>
 				</div>
-				
-				
 			</article>
 		
 		

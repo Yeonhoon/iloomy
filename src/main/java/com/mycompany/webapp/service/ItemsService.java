@@ -19,7 +19,7 @@ public class ItemsService {
 
 
 	public void delete(int bno) {
-//		boardrepo.delete(bno);
+		itemsRepo.delete(bno);
 	}
 
 	//
