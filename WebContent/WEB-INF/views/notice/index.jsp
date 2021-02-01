@@ -62,6 +62,26 @@
         }
         $(document).ready(list2());
 
+        function pagingBoard(no) {
+			console.log("test 버튼")
+			$.ajax({
+				url: "${root}/Notice/list?pageNo="+no,
+				type: "get"
+			}).done(function (result) {
+				console.log("결과확인");
+
+				var html = jQuery('<div>').html(result);
+				var contents = html.find("div#indexListAjax").html();
+				$("#tabl1").html(contents);
+
+			}).fail(function (jqXHR, textStatus, errorThrown) {
+				console.log("에러");
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
+
+		}
     </script>
 </head>
 	<body>

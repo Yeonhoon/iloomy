@@ -141,25 +141,7 @@
         </c:forEach>
         </div>
     </div>
-    <div>
-        <a href="${root}/Notice/list?pageNo=1" class="btn btn-outline-info btn-sm mr-1">처음 </a>
-        <c:if test="${pager.groupNo>1}">
-            <a href="${root}/Notice/list?pageNo=${pager.startPageNo-1}" class="btn btn-outline-info btn-sm mr-1">이전 </a>
-        </c:if>
-        <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-            <c:if test="${i==pager.pageNo}">
-                <a href="${root}/Notice/list?pageNo=${i}" class="btn btn-warning btn-sm mr-1">${i}</a>
-            </c:if>
-            <c:if test="${i!=pager.pageNo}">
-                <a href="${root}/Notice/list?pageNo=${i}" class="btn btn-outline-warning btn-sm mr-1">${i}</a>
-            </c:if>
-        </c:forEach>
-        <c:if test="${pager.groupNo < pager.totalGroupNo}">
-            <a href="${root}/Notice/list?pageNo=${pager.endPageNo+1}" class="btn btn-outline-info btn-sm mr-1">다음 </a>
-        </c:if>
-        <a href="${root}/Notice/list?pageNo=${pager.totalPageNo}" class="btn btn-outline-info btn-sm mr-1">맨끝 </a>
-    </div>
-    <button id="addBtn" onclick="moreList();"><span>더보기</span></button>
+
     <script>
         function myShowFunction(no) {
             console.log(no)
@@ -178,40 +160,44 @@
             // document.getElementById("panel").style.display = "block";
         }
 
-        function moreList() {
-
-            var startNum = $("#listBody tr").length;  //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
-            var addListHtml = "";
-            console.log("startNum", startNum); //콘솔로그로 startNum에 값이 들어오는지 확인
-
-            $.ajax({
-                url: "${root}/Notice/listPlus",
-                type: "get",
-                success : function(data) {
-                    if(data.length < 10){
-                        $("#addBtn").remove();   // 더보기 버튼을 div 클래스로 줘야 할 수도 있음
-                    }else{
-                        var addListHtml ="";
-                        if(data.length > 0){
-                            console.log(data);
-                            // for(var i=0; i<data.length;i++) {
-                            //
-                            //     var idx = Number(startNum)+Number(i)+1;
-                            //     // 글번호 : startNum 이  10단위로 증가되기 때문에 startNum +i (+1은 i는 0부터 시작하므로 )
-                            //     addListHtml += "<tr>";
-                            //     addListHtml += "<td>"+ idx + "</td>";
-                            //     addListHtml += "<td>"+ data[i].title + "</td>";
-                            //     addListHtml += "<td>"+ data[i].description + "</td>";
-                            //     addListHtml += "</tr>";
-                            // }
-                            // $("#listBody").append(addListHtml);
-                        }
-                    }
-                }
-            });
-
-        }
     </script>
+    <div>
+        <a class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(1);">처음 </a>
+        <c:if test="${pager.groupNo>1}">
+            <a class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.startPageNo-1});">이전 </a>
+        </c:if>
+        <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+            <c:if test="${i==pager.pageNo}">
+                <a class="btn btn-warning btn-sm mr-1" onclick="pagingBoard(${i});">${i}</a>
+            </c:if>
+            <c:if test="${i!=pager.pageNo}">
+                <a class="btn btn-outline-warning btn-sm mr-1" onclick="pagingBoard(${i});">${i}</a>
+            </c:if>
+        </c:forEach>
+        <c:if test="${pager.groupNo < pager.totalGroupNo}">
+            <a class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.endPageNo+1});">다음 </a>
+        </c:if>
+        <a class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.totalPageNo});">맨끝 </a>
+    </div>
+
+<%--    <div>--%>
+<%--        <a href="${root}/Notice/list?pageNo=1" class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(1);">처음 </a>--%>
+<%--        <c:if test="${pager.groupNo>1}">--%>
+<%--            <a  href="${root}/Notice/list?pageNo=${pager.startPageNo-1}" class="btn btn-outline-info btn-sm mr-1" >이전 </a>--%>
+<%--        </c:if>--%>
+<%--        <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">--%>
+<%--            <c:if test="${i==pager.pageNo}">--%>
+<%--                <a href="${root}/Notice/list?pageNo=${i}" class="btn btn-warning btn-sm mr-1" onclick="pagingBoard(${i});">${i}</a>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${i!=pager.pageNo}">--%>
+<%--                <a href="${root}/Notice/list?pageNo=${i}" class="btn btn-outline-warning btn-sm mr-1" onclick="pagingBoard(${i});">${i}</a>--%>
+<%--            </c:if>--%>
+<%--        </c:forEach>--%>
+<%--        <c:if test="${pager.groupNo < pager.totalGroupNo}">--%>
+<%--            <a href="${root}/Notice/list?pageNo=${pager.endPageNo+1}" class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.endPageNo+1});">다음 </a>--%>
+<%--        </c:if>--%>
+<%--        <a href="${root}/Notice/list?pageNo=${pager.totalPageNo}" class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.totalPageNo});">맨끝 </a>--%>
+<%--    </div>--%>
 </div>
 </body>
 
