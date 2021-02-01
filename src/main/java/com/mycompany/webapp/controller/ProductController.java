@@ -178,11 +178,6 @@ public class ProductController {
 			orderTest.put("options", test);//
 			list.add(orderTest);
 		}
-		
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		
 		//////////////////////////////////////////////////////////////
 		session.setAttribute("orderItemLists", list);
 //		System.out.println("6. OrderItemsDTO : "+orderItemLists.toString());
@@ -203,7 +198,7 @@ public class ProductController {
  		for (String i : arr) {
  			System.out.println(i);
  		}
- 
+ 		System.out.println(orderItem.toString());
  		//테이블이 order_items, orders(status:cart), delivery(status:before)
  		//count랑 price 받아옴
  		
@@ -218,15 +213,15 @@ public class ProductController {
 // 		3. orderItem.set(1);
 // 						set(2);
 // 						dao.save(orderItem);
-     	orderItem.setItemsOrder(1, 2);
-     	
-     	OrdersDTO dtoa = new OrdersDTO();
-     	dtoa.setOrderStatus(OrderStatus.Cart);
-     	System.out.println(dtoa.toString());
-     	
- 		System.out.println(orderItem.toString());
- 		
- 		model.addAttribute("arr", arr);
+//     	orderItem.setItemsOrder(1, 2);
+//     	
+//     	OrdersDTO dtoa = new OrdersDTO();
+//     	dtoa.setOrderStatus(OrderStatus.Cart);
+//     	System.out.println(dtoa.toString());
+//     	
+// 		System.out.println(orderItem.toString());
+// 		
+// 		model.addAttribute("arr", arr);
  		return "product/order";
  	}
     

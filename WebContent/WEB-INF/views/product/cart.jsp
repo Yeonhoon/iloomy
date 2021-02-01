@@ -46,36 +46,64 @@
 							<th>상품금액</th>
 							<th>주문</th>
 						</tr>
-					<c:forEach var="orderItem" items="${orderItemLists}">
-			<%-- 						${orderItem}
-				${orderItem.options.get(0)}
-				${orderItem.options.get(1)}
-				${orderItem.options.get(2)}
-				${orderItem.orderItemsPrice}
-				${orderItem.orderItemsCount}
-				${orderItem.orderItemsNo} --%>
-					<tr>
-							<td><input type="checkbox" name="check" class="check" value="${orderItem.orderItemsNo}"></td>
-							<td>${orderItem.options.get(2)}</td>
-							<td>${orderItem.options.get(0)}</td>
-							<td>${orderItem.options.get(1)}</td>
-							<td><fmt:formatNumber value="${orderItem.orderItemsPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
-							<td>
-								<a class="countdown" style="color:black"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
-								<span id="count">${orderItem.orderItemsCount}</span>
-								<input type="hidden" id="orderItemsCount" name="orderItemsCount" value="1"/>
-								<a class="countup"  style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
-							</td>
-							<td>
-								<span id="totalPrice"> ${orderItem.orderItemsPrice}</span>원
-								<input type="hidden" id="orderItemsPrice" name="orderItemsPrice" value="${orderItem.orderItemsPrice}"/>
-							</td>
-							<td>
-								<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
-								<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">삭제</a>
-							</td>
-						</tr> 
+						
+						<!-- test.add(option);
+				test.add(color);
+				test.add(name); -->
+					<c:forEach var="orderItem" items="${orderItemLists}"  varStatus="status">
+						<tr class="countItem">
+								<td><input type="checkbox" name="check" class="check" value="${orderItem.orderItemsNo}"></td>
+								<td>${orderItem.options.get(2)}</td>
+								<td>${orderItem.options.get(0)}</td>
+								<td>${orderItem.options.get(1)}</td>
+								<%-- <td><fmt:formatNumber value="${orderItem.orderItemsPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td> --%>
+								<td><span id="price${status.index}"> ${orderItem.orderItemsPrice}</span></td>
+								<td>
+									<a id="countdown${status.index}" style="color:black" onclick="javascript:countdown(${status.index})"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
+									<span id="count${status.index}">${orderItem.orderItemsCount}</span>
+									<input type="hidden" class="orderItemsCount" name="orderItemsCount" value="1"/>
+									<a id="countup${status.index}" onclick="javascript:countup(${status.index})" style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
+								</td>
+								<td>
+									<span id="totalPrice${status.index}"> ${orderItem.orderItemsPrice}</span>원
+									<input type="hidden" id="orderItemsPrice${status.index}" name="orderItemsPrice" value="${orderItem.orderItemsPrice}"/>
+								</td>
+								<td>
+									<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
+									<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">삭제</a>
+								</td>
+							</tr> 
 					</c:forEach>
+					<!-- 
+						<tr>
+							<td><input type="checkbox" name="check" class="check" value="1"></td>
+							<td>asd</td>
+							<td>asd</td>
+							<td>asd</td>
+							<td><span id="price0"> 100000</span>원</td>
+							<td><a id="countdown0" style="color:black" onclick="javascript:countdown(0)"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
+									<span id="count0">1</span>
+									<input type="hidden" id="orderItemsCount0" name="orderItemsCount" value=""/>
+									<a id="countup0"  onclick="javascript:countup(0)" style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a></td>
+							<td><span id="totalPrice0"> 100000</span>원
+									<input type="hidden" id="orderItemsPrice0" name="orderItemsPrice" value=""/></td>
+							
+							<td></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="check" class="check" value="2"></td>
+							<td>asd</td>
+							<td>asd</td>
+							<td>asd</td>
+							<td><span id="price1"> 100000</span>원</td>
+							<td><a id="countdown1" style="color:black" onclick="javascript:countdown(1)"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
+									<span id="count1">1</span>
+									<input type="hidden" id="orderItemsCount1" name="orderItemsCount" value=""/>
+									<a id="countup1" onclick="javascript:countup(1)" style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a></td>
+							<td><span id="totalPrice1"> 100000</span>원
+									<input type="hidden" id="orderItemsPrice1" name="orderItemsPrice" value=""/></td>
+							<td></td>
+						</tr> -->
 					</table>
 					<!-- "checked" 속성은 기능관련 속성이라 prop 함수에서는 true/false로 출력 -->
 					<div id="cartOrder">
@@ -91,40 +119,51 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-		var price = ${pDTO.itemsPrice};
-		$(".countdown").on("click",function (e) {
-			var count = $("#count").text();
-			var total = $("#totalPrice").text();
-			if (count === '1') {
-				e.preventDefault();
+	 	function countdown(no) {
+	 		console.log("click 확인" +no);
+	 		
+	 		var count = document.getElementById("count"+no).innerHTML;
+	 		console.log(count);
+	 		var price = document.getElementById("price"+no).innerHTML;
+	 		console.log("price:" +price);
+	 		var total = 0;
+	 		if (count === '1') {
 				alert("최소수량입니다.");
 				count = 1;
 				return;
-			} else {
+	 		}else {
 				count --;
 				total = price*count;
-				$("#count").text(count);
-				$("#totalPrice").text(total);
-				$("#orderItemsCount").val(count);
-				$("#orderItemsPrice").val(count);
+				console.log("total" +total);
+				$("#count"+no).text(count);
+				$("#totalPrice"+no).text(total);
+				$("#orderItemsCount"+no).val(count);
+				$("#orderItemsPrice"+no).val(total);
 			}
-		});
-		
-		$(".countup").on("click",function (e) {
-			var count = $("#count").text();
-			if (count === '10') {
-				e.preventDefault();
+	 	}
+	 	
+	 	function countup(no) {
+	 		console.log("click 확인" +no);
+	 		
+	 		var count = document.getElementById("count"+no).innerHTML;
+	 		console.log(count);
+	 		var price = document.getElementById("price"+no).innerHTML;
+	 		var total = 0;
+	 		if (count === '10') {
 				alert("최대수량입니다.");
 				return;
 			} else {
 				count ++;
+				console.log("price:" +price);
 				total = price*count;
-				$("#count").text(count);
-				$("#totalPrice").text(total);
-				$("#orderItemsCount").val(count);
-				$("#orderItemsPrice").val(total);
+				console.log("total" +total);
+				$("#count"+no).text(count);
+				$("#totalPrice"+no).text(total);
+				$("#orderItemsCount"+no).val(count);
+				$("#orderItemsPrice"+no).val(total);
 			}
-		});
+	 	}
+	 	
 		$("#checkAll").click(function() {
 			var ch = $("#checkAll").prop("checked");
 			
@@ -138,7 +177,6 @@
 		$(".check").click(function() {
 			$("#checkAll").prop("checked", false);
 		})
-	
 	</script>
 	
 	
