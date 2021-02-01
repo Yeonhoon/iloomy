@@ -191,40 +191,6 @@ public class ProductController {
  		// status=cart에 있는거 list로 받아옴
  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
 
- 		///////////////////////////////////////////////////////////////
-// 		List<Map<String, Object>>list  = new ArrayList<>();
-// 		Map<String, Object> orderTest = new HashMap<String, Object>();
-// 		
-// 		for (int i=0; i<orderItemLists.size(); i++) {
-// 			OrderItemsDTO ord = orderItemLists.get(i); 
-// 			int orderItemsNo = ord.getOrderItemsNo();
-// 			int orderItemsCount = ord.getOrderItemsCount();
-// 			long orderItemsPrice = ord.getOrderItemsPrice();
-// 			orderTest.put("orderItemsCount", orderItemsCount); //
-// 			orderTest.put("orderItemsPrice", orderItemsPrice+i);//
-// 			orderTest.put("orderItemsNo", orderItemsNo);
-// 			
-// 			ItemsDTO ite = ord.getItem();
-// 			List<String> test = new ArrayList<String>();
-// 			String color = ite.getItemsColor(); 
-// 			String option = ite.getItemsOption(); 
-// 			String name = ite.getItemsName();
-// 			test.add(option);
-// 			test.add(color);
-// 			test.add(name);
-//// 			for(int j =0; j<ord.getItemList().size(); j++) {
-//// 				ItemsDTO ite = ord.getItemList().get(j);
-//// 				String color = ite.getItemsColor(); //
-//// 				String option = ite.getItemsOption(); //
-//// 				String name = ite.getItemsName();
-//// 				test.add(option);
-//// 				test.add(color);
-//// 				test.add(name);
-//// 			}
-// 			orderTest.put("options", test);//
-// 			list.add(orderTest);
-// 		}
- 		//////////////////////////////////////////////////////////////
  		session.setAttribute("orderItemLists", orderItemLists);
  		return "product/cart";// product/cart.jsp 연결
  	}
@@ -269,6 +235,11 @@ public class ProductController {
  		
  		//delivery에서 status
  		return "product/order";
+ 	}
+ 	
+ 	@GetMapping(value = "/delivery")
+ 	public String delivery() {
+ 		return "product/delivery";
  	}
 
  }

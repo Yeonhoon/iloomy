@@ -47,59 +47,6 @@
 							<th>주문</th>
 						</tr>
 						
-						
-						<%-- <tr style="color: #adb5bd;">
-							<td>
-								<input type="checkbox" name="check" class="check" value="6">
-								<input type="hidden" name="orderItemsNo6" id="orderItemsNo6" value="100">
-							</td>
-							<td>test</td>
-							<td>test</td>
-							<td>test</td>
-							<td><fmt:formatNumber value="${orderItem.orderItemsPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
-							<td><span id="price0">100000</span></td>
-							<td>
-								<a id="countdown0" style="color:black" onclick="javascript:countdown(0)"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
-								<span id="count6">1</span>
-								<input type="hidden" id="orderItemsCount6" name="orderItemsCount6" value="1"/>
-								<a id="countup0" onclick="javascript:countup(0)" style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
-							</td>
-							<td>
-								<span id="totalPrice6">100000</span>원
-								<input type="hidden" id="orderItemsPrice6" name="orderItemsPrice6" value="100000"/>
-							</td>
-							<td>
-								<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
-								<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">삭제</a>
-							</td>
-						</tr>
-						
-						<tr style="color: #adb5bd;">
-							<td>
-								<input type="checkbox" name="check" class="check" value="3">
-								<input type="hidden" name="orderItemsNo3" id="orderItemsNo3" value="103">
-							</td>
-								<td>test2</td>
-								<td>test2</td>
-								<td>test2</td>
-								<td><fmt:formatNumber value="${orderItem.orderItemsPrice}" pattern="###,###,###"></fmt:formatNumber>원 </td>
-								<td><span id="price3">100000</span></td>
-								<td>
-									<a id="countdown3" style="color:black" onclick="javascript:countdown(3)"><i class="fas fa-caret-down fa-lg mr-2" ></i></a>
-									<span id="count3">1</span>
-									<input type="hidden" id="orderItemsCount3" name="orderItemsCount3" value="1"/>
-									<a id="countup1" onclick="javascript:countup(3)" style="color:black"><i class="fas fa-caret-up fa-lg ml-2"></i></a>
-								</td>
-								<td>
-									<span id="totalPrice3">100000</span>원
-									<input type="hidden" id="orderItemsPrice3" name="orderItemsPrice3" value="100000"/>
-								</td>
-								<td>
-									<a href="#" type="button" class="btn btn-outline-danger btn-sm">바로 구매</a> <br/>
-									<a href="#" type="button" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px;">삭제</a>
-								</td>
-						</tr> --%>
-						
 					<c:forEach var="orderItem" items="${orderItemLists}"  varStatus="status">
 						<tr class="countItem">
 								<td>
