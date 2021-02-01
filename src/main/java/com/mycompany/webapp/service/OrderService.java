@@ -47,10 +47,39 @@ public class OrderService {
 
 	public List<OrderItemsDTO> getItemCart() {
 		List<OrderItemsDTO> orderItemLists =  orderRepo.selectItemCart();
+//		for (OrderItemsDTO orderitem : orderItemLists) {
+//			List <ItemsDTO> itemList = itemsRepo.listByPk(orderitem.getItemsItemsNo());
+//			orderitem.setItemList(itemList);
+//		}
 		for (OrderItemsDTO orderitem : orderItemLists) {
-			List <ItemsDTO> itemList = itemsRepo.listByPk(orderitem.getItemsItemsNo());
-			orderitem.setItemList(itemList);
+			ItemsDTO item = itemsRepo.selectByPk(orderitem.getItemsItemsNo());
+			orderitem.setItem(item);
 		}
+		return orderItemLists;
+	}
+
+
+	public void updateOrder(OrderItemsDTO orderItem) {
+		//orderItems의 price랑 count 업데이트
+		int num = orderRepo.updateOrder(orderItem);
+		System.out.println("updateOrder: "+num);
+		//orders의 status 업데이트
+		int num2=orderRepo.updateOrderStatus(orderItem.getOrdersOrderNo());
+		System.out.println("updateOrderStatus: "+num2);
+		//delivery의 status 업데이트
+		int num3=orderRepo.updateDeliveryStatus(orderItem.getOrdersOrderNo());
+		System.out.println("updateDeliveryStatus: "+num3);
+	}
+
+
+	public List<OrderItemsDTO> getItemOrder() {
+		List<OrderItemsDTO> orderItemLists =  orderRepo.selectItemOrder();
+
+		for (OrderItemsDTO orderitem : orderItemLists) {
+			ItemsDTO item = itemsRepo.selectByPk(orderitem.getItemsItemsNo());
+			orderitem.setItem(item);
+		}
+		
 		return orderItemLists;
 	}
 	

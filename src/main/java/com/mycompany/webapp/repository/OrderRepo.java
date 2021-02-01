@@ -37,4 +37,26 @@ public class OrderRepo {
 		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemCart");
 		return orderItemLists;
 	}
+
+	public int updateOrder(OrderItemsDTO orderItem) {
+		int rows = sst.update("orders.updateOrder", orderItem);
+		return rows;
+		
+	}
+
+	public int updateOrderStatus(int ordersOrderNo) {
+		int rows = sst.update("orders.updateOrderStatus", ordersOrderNo);
+		return rows;
+		
+	}
+
+	public int updateDeliveryStatus(int ordersOrderNo) {
+		int rows = sst.update("orders.updateDeliveryStatus", ordersOrderNo);
+		return rows;
+	}
+
+	public List<OrderItemsDTO> selectItemOrder() {
+		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemOrder");
+		return orderItemLists;
+	}
 }

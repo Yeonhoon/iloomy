@@ -7,9 +7,10 @@ public class OrderItemsDTO {
 	private int orderItemsNo;
 	private int orderItemsCount;
 	private long orderItemsPrice;
-	private int orderOrderNo;
+	private int ordersOrderNo;
 	private int itemsItemsNo;
-	private List<ItemsDTO> itemList;
+//	private List<ItemsDTO> itemList;
+	private ItemsDTO item;
 	
 	public OrderItemsDTO() {
 		super();
@@ -22,26 +23,29 @@ public class OrderItemsDTO {
 		this.itemsItemsNo = itemsItemsNo;
 	}
 	
-	public void setItemsOrder(int orderOrderNo, int itemsItemsNo) {
-		this.orderOrderNo = orderOrderNo;
+	public void setItemsOrder(int ordersOrderNo, int itemsItemsNo) {
+		this.ordersOrderNo = ordersOrderNo;
 		this.itemsItemsNo = itemsItemsNo;
 	}
 	
 	
-	public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, List<ItemsDTO> itemList) {
+	public OrderItemsDTO(int orderItemsNo, int orderItemsCount, long orderItemsPrice, int ordersOrderNo, int itemsItemsNo) {
+		super();
+		this.orderItemsNo = orderItemsNo;
+		this.orderItemsCount = orderItemsCount;
+		this.orderItemsPrice = orderItemsPrice;
+		this.ordersOrderNo = ordersOrderNo;
+		this.itemsItemsNo = itemsItemsNo;
+	}
+
+	public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, ItemsDTO item) {
 		super();
 		this.orderItemsCount = orderItemsCount;
 		this.orderItemsPrice = orderItemsPrice;
-		this.itemList = itemList;
+		this.item = item;
 	}
 
-	public List<ItemsDTO> getItemList() {
-		return itemList;
-	}
 
-	public void setItemList(List<ItemsDTO> itemList) {
-		this.itemList = itemList;
-	}
 
 	public int getOrderItemsNo() {
 		return orderItemsNo;
@@ -61,11 +65,11 @@ public class OrderItemsDTO {
 	public void setOrderItemsPrice(long orderItemsPrice) {
 		this.orderItemsPrice = orderItemsPrice;
 	}
-	public int getOrderOrderNo() {
-		return orderOrderNo;
+	public int getOrdersOrderNo() {
+		return ordersOrderNo;
 	}
-	public void setOrderOrderNo(int orderOrderNo) {
-		this.orderOrderNo = orderOrderNo;
+	public void setOrderOrderNo(int ordersOrderNo) {
+		this.ordersOrderNo = ordersOrderNo;
 	}
 	public int getItemsItemsNo() {
 		return itemsItemsNo;
@@ -74,12 +78,20 @@ public class OrderItemsDTO {
 		this.itemsItemsNo = itemsItemsNo;
 	}
 
+	public ItemsDTO getItem() {
+		return item;
+	}
+
+	public void setItem(ItemsDTO item) {
+		this.item = item;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderItemsDTO [orderItemsNo=" + orderItemsNo + ", orderItemsCount=" + orderItemsCount
-				+ ", orderItemsPrice=" + orderItemsPrice + ", orderOrderNo=" + orderOrderNo + ", itemsItemsNo="
-				+ itemsItemsNo + ", itemList=" + itemList + "]";
+				+ ", orderItemsPrice=" + orderItemsPrice + ", ordersOrderNo=" + ordersOrderNo + ", itemsItemsNo="
+				+ itemsItemsNo + ", item=" + item + "]";
 	}
 
-	
+ 
 }
