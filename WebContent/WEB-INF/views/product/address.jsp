@@ -34,7 +34,7 @@
 				<p style="font-size: 3rem;">장바구니</p>
 			</div>
 			<div id="order">
-				01 장바구니 --- <span style="color: red">02 배송지 확인</span> --- 03 주문완료
+				01 장바구니 --- 02 배송지 확인 ---<span style="color: red"> 03 주문완료</span>
 			</div>
 			<div id="sec">
 				<p style="padding: 10px;">

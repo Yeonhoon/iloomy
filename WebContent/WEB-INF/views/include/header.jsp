@@ -71,12 +71,13 @@
 					<c:when test="${userinfo ne null}">
 						<a><strong>${userinfo }</strong>님</a>
 						<a href="${root}/user/detail">회원정보</a>
+						<a href="${root}/product/orderForm">배송</a>
 					</c:when>
 					<c:otherwise>
 						<a href="${root}/user/login">Login</a>
 					</c:otherwise>
 				</c:choose>
-	            <a href="#">배송</a>
+	            
 	            <a href="#">이벤트</a>
 	            <a href="#">뉴스</a>
 	            <a href="#">고객센터</a>
