@@ -1,71 +1,39 @@
 @charset "UTF-8";
 
 /* 	------------------ detail section --------------------------------- */
+
+#saveform{
+	width: 700px;
+	left: 50%;
+	top: 50%;
+}
+
+#detail{
+	padding-right:300px;
+	padding-left: 300px;
+}
+
+.list{
+	margin: 50px 50px;
+}
+
+.img-thumbnail{
+	width: 700px;
+	margin-bottom: 50px;
+}
+
+.form-control{
+	width: 700px;;
+}
+
 #detail {
 	margin-top: 50px;
 }
 
-.detailList{
-	border-bottom: 1px solid #D1D1D1;
-	padding-right: 300px;
-	padding-left:300px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-}
-
-.detailList:nth-child(2n+1){
-	background-color: #f1f3f5;
-}
-
-.list_img {
-	box-shadow:none;
-	text-align: center;
-	display: block;
-	margin-right: 30px;
-}
-
-.list_img img {
-	max-width: 600px;
-	margin-right:100px;
-	margin-left: 100px;
-}
 
 
-.textButton a{
-	display:block;
-	color: white;
-	margin-left: 300px;
-	margin-right:300px;
-}
-
-.list_txt {
-	margin: 20px 10px;
-	text-align: center;
-}
-
-#text_div{
-	display: block;
-}
 
 
-.myText {
-	border: 1px solid grey;
-	width: 600px;
-	heigth: 100px;
-}
-
-
-#photoList{
-	width:60%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 1px solid black;
-	margin-right: 200px;
-	margin-left: 200px;
-	margin-top: 50px;
-	margin-bottom: 50px;
-}
 
 
 #btn {

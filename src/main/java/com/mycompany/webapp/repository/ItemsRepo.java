@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.ItemsDTO;
+import com.mycompany.webapp.dto.PagerDTO;
 
 @Repository
 public class ItemsRepo {
@@ -59,4 +60,14 @@ public class ItemsRepo {
 		int num = sst.selectOne("items.selectSeq");
 		return num;
     }
+
+	public int countAll() {
+		int count = sst.selectOne("items.countAll");
+		return count; 
+	}
+
+	public List<ItemsDTO> selectByPage(PagerDTO pager) {
+		List<ItemsDTO> list = sst.selectList("items.selectByPage",pager);
+		return list;
+	}
 }

@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dto.ItemsDTO;
+import com.mycompany.webapp.dto.PagerDTO;
 import com.mycompany.webapp.dto.ImageDTO;
 import com.mycompany.webapp.repository.ItemsRepo;
 
@@ -63,5 +64,15 @@ public class ItemsService {
 	public int selectSeq() {
 		int cnt = itemsRepo.selectSeq();
 		return cnt;
+	}
+
+	public int getTotalRows() {
+		int totalRows = itemsRepo.countAll();
+		return totalRows;
+	}
+
+	public List<ItemsDTO> getBoardList(PagerDTO pager) {
+		List<ItemsDTO> list = itemsRepo.selectByPage(pager);
+		return list;
 	}
 }

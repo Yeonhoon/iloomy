@@ -24,68 +24,7 @@
 	href="<%=application.getContextPath()%>/resources/css/mainhome.css">
 <link rel="stylesheet"
 	href="<%=application.getContextPath()%>/resources/css/productList.css">
-<style>
-* {
-	box-sizing: border-box;
-}
 
-body {
-	font-family: Verdana, sans-serif;
-}
-
-.mySlides {
-	display: none;
-}
-
-img {
-	vertical-align: middle;
-}
-
-/* Slideshow container */
-.slideshow-container {
-	max-width: 1000px;
-	position: relative;
-	margin: auto;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-	height: 15px;
-	width: 15px;
-	margin: 0 2px;
-	background-color: #bbb;
-	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.6s ease;
-}
-
-.active {
-	background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-	animation-name: fade;
-	animation-duration: 1.5s;
-}
-
-@keyframes fade {
-	from {opacity: .4
-}
-
-to {
-	opacity: 1
-}
-
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-	.text {
-		font-size: 11px
-	}
-}
-</style>
 </head>
 
 <body>
@@ -134,9 +73,9 @@ to {
 		<div class="container-fluid">
 			<div class="row">
 					<c:forEach var="item" items="${list}">
-						<a class="productCell" href="${root}/product/detail?no=${item.itemsNo}" style="margin:50px">
+						<a class="productCell" href="${root}/product/detail?no=${item.itemsNo}" style="margin:50px 50px">
 							<c:if test="${item.itemsAttachSname != null}">
-								<img src="${root}/product/itemsAttach?no=${item.itemsNo}" width=350px;>
+								<img src="${root}/product/itemsAttach?no=${item.itemsNo}" width=300px height=300px;>
 							</c:if>
 						<div class="brief">
 							<span><b>${item.itemsName}</b></span><br />
@@ -146,6 +85,24 @@ to {
 						</a>
 					</c:forEach>
 			</div>
+		</div>
+		<div style="text-align:center">
+			<a class="btn btn-outline-warning btn-sm mr-1" href="${root}/product/boardlist?pageNo=1">처음</a>
+			<c:if test="${pager.groupNo > 1}">
+				<a class="btn btn-outline-warning btn-sm mr-1" href="${root}/product/boardlist?pageNo=${pager.startPageNo-1}">이전</a>
+			</c:if>
+			<c:forEach var="idx" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+				<c:if test="${idx== pager.pageNo}">
+					<a class="btn btn-outline-secondary btn-sm mr-1" href="${root}/product/boardlist?pageNo=${idx}">${idx}</a>
+				</c:if>
+				<c:if test="${idx!= pager.pageNo}">
+					<a class="btn btn-outline-light btn-sm mr-1" href="${root}/product/boardlist?pageNo=${idx}">${idx}</a>
+				</c:if>
+			</c:forEach>
+			<c:if test="${pager.groupNo < pager.totalGroupNo}"> <%--전체 그룹수 보다 적을 경우 --%>
+				<a class="btn btn-outline-warning btn-sm mr-1" href="${root}/product/boardlist?pageNo=${pager.endPageNo+1}">다음</a>
+			</c:if>
+			<a class="btn btn-outline-warning btn-sm mr-1" href="${root}/product/boardlist?pageNo=${pager.totalPageNo}">끝</a>
 		</div>
 
 	</section>

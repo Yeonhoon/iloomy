@@ -12,10 +12,26 @@
 
 }
 
+#saveMain{
+	display:flex;
+}
+
 #main{
 	display: flex;
 }
 
+#form{
+	margin-top:100px;
+	width: 600px;
+	flex:5;
+}
+
+#form tbody tr:nth-child(2n){
+	background-color: #f8f9fa;
+}
+#form tbody tr:nth-child(2n+1){
+	background-color: #F3ECE3;
+}
 #sec h1{
 	margin-bottom: 50px;
 }
@@ -23,6 +39,8 @@
 #mainIinfo a{
 	display:block;
 	color: white;
+	padding-right: 300px;
+	padding-left: 300px;
 }
 #mainImage {
 	box-sizing: border-box;
@@ -45,16 +63,11 @@
 	flex: 5;
 }
 
-#form{
-	width: 600px;
+.list{
+	vertical-align: bottom;
+	text-align: center;
 }
 
-#form tbody tr:nth-child(2n){
-	background-color: #f8f9fa;
-}
-#form tbody tr:nth-child(2n+1){
-	background-color: #F3ECE3;
-}
 
 
 /* ---------------------------revise_list------------------------------------ */

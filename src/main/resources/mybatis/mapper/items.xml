@@ -3,6 +3,10 @@
 
 <mapper namespace="items">
 
+	<select id="countAll" resultType="int">
+		select count(*) from items
+	</select>
+
 	<select id="selectAll" resultType="item">
 		select items_no, items_name, items_company,
 		items_price,items_context, items_color, items_stock,
@@ -18,6 +22,20 @@
 		ITEMS_ATTACHONAME, ITEMS_ATTACHSNAME, ITEMS_ATTACHTYPE
 		from items
 		where items_no = #{itemsNo}
+	</select>
+	
+	<select id="selectByPage" parameterType="pager" resultType="item">  <!-- 줄것이 있고(parameter) 받을 것(resultType)이 있기 때문에 -->
+	 	select rno, items_no, items_name, items_company, items_price, items_attachtype, items_attachoname, items_attachsname
+	   		from (
+	    		select rownum as rno, items_no, items_name, items_company, items_price, items_attachtype, items_attachoname, items_attachsname
+		   from (
+	      	  	select	items_no, items_name, items_company, items_price, items_attachtype, items_attachoname, items_attachsname
+	      	  	 from items
+            	 order by items_no
+		            ) 
+		            where rownum &lt;= #{endRowNo} <!-- <는 태그의 시작이어서  xml에서 사용 불가. 문자참조형식으로 바꾸어서 사용해야 -->
+	            )
+		where rno &gt;= #{startRowNo}
 	</select>
 	
 	<select id="selectJoin" parameterType="int" resultType="item">
@@ -100,25 +118,12 @@
  
  	<!-- 메인 부분 업데이트 -->
 	<update id="update" parameterType="item">
-		<if test="itemsAttach == null">
 			update items
 			set ITEMS_NAME = #{itemsName}, 
 			items_company = #{itemsCompany},	
 			items_price = #{itemsPrice}, 
 			items_color= #{itemsColor}, 
-			items_option= #{itemsOption}, 
-			items_stock =	#{itemsStock}, 
-			items_model = #{itemsModel}, 
-			items_manufacture = #{itemsManufacture}, 
-			items_origin = #{itemsOrigin},
-			where ITEMS_NO = #{itemsNo}
-		</if>
-		<if test="itemsAttach !=null">
-			update items
-			set ITEMS_NAME = #{itemsName}, 
-			items_company = #{itemsCompany},	
-			items_price = #{itemsPrice}, 
-			items_color= #{itemsColor}, 
+			items_context = #{itemsContext},
 			items_option= #{itemsOption}, 
 			items_stock =	#{itemsStock}, 
 			items_model = #{itemsModel}, 
@@ -128,26 +133,77 @@
 	 		items_attachsname = #{itemsAttachSname}, 
 	 		items_attachtype = #{itemsAttachtype}
 			where ITEMS_NO = #{itemsNo}
-		</if>
 	</update>
 	
  	<!-- 디테일 업데이트 -->
 	<update id="updateDetail" parameterType="imageDetail">
-		update image
-		set 
-		detail1 = #{detail1},
-		detail2 = #{detail2},
-		detail3 = #{detail3},
-		IMAGE_ATTACH_SNAME1 = #{imageAttachSname1},
-		IMAGE_ATTACH_ONAME1 = #{imageAttachOname1},
-		IMAGE_ATTACH_TYPE1 = #{imageAttachType1},
-		IMAGE_ATTACH_SNAME2 = #{imageAttachSname2},
-		IMAGE_ATTACH_ONAME2 = #{imageAttachOname2},
-		IMAGE_ATTACH_TYPE2 = #{imageAttachType2},
-		IMAGE_ATTACH_SNAME3 = #{imageAttachSname3},
-		IMAGE_ATTACH_ONAME3 = #{imageAttachOname3},
-		IMAGE_ATTACH_TYPE3 = #{imageAttachType3}
-		where items_items_no = #{itemsItemsNo}
+		<if test="imageAttachSname1 == null">
+			update image
+			set 
+			detail1 = #{detail1},
+			detail2 = #{detail2},
+			detail3 = #{detail3},
+			IMAGE_ATTACH_SNAME2 = #{imageAttachSname2},
+			IMAGE_ATTACH_ONAME2 = #{imageAttachOname2},
+			IMAGE_ATTACH_TYPE2 = #{imageAttachType2},
+			IMAGE_ATTACH_SNAME3 = #{imageAttachSname3},
+			IMAGE_ATTACH_ONAME3 = #{imageAttachOname3},
+			IMAGE_ATTACH_TYPE3 = #{imageAttachType3}
+			where items_items_no = #{itemsItemsNo}
+		</if>
+		<if test="imageAttachSname2 == null">
+			update image
+			set 
+			detail1 = #{detail1},
+			detail2 = #{detail2},
+			detail3 = #{detail3},
+			IMAGE_ATTACH_SNAME1 = #{imageAttachSname1},
+			IMAGE_ATTACH_ONAME1 = #{imageAttachOname1},
+			IMAGE_ATTACH_TYPE1 = #{imageAttachType1},
+			IMAGE_ATTACH_SNAME3 = #{imageAttachSname3},
+			IMAGE_ATTACH_ONAME3 = #{imageAttachOname3},
+			IMAGE_ATTACH_TYPE3 = #{imageAttachType3}
+			where items_items_no = #{itemsItemsNo}
+		</if>
+		<if test="imageAttachSname3 == null">
+			update image
+			set 
+			detail1 = #{detail1},
+			detail2 = #{detail2},
+			detail3 = #{detail3},
+			IMAGE_ATTACH_SNAME1 = #{imageAttachSname1},
+			IMAGE_ATTACH_ONAME1 = #{imageAttachOname1},
+			IMAGE_ATTACH_TYPE1 = #{imageAttachType1},
+			IMAGE_ATTACH_SNAME2 = #{imageAttachSname2},
+			IMAGE_ATTACH_ONAME2 = #{imageAttachOname2},
+			IMAGE_ATTACH_TYPE2 = #{imageAttachType2}
+			where items_items_no = #{itemsItemsNo}
+		</if>
+		<if test="imageAttachSname1 == null and imageAttachSname2 == null and imageAttachSname3 == null">
+			update image
+			set 
+			detail1 = #{detail1},
+			detail2 = #{detail2},
+			detail3 = #{detail3},
+			where items_items_no = #{itemsItemsNo}
+		</if>
+		<if test="imageAttachSname1 != null and imageAttachSname2 != null and imageAttachSname3 != null">
+			update image
+			set 
+			detail1 = #{detail1},
+			detail2 = #{detail2},
+			detail3 = #{detail3},
+			IMAGE_ATTACH_SNAME1 = #{imageAttachSname1},
+			IMAGE_ATTACH_ONAME1 = #{imageAttachOname1},
+			IMAGE_ATTACH_TYPE1 = #{imageAttachType1},
+			IMAGE_ATTACH_SNAME2 = #{imageAttachSname2},
+			IMAGE_ATTACH_ONAME2 = #{imageAttachOname2},
+			IMAGE_ATTACH_TYPE2 = #{imageAttachType2},
+			IMAGE_ATTACH_SNAME3 = #{imageAttachSname3},
+			IMAGE_ATTACH_ONAME3 = #{imageAttachOname3},
+			IMAGE_ATTACH_TYPE3 = #{imageAttachType3}
+			where items_items_no = #{itemsItemsNo}
+		</if>
 	</update>
 	
 

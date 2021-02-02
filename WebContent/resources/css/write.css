@@ -21,7 +21,14 @@
 .list{
 	width: 200px;
 	text-align: center;
+	vertical-align: middle;
+	box-sizing: border-box;
 }
+
+#itemWrite{
+	width: 1200px;
+}
+
 
 .input{
 	width: 300px;
@@ -29,6 +36,7 @@
 #mainform {
 	padding-right: 300px;
 	padding-left: 300px;
+	width: 1000px;
 }
 
 #title {

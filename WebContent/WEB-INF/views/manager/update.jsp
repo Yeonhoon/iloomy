@@ -15,7 +15,6 @@
 	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/mainhome.css">
 	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/revise_main.css">
-	<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/revise_detail.css">
 	<script src="${root}/resources/js/revise.js"></script>
 </head>
 
@@ -27,58 +26,58 @@
 	<section id="sec">
 		<h1 style="text-align: center;">주요정보 수정</h1>
 				
-		<article id="main" style="margin-left: 300px;">
+		<article id="main">
 			
 			<input type="hidden" value="${items.itemsNo}"/>
 			<div id="mainInfo">
 				<form enctype="multipart/form-data" method="post" id="saveMain">
 					<div id="mainImage" style="margin-right:100px;">
 						<p style="text-align:center; font-size: 2rem;" id="mainPhotoLabel">대표 사진</p><br/>
-						<img src="${root}/manager/itemsattach?no=${items.itemsNo}"/>
+						<img src="${root}/manager/itemsattach?no=${items.itemsNo}"/><br />
 						<input type="file" name="itemsAttach" id="itemsAttach" />
 					</div>
 					
-					<table id="form" class="table align-middle">
+					<table id="form" class="table table-striped">
 						<tbody>
 							<tr>
 								<td class="list"><label for="itemsName;">제품명</label></td>
-								<td class="input"><input type="text" id="itemsName" name="itemsName" value="${items.itemsName}"/></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsName" name="itemsName" value="${items.itemsName}"/></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsPrice">가격</label></td>
-								<td class="input"> <input type="text" id="itemsPrice" name="itemsPrice" value="${items.itemsPrice}"/>원</td>
+								<td class="form-group"> <input class= "form-control" type="text" id="itemsPrice" name="itemsPrice" value="${items.itemsPrice}"/></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsModel">모델명</label></td>
-								<td class="input"><input type="text" id="itemsModel" name="itemsModel" value="${items.itemsModel}"></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsModel" name="itemsModel" value="${items.itemsModel}"></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsCompany">브랜드</label></td>
-								<td class="input"><input type="text" id="itemsCompany" name="itemsCompany" value="${items.itemsCompany}"/></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsCompany" name="itemsCompany" value="${items.itemsCompany}"/></td>
 							</tr> 
 							<tr>
 								<td class="list"><label for="itemsContext">제품설명</label></td>
-								<td class="input"><input type="text" id="itemsContext" name="itemsContext" value="${items.itemsContext}"/></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsContext" name="itemsContext" value="${items.itemsContext}"/></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsManufacture">제조사</label></td>
-								<td class="input"><input type="text" id="itemsManufacture"name="itemsManufacture" value="${items.itemsManufacture}"></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsManufacture"name="itemsManufacture" value="${items.itemsManufacture}"></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsOrigin">원산지</label></td>
-								<td class="input"><input type="text" id="itemsOrigin" name="itemsOrigin" value="${items.itemsOrigin}"/></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsOrigin" name="itemsOrigin" value="${items.itemsOrigin}"/></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsOption">옵션</label></td>
-								<td class="input"><input type="text" id="itemsOption" name="itemsOption" value="${items.itemsOption}"/></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsOption" name="itemsOption" value="${items.itemsOption}"/></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsColor">색상</label></td>
-								<td class="input"><input type="text" id="itemsColor" name="itemsColor" value="${items.itemsColor}"/></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsColor" name="itemsColor" value="${items.itemsColor}"/></td>
 							</tr>
 							<tr>
 								<td class="list"><label for="itemsStock">재고</label></td>
-								<td class="input"><input type="text" id="itemsStock" name="itemsStock" value="${items.itemsStock}"/></td>
+								<td class="form-group"><input class= "form-control" type="text" id="itemsStock" name="itemsStock" value="${items.itemsStock}"/></td>
 							</tr>
 						</tbody>
 					</table>

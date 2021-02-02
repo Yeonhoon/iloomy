@@ -18,19 +18,20 @@
       	<link rel="stylesheet" href="${root}/resources/css/productDetail.css">
 	</head>
 	
+	
 	<body>
 		<div class="headerwrap">
       		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 		</div>
 			<article id="main">
 				<div id="mainphoto">
-					<img id="itemsAttach" src="${root}/product/itemsAttach?no=${item.itemsNo}" height="600px;"/>
+					<img id="itemsAttach" src="${root}/product/itemsAttach?no=${item.itemsNo}" width="500px;" height="600px;"/>
 				</div>
 				<div id="maininfo">
 					<input type="hidden" name="itemsNo" value="${item.itemsNo}"/>
 					<p id="itemsName">${item.itemsName}</p>
 					<p id="itemsCompany">${item.itemsCompany }</p>
-					<p id="itemsContext"><b>${item.itemsContext}</b></p>
+					<hr />
 					<p id="itemsModel">${item.itemsModel}</p>
 					<p id="itemsOrigin">${item.itemsOrigin}</p>
 					<p id="itemsStock">${item.itemsStock}</p>
@@ -57,6 +58,10 @@
 						<hr/>
 							
 						<p style="display: inline;"><b>총 구매가</b></p>
+						<div id="itemsPrice">
+							<span><b><fmt:formatNumber value="${item.itemsPrice}" type="number"/>원</b></span>
+						</div>
+						<br/>
 						<div id="detailBtn">
 							<c:if test="${userinfo eq null}">
 								<div id="loginCheck"><b>로그인 해주세요</b></div>
@@ -85,19 +90,19 @@
 						<td>Q&A</td>
 					</tr>
 				</table>
-	 				<div id="list" >
-						<img src="${root}/product/imageattach?no=${item.itemsNo}"/>
+	 				<div class="list" >
+						<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail1}</p>
 					</div>
 					<c:if test="${image.detail2 ne null}">
-						<div id="list2">
-							<img src="${root}/product/imageattach?no=${item.itemsNo}"/>
+						<div class="list">
+							<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}"/>
 							<p class="detailinfo" style="text-align: center;">${image.detail2}</p>
 						</div>
 					</c:if>
 					<c:if test="${image.detail3 ne null}">
-					<div id="list3">
-						<img src="${root}/product/imageattach?no=${item.itemsNo}"/>
+					<div class="list">
+						<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail3}</p>
 					</div>
 					</c:if>

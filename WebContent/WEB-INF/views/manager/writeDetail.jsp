@@ -8,7 +8,7 @@
 
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 세부정보 입력</title>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -29,7 +29,7 @@
 	</div>
 	<div class="body">
 		<div id="title">
-			<h2 style="text-align: center; color: black;">상품등록 페이지</h2>
+			<h2 style="text-align: center; color: black;">상품 세부정보 입력</h2>
 		</div>
 		<div id="detail">
 			<form enctype="multipart/form-data" action="" method="post" id="detailForm">
@@ -37,21 +37,18 @@
 					<tbody>
 						<tr class="table align-middle">
 							<td class="list"><label for="detail1">상세설명1</label></td>
-							<td><textarea name="detail1" id="detail1"
-									cols="50" rows="10"></textarea></td>
-							<td><input type="file" id="image1" name="imageAttach1" /></td>
+							<td><textarea class= "form-control" name="detail1" id="detail1" cols="50" rows="10"></textarea></td>
+							<td><input type="file" id="image1" name="imageAttach1" style="width:150px"/></td>
 						</tr>
  						<tr>
 							<td><label for="detail2">상세설명2</label><br /></td>
-							<td><textarea name="detail2" id="detail2"
-									cols="50" rows="10"></textarea></td>
-							<td><input type="file" id="image2" name="imageAttach2" /></td>
+							<td><textarea class= "form-control" name="detail2" id="detail2" cols="50" rows="10"></textarea></td>
+							<td><input type="file" id="image2" name="imageAttach2" style="width:150px"/></td>
 						</tr>
 						<tr>
 							<td><label for="detail3">상세설명3</label></td>
-							<td><textarea name="detail3" id="detail3"
-									cols="50" rows="10"></textarea></td>
-							<td><input type="file" id="image3" name="imageAttach3" /></td>
+							<td><textarea class= "form-control" name="detail3" id="detail3" cols="50" rows="10"></textarea></td>
+							<td><input type="file" id="image3" name="imageAttach3" style="width:150px"/></td>
 						</tr>
 					</tbody>
 				</table>
@@ -62,7 +59,7 @@
 	<div class="d-flex justify-content-center ml-3">
 		<a href="javascript:saveDetail()" id="savebtn" type="submit"
 			class="btn btn-primary" style="color: white">저장</a> <a
-			href="javascript:history.back()" class="btn btn-danger">취소</a>
+			href="javascript:history.back()" style="color:white;" class="btn btn-danger">취소</a>
 	</div>
 
 
