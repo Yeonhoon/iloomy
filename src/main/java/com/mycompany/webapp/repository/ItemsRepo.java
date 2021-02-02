@@ -54,4 +54,9 @@ public class ItemsRepo {
 	public void delete(int no) {
 		sst.delete("items.delete",no);
 	}
+
+    public int selectSeq() {
+		int num = sst.selectOne("items.selectSeq");
+		return num;
+    }
 }

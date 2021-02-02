@@ -28,13 +28,13 @@
 	</select>
 	
 	<!-- items items_no로 불러오기 -->
-	<select id="selectByItemsItemsNo" parameterType="int" resultType="itemimages">
+	<select id="selectByItemsItemsNo" parameterType="int" resultType="imageDetail">
 		select detail_no, detail1, image1_attachtype, image1_attachoname, image1_attachsname, items_items_no
 		from items_images
 		where items_items_no = #{itemsItemsNo}
 	</select>
 	
-	<select id="selectByDetailNo" parameterType="int" resultType="itemimages">
+	<select id="selectByDetailNo" parameterType="int" resultType="imageDetail">
 		select detail_no, detail1, image1_attachtype, image1_attachoname, image1_attachsname, items_items_no
 		from items_images
 		where detail_no = #{detailNo}
@@ -57,7 +57,7 @@
 			#{itemsAttachtype})
 	</insert>
 	
-	<insert id="insertimages" parameterType="itemimages">
+	<insert id="insertimages" parameterType="imageDetail">
 		insert into items_images
 			(detail_no,
 			items_items_no,
@@ -85,7 +85,7 @@
 	</update>
 	
  	<!-- 디테일 업데이트 -->
-	<update id="updateDetail" parameterType="itemimages">
+	<update id="updateDetail" parameterType="imageDetail">
 		update items_images 
 		set 
 		detail1 = #{detail1},
@@ -118,5 +118,16 @@
 		where items_no = ${id}
 	</delete>
 
+	<insert id="saveImageAndDetail" parameterType="imageDetail">
+		insert into image
+		(IMAGE_NO,ITEMS_ITEMS_NO, DETAIL1, DETAIL2,DETAIL3,IMAGE_ATTACH_SNAME1,IMAGE_ATTACH_ONAME1,IMAGE_ATTACH_TYPE1,
+		IMAGE_ATTACH_SNAME2,IMAGE_ATTACH_ONAME2,IMAGE_ATTACH_TYPE2,IMAGE_ATTACH_SNAME3,IMAGE_ATTACH_ONAME3,IMAGE_ATTACH_TYPE3)
+		values
+		(ITEMSIMAGES_SEQ.nextval, #{itemsItemsNo},  #{detail1}, #{detail2},#{detail3}, #{imageAttachSname1}, #{imageAttachOname1}, #{imageAttachType1},
+		#{imageAttachSname2}, #{imageAttachOname2}, #{imageAttachType2},#{imageAttachSname3}, #{imageAttachOname3}, #{imageAttachType3})
+	</insert>
 
+	<select id="selectSeq" resultType="int">
+		select ITEMS_NO from ITEMS where ROWNUM=1 order by ITEMS_NO desc
+	</select>
 </mapper>

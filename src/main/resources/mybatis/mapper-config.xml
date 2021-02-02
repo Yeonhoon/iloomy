@@ -12,7 +12,7 @@
 		<typeAlias alias="notice" type="com.mycompany.webapp.dto.NoticeDTO"/>
 		<typeAlias alias="pager" type="com.mycompany.webapp.dto.PagerDTO"/>
 		<typeAlias alias="item" type="com.mycompany.webapp.dto.ItemsDTO"/>
-		<typeAlias alias="itemimages" type="com.mycompany.webapp.dto.ItemsImagesDTO"/>
+		<typeAlias alias="imageDetail" type="com.mycompany.webapp.dto.ImageDTO"/>
 		<typeAlias alias="order" type="com.mycompany.webapp.dto.OrdersDTO"/>
 		<typeAlias alias="orderitem" type="com.mycompany.webapp.dto.OrderItemsDTO"/>
 	</typeAliases>

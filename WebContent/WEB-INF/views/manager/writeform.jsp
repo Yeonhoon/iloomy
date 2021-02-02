@@ -31,12 +31,12 @@
 							<table id="form" class="table align-middle">
 								<tbody>
 									<tr>
-										<td class="list"><label for="itemsName;">제품명</label></td>
+										<td class="list"><label for="itemsName">제품명</label></td>
 										<td class="input"><input type="text" id="itemsName" name="itemsName"/></td>
 									</tr>
 									<tr>
 										<td class="list"><label for="itemsPrice">가격</label></td>
-										<td class="input"> <input type="text" id="itemsPrice" name="itemsPrice"/></td>
+										<td class="input"> <input type="number" id="itemsPrice" name="itemsPrice"/></td>
 									</tr>
 									<tr>
 										<td class="list"><label for="itemsModel">모델명</label></td>
@@ -68,7 +68,7 @@
 									</tr>
 									<tr>
 										<td class="list"><label for="itemsStock">제품 수량</label></td>
-										<td class="input"><input type="text" id="itemsStock" name="itemsStock" /></td>
+										<td class="input"><input type="number" id="itemsStock" name="itemsStock" /></td>
 									</tr>
 									<tr>
 										<td class="list"><label for="itemsAttach">이미지 첨부 </label></td>

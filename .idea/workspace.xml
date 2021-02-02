@@ -9,14 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3265bf6-0717-4085-a8be-dd85a795a2ed" name="Default Changelist" comment="user address">
+    <list default="true" id="c3265bf6-0717-4085-a8be-dd85a795a2ed" name="Default Changelist" comment="user findpw, update">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/notice/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/NoticeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/MemberRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/MemberRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/members.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/members.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/include/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/writeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/writeDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/writeform.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/views/manager/writeform.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/dto/ItemsImagesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/dto/ImageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/ImagesRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/ImagesRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/ItemsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/repository/ItemsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/ImagesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/ImagesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/ItemsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/ItemsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/webapp/service/NoticeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/items.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,20 +100,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9.0.41" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER" value="false" />
       <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
@@ -293,7 +289,8 @@
       <workItem from="1611026554224" duration="5018000" />
       <workItem from="1611058854042" duration="402000" />
       <workItem from="1611099168648" duration="535000" />
-      <workItem from="1611876708448" duration="9604000" />
+      <workItem from="1611876708448" duration="11543000" />
+      <workItem from="1612223392344" duration="6178000" />
     </task>
     <task id="LOCAL-00001" summary="tes">
       <created>1611794612553</created>
@@ -323,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611879466970</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="user findpw, update">
+      <created>1611908304549</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611908304549</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +350,20 @@
     <MESSAGE value="notice" />
     <MESSAGE value="notice pager" />
     <MESSAGE value="user address" />
-    <option name="LAST_COMMIT_MESSAGE" value="user address" />
+    <MESSAGE value="user findpw, update" />
+    <option name="LAST_COMMIT_MESSAGE" value="user findpw, update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mycompany/webapp/dto/ImageDTO.java</url>
+          <line>21</line>
+          <properties field="itemsItemsNo" class="com.mycompany.webapp.dto.ImageDTO" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

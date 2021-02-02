@@ -3,7 +3,6 @@ package com.mycompany.webapp.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.webapp.dto.DeliveryDTO;
 import com.mycompany.webapp.dto.DeliveryStatus;
 import com.mycompany.webapp.dto.ItemsDTO;
-import com.mycompany.webapp.dto.ItemsImagesDTO;
+import com.mycompany.webapp.dto.ImageDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.OrdersDTO;
@@ -105,7 +104,7 @@ public class ProductController {
         model.addAttribute("lno", no);
         model.addAttribute("item", item);
         
-        ItemsImagesDTO image = imagesService.getMainImage(no);
+        ImageDTO image = imagesService.getMainImage(no);
         model.addAttribute("image", image);
         System.out.println(item.toString());
         System.out.println(image.toString());
@@ -113,34 +112,34 @@ public class ProductController {
     }
 
   //detail image 불러오기
-    @GetMapping("/imageattach")
-    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
-    	
-    	ItemsImagesDTO images = imagesService.getDetailImage(no);
-    	String filePath = null;
-    	
-    	if(images.getImage1AttachOname() != null) {
-    		String itemAttach = images.getImage1AttachSname();
-    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
-    		
-    		response.setContentType(images.getImage1Attachtype());
-    		
-    		String oname = images.getImage1AttachOname();
-    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
-    	} else {
-    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
-    		response.setContentType("image/jpg");
-    	}
-    	OutputStream os = response.getOutputStream();
-    	InputStream is = new FileInputStream(filePath);
-    	FileCopyUtils.copy(is,os);
-    	os.flush();
-    	os.close();
-    	is.close();
-    }
+//    @GetMapping("/imageattach")
+//    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+//
+//    	ImageDTO images = imagesService.getDetailImage(no);
+//    	String filePath = null;
+//
+//    	if(images.getImage1AttachOname() != null) {
+//    		String itemAttach = images.getImage1AttachSname();
+//    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+//
+//    		response.setContentType(images.getImage1Attachtype());
+//
+//    		String oname = images.getImage1AttachOname();
+//    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+//    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+//    	} else {
+//    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+//    		response.setContentType("image/jpg");
+//    	}
+//    	OutputStream os = response.getOutputStream();
+//    	InputStream is = new FileInputStream(filePath);
+//    	FileCopyUtils.copy(is,os);
+//    	os.flush();
+//    	os.close();
+//    	is.close();
+//    }
 
- // ------------------------------------------------------------------------------
+
 
  	@GetMapping(value = "cart2") // 연결 header에서 지선 추가
  	public String cart2(HttpSession session) {

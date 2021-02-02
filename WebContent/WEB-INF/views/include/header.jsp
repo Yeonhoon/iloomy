@@ -62,10 +62,10 @@
          <div id="left_bar" style="font-size: 0.8rem;">
             <div>
 				<%--${userinfo.id}--%>
-				<a href="${root}/manager/write">상품등록</a>
+
 				<c:if test="${userinfo eq 'admin'}">
 					<a href="${root}/Notice/board/new">QnA글쓰기</a>
-					
+					<a href="${root}/manager/write">상품등록</a>
 				</c:if>
 				<c:choose>
 					<c:when test="${userinfo ne null}">

@@ -15,6 +15,11 @@ public class NoticeService {
     NoticeRepo nRepo;
 
     public void insert(NoticeDTO notice) {
+
+
+
+
+
         int tmp = nRepo.insert(notice);
     }
 

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.ItemsDTO;
-import com.mycompany.webapp.dto.ItemsImagesDTO;
+import com.mycompany.webapp.dto.ImageDTO;
 import com.mycompany.webapp.service.ImagesService;
 import com.mycompany.webapp.service.ItemsService;
 
@@ -48,8 +48,8 @@ public class ManagerController {
     
     //메인 내용 저장
     @PostMapping("/write")
-    public String write(HttpSession session, ItemsDTO dto) throws IllegalStateException, IOException {
-    	
+    public String write(ItemsDTO dto) throws IllegalStateException, IOException {
+		System.out.println(dto.toString());
     	MultipartFile mf = dto.getItemsAttach();
     	// 사진 저장
     	if(!mf.isEmpty()) {
@@ -72,30 +72,46 @@ public class ManagerController {
         return "manager/writeDetail";
     }
     
-    //상세내용 저장
+
     @PostMapping("/writeDetail")
-    public String writeDetail(HttpSession session, ItemsImagesDTO dto) throws IllegalStateException, IOException {
+    public String writeDetail(ImageDTO dto) throws IllegalStateException, IOException {
     	ItemsDTO items = new ItemsDTO();
-    	
-    	MultipartFile mf1 = dto.getImagesAttach();
-    	// 사진 저장
-    	if(!mf1.isEmpty()) {
-    		dto.setImage1AttachOname(mf1.getOriginalFilename());
-    		String saveName = new Date().getTime() + "-" + mf1.getOriginalFilename();
-    		dto.setImage1AttachSname(saveName);
-    		dto.setImage1Attachtype(mf1.getContentType());
-    		File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
-    		mf1.transferTo(saveFile);
-    	}
-    	
-    	dto.setItemsItemsNo(items.getItemsNo());
-    	System.out.println(dto.toString());
-		
-    	imagesService.saveImages(dto);
-    	
+		System.out.println(dto.toString());
+		MultipartFile mf1 = dto.getImageAttach1();
+		MultipartFile mf2 = dto.getImageAttach2();
+		MultipartFile mf3 = dto.getImageAttach3();
+
+		if(!mf1.isEmpty() && !mf2.isEmpty() && !mf3.isEmpty()){
+			dto.setImageAttachOname1((mf1.getOriginalFilename()));
+			dto.setImageAttachOname2((mf2.getOriginalFilename()));
+			dto.setImageAttachOname3((mf3.getOriginalFilename()));
+			String saveName1 = new Date().getTime() + "-" +mf1.getOriginalFilename();
+			String saveName2 = new Date().getTime() + "-" +mf2.getOriginalFilename();
+			String saveName3 = new Date().getTime() + "-" +mf3.getOriginalFilename();
+			dto.setImageAttachSname1(saveName1);
+			dto.setImageAttachSname2(saveName2);
+			dto.setImageAttachSname3(saveName3);
+			dto.setImageAttachType1(mf1.getContentType());
+			dto.setImageAttachType2(mf2.getContentType());
+			dto.setImageAttachType3(mf3.getContentType());
+			//파일 저장
+			File saveFile1 = new File("D:/MW/uploadfiles/product/" + saveName1);
+			File saveFile2 = new File("D:/MW/uploadfiles/product/" + saveName2);
+			File saveFile3 = new File("D:/MW/uploadfiles/product/" + saveName3);
+			mf1.transferTo(saveFile1);
+			mf2.transferTo(saveFile2);
+			mf3.transferTo(saveFile3);
+		}
+		int assNum = itemsService.selectSeq();
+		System.out.println(assNum);
+		dto.setItemsItemsNo(assNum);
+		System.out.println("222");
+    	int num = imagesService.saveImageAndDetail(dto);
+		System.out.println("num : "+num);
+
     	return "redirect:/manager/productList";
     }
-    
+
 
     // 상세 이미지 업로드 시 미리보기
 //    @GetMapping("/imagepreview") //메소드는 get방식으로 가져오기
@@ -104,7 +120,7 @@ public class ManagerController {
 //		File dir = new File(saveDirPath);
 //		String [] fileNames = dir.list(); // 폴더 안에 있는 모든 파일 명을 배열로 내놓음
 //		model.addAttribute("fileNames",fileNames);
-//		
+//
 //		return "manager/imagepreview";
 //	}
     
@@ -119,7 +135,7 @@ public class ManagerController {
     public String updateform(int no, Model model){
         logger.info("수정 페이지로 이동하기");
         ItemsDTO items = itemsService.getItemJoin(no);
-        ItemsImagesDTO image = new ItemsImagesDTO();
+        ImageDTO image = new ImageDTO();
         model.addAttribute("items", items);
         model.addAttribute("image", image);
         logger.info(items.toString());
@@ -156,7 +172,7 @@ public class ManagerController {
     
     // 메인 업데이트 저장 후 다음 페이지로 이동
     @PostMapping("/updatedetail")
-    public String itemupdate(ItemsDTO dto, ItemsImagesDTO image, Model model) throws IllegalStateException, IOException{
+    public String itemupdate(ItemsDTO dto, ImageDTO image, Model model) throws IllegalStateException, IOException{
     	
     	//업데이트한 사진 저장
 //    	MultipartFile mf = dto.getItemsAttach();
@@ -181,43 +197,43 @@ public class ManagerController {
     public String updateDetail(int no, Model model, ItemsDTO itemsDTO) {
     	logger.info("detail 수정 페이지로 이동");
     	System.out.println("detail  No:" + no);
-    	ItemsImagesDTO image = imagesService.getMainImage(no);
+    	ImageDTO image = imagesService.getMainImage(no);
     	System.out.println(image.toString());
     	model.addAttribute("detail",image);
     	return "manager/updateDetail";
     }
     
-    //detail 이미지 불러오기
-    @GetMapping("/imageattach")
-    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
-    	System.out.println("int no:" + no);
-    	ItemsImagesDTO images = imagesService.getDetailImage(no);
-    	String filePath = null;
-    	if(images.getImage1AttachOname() != null) {
-    		String itemAttach = images.getImage1AttachSname();
-    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
-    		
-    		response.setContentType(images.getImage1Attachtype());
-    		
-    		String oname = images.getImage1AttachOname();
-    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
-    	} else {
-    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
-    		response.setContentType("image/jpg");
-    	}
-    	OutputStream os = response.getOutputStream();
-    	InputStream is = new FileInputStream(filePath);
-    	FileCopyUtils.copy(is,os);
-    	os.flush();
-    	os.close();
-    	is.close();
-    }
+//    //detail 이미지 불러오기
+//    @GetMapping("/imageattach")
+//    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+//    	System.out.println("int no:" + no);
+//    	ImageDTO images = imagesService.getDetailImage(no);
+//    	String filePath = null;
+//    	if(images.getImage1AttachOname() != null) {
+//    		String itemAttach = images.getImage1AttachSname();
+//    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+//
+//    		response.setContentType(images.getImage1Attachtype());
+//
+//    		String oname = images.getImage1AttachOname();
+//    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+//    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+//    	} else {
+//    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+//    		response.setContentType("image/jpg");
+//    	}
+//    	OutputStream os = response.getOutputStream();
+//    	InputStream is = new FileInputStream(filePath);
+//    	FileCopyUtils.copy(is,os);
+//    	os.flush();
+//    	os.close();
+//    	is.close();
+//    }
     
     
     //상세 업데이트 내용 저장
     @PostMapping("/saveupdate")
-    public String saveUpdate(ItemsImagesDTO image) {
+    public String saveUpdate(ImageDTO image) {
     	imagesService.updateItem(image);
     	return "redirect:/manager/productList";
     }

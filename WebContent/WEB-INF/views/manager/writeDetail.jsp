@@ -39,7 +39,7 @@
 							<td class="list"><label for="detail1">상세설명1</label></td>
 							<td><textarea name="detail1" id="detail1"
 									cols="50" rows="10"></textarea></td>
-							<td><input type="file" id="image1" name="imagesAttach" /></td>
+							<td><input type="file" id="image1" name="imageAttach1" /></td>
 						</tr>
  						<tr>
 							<td><label for="detail2">상세설명2</label><br /></td>

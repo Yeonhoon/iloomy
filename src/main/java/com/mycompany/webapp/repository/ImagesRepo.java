@@ -5,8 +5,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.mycompany.webapp.dto.ItemsDTO;
-import com.mycompany.webapp.dto.ItemsImagesDTO;
+import com.mycompany.webapp.dto.ImageDTO;
 
 @Repository
 public class ImagesRepo {
@@ -14,24 +13,28 @@ public class ImagesRepo {
 	@Resource
 	private SqlSessionTemplate sst;
 	
-	public ItemsImagesDTO selectByItemsItemsNo(int no) {
-		ItemsImagesDTO image= sst.selectOne("items.selectByItemsItemsNo", no);
+	public ImageDTO selectByItemsItemsNo(int no) {
+		ImageDTO image= sst.selectOne("items.selectByItemsItemsNo", no);
 		return image;
 	}
 	
-	public ItemsImagesDTO selectByDetailNo(int no) {
-		ItemsImagesDTO image= sst.selectOne("items.selectByDetailNo", no);
+	public ImageDTO selectByDetailNo(int no) {
+		ImageDTO image= sst.selectOne("items.selectByDetailNo", no);
 		return image;
 	}
 	
-	public int saveImages(ItemsImagesDTO imagesDTO) {
+	public int saveImages(ImageDTO imagesDTO) {
 		int rows = sst.insert("items.insertimages", imagesDTO);
 		return rows;
 	}
 
-	public int updateImage(ItemsImagesDTO imagesDTO) {
+	public int updateImage(ImageDTO imagesDTO) {
 		int rows = sst.update("items.updateDetail", imagesDTO);
 		return rows;
 	}
-	
+
+	public int saveImageAndDetail(ImageDTO dto) {
+		int tmp = sst.insert("items.saveImageAndDetail",dto);
+		return tmp;
+	}
 }
