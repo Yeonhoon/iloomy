@@ -11,6 +11,7 @@ import com.mycompany.webapp.dto.DeliveryDTO;
 import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrdersDTO;
+import com.mycompany.webapp.dto.UserDTO;
 import com.mycompany.webapp.repository.ItemsRepo;
 import com.mycompany.webapp.repository.OrderRepo;
 
@@ -46,8 +47,8 @@ public class OrderService {
 		System.out.println("orderItemsDTO: "+orderItemsDTO.toString());
 	}
 
-	public List<OrderItemsDTO> getItemCart() {
-		List<OrderItemsDTO> orderItemLists =  orderRepo.selectItemCart();
+	public List<OrderItemsDTO> getItemCart(UserDTO users) {
+		List<OrderItemsDTO> orderItemLists =  orderRepo.selectItemCart(users);
 //		for (OrderItemsDTO orderitem : orderItemLists) {
 //			List <ItemsDTO> itemList = itemsRepo.listByPk(orderitem.getItemsItemsNo());
 //			orderitem.setItemList(itemList);
@@ -73,8 +74,8 @@ public class OrderService {
 	}
 
 
-	public List<OrderItemsDTO> getItemOrder() {
-		List<OrderItemsDTO> orderItemLists =  orderRepo.selectItemOrder();
+	public List<OrderItemsDTO> getItemOrder(UserDTO users) {
+		List<OrderItemsDTO> orderItemLists =  orderRepo.selectItemOrder(users);
 
 		for (OrderItemsDTO orderitem : orderItemLists) {
 			ItemsDTO item = itemsRepo.selectByPk(orderitem.getItemsItemsNo());
@@ -102,6 +103,11 @@ public class OrderService {
 		System.out.println("updateAddress 확인:"+rows);
 		
 	}
-	
+
+
+	/*
+	 * public int cartdelete(int orderItemsNo) { int rows =
+	 * orderRepo.cartdelete(orderItemsNo); return rows; }
+	 */
 	
 }

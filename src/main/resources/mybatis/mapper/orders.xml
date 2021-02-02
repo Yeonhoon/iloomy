@@ -21,10 +21,10 @@
 		
 	</insert>
 	
-	<select id="selectItemCart" resultType="orderitem">
+	<select id="selectItemCart" resultType="orderitem" parameterType="member">
 		select a.order_items_no, a.order_items_count, a.order_items_price, a.orders_order_no, a.items_items_no
 		from order_items a join orders b on a.orders_order_no = b.order_no
-		where b.status =0
+		where b.status =0 AND b.members_members_id=#{id}
 	</select>
 	
 	<update id="updateOrder" parameterType="orderitem">
@@ -44,10 +44,10 @@
        						 where o.ORDER_NO = #{ordersOrderNo})
 	</update>
 	
-	<select id="selectItemOrder" resultType="orderitem">
+	<select id="selectItemOrder" resultType="orderitem" parameterType="member">
 		select a.order_items_no, a.order_items_count, a.order_items_price, a.orders_order_no, a.items_items_no
 		from order_items a join orders b on a.orders_order_no = b.order_no
-		where b.status =1
+		where b.status =1 AND b.members_members_id=#{id} 
 	</select>
 	
 	<select id="selectOrder" parameterType="int" resultType="order">

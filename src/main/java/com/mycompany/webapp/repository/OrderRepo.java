@@ -12,6 +12,7 @@ import com.mycompany.webapp.dto.AddressDTO;
 import com.mycompany.webapp.dto.DeliveryDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrdersDTO;
+import com.mycompany.webapp.dto.UserDTO;
 
 @Repository
 public class OrderRepo {
@@ -34,8 +35,8 @@ public class OrderRepo {
 		
 	}
 
-	public List<OrderItemsDTO> selectItemCart() {
-		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemCart");
+	public List<OrderItemsDTO> selectItemCart(UserDTO users) {
+		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemCart", users);
 		return orderItemLists;
 	}
 
@@ -56,8 +57,8 @@ public class OrderRepo {
 		return rows;
 	}
 
-	public List<OrderItemsDTO> selectItemOrder() {
-		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemOrder");
+	public List<OrderItemsDTO> selectItemOrder(UserDTO users) {
+		List<OrderItemsDTO> orderItemLists = sst.selectList("orders.selectItemOrder", users);
 		return orderItemLists;
 	}
 
@@ -75,4 +76,9 @@ public class OrderRepo {
 		int rows = sst.update("orders.updateAddress", map);
 		return rows;
 	}
+
+	/*
+	 * public int cartdelete(int orderItemsNo) { int rows =
+	 * sst.update("orders.cartdelete", orderItemsNo); return rows; }
+	 */
 }

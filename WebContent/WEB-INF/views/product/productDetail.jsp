@@ -57,13 +57,14 @@
 						<hr/>
 							
 						<p style="display: inline;"><b>총 구매가</b></p>
-						<div id="itemsPrice">
-							<span><b><fmt:formatNumber value="${item.itemsPrice}" type="number"/>원</b></span>
-						</div>
-						<br/>	
 						<div id="detailBtn">
-							<button id="pay" type="button"> 결제하기 </button>
-							<button id="bag" type="button"> 장바구니 </button>
+							<c:if test="${userinfo eq null}">
+								<div id="loginCheck"><b>로그인 해주세요</b></div>
+							</c:if>
+							<c:if test="${userinfo ne null}">
+								<button id="pay" type="button"> 결제하기 </button>
+								<button id="bag" type="button"> 장바구니 </button>
+							</c:if>
 						</div>	
 						</form>
 					<br/>

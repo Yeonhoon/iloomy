@@ -170,14 +170,21 @@ public class ProductController {
 	}
 
 
-    // ------------------------------------------------------------------------------
+	  // ------------------------------------------------------------------------------
 
   	@GetMapping(value = "cart2") // 연결 header에서 지선 추가
   	public String cart2(HttpSession session) {
   		session.removeAttribute("orderItemLists");
-  		//status가 cart인 거 가져옴
-  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
-  		session.setAttribute("orderItemLists", orderItemLists);
+  		// user IF 하기
+  		String userId = (String) session.getAttribute("userinfo");
+  		
+  		if (userId != null) {
+  			UserDTO users = memberService.selectAddress(userId);
+  			//status가 cart인 거 가져옴
+	  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart(users);
+	  		session.setAttribute("orderItemLists", orderItemLists);
+  		}
+  		
   		logger.info("실행 : product/cart2");
   		return "product/cart";
   	}
@@ -220,7 +227,7 @@ public class ProductController {
   		// order_items를 불러와서 orders의 status가 카트인것만 보여주기
   		// product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
   		// status=cart에 있는거 list로 받아옴
-  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart(users);
 
   		session.setAttribute("orderItemLists", orderItemLists);
   		return "product/cart";
@@ -297,9 +304,14 @@ public class ProductController {
   	
   	@GetMapping(value = "/orderForm")
   	public String orderForm(HttpSession session) {
-  		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
+  		session.removeAttribute("orderItemLists");
+  		// user IF 하기
+  		String userId = (String) session.getAttribute("userinfo");
   		
-  		
+		UserDTO users = memberService.selectAddress(userId);
+		//status가 Order인 거 가져옴
+		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder(users);
+	  		
   		//order에서 date, delivery에서 status가져오기
   		for (OrderItemsDTO ordItem : orderItemLists) {
   			OrdersDTO order = orderService.selectByPk(ordItem.getOrdersOrderNo());
@@ -358,4 +370,11 @@ public class ProductController {
  		model.addAttribute("delivery", delivery);
   		return "product/address";
   	}
+  	
+	/*
+	 * @GetMapping(value = "/cartdelete") public String cartdelete(String cartNo) {
+	 * System.out.println(cartNo); int orderItemsNo = Integer.parseInt(cartNo); int
+	 * num = orderService.cartdelete(orderItemsNo);
+	 * System.out.println("cartdelete: " +num); return "redirect:/product/cart2"; }
+	 */
   }
