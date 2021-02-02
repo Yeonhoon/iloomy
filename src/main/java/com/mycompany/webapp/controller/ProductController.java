@@ -154,6 +154,8 @@ public class ProductController {
  	@PostMapping(value = "cart")
  	public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req) {
  		// user
+ 		
+ 		System.out.println(lno+" "+itemsName);
  		String userId = (String) session.getAttribute("userinfo");
  		UserDTO users = memberService.selectAddress(userId);
 
@@ -197,7 +199,7 @@ public class ProductController {
 
  	@GetMapping(value = "/order")
  	public String method1(HttpServletRequest request, Model model, HttpSession session) throws Exception {
-
+// 		 List<OrderItemsDTO> result = test(request, model, session);
  		//
  		if (request.getParameterValues("check") != null) {
 
@@ -229,17 +231,62 @@ public class ProductController {
  			System.out.println(delivery);
  			ordItem.setDelivery(delivery);
  		}
+ 		
  		System.out.println("orderItemLists: " + orderItemLists);
  		session.setAttribute("orderItemLists", orderItemLists);
- 		
+ 		 
+// 		session.setAttribute("orderItemLists", result);
  		
  		//delivery에서 status
- 		return "product/order";
+ 		return "redirect:/product/delivery";
  	}
  	
  	@GetMapping(value = "/delivery")
  	public String delivery() {
  		return "product/delivery";
  	}
+ 	
+ 	@PostMapping(value = "/addressUpdate")
+ 	public String addressUpdate() {
+ 		
+ 		return "redirect:/product/order";
+ 	}
+ 	
+// 	public static List<OrderItemsDTO> test(HttpServletRequest request, Model model, HttpSession session) throws Exception{
+// 		if (request.getParameterValues("check") != null) {
+//
+// 			String[] arr = request.getParameterValues("check"); // orderItemsNo
+// 			for (String i : arr) {
+// 				int orderItemsNo = Integer.parseInt(request.getParameter("orderItemsNo" + i));
+// 				int ordersOrderNo = Integer.parseInt(request.getParameter("ordersOrderNo" + i));
+// 				int itemsItemsNo = Integer.parseInt(request.getParameter("itemsItemsNo" + i));
+// 				System.out.println(orderItemsNo);
+// 				int orderItemsCount = Integer.parseInt(request.getParameter("orderItemsCount" + i));
+// 				long orderItemsPrice = Long.parseLong(request.getParameter("orderItemsPrice" + i));
+// 				System.out.println("count: " + orderItemsCount);
+// 				System.out.println("price: " + orderItemsPrice);
+// 				OrderItemsDTO orderItem = new OrderItemsDTO(orderItemsNo, orderItemsCount, orderItemsPrice,
+// 						ordersOrderNo, itemsItemsNo);
+// 				orderService.updateOrder(orderItem);
+// 				System.out.println(orderItem.toString());
+// 			}
+// 		}
+// 		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
+// 		
+// 		
+// 		//order에서 date, delivery에서 status가져오기
+// 		for (OrderItemsDTO ordItem : orderItemLists) {
+// 			OrdersDTO order = orderService.selectByPk(ordItem.getOrdersOrderNo());
+// 			System.out.println(order);
+// 			ordItem.setOrder(order);
+// 			DeliveryDTO delivery = deliveryService.selectByPk(ordItem.getOrdersOrderNo());
+// 			System.out.println(delivery);
+// 			ordItem.setDelivery(delivery);
+// 		}
+// 		System.out.println("orderItemLists: " + orderItemLists);
+// 		session.setAttribute("orderItemLists", orderItemLists);
+// 		return orderItemLists;
+// 		
+// 	}
 
  }

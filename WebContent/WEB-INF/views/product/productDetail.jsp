@@ -39,6 +39,8 @@
 					<p style="font-size: 0.8rem"><b>배송기간</b> 약 10일 <b>배송비</b> 무료배송 
 					<b>배송방법</b> 설치배송 <b>제품코드</b> HB722501</p>
 					<br/>
+					<form id="productCart" method="POST" action="">
+					
 					<div id="option">
 						<select name="itemsColor" id="itemsColor">
 							<option value="none">[필수]색상을 선택해주세요</option>
@@ -63,6 +65,7 @@
 							<button id="pay" type="button"> 결제하기 </button>
 							<button id="bag" type="button"> 장바구니 </button>
 						</div>	
+						</form>
 					<br/>
 					<div id="detailImg">
 						<a href="#" target="_black"><img src="${root}/resources/img/l11.jpg" width="400px" style="margin-top: 20px; margin-bottom: 20px;"/></a><br/>
@@ -125,12 +128,7 @@
 					<a class="btn btn-secondary ml-3" href="${root}/manager/productList" style="color:black;">목록</a>
 					
 					<!-- 로그인 상태에서만 보이기 -->
-					<c:if test="${userinfo eq 'admin'}">
-						<a class="btn btn-warning ml-3" href="${root}/manager/update?no=${item.itemsNo}">수정</a>
-						<form action="manager/delete" method="post">
-							<a class="btn btn-danger ml-3" href="${root}/manager/delete?no=${item.itemsNo}" style="color:white;">삭제</a>
-						</form>
-					</c:if>
+		
 				</div>
 			</article>
 		
@@ -167,6 +165,7 @@
 					return;
 				} else {
 					if (confirm("결제하시겠습니까?")){
+						console.log("test");
 						document.getElementById("productCart").action = "${root}/product/cart?lno=${lno}&itemsName=${item.itemsName}";
 			         	document.getElementById("productCart").submit();
 					} 

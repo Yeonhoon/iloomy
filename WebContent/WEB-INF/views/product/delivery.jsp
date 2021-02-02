@@ -42,7 +42,7 @@
 				</p>
 			</div>
 			<div>
-				<form>
+				<form name="addressUpdate" action="addressUpdate" method="post">
 					<div class="form-group">
 						<label for="user">ID</label> <input type="text"
 							value="${userinfo}" readonly class="form-control"
