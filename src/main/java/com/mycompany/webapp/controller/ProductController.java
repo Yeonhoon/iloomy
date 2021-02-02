@@ -249,7 +249,12 @@ public class ProductController {
  	@PostMapping(value = "/addressUpdate")
  	public String addressUpdate() {
  		
- 		return "redirect:/product/order";
+ 		return "redirect:/product/orderForm";
+ 	}
+ 	
+ 	@GetMapping(value = "/orderForm")
+ 	public String orderForm() {
+ 		return "product/order";
  	}
  	
 // 	public static List<OrderItemsDTO> test(HttpServletRequest request, Model model, HttpSession session) throws Exception{
