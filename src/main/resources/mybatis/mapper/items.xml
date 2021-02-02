@@ -12,32 +12,54 @@
 	</select>
 
 	<select id="selectByPk" parameterType="int" resultType="item">
-		select items_no, items_name, items_company,
-		items_price,items_context, items_color, items_stock,
-		items_model, items_manufacture, items_origin, items_option,
-		items_attachtype, items_attachoname, items_attachsname 
+		select ITEMS_NO, ITEMS_NAME, ITEMS_COMPANY,
+		ITEMS_PRICE, ITEMS_CONTEXT, ITEMS_COLOR, ITEMS_MODEL,
+		ITEMS_MANUFACTURE, ITEMS_ORIGIN, ITEMS_STOCK, ITEMS_OPTION,
+		ITEMS_ATTACHONAME, ITEMS_ATTACHSNAME, ITEMS_ATTACHTYPE
 		from items
 		where items_no = #{itemsNo}
 	</select>
 	
 	<select id="selectJoin" parameterType="int" resultType="item">
 		select i.*, m.items_items_no
-		from items i, items_images m 
+		from items i, image m 
         where i.items_no = m.items_items_no 
         	  and m.items_items_no = #{itemsNo}
 	</select>
 	
 	<!-- items items_no로 불러오기 -->
 	<select id="selectByItemsItemsNo" parameterType="int" resultType="imageDetail">
-		select detail_no, detail1, image1_attachtype, image1_attachoname, image1_attachsname, items_items_no
-		from items_images
-		where items_items_no = #{itemsItemsNo}
+		select IMAGE_NO, DETAIL1, DETAIL2, DETAIL3, 
+		IMAGE_ATTACH_SNAME1,
+		IMAGE_ATTACH_ONAME1,
+		IMAGE_ATTACH_TYPE1,
+		IMAGE_ATTACH_SNAME2,
+		IMAGE_ATTACH_ONAME2,
+		IMAGE_ATTACH_TYPE2,
+		IMAGE_ATTACH_SNAME3,
+		IMAGE_ATTACH_ONAME3,
+		IMAGE_ATTACH_TYPE3
+		from image
+		where ITEMS_ITEMS_NO = #{itemsItemsNo}
 	</select>
 	
 	<select id="selectByDetailNo" parameterType="int" resultType="imageDetail">
-		select detail_no, detail1, image1_attachtype, image1_attachoname, image1_attachsname, items_items_no
-		from items_images
-		where detail_no = #{detailNo}
+		select IMAGE_NO,
+				DETAIL1,
+				DETAIL2,
+				DETAIL3,
+				ITEMS_ITEMS_NO,
+				IMAGE_ATTACH_SNAME1,
+				IMAGE_ATTACH_ONAME1,
+				IMAGE_ATTACH_TYPE1,
+				IMAGE_ATTACH_SNAME2,
+				IMAGE_ATTACH_ONAME2,
+				IMAGE_ATTACH_TYPE2,
+				IMAGE_ATTACH_SNAME3,
+				IMAGE_ATTACH_ONAME3,
+				IMAGE_ATTACH_TYPE3
+		from image
+		where image_no = #{imageNo}
 	</select>	
 	
 	<insert id="insert" parameterType="item">

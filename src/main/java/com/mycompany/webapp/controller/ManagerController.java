@@ -187,8 +187,8 @@ public class ManagerController {
     	itemsService.updateItem(dto);
     	logger.info(dto.toString());
     	logger.info("세부 수정페이지로 이동");
-    	int num = dto.getItemsItemsNo();
-    	String str ="redirect:/manager/toDetail?no=" + num;
+//    	int num = dto.getItemsItemsNo();
+    	String str ="redirect:/manager/toDetail?no=" ;
     	return str;
     }
     

@@ -85,18 +85,18 @@
 					</tr>
 				</table>
 	 				<div id="list" >
-						<img src="${root}/product/imageattach?no=${image.detailNo}"/>
+						<img src="${root}/product/imageattach?no=${image.imageNo}"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail1}</p>
 					</div>
-					<c:if test="${image.detail2 != null}">
+					<c:if test="${image.detail2 ne null}">
 						<div id="list2">
-							<img src="${root}/product/imageattach?no=${image.detailNo}"/>
+							<img src="${root}/product/imageattach?no=${image.imageNo}"/>
 							<p class="detailinfo" style="text-align: center;">${image.detail2}</p>
 						</div>
 					</c:if>
-					<c:if test="${image.detail3 != null}">
+					<c:if test="${image.detail3 ne null}">
 					<div id="list3">
-						<img src="${root}/product/imageattach?no=${image.detailNo}"/>
+						<img src="${root}/product/imageattach?no=${image.imageNo}"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail3}</p>
 					</div>
 					</c:if>
@@ -126,9 +126,13 @@
 				</div> --%>
 				<div class="d-flex justify-content-center align-items-center">
 					<a class="btn btn-secondary ml-3" href="${root}/manager/productList" style="color:black;">목록</a>
-					
 					<!-- 로그인 상태에서만 보이기 -->
-		
+					<c:if test="${userinfo eq 'admin'}">
+						<a class="btn btn-warning ml-3" href="${root}/manager/update?no=${item.itemsNo}">수정</a>
+						<form action="manager/delete" method="post">
+							<a class="btn btn-danger ml-3" href="${root}/manager/delete?no=${item.itemsNo}" style="color:white;">삭제</a>
+						</form>
+					</c:if>
 				</div>
 			</article>
 		

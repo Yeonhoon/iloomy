@@ -100,7 +100,9 @@ public class ProductController {
     @GetMapping("/detail")
     public String itemsDetail(int no, Model model){
         logger.info("실행 : product/detail");
+
         ItemsDTO item = itemsService.getItem(no); // main 사진 불러오기
+
         model.addAttribute("lno", no);
         model.addAttribute("item", item);
         
@@ -112,32 +114,32 @@ public class ProductController {
     }
 
   //detail image 불러오기
-//    @GetMapping("/imageattach")
-//    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
-//
-//    	ImageDTO images = imagesService.getDetailImage(no);
-//    	String filePath = null;
-//
-//    	if(images.getImage1AttachOname() != null) {
-//    		String itemAttach = images.getImage1AttachSname();
-//    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
-//
-//    		response.setContentType(images.getImage1Attachtype());
-//
-//    		String oname = images.getImage1AttachOname();
-//    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-//    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
-//    	} else {
-//    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
-//    		response.setContentType("image/jpg");
-//    	}
-//    	OutputStream os = response.getOutputStream();
-//    	InputStream is = new FileInputStream(filePath);
-//    	FileCopyUtils.copy(is,os);
-//    	os.flush();
-//    	os.close();
-//    	is.close();
-//    }
+    @GetMapping("/imageattach")
+    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+
+    	ImageDTO images = imagesService.getDetailImage(no);
+    	String filePath = null;
+
+    	if(images.getImageAttachOname1() != null) {
+    		String itemAttach = images.getImageAttachSname1();
+    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+
+    		response.setContentType(images.getImageAttachType1());
+
+    		String oname = images.getImageAttachOname1();
+    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+    	} else {
+    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+    		response.setContentType("image/jpg");
+    	}
+    	OutputStream os = response.getOutputStream();
+    	InputStream is = new FileInputStream(filePath);
+    	FileCopyUtils.copy(is,os);
+    	os.flush();
+    	os.close();
+    	is.close();
+    }
 
 
 
