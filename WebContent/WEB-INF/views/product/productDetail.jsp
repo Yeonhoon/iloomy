@@ -85,18 +85,18 @@
 					</tr>
 				</table>
 	 				<div id="list" >
-						<img src="${root}/product/imageattach?no=${image.imageNo}"/>
+						<img src="${root}/product/imageattach?no=${item.itemsNo}"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail1}</p>
 					</div>
 					<c:if test="${image.detail2 ne null}">
 						<div id="list2">
-							<img src="${root}/product/imageattach?no=${image.imageNo}"/>
+							<img src="${root}/product/imageattach?no=${item.itemsNo}"/>
 							<p class="detailinfo" style="text-align: center;">${image.detail2}</p>
 						</div>
 					</c:if>
 					<c:if test="${image.detail3 ne null}">
 					<div id="list3">
-						<img src="${root}/product/imageattach?no=${image.imageNo}"/>
+						<img src="${root}/product/imageattach?no=${item.itemsNo}"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail3}</p>
 					</div>
 					</c:if>

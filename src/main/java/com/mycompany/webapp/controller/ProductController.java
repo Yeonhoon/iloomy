@@ -68,80 +68,107 @@ public class ProductController {
 	}
 
 	//사진 정보 불러오기
-    @GetMapping(value = "/itemsAttach")
-    public void itemsAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
-    	
-    	ItemsDTO item = itemsService.getItem(no);
-        String filePath = null;
+	@GetMapping(value = "/itemsAttach")
+	public void itemsAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+		
+		ItemsDTO item = itemsService.getItem(no);
+		String filePath = null;
 
-        
-        if(item.getItemsAttachOname() != null) {
-        	String itemAttach = item.getItemsAttachSname();
-        	filePath = "D:/MW/uploadfiles/items/" + itemAttach;
-        	
-        	response.setContentType(item.getItemsAttachtype());
-        	
-        	String oname = item.getItemsAttachOname();
-        	oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-        	response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
-        } else {
-        	filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
-        	response.setContentType("image/jpg");
-        }
+		
+		if(item.getItemsAttachOname() != null) {
+			String itemAttach = item.getItemsAttachSname();
+			filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+			
+			response.setContentType(item.getItemsAttachtype());
+			
+			String oname = item.getItemsAttachOname();
+			oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
+			response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
+		} else {
+			filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
+			response.setContentType("image/jpg");
+		}
 
-        OutputStream os = response.getOutputStream();
-        InputStream is = new FileInputStream(filePath);
-        FileCopyUtils.copy(is,os);
-        os.flush();
-        os.close();
-        is.close();
-    }
-    
-    
-    //상세보기 페이지로 이동
-    @GetMapping("/detail")
-    public String itemsDetail(int no, Model model){
-        logger.info("실행 : product/detail");
+		OutputStream os = response.getOutputStream();
+		InputStream is = new FileInputStream(filePath);
+		FileCopyUtils.copy(is,os);
+		os.flush();
+		os.close();
+		is.close();
+	}
 
-        ItemsDTO item = itemsService.getItem(no); // main 사진 불러오기
 
-        model.addAttribute("lno", no);
-        model.addAttribute("item", item);
-        
-        ImageDTO image = imagesService.getMainImage(no);
-        model.addAttribute("image", image);
-        System.out.println(item.toString());
-//        System.out.println(image.toString());
-        return "product/productDetail";
-    }
+	//상세보기 페이지로 이동
+	@GetMapping("/detail")
+	public String itemsDetail(int no, Model model){
+		logger.info("실행 : product/detail");
 
-  //detail image 불러오기
-    @GetMapping("/imageattach")
-    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+		ItemsDTO item = itemsService.getItem(no); // main 사진 불러오기
 
-    	ImageDTO images = imagesService.getDetailImage(no);
-    	String filePath = null;
+		model.addAttribute("lno", no);
+		model.addAttribute("item", item);
+		
+		ImageDTO image = imagesService.getDetailImage(no);
+		model.addAttribute("image", image);
+		System.out.println(item.toString());
+		System.out.println(image.toString());
+		return "product/productDetail";
+	}
 
-    	if(images.getImageAttachOname1() != null) {
-    		String itemAttach = images.getImageAttachSname1();
-    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
+	//detail image 불러오기
+	@GetMapping("/imageattach")
+	public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+		System.out.println(no);
+		ImageDTO images = imagesService.getDetailImage(no);
+		System.out.println(images.toString());
+		String filePath1 = null;
+		String filePath2 = null;
+		String filePath3 = null;
 
-    		response.setContentType(images.getImageAttachType1());
+		if(images.getImageAttachOname1() != null) {
+			String itemAttach1 = images.getImageAttachSname1();
+			String itemAttach2 = images.getImageAttachSname2();
+			String itemAttach3 = images.getImageAttachSname3();
+			filePath1 = "D:/MW/uploadfiles/items/" + itemAttach1;
+			filePath2 = "D:/MW/uploadfiles/items/" + itemAttach2;
+			filePath3 = "D:/MW/uploadfiles/items/" + itemAttach3;
 
-    		String oname = images.getImageAttachOname1();
-    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
-    	} else {
-    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
-    		response.setContentType("image/jpg");
-    	}
-    	OutputStream os = response.getOutputStream();
-    	InputStream is = new FileInputStream(filePath);
-    	FileCopyUtils.copy(is,os);
-    	os.flush();
-    	os.close();
-    	is.close();
-    }
+			response.setContentType(images.getImageAttachType1());
+			response.setContentType(images.getImageAttachType2());
+			response.setContentType(images.getImageAttachType3());
+
+			String oname1 = images.getImageAttachOname1();
+			String oname2 = images.getImageAttachOname2();
+			String oname3 = images.getImageAttachOname3();
+			oname1 = new String(oname1.getBytes("UTF-8"), "ISO-8859-1");
+			oname2 = new String(oname2.getBytes("UTF-8"), "ISO-8859-1");
+			oname3 = new String(oname3.getBytes("UTF-8"), "ISO-8859-1");
+			
+			response.setHeader("Content-Disposition", "attachment; filename=\""+ oname1 +"\"");
+			response.setHeader("Content-Disposition", "attachment; filename=\""+ oname2 +"\"");
+			response.setHeader("Content-Disposition", "attachment; filename=\""+ oname3 +"\"");
+		} else {
+			filePath1= "D:/MW/uploadfiles/items/defaultimage.jpg";
+			filePath2= "D:/MW/uploadfiles/items/defaultimage.jpg";
+			filePath3= "D:/MW/uploadfiles/items/defaultimage.jpg";
+			response.setContentType("image/jpg");
+		}
+		OutputStream os = response.getOutputStream();
+		InputStream is1 = new FileInputStream(filePath1);
+		FileCopyUtils.copy(is1,os);
+		InputStream is2 = new FileInputStream(filePath2);
+		FileCopyUtils.copy(is2,os);
+		InputStream is3 = new FileInputStream(filePath3);
+
+		FileCopyUtils.copy(is3,os);
+//	    	FileCopyUtils.copy((InputStream) list,os);
+		os.flush();
+		os.close();
+		is1.close();
+		is2.close();
+		is3.close();
+	}
+
 
     // ------------------------------------------------------------------------------
 

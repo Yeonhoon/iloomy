@@ -29,7 +29,9 @@
 	
 	<!-- items items_no로 불러오기 -->
 	<select id="selectByItemsItemsNo" parameterType="int" resultType="imageDetail">
-		select IMAGE_NO, DETAIL1, DETAIL2, DETAIL3, 
+		select IMAGE_NO, 
+		ITEMS_ITEMS_NO,
+		DETAIL1, DETAIL2, DETAIL3, 
 		IMAGE_ATTACH_SNAME1,
 		IMAGE_ATTACH_ONAME1,
 		IMAGE_ATTACH_TYPE1,
@@ -59,7 +61,7 @@
 				IMAGE_ATTACH_ONAME3,
 				IMAGE_ATTACH_TYPE3
 		from image
-		where image_no = #{imageNo}
+		where ITEMS_ITEMS_NO = #{imageNo}
 	</select>	
 	
 	<insert id="insert" parameterType="item">
@@ -98,23 +100,54 @@
  
  	<!-- 메인 부분 업데이트 -->
 	<update id="update" parameterType="item">
-		update items
-		set items_name = #{itemsName}, items_company = #{itemsCompany},	items_price = #{itemsPrice}, 
-		items_color= #{itemsColor}, items_option= #{itemsOption}, items_stock =	#{itemsStock}, 
-		items_model = #{itemsModel}, items_manufacture = #{itemsManufacture}, items_origin = #{itemsOrigin}
- 		<!-- items_attachoname = #{itemsAttachOname}, items_attachsname = #{itemsAttachSname}, items_attachtype = #{itemsAttachtype} -->
-		where items_no = #{itemsNo}
+		<if test="itemsAttach == null">
+			update items
+			set ITEMS_NAME = #{itemsName}, 
+			items_company = #{itemsCompany},	
+			items_price = #{itemsPrice}, 
+			items_color= #{itemsColor}, 
+			items_option= #{itemsOption}, 
+			items_stock =	#{itemsStock}, 
+			items_model = #{itemsModel}, 
+			items_manufacture = #{itemsManufacture}, 
+			items_origin = #{itemsOrigin},
+			where ITEMS_NO = #{itemsNo}
+		</if>
+		<if test="itemsAttach !=null">
+			update items
+			set ITEMS_NAME = #{itemsName}, 
+			items_company = #{itemsCompany},	
+			items_price = #{itemsPrice}, 
+			items_color= #{itemsColor}, 
+			items_option= #{itemsOption}, 
+			items_stock =	#{itemsStock}, 
+			items_model = #{itemsModel}, 
+			items_manufacture = #{itemsManufacture}, 
+			items_origin = #{itemsOrigin},
+	 		items_attachoname = #{itemsAttachOname}, 
+	 		items_attachsname = #{itemsAttachSname}, 
+	 		items_attachtype = #{itemsAttachtype}
+			where ITEMS_NO = #{itemsNo}
+		</if>
 	</update>
 	
  	<!-- 디테일 업데이트 -->
 	<update id="updateDetail" parameterType="imageDetail">
-		update items_images 
+		update image
 		set 
 		detail1 = #{detail1},
-		image1_attachtype = #{image1Attachtype},
-		image1_attachoname = #{image1AttachOname},
-		image1_attachsname = #{image1AttachSname}
-		where detail_no = #{detailNo}
+		detail2 = #{detail2},
+		detail3 = #{detail3},
+		IMAGE_ATTACH_SNAME1 = #{imageAttachSname1},
+		IMAGE_ATTACH_ONAME1 = #{imageAttachOname1},
+		IMAGE_ATTACH_TYPE1 = #{imageAttachType1},
+		IMAGE_ATTACH_SNAME2 = #{imageAttachSname2},
+		IMAGE_ATTACH_ONAME2 = #{imageAttachOname2},
+		IMAGE_ATTACH_TYPE2 = #{imageAttachType2},
+		IMAGE_ATTACH_SNAME3 = #{imageAttachSname3},
+		IMAGE_ATTACH_ONAME3 = #{imageAttachOname3},
+		IMAGE_ATTACH_TYPE3 = #{imageAttachType3}
+		where items_items_no = #{itemsItemsNo}
 	</update>
 	
 

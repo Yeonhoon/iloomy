@@ -85,12 +85,15 @@ public class ManagerController {
 			dto.setImageAttachOname1((mf1.getOriginalFilename()));
 			dto.setImageAttachOname2((mf2.getOriginalFilename()));
 			dto.setImageAttachOname3((mf3.getOriginalFilename()));
+			
 			String saveName1 = new Date().getTime() + "-" +mf1.getOriginalFilename();
 			String saveName2 = new Date().getTime() + "-" +mf2.getOriginalFilename();
 			String saveName3 = new Date().getTime() + "-" +mf3.getOriginalFilename();
+			
 			dto.setImageAttachSname1(saveName1);
 			dto.setImageAttachSname2(saveName2);
 			dto.setImageAttachSname3(saveName3);
+			
 			dto.setImageAttachType1(mf1.getContentType());
 			dto.setImageAttachType2(mf2.getContentType());
 			dto.setImageAttachType3(mf3.getContentType());
@@ -133,12 +136,12 @@ public class ManagerController {
     // 수정페이지 이동: 입력된 제품 정보를 수정페이지에 불러오기
     @GetMapping("/update")  //hoon
     public String updateform(int no, Model model){
-        logger.info("수정 페이지로 이동하기");
+        
         ItemsDTO items = itemsService.getItemJoin(no);
         ImageDTO image = new ImageDTO();
         model.addAttribute("items", items);
         model.addAttribute("image", image);
-        logger.info(items.toString());
+      
         return "manager/update";
     }
     
@@ -172,70 +175,140 @@ public class ManagerController {
     
     // 메인 업데이트 저장 후 다음 페이지로 이동
     @PostMapping("/updatedetail")
-    public String itemupdate(ItemsDTO dto, ImageDTO image, Model model) throws IllegalStateException, IOException{
-    	
-    	//업데이트한 사진 저장
-//    	MultipartFile mf = dto.getItemsAttach();
-//    	if(!mf.isEmpty()) {
-//			dto.setItemsAttachOname(mf.getOriginalFilename());
-//			String saveName = new Date().getTime() + "-" + mf.getOriginalFilename();
-//			dto.setItemsAttachSname(saveName);
-//			dto.setItemsAttachtype(mf.getContentType());
-//			File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
-//			mf.transferTo(saveFile);
-//    	}
-    	itemsService.updateItem(dto);
-    	logger.info(dto.toString());
-    	logger.info("세부 수정페이지로 이동");
-//    	int num = dto.getItemsItemsNo();
-    	String str ="redirect:/manager/toDetail?no=" ;
+    public String itemupdate(int no, ItemsDTO dto, Model model) throws IllegalStateException, IOException{
+    	dto.setItemsNo(no);
+    	System.out.println(dto.toString());
+    	MultipartFile mf = dto.getItemsAttach();
+    	if(!mf.isEmpty()) {
+			dto.setItemsAttachOname(mf.getOriginalFilename());
+			String saveName = new Date().getTime() + "-" + mf.getOriginalFilename();
+			dto.setItemsAttachSname(saveName);
+			dto.setItemsAttachtype(mf.getContentType());
+			File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
+			mf.transferTo(saveFile);
+    	}
+    
+    	System.out.println(dto.toString());
+    	int aaa = itemsService.updateItem(dto);
+    	System.out.println("xptmxm : "+aaa);
+    	int num = dto.getItemsNo();
+    	String str ="redirect:/manager/toDetail?no="+num;
     	return str;
+    	
     }
     
     //상세 업데이트 페이지 불러오기
     @GetMapping("/toDetail")
-    public String updateDetail(int no, Model model, ItemsDTO itemsDTO) {
-    	logger.info("detail 수정 페이지로 이동");
-    	System.out.println("detail  No:" + no);
-    	ImageDTO image = imagesService.getMainImage(no);
+    public String updateDetail(int no, Model model, ItemsDTO itemsDTO, ImageDTO image) {
+//    	System.out.println("detail  No:" + no);
+//    	logger.info("detail 수정 페이지로 이동");
+    	image.setItemsItemsNo(no);
+    	System.out.println("itemsNo:" +image.getItemsItemsNo());
+    	image = imagesService.getDetailImage(no);
     	System.out.println(image.toString());
-    	model.addAttribute("detail",image);
+    	model.addAttribute("detail", image);
     	return "manager/updateDetail";
     }
     
-//    //detail 이미지 불러오기
-//    @GetMapping("/imageattach")
-//    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
-//    	System.out.println("int no:" + no);
-//    	ImageDTO images = imagesService.getDetailImage(no);
-//    	String filePath = null;
-//    	if(images.getImage1AttachOname() != null) {
-//    		String itemAttach = images.getImage1AttachSname();
-//    		filePath = "D:/MW/uploadfiles/items/" + itemAttach;
-//
-//    		response.setContentType(images.getImage1Attachtype());
-//
-//    		String oname = images.getImage1AttachOname();
-//    		oname = new String(oname.getBytes("UTF-8"), "ISO-8859-1");
-//    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname +"\"");
-//    	} else {
-//    		filePath= "D:/MW/uploadfiles/items/defaultimage.jpg";
-//    		response.setContentType("image/jpg");
-//    	}
-//    	OutputStream os = response.getOutputStream();
-//    	InputStream is = new FileInputStream(filePath);
-//    	FileCopyUtils.copy(is,os);
-//    	os.flush();
-//    	os.close();
-//    	is.close();
-//    }
+    //detail 이미지 불러오기
+    @GetMapping("/imageattach")
+    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+    	ImageDTO images = imagesService.getDetailImage(no);
+    	System.out.println("int no:" + no);
+    	String filePath1 = null;
+    	String filePath2 = null;
+    	String filePath3 = null;
+    	
+    	if(images.getImageAttachOname1() != null) {
+    		String itemAttach1 = images.getImageAttachSname1();
+    		String itemAttach2 = images.getImageAttachSname2();
+    		String itemAttach3 = images.getImageAttachSname3();
+    		
+    		filePath1 = "D:/MW/uploadfiles/items/" + itemAttach1;
+    		filePath2 = "D:/MW/uploadfiles/items/" + itemAttach2;
+    		filePath3 = "D:/MW/uploadfiles/items/" + itemAttach3;
+    		
+    		response.setContentType(images.getImageAttachType1());
+    		response.setContentType(images.getImageAttachType2());
+    		response.setContentType(images.getImageAttachType3());
+
+    		String oname1 = images.getImageAttachOname1();
+    		String oname2 = images.getImageAttachOname2();
+    		String oname3 = images.getImageAttachOname3();
+    		
+    		oname1 = new String(oname1.getBytes("UTF-8"), "ISO-8859-1");
+    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname1 +"\"");
+    		oname2 = new String(oname2.getBytes("UTF-8"), "ISO-8859-1");
+    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname2 +"\"");
+    		oname3 = new String(oname3.getBytes("UTF-8"), "ISO-8859-1");
+    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname3 +"\"");
+    	} else {
+    		filePath1= "D:/MW/uploadfiles/items/defaultimage.jpg";
+    		filePath2= "D:/MW/uploadfiles/items/defaultimage.jpg";
+    		filePath3= "D:/MW/uploadfiles/items/defaultimage.jpg";
+    		response.setContentType("image/jpg");
+    	}
+    	OutputStream os = response.getOutputStream();
+    	InputStream is1 = new FileInputStream(filePath1);
+    	FileCopyUtils.copy(is1,os);
+    	InputStream is2 = new FileInputStream(filePath2);
+    	FileCopyUtils.copy(is2,os);
+    	InputStream is3 = new FileInputStream(filePath3);
+    	FileCopyUtils.copy(is3,os);
+    	
+    	os.flush();
+    	os.close();
+    	is1.close();
+    	is2.close();
+    	is3.close();
+    }
     
     
     //상세 업데이트 내용 저장
     @PostMapping("/saveupdate")
-    public String saveUpdate(ImageDTO image) {
-    	imagesService.updateItem(image);
-    	return "redirect:/manager/productList";
+    public String saveUpdate(int no, ImageDTO image) throws IllegalStateException, IOException {
+//    	System.out.println(no);
+    	image.setItemsItemsNo(no);
+    	System.out.println("d1:"+image.getDetail1());
+    	System.out.println("d2:"+image.getDetail2());
+    	System.out.println("d3:"+image.getDetail3());
+    	
+    	System.out.println("num:" + image.getItemsItemsNo());
+    	System.out.println(image.toString());
+    	
+    	MultipartFile mf1 = image.getImageAttach1();
+    	if(!mf1.isEmpty()) {
+			image.setImageAttachOname1(mf1.getOriginalFilename());
+			String saveName = new Date().getTime() + "-" + mf1.getOriginalFilename();
+			image.setImageAttachSname1(saveName);
+			image.setImageAttachType1(mf1.getContentType());
+			File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
+			mf1.transferTo(saveFile);
+    	}
+    	
+    	MultipartFile mf2 = image.getImageAttach2();
+    	if(!mf2.isEmpty()) {
+			image.setImageAttachOname2(mf2.getOriginalFilename());
+			String saveName = new Date().getTime() + "-" + mf2.getOriginalFilename();
+			image.setImageAttachSname2(saveName);
+			image.setImageAttachType2(mf2.getContentType());
+			File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
+			mf2.transferTo(saveFile);
+    	}
+    	
+    	MultipartFile mf3 = image.getImageAttach3();
+    	if(!mf3.isEmpty()) {
+			image.setImageAttachOname3(mf3.getOriginalFilename());
+			String saveName = new Date().getTime() + "-" + mf3.getOriginalFilename();
+			image.setImageAttachSname3(saveName);
+			image.setImageAttachType3(mf3.getContentType());
+			File saveFile = new File("D:/MW/uploadfiles/items/" + saveName);
+			mf3.transferTo(saveFile);
+    	}
+    	
+    	int aaa= imagesService.updateItem(image);
+    	System.out.println("xptmxm : "+aaa);
+    	return "redirect:/product/productList";
     }
     
     //수정 취소
@@ -253,32 +326,6 @@ public class ManagerController {
     	return "redirect:/manager/productList";
     }
 
-//    //사진 업로드 및 저장
-//    @PostMapping("/photoupload")
-//    public String fileUpload(UpdatePhotoDto user) {
-//    	MultipartFile uphoto = user.getUphoto();
-//    	if(!uphoto.isEmpty()) {
-//			//원래 경로 설정해주기
-//    		String originFilename = uphoto.getOriginalFilename();
-//			String fileType = uphoto.getContentType();
-//
-//			//파일저장경로 설정
-//			String saveDir = "D:/MW/uploadfiles/";
-//			String fileName = new Date().getTime() + "-" +  originFilename;// 유일한 이름으로 바꿔줘야 함 방법1. 날짜 이용법, 2. 시간 ㅣ이용법
-//			String filePath = saveDir + fileName;
-//			File file = new File(filePath);
-//
-//			logger.info("파일타입:" + fileType);
-//
-//			try {
-//				uphoto.transferTo(file);
-//			} catch (Exception e) {
-//				return "redirect:/manager/update";
-//			}
-//    	}
-//    	return "redirect:/manager/update";
-//    }
-//
     //첨부한 사진리스트 보여주기
     @GetMapping("/photolist")
     public String photoList(Model model) {

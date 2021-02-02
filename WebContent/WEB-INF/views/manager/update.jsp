@@ -29,15 +29,15 @@
 				
 		<article id="main" style="margin-left: 300px;">
 			
-			<div id="mainImage" style="margin-right:100px;">
-				<form action="photoupload" method="post">
-					<p style="text-align:center; font-size: 2rem;" id="mainPhotoLabel">대표 사진</p><br/>
-					<img src="${root}/manager/itemsattach?no=${items.itemsNo}"/>
-					<input type="file" name="itemsAttach" id="itemsAttach" />
-				</form>
-			</div>
+			<input type="hidden" value="${items.itemsNo}"/>
 			<div id="mainInfo">
 				<form enctype="multipart/form-data" method="post" id="saveMain">
+					<div id="mainImage" style="margin-right:100px;">
+						<p style="text-align:center; font-size: 2rem;" id="mainPhotoLabel">대표 사진</p><br/>
+						<img src="${root}/manager/itemsattach?no=${items.itemsNo}"/>
+						<input type="file" name="itemsAttach" id="itemsAttach" />
+					</div>
+					
 					<table id="form" class="table align-middle">
 						<tbody>
 							<tr>
@@ -119,7 +119,7 @@
 				//const reviseForm = document.reviseForm; //form에 name 저장되어 있으면 바로 가져올 수 있음.
 				const result = window.confirm("저장하시겠습니까?");
 				if(result){
-					$("#saveMain").attr("action", "${root}/manager/updatedetail?no=${image.itemsItemsNo}").submit();
+					$("#saveMain").attr("action", "${root}/manager/updatedetail?no=${items.itemsNo}").submit();
 				/*$(function(){
 				        $.ajax({
 				            url:"saveupdate",

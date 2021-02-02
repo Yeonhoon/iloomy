@@ -183,7 +183,8 @@ public class ImageDTO {
     @Override
     public String toString() {
         return "ImageDTO{" +
-                "imageNo=" + imageNo +
+        		"itemsItemsNo=" + itemsItemsNo +
+                ",imageNo=" + imageNo +
                 ", detail1='" + detail1 + '\'' +
                 ", detail2='" + detail2 + '\'' +
                 ", detail3='" + detail3 + '\'' +
@@ -199,7 +200,6 @@ public class ImageDTO {
                 ", imageAttachSname3='" + imageAttachSname3 + '\'' +
                 ", imageAttachOname3='" + imageAttachOname3 + '\'' +
                 ", imageAttachType3='" + imageAttachType3 + '\'' +
-                ", itemsItemsNo=" + itemsItemsNo +
                 '}';
     }
 }

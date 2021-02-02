@@ -21,20 +21,15 @@ public class ImagesService {
 	}
 
 	//메인이미지 불러오기
-	public ImageDTO getMainImage(int no) {
-		ImageDTO image = imagesRepo.selectByItemsItemsNo(no);
-		return image;
-	}
-	
-	//세부 이미지 불러오기
 	public ImageDTO getDetailImage(int no) {
-		ImageDTO image = imagesRepo.selectByDetailNo(no);
+		ImageDTO image = imagesRepo.selectByItemsItemsNo(no);
 		return image;
 	}
 
 	//세부 내용 수정
-	public void updateItem(ImageDTO imagesDTO) {
-		imagesRepo.updateImage(imagesDTO);
+	public int updateItem(ImageDTO imagesDTO) {
+		int result = imagesRepo.updateImage(imagesDTO);
+		return result;
 		
 	}
 

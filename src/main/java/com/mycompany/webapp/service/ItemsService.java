@@ -44,8 +44,9 @@ public class ItemsService {
 		return item;
 	}
 
-	public void updateItem(ItemsDTO dto) {
-		itemsRepo.update(dto);
+	public int updateItem(ItemsDTO dto) {
+		int num = itemsRepo.update(dto);
+		return num;
 	}
 
 	public List<ItemsDTO> getItemsList() {
