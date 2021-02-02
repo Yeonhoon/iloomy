@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>로그인</title>
+    <title>비밀번호 찾기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
