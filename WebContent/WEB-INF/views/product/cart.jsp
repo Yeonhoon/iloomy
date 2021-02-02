@@ -31,7 +31,7 @@
 					<p style="font-size: 3rem;">장바구니</p>
 				</div>
 					<div id="order">
-						<span style="color:red">01 장바구니</span> --- 02 주문서 작성 --- 03 주문완료
+						<span style="color:red">01 장바구니</span> --- 02 배송지 확인 --- 03 주문완료
 					</div>
 				<div id="sec">
 					<p style=" padding: 10px;"><b>주문하실 상품을 선택해주세요</b></p>

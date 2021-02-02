@@ -34,7 +34,7 @@
 				<p style="font-size: 3rem;">장바구니</p>
 			</div>
 			<div id="order">
-				01 장바구니 ---02 주문서 작성 --- <span style="color: red"> 03 주문완료</span>
+				01 장바구니 ---02 배송지 확인 --- <span style="color: red"> 03 주문완료</span>
 			</div>
 			<div id="sec">
 				<p style="padding: 10px;">
@@ -65,7 +65,9 @@
 									value="${orderItemList.orderItemsPrice}" pattern="###,###,###"></fmt:formatNumber>원
 							</td>
 							<td>
-								<b>${orderItemList.delivery.status}</b>
+								<a class="text-decoration-none" href="addressread?deliveryNo=${orderItemList.delivery.deliveryNo}">
+									<b>${orderItemList.delivery.status}</b>
+								</a>
 							</td>
 						</tr> 
 					

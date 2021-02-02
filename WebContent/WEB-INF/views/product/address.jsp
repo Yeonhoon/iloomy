@@ -42,38 +42,33 @@
 				</p>
 			</div>
 			<div id="updateSec">
-				<form name="addressUpdate" action="addressUpdate" method="post">
-				<%-- <c:forEach var="orderItemList" items="orderItemLists">
-					<input type="hidden" name="orderItemsNo" value="${orderItemList.orderItemsNo}" />
-				</c:forEach> --%>
+				
 				<!-- name에 해당 변수와 동일 -->
 					<div class="form-group">
-						<input type="hidden" name="id" value="${userinform.id}" />
 						
 						<label for="user">ID</label> <input type="text"
-							value="${userinform.id}" readonly class="form-control"
+							value="${userinfo}" readonly class="form-control"
 							id="user" name="user">
 					</div> 
 					<div class="form-group">
 						<label for="city">city</label> <input
-							type="text" value="${userinform.address.city}" class="form-control" id="city" name="city"
-							placeholder="${userinform.address.city}">
+							type="text" value="${delivery.address.city}" readonly class="form-control" id="city" name="city"
+							placeholder="${delivery.address.city}">
 					</div>
 					<div class="form-group">
 						<label for="street">street</label> <input
-							type="text" value="${userinform.address.street}" class="form-control" id="street" name="street"
-							placeholder="${userinform.address.street}">
+							type="text" value="${delivery.address.street}" readonly class="form-control" id="street" name="street"
+							placeholder="${delivery.address.street}">
 					</div>
 					<div class="form-group">
 						<label for="zipcode">zipcode</label> <input
-							type="number" value="${userinform.address.zipcode}" class="form-control" id="zipcode" name="zipcode"
-							placeholder="${userinform.address.zipcode}">
+							type="number" value="${delivery.address.zipcode}" readonly class="form-control" id="zipcode" name="zipcode"
+							placeholder="${delivery.address.zipcode}">
 					</div>
-					<div id="addressBtn">
-						<button id="addressConfirm" class="btn btn-info" style="color: white">확인</button>
+					<div id="addressA">
+						<a href="javascript:history.back();" class="btn btn-info btn-sm" style="color: white">뒤로가기</a>
 					</div>
-					
-				</form>
+
 			</div>
 		</div>
 	</section>
@@ -82,6 +77,8 @@
 		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	</div>
 </body>
+<script type="text/javascript">
 
+</script>
 
 </html>

@@ -33,4 +33,10 @@
 		from orders o join delivery d on o.delivery_delivery_no=d.delivery_no join order_items OI on OI.orders_order_no = o.order_no
 		where OI.orders_order_no = #{ordersOrderNo}
 	</select>
+	
+	<select id="selectByNo" parameterType="int" resultMap="tableResultMap">
+		select delivery_no, delivery_city, delivery_street, delivery_street, status
+		from delivery
+		where delivery_no=#{deliveryNo}
+	</select>
 </mapper>

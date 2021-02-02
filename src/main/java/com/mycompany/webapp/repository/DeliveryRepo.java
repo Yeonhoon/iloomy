@@ -25,4 +25,9 @@ public class DeliveryRepo {
 		return delivery;
 	}
 
+	public DeliveryDTO selectByNo(int deliveryNo) {
+		DeliveryDTO delivery = sst.selectOne("delivery.selectByNo", deliveryNo);
+		return delivery;
+	}
+
 }

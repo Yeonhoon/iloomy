@@ -25,5 +25,10 @@ public class DeliveryService {
 		return delivery;
 	}
 
+	public DeliveryDTO selectByNo(int deliveryNo) {
+		DeliveryDTO delivery = dRepo.selectByNo(deliveryNo);
+		return delivery;
+	}
+
 	
 }

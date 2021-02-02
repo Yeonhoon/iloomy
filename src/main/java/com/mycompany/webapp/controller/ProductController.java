@@ -22,10 +22,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.webapp.dto.AddressDTO;
 import com.mycompany.webapp.dto.DeliveryDTO;
 import com.mycompany.webapp.dto.DeliveryStatus;
-import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.ImageDTO;
+import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.OrdersDTO;
@@ -141,158 +142,179 @@ public class ProductController {
     	is.close();
     }
 
+    // ------------------------------------------------------------------------------
 
+  	@GetMapping(value = "cart2") // 연결 header에서 지선 추가
+  	public String cart2(HttpSession session) {
+  		session.removeAttribute("orderItemLists");
+  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+  		session.setAttribute("orderItemLists", orderItemLists);
+  		logger.info("실행 : product/cart2");
+  		return "product/cart";
+  	}
 
- 	@GetMapping(value = "cart2") // 연결 header에서 지선 추가
- 	public String cart2(HttpSession session) {
- 		session.removeAttribute("orderItemLists");
- 		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
- 		session.setAttribute("orderItemLists", orderItemLists);
- 		logger.info("실행 : product/cart2");
- 		return "product/cart";
- 	}
+  	@PostMapping(value = "cart")
+  	public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req) {
+  		// user
+  		String userId = (String) session.getAttribute("userinfo");
+  		UserDTO users = memberService.selectAddress(userId);
 
- 	@PostMapping(value = "cart")
- 	public String cart(int lno, String itemsName, HttpSession session, HttpServletRequest req) {
- 		// user
- 		
- 		System.out.println(lno+" "+itemsName);
- 		String userId = (String) session.getAttribute("userinfo");
- 		UserDTO users = memberService.selectAddress(userId);
+  		// delivery
+  		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Before);
+//  		deliveryService.saveDelivery(deliveryDTO);  //세이브 확인
+//  		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
 
- 		// delivery
- 		DeliveryDTO deliveryDTO = new DeliveryDTO(users.getAddress(), DeliveryStatus.Before);
-// 		deliveryService.saveDelivery(deliveryDTO);  //세이브 확인
-// 		System.out.println("2. deliveryDTO : "+deliveryDTO.toString());
+  		// orders
+  		OrdersDTO orderDTO = new OrdersDTO();
+  		orderDTO.setMembersMembersId(userId);
+  		orderDTO.setDeliveryDeliveryNo(deliveryDTO.getDeliveryNo());
+  		orderDTO.setStatus(OrderStatus.Cart);
+//  		orderService.saveOrder(orderDTO);  //세이브 확인
+//  		System.out.println("3. orderDTO : "+orderDTO.toString());
 
- 		// orders
- 		OrdersDTO orderDTO = new OrdersDTO();
- 		orderDTO.setMembersMembersId(userId);
- 		orderDTO.setDeliveryDeliveryNo(deliveryDTO.getDeliveryNo());
- 		orderDTO.setStatus(OrderStatus.Cart);
-// 		orderService.saveOrder(orderDTO);  //세이브 확인
-// 		System.out.println("3. orderDTO : "+orderDTO.toString());
+  		// items정보 가져오기 (itemsName, option, color)
+  		String itemsColor = req.getParameter("itemsColor");
+  		String itemsOption = req.getParameter("itemsOption");
+  		Map<String, String> map = new HashMap<String, String>();
+  		map.put("itemsName", itemsName);
+  		map.put("itemsColor", itemsColor);
+  		map.put("itemsOption", itemsOption);
+  		ItemsDTO item = itemsService.selectItem(map);
+//  		System.out.println("4. ItemsDTO : "+item.toString());
 
- 		// items정보 가져오기 (itemsName, option, color)
- 		String itemsColor = req.getParameter("itemsColor");
- 		String itemsOption = req.getParameter("itemsOption");
- 		Map<String, String> map = new HashMap<String, String>();
- 		map.put("itemsName", itemsName);
- 		map.put("itemsColor", itemsColor);
- 		map.put("itemsOption", itemsOption);
- 		ItemsDTO item = itemsService.selectItem(map);
-// 		System.out.println("4. ItemsDTO : "+item.toString());
+  		// order_items저장 items FK, count, price 받음
+//  		public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, int itemsItemsNo )
+  		OrderItemsDTO orderItemsDTO = new OrderItemsDTO(1, item.getItemsPrice(), item.getItemsNo());
+  		orderService.order(userId, deliveryDTO, orderDTO, orderItemsDTO);
+//  		System.out.println("5. orderItemsDTO : "+orderItemsDTO.toString());
 
- 		// order_items저장 items FK, count, price 받음
-// 		public OrderItemsDTO(int orderItemsCount, long orderItemsPrice, int itemsItemsNo )
- 		OrderItemsDTO orderItemsDTO = new OrderItemsDTO(1, item.getItemsPrice(), item.getItemsNo());
- 		orderService.order(userId, deliveryDTO, orderDTO, orderItemsDTO);
-// 		System.out.println("5. orderItemsDTO : "+orderItemsDTO.toString());
+  		// order_items를 불러와서 orders의 status가 카트인것만 보여주기
+  		// product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
+  		// status=cart에 있는거 list로 받아옴
+  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
 
- 		// order_items를 불러와서 orders의 status가 카트인것만 보여주기
- 		// product number 받기와 추가로 넣을 때는 어떻게 할지 status=cart에 있는거
- 		// status=cart에 있는거 list로 받아옴
- 		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+  		session.setAttribute("orderItemLists", orderItemLists);
+  		return "product/cart";// product/cart.jsp 연결
+  	}
 
- 		session.setAttribute("orderItemLists", orderItemLists);
- 		return "product/cart";// product/cart.jsp 연결
- 	}
+  	@GetMapping(value = "/order")
+  	public String method1(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+//  		 List<OrderItemsDTO> result = test(request, model, session);
+  		//check한 부분 확인하기
+  		if (request.getParameterValues("check") != null) {
 
- 	@GetMapping(value = "/order")
- 	public String method1(HttpServletRequest request, Model model, HttpSession session) throws Exception {
-// 		 List<OrderItemsDTO> result = test(request, model, session);
- 		//
- 		if (request.getParameterValues("check") != null) {
-
- 			String[] arr = request.getParameterValues("check"); // orderItemsNo
- 			for (String i : arr) {
- 				int orderItemsNo = Integer.parseInt(request.getParameter("orderItemsNo" + i));
- 				int ordersOrderNo = Integer.parseInt(request.getParameter("ordersOrderNo" + i));
- 				int itemsItemsNo = Integer.parseInt(request.getParameter("itemsItemsNo" + i));
- 				System.out.println(orderItemsNo);
- 				int orderItemsCount = Integer.parseInt(request.getParameter("orderItemsCount" + i));
- 				long orderItemsPrice = Long.parseLong(request.getParameter("orderItemsPrice" + i));
- 				System.out.println("count: " + orderItemsCount);
- 				System.out.println("price: " + orderItemsPrice);
- 				OrderItemsDTO orderItem = new OrderItemsDTO(orderItemsNo, orderItemsCount, orderItemsPrice,
- 						ordersOrderNo, itemsItemsNo);
- 				orderService.updateOrder(orderItem);
- 				System.out.println(orderItem.toString());
- 			}
- 		}
- 		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
- 		
- 		
- 		//order에서 date, delivery에서 status가져오기
- 		for (OrderItemsDTO ordItem : orderItemLists) {
- 			OrdersDTO order = orderService.selectByPk(ordItem.getOrdersOrderNo());
- 			System.out.println(order);
- 			ordItem.setOrder(order);
- 			DeliveryDTO delivery = deliveryService.selectByPk(ordItem.getOrdersOrderNo());
- 			System.out.println(delivery);
- 			ordItem.setDelivery(delivery);
- 		}
- 		
- 		System.out.println("orderItemLists: " + orderItemLists);
- 		session.setAttribute("orderItemLists", orderItemLists);
- 		 
-// 		session.setAttribute("orderItemLists", result);
- 		
- 		//delivery에서 status
- 		return "redirect:/product/delivery";
- 	}
- 	
- 	@GetMapping(value = "/delivery")
- 	public String delivery() {
- 		return "product/delivery";
- 	}
- 	
- 	@PostMapping(value = "/addressUpdate")
- 	public String addressUpdate() {
- 		
- 		return "redirect:/product/orderForm";
- 	}
- 	
- 	@GetMapping(value = "/orderForm")
- 	public String orderForm() {
- 		return "product/order";
- 	}
- 	
-// 	public static List<OrderItemsDTO> test(HttpServletRequest request, Model model, HttpSession session) throws Exception{
-// 		if (request.getParameterValues("check") != null) {
-//
-// 			String[] arr = request.getParameterValues("check"); // orderItemsNo
-// 			for (String i : arr) {
-// 				int orderItemsNo = Integer.parseInt(request.getParameter("orderItemsNo" + i));
-// 				int ordersOrderNo = Integer.parseInt(request.getParameter("ordersOrderNo" + i));
-// 				int itemsItemsNo = Integer.parseInt(request.getParameter("itemsItemsNo" + i));
-// 				System.out.println(orderItemsNo);
-// 				int orderItemsCount = Integer.parseInt(request.getParameter("orderItemsCount" + i));
-// 				long orderItemsPrice = Long.parseLong(request.getParameter("orderItemsPrice" + i));
-// 				System.out.println("count: " + orderItemsCount);
-// 				System.out.println("price: " + orderItemsPrice);
-// 				OrderItemsDTO orderItem = new OrderItemsDTO(orderItemsNo, orderItemsCount, orderItemsPrice,
-// 						ordersOrderNo, itemsItemsNo);
-// 				orderService.updateOrder(orderItem);
-// 				System.out.println(orderItem.toString());
-// 			}
-// 		}
-// 		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
-// 		
-// 		
-// 		//order에서 date, delivery에서 status가져오기
-// 		for (OrderItemsDTO ordItem : orderItemLists) {
-// 			OrdersDTO order = orderService.selectByPk(ordItem.getOrdersOrderNo());
-// 			System.out.println(order);
-// 			ordItem.setOrder(order);
-// 			DeliveryDTO delivery = deliveryService.selectByPk(ordItem.getOrdersOrderNo());
-// 			System.out.println(delivery);
-// 			ordItem.setDelivery(delivery);
-// 		}
-// 		System.out.println("orderItemLists: " + orderItemLists);
-// 		session.setAttribute("orderItemLists", orderItemLists);
-// 		return orderItemLists;
-// 		
-// 	}
-
- }
+  			String[] arr = request.getParameterValues("check"); // orderItemsNo
+  			for (String i : arr) {
+  				int orderItemsNo = Integer.parseInt(request.getParameter("orderItemsNo" + i));
+  				int ordersOrderNo = Integer.parseInt(request.getParameter("ordersOrderNo" + i));
+  				int itemsItemsNo = Integer.parseInt(request.getParameter("itemsItemsNo" + i));
+  				System.out.println(orderItemsNo);
+  				int orderItemsCount = Integer.parseInt(request.getParameter("orderItemsCount" + i));
+  				long orderItemsPrice = Long.parseLong(request.getParameter("orderItemsPrice" + i));
+//  				System.out.println("count: " + orderItemsCount);
+//  				System.out.println("price: " + orderItemsPrice);
+  				OrderItemsDTO orderItem = new OrderItemsDTO(orderItemsNo, orderItemsCount, orderItemsPrice,
+  						ordersOrderNo, itemsItemsNo);
+  				orderService.updateOrder(orderItem);
+//  				System.out.println(orderItem.toString());
+  			}
+  		}
+  		//user의 delivery 정보 가져오기
+  		String userId = (String) session.getAttribute("userinfo");
+  		UserDTO users = memberService.selectAddress(userId);
+  		session.setAttribute("userinform",users);
+  		
+  		
+  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+  		session.setAttribute("orderItemLists", orderItemLists);
+//  		session.setAttribute("orderItemLists", result);
+  		
+  		return "redirect:/product/delivery";
+  	}
+  	
+  	@GetMapping(value = "/delivery")
+  	public String delivery() {
+  		return "product/delivery";
+  	}
+  	
+  	@PostMapping(value = "/addressUpdate")
+  	public String addressUpdate(UserDTO users, AddressDTO address, HttpServletRequest request) {
+  		//address받아오기
+  		System.out.println("1. address: "+address);
+  		users.setAddress(address);
+  		
+  		//orderItemsNo 받아오기
+  		String[] numbers =request.getParameterValues("orderItemsNo");
+  		for(String i : numbers) {
+  			System.out.println(i);
+  		}
+  		
+  		
+  		
+  		return "redirect:/product/orderForm";
+  	}
+  	
+  	@GetMapping(value = "/orderForm")
+  	public String orderForm(HttpSession session) {
+  		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
+  		
+  		
+  		//order에서 date, delivery에서 status가져오기
+  		for (OrderItemsDTO ordItem : orderItemLists) {
+  			OrdersDTO order = orderService.selectByPk(ordItem.getOrdersOrderNo());
+  			System.out.println(order);
+  			ordItem.setOrder(order);
+  			DeliveryDTO delivery = deliveryService.selectByPk(ordItem.getOrdersOrderNo());
+  			System.out.println(delivery);
+  			ordItem.setDelivery(delivery);
+  		}
+  		
+  		System.out.println("orderItemLists: " + orderItemLists);
+  		session.setAttribute("orderItemLists", orderItemLists);
+  		return "product/order";
+  	}
+  	
+//  	public static List<OrderItemsDTO> test(HttpServletRequest request, Model model, HttpSession session) throws Exception{
+//  		if (request.getParameterValues("check") != null) {
+ //
+//  			String[] arr = request.getParameterValues("check"); // orderItemsNo
+//  			for (String i : arr) {
+//  				int orderItemsNo = Integer.parseInt(request.getParameter("orderItemsNo" + i));
+//  				int ordersOrderNo = Integer.parseInt(request.getParameter("ordersOrderNo" + i));
+//  				int itemsItemsNo = Integer.parseInt(request.getParameter("itemsItemsNo" + i));
+//  				System.out.println(orderItemsNo);
+//  				int orderItemsCount = Integer.parseInt(request.getParameter("orderItemsCount" + i));
+//  				long orderItemsPrice = Long.parseLong(request.getParameter("orderItemsPrice" + i));
+//  				System.out.println("count: " + orderItemsCount);
+//  				System.out.println("price: " + orderItemsPrice);
+//  				OrderItemsDTO orderItem = new OrderItemsDTO(orderItemsNo, orderItemsCount, orderItemsPrice,
+//  						ordersOrderNo, itemsItemsNo);
+//  				orderService.updateOrder(orderItem);
+//  				System.out.println(orderItem.toString());
+//  			}
+//  		}
+//  		List<OrderItemsDTO> orderItemLists = orderService.getItemOrder();
+//  		
+//  		
+//  		//order에서 date, delivery에서 status가져오기
+//  		for (OrderItemsDTO ordItem : orderItemLists) {
+//  			OrdersDTO order = orderService.selectByPk(ordItem.getOrdersOrderNo());
+//  			System.out.println(order);
+//  			ordItem.setOrder(order);
+//  			DeliveryDTO delivery = deliveryService.selectByPk(ordItem.getOrdersOrderNo());
+//  			System.out.println(delivery);
+//  			ordItem.setDelivery(delivery);
+//  		}
+//  		System.out.println("orderItemLists: " + orderItemLists);
+//  		session.setAttribute("orderItemLists", orderItemLists);
+//  		return orderItemLists;
+//  		
+//  	}
+  	@GetMapping(value = "/addressread")
+  	public String addressRead(int deliveryNo, Model model) {
+  		DeliveryDTO delivery = deliveryService.selectByNo(deliveryNo);
+  		System.out.println("delivery: "+delivery);
+ 		model.addAttribute("delivery", delivery);
+  		return "product/address";
+  	}
+  }
