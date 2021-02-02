@@ -43,9 +43,10 @@
 			</div>
 			<div id="updateSec">
 				<form name="addressUpdate" action="addressUpdate" method="post">
-				<%-- <c:forEach var="orderItemList" items="orderItemLists">
+				<c:forEach var="orderItemList" items="${orderItemLists}" varStatus="status">
 					<input type="hidden" name="orderItemsNo" value="${orderItemList.orderItemsNo}" />
-				</c:forEach> --%>
+				</c:forEach>				
+				<%-- <input type="hidden" name="orderItemsNo" value="${orderItemLists.orderItemsNo}" /> --%>
 				<!-- name에 해당 변수와 동일 -->
 					<div class="form-group">
 						<input type="hidden" name="id" value="${userinform.id}" />

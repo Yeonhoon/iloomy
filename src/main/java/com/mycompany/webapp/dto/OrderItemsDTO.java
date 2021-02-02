@@ -1,5 +1,6 @@
 package com.mycompany.webapp.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class OrderItemsDTO {

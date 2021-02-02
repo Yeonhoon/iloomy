@@ -56,4 +56,19 @@
 		where o.order_no=#{ordersOrderNo}
 	</select>
 	
+	<select id="selectordItem" parameterType="int" resultType="orderitem">
+		select a.order_items_no, a.order_items_count, a.order_items_price, a.orders_order_no, a.items_items_no
+		from order_items a join orders b on a.orders_order_no = b.order_no
+		where b.status =1 AND order_items_no = #{orderItemsNo}
+	</select>
+	
+	<update id="updateAddress" parameterType="hashmap">
+		update delivery set delivery_city=#{address.city}, delivery_street=#{address.street}, delivery_zipcode=#{address.zipcode}
+		where delivery_no=(
+				select delivery_no
+		        from delivery d join orders o on d.delivery_no=o.delivery_delivery_no join order_items OI on o.order_no = OI.orders_order_no
+		        where order_items_no=#{orderItemsNo})
+	</update>
+
+	
 </mapper>

@@ -1,6 +1,7 @@
 package com.mycompany.webapp.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -63,5 +64,15 @@ public class OrderRepo {
 	public OrdersDTO selectOrder(int ordersOrderNo) {
 		OrdersDTO order = sst.selectOne("orders.selectOrder", ordersOrderNo);
 		return order;
+	}
+
+	public OrderItemsDTO getItemOrderPK(int num) {
+		OrderItemsDTO ordItem = sst.selectOne("orders.selectordItem", num);
+		return ordItem;
+	}
+
+	public int updateAddress(Map<String, Object> map) {
+		int rows = sst.update("orders.updateAddress", map);
+		return rows;
 	}
 }

@@ -1,6 +1,7 @@
 package com.mycompany.webapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -87,6 +88,19 @@ public class OrderService {
 	public OrdersDTO selectByPk(int ordersOrderNo) {
 		OrdersDTO order = orderRepo.selectOrder(ordersOrderNo);
 		return order;
+	}
+
+
+	public OrderItemsDTO getItemOrderPK(int num) {
+		OrderItemsDTO ordItem = orderRepo.getItemOrderPK(num);
+		return ordItem;
+	}
+
+
+	public void updateAddress(Map<String, Object> map) {
+		int rows = orderRepo.updateAddress(map);
+		System.out.println("updateAddress 확인:"+rows);
+		
 	}
 	
 	

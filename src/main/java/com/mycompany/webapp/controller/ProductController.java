@@ -3,6 +3,7 @@ package com.mycompany.webapp.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,7 +111,7 @@ public class ProductController {
         ImageDTO image = imagesService.getMainImage(no);
         model.addAttribute("image", image);
         System.out.println(item.toString());
-        System.out.println(image.toString());
+//        System.out.println(image.toString());
         return "product/productDetail";
     }
 
@@ -147,6 +148,7 @@ public class ProductController {
   	@GetMapping(value = "cart2") // 연결 header에서 지선 추가
   	public String cart2(HttpSession session) {
   		session.removeAttribute("orderItemLists");
+  		//status가 cart인 거 가져옴
   		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
   		session.setAttribute("orderItemLists", orderItemLists);
   		logger.info("실행 : product/cart2");
@@ -194,12 +196,13 @@ public class ProductController {
   		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
 
   		session.setAttribute("orderItemLists", orderItemLists);
-  		return "product/cart";// product/cart.jsp 연결
+  		return "product/cart";
   	}
 
   	@GetMapping(value = "/order")
   	public String method1(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 //  		 List<OrderItemsDTO> result = test(request, model, session);
+  		List<OrderItemsDTO> orderItemLists = new ArrayList<OrderItemsDTO>();
   		//check한 부분 확인하기
   		if (request.getParameterValues("check") != null) {
 
@@ -217,6 +220,9 @@ public class ProductController {
   						ordersOrderNo, itemsItemsNo);
   				orderService.updateOrder(orderItem);
 //  				System.out.println(orderItem.toString());
+  				
+  				OrderItemsDTO ordItem = orderService.getItemOrderPK(orderItemsNo);
+  				orderItemLists.add(ordItem);
   			}
   		}
   		//user의 delivery 정보 가져오기
@@ -224,11 +230,12 @@ public class ProductController {
   		UserDTO users = memberService.selectAddress(userId);
   		session.setAttribute("userinform",users);
   		
+  		//status가 order인거 가져오기
   		
-  		List<OrderItemsDTO> orderItemLists = orderService.getItemCart();
+  		session.removeAttribute("orderItemLists");
   		session.setAttribute("orderItemLists", orderItemLists);
 //  		session.setAttribute("orderItemLists", result);
-  		
+  		System.out.println("orderItemLists:" + orderItemLists);
   		return "redirect:/product/delivery";
   	}
   	
@@ -245,11 +252,18 @@ public class ProductController {
   		
   		//orderItemsNo 받아오기
   		String[] numbers =request.getParameterValues("orderItemsNo");
-  		for(String i : numbers) {
-  			System.out.println(i);
+  		for(String num : numbers)
+  			System.out.println("2.numbers: " +num);
+  		
+  		//delivery address 없데이트
+  		
+  		Map<String, Object> map = new HashMap<String, Object>();
+  		map.put("address", address);
+  		for(String num : numbers) {
+  			int orderItemsNo = Integer.parseInt(num);
+  			map.put("orderItemsNo", orderItemsNo);
+  			orderService.updateAddress(map);
   		}
-  		
-  		
   		
   		return "redirect:/product/orderForm";
   	}
