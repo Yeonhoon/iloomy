@@ -1,20 +1,24 @@
 @charset "UTF-8";
 
 /* 	------------------ detail section --------------------------------- */
-
-#saveform{
-	width: 700px;
-	left: 50%;
-	top: 50%;
+.divTitle{
+	text-align:center;
 }
 
 #detail{
-	padding-right:300px;
-	padding-left: 300px;
+	left: 50%;
+	top: 50%;
 }
-
 .list{
 	margin: 50px 50px;
+	display: flex;
+	margin-left: 200px;
+	margin-right:200px;
+}
+
+.imgArea{
+	flex:5;
+	width: 700px;
 }
 
 .img-thumbnail{
@@ -23,17 +27,13 @@
 }
 
 .form-control{
-	width: 700px;;
+	flex:5;
+	width: 700px;
 }
 
 #detail {
 	margin-top: 50px;
 }
-
-
-
-
-
 
 
 #btn {

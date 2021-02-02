@@ -5,7 +5,7 @@
 
 		<div class="header">
          <div id="right_bar" >
-	         <a href="<%=application.getContextPath()%>/product/list"><i class="fas fa-bars"></i></a>
+	         <a href="<%=application.getContextPath()%>/product/boardlist?pageNo=1"><i class="fas fa-bars"></i></a>
 	         <div class="dropdown">
 		         <a class="dropA" id="bed" href="#">침실</a>
 		         	<div class="dropdown-content">

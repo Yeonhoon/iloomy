@@ -81,7 +81,7 @@
 			</article>
 			<hr />	
 			<article id="detail">
-				<table>
+			<!-- 	<table>
 					<tr style="color: #adb5bd; text-align: center;">
 						<td>상세정보</td>
 						<td>옵션</td>
@@ -89,7 +89,7 @@
 						<td>상품평</td>
 						<td>Q&A</td>
 					</tr>
-				</table>
+				</table> -->
 	 				<div class="list" >
 						<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail1}</p>

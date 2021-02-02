@@ -15,10 +15,15 @@
 		width: 600px;
 		position: relative;
 		clear: left;
+		margin-right: 50px;
+	}
+	
+	#itemsAttach{
+		max-width: 500px;
 	}
 	
 	#maininfo{
-		flex:4;
+		flex:5;
 		width: 400px;
 		position: relative;
 	}
@@ -37,38 +42,37 @@
 	}
 	
 	#detail {
-		
 		display: inline-block; 
-		width: 1000px;
-		margin-left: 50px; margin-bottom: 20px; position: relative;
+		position: relative;
 		margin: 50px 50px;
 		margin-right: 300px;
 		margin-left: 300px;
 	} 
 	
-	.detailinfo {
-		margin: 50px 50px;
-	}
 	
-	#list{
-		margin-top: 50px;
-		margin: 0 auto;
+	#detail .list{
+		margin: 50px 50px;
+		width: 800px;
 		height:600px;
 		box-sizing: border-box;
 		text-align: center;
+		padding-right: 100px;
+		padding-left: 100px;
+		text-align:center;
+		margin-left: 300px;
 	}
 	
-	#list2 {
-		margin: 0 auto;
-		margin-top: 50px;
-		box-sizing: border-box;
-		text-align: center;
+	.detailinfo {
+		margin-top: 20px;
+		width: 700px;
+	}
+	.detailImg{
+		width: 700px;
+		height: 500px;
 	}
 	
-	
-	#list2 > p {padding: 50px;}
 	table {
-	box-sizing: border-box;clear: both;width: 100%;border-top: 2px solid grey;border-bottom: 1px solid grey;
+	box-sizing: border-box;clear: both; width: 100%;border-top: 2px solid grey;border-bottom: 1px solid grey;
 	margin-bottom:70px;
 	}
 
@@ -85,5 +89,7 @@
 		display: flex;
 		flex-direction: column;
 	}
-	
+
+    
 	#loginCheck {border: 2px solid red; width: 400px; margin: 0 auto;}
+	#detailBtn, #detailImg{text-align: center;}

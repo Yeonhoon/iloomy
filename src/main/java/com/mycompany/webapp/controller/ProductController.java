@@ -22,6 +22,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.AddressDTO;
 import com.mycompany.webapp.dto.DeliveryDTO;
@@ -31,6 +32,7 @@ import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.OrderItemsDTO;
 import com.mycompany.webapp.dto.OrderStatus;
 import com.mycompany.webapp.dto.OrdersDTO;
+import com.mycompany.webapp.dto.PagerDTO;
 import com.mycompany.webapp.dto.UserDTO;
 import com.mycompany.webapp.service.DeliveryService;
 import com.mycompany.webapp.service.ImagesService;
@@ -161,12 +163,25 @@ public class ProductController {
 		InputStream is3 = new FileInputStream(filePath3);
 
 		FileCopyUtils.copy(is3,os);
-//	    	FileCopyUtils.copy((InputStream) list,os);
+//		    	FileCopyUtils.copy((InputStream) list,os);
 		os.flush();
 		os.close();
 		is1.close();
 		is2.close();
 		is3.close();
+	}
+
+	//pager
+	@GetMapping("/boardlist")
+	public String boardlis2(@RequestParam(defaultValue = "1") int pageNo, Model model) { // requestParam: default값 설정
+
+		int totalRows = itemsService.getTotalRows();
+		PagerDTO pager = new PagerDTO(4, 5, totalRows, pageNo);
+		
+		List<ItemsDTO> list = itemsService.getBoardList(pager);
+		model.addAttribute("list", list);
+		model.addAttribute("pager", pager);
+		return "product/productList";
 	}
 
 
