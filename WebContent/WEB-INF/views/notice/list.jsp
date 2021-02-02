@@ -96,7 +96,7 @@
                 <li class="fl tc w70 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})"><c:out value="${item.noticeNo}"/></a></li>
                 <li class="fl tc w500 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})"><c:out value="${item.noticeTitle}"/></a></li>
                 <li class="fl tc w120 list t_line lt_line"><c:out value="${item.noticeUser}"/></li>
-                <li class="fl tc w100 list t_line lt_line"><fmt:formatDate value="${item.noticeDatetime}" pattern="yyyy-MM-dd"/></li>
+                <li class="fl tc w100 list t_line lt_line"><fmt:formatDate value="${item.noticeDate}" pattern="yyyy-MM-dd"/></li>
                 <c:if test="${userinfo eq 'admin'}">
                     <li class="fl tc w100 list  lt_line"><a style="color: red" href="${root}/Notice/delete?no=${item.noticeNo}">삭제</a></li>
                 </c:if>
@@ -161,7 +161,7 @@
         }
 
     </script>
-    <div>
+    <div style="display:inline-block; padding-top: 20px;">
         <a class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(1);">처음 </a>
         <c:if test="${pager.groupNo>1}">
             <a class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.startPageNo-1});">이전 </a>
@@ -180,24 +180,6 @@
         <a class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.totalPageNo});">맨끝 </a>
     </div>
 
-<%--    <div>--%>
-<%--        <a href="${root}/Notice/list?pageNo=1" class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(1);">처음 </a>--%>
-<%--        <c:if test="${pager.groupNo>1}">--%>
-<%--            <a  href="${root}/Notice/list?pageNo=${pager.startPageNo-1}" class="btn btn-outline-info btn-sm mr-1" >이전 </a>--%>
-<%--        </c:if>--%>
-<%--        <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">--%>
-<%--            <c:if test="${i==pager.pageNo}">--%>
-<%--                <a href="${root}/Notice/list?pageNo=${i}" class="btn btn-warning btn-sm mr-1" onclick="pagingBoard(${i});">${i}</a>--%>
-<%--            </c:if>--%>
-<%--            <c:if test="${i!=pager.pageNo}">--%>
-<%--                <a href="${root}/Notice/list?pageNo=${i}" class="btn btn-outline-warning btn-sm mr-1" onclick="pagingBoard(${i});">${i}</a>--%>
-<%--            </c:if>--%>
-<%--        </c:forEach>--%>
-<%--        <c:if test="${pager.groupNo < pager.totalGroupNo}">--%>
-<%--            <a href="${root}/Notice/list?pageNo=${pager.endPageNo+1}" class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.endPageNo+1});">다음 </a>--%>
-<%--        </c:if>--%>
-<%--        <a href="${root}/Notice/list?pageNo=${pager.totalPageNo}" class="btn btn-outline-info btn-sm mr-1" onclick="pagingBoard(${pager.totalPageNo});">맨끝 </a>--%>
-<%--    </div>--%>
 </div>
 </body>
 

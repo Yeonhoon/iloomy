@@ -8,7 +8,7 @@ public class NoticeDTO {
 	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContent;
-	private Date noticeDatetime;
+	private Date noticeDate;
 	private String noticeUser;
 	private MultipartFile noticeAttach;
 	private String noticeAttachSname;
@@ -19,11 +19,11 @@ public class NoticeDTO {
 	public NoticeDTO() {
 	}
 
-	public NoticeDTO(int noticeNo, String noticeTitle, String noticeContent, Date noticeDatetime, String noticeUser, MultipartFile noticeAttach, String noticeAttachSname, String noticeAttachOname, String noticeAttachType) {
+	public NoticeDTO(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, String noticeUser, MultipartFile noticeAttach, String noticeAttachSname, String noticeAttachOname, String noticeAttachType) {
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
-		this.noticeDatetime = noticeDatetime;
+		this.noticeDate = noticeDate;
 		this.noticeUser = noticeUser;
 		this.noticeAttach = noticeAttach;
 		this.noticeAttachSname = noticeAttachSname;
@@ -55,12 +55,12 @@ public class NoticeDTO {
 		this.noticeContent = noticeContent;
 	}
 
-	public Date getNoticeDatetime() {
-		return noticeDatetime;
+	public Date getNoticeDate() {
+		return noticeDate;
 	}
 
-	public void setNoticeDatetime(Date noticeDatetime) {
-		this.noticeDatetime = noticeDatetime;
+	public void setNoticeDate(Date noticeDate) {
+		this.noticeDate = noticeDate;
 	}
 
 	public String getNoticeUser() {
@@ -109,7 +109,7 @@ public class NoticeDTO {
 				"noticeNo=" + noticeNo +
 				", noticeTitle='" + noticeTitle + '\'' +
 				", noticeContent='" + noticeContent + '\'' +
-				", noticeDatetime=" + noticeDatetime +
+				", noticeDate=" + noticeDate +
 				", noticeUser='" + noticeUser + '\'' +
 				", noticeAttach=" + noticeAttach +
 				", noticeAttachSname='" + noticeAttachSname + '\'' +
