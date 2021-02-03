@@ -72,7 +72,7 @@
     <div class="uliltable">
         <!---기본 메뉴--->
         <ul class="board">
-            <li class="fl tc w70 title t_line">번호</li>
+            <li class="fl tc w70 title t_line"></li>
             <li class="fl tc w500 title t_line">제목</li>
             <li class="fl tc w120 title t_line">글쓴이</li>
             <li class="fl tc w100 title t_line">작성일</li>
@@ -80,7 +80,7 @@
                 <li class="fl tc w100 title ">기능</li>
             </c:if>
             <c:if test="${userinfo ne 'admin'}">
-                <li class="fl tc w100 title ">조회수</li>
+                <li class="fl tc w100 title "></li>
             </c:if>
 
         </ul>
@@ -93,7 +93,7 @@
         <div id="testtest">
         <c:forEach var="item" items="${list}" varStatus="status">
             <ul class="board">
-                <li class="fl tc w70 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})"><c:out value="${item.noticeNo}"/></a></li>
+                <li class="fl tc w70 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})">공지</a></li>
                 <li class="fl tc w500 list t_line lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})"><c:out value="${item.noticeTitle}"/></a></li>
                 <li class="fl tc w120 list t_line lt_line"><c:out value="${item.noticeUser}"/></li>
                 <li class="fl tc w100 list t_line lt_line"><fmt:formatDate value="${item.noticeDate}" pattern="yyyy-MM-dd"/></li>
@@ -101,9 +101,8 @@
                     <li class="fl tc w100 list  lt_line"><a style="color: red" href="${root}/Notice/delete?no=${item.noticeNo}">삭제</a></li>
                 </c:if>
                 <c:if test="${userinfo ne 'admin'}">
-                    <li class="fl tc w100 list  lt_line">0</li>
+                    <li class="fl tc w100 list  lt_line"><a href="javascript:void(0);"  onclick="myShowFunction(${item.noticeNo})">▼</a></li>
                 </c:if>
-
             </ul>
             <c:choose>
                 <c:when test="${userinfo eq 'admin'}">
