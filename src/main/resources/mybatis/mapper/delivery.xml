@@ -17,7 +17,7 @@
 		#{status, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler} )
 	</insert>
 	
-	<!-- property>>Class column >> DB -->
+	<!-- property>>Class column >> DB 재사용-->
 	<resultMap type="delivery" id="tableResultMap">
 		<id property="deliveryNo" column="deliveryNo" />
 		<id property="status" column="status" />
@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="selectByNo" parameterType="int" resultMap="tableResultMap">
-		select delivery_no, delivery_city, delivery_street, delivery_street, status
+		select delivery_no as deliveryNo, delivery_city as city , delivery_street as street, delivery_zipcode as zipcode, status
 		from delivery
 		where delivery_no=#{deliveryNo}
 	</select>
