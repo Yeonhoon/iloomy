@@ -27,7 +27,7 @@
 						<h2 style="text-align: center; color: black;">상품 주요정보 입력</h2>
 					</div>
 					<div id=mainform>
-						<form enctype="multipart/form-data" method="post" id="itemsWrite">
+						<form enctype="multipart/form-data" method="post" id="itemsWrite" style="width:1200px;">
 							<table id="form" class="table align-middle">
 								<tbody>
 									<tr>

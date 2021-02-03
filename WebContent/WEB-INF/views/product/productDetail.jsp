@@ -91,18 +91,18 @@
 					</tr>
 				</table> -->
 	 				<div class="list" >
-						<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}"/>
+						<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}&num=1"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail1}</p>
 					</div>
 					<c:if test="${image.detail2 ne null}">
 						<div class="list">
-							<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}"/>
+							<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}&num=2"/>
 							<p class="detailinfo" style="text-align: center;">${image.detail2}</p>
 						</div>
 					</c:if>
 					<c:if test="${image.detail3 ne null}">
 					<div class="list">
-						<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}"/>
+						<img class="detailImg" src="${root}/product/imageattach?no=${item.itemsNo}&num=3"/>
 						<p class="detailinfo" style="text-align: center;">${image.detail3}</p>
 					</div>
 					</c:if>
@@ -135,13 +135,12 @@
 					<!-- 로그인 상태에서만 보이기 -->
 					<c:if test="${userinfo eq 'admin'}">
 						<a class="btn btn-warning ml-3" href="${root}/manager/update?no=${item.itemsNo}">수정</a>
-						<form action="manager/delete" method="post">
-							<a class="btn btn-danger ml-3" href="${root}/manager/delete?no=${item.itemsNo}" style="color:white;">삭제</a>
+						<form method="post" id="deleteform">
+							<a class="btn btn-danger ml-3" id="delete" style="color:white;">삭제</a>
 						</form>
 					</c:if>
 				</div>
 			</article>
-		
 		
 		<div class="footerwrap">
       		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
@@ -181,6 +180,12 @@
 					} 
 				}
 			});
+	        $("#delete").click(function(){
+	           if(confirm("삭제하시겠습니까?")){
+		           $("#deleteform").attr("action","${root}/manager/delete?no=${item.itemsNo}").submit();
+	           }
+	        });
 		});
+		       
 	</script>
 </html>

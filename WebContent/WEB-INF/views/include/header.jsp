@@ -64,7 +64,7 @@
 				<%--${userinfo.id}--%>
 
 				<c:if test="${userinfo eq 'admin'}">
-					<a href="${root}/Notice/board/new">QnA글쓰기</a>
+					<a href="${root}/Notice/board/new">공지사항</a>
 					<a href="${root}/manager/write">상품등록</a>
 				</c:if>
 				<c:choose>

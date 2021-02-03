@@ -44,8 +44,8 @@
 			</div>
 			
 			<div id="btns">
-					<a href="javascript:savedetail()" id="savebtn" class="btn btn-danger">저장</a> 
-					<a href="javascript:history.back();" class="btn btn-secondary">취소</a>
+				<a href="javascript:savedetail()" id="savebtn" class="btn btn-danger">저장</a> 
+				<a href="javascript:history.back();" class="btn btn-secondary">취소</a>
 			</div>
 		</form>
 	</div>

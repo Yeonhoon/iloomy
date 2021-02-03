@@ -64,6 +64,10 @@
 	border: 1px solid grey;
 }
 
+#btns{
+	text-align: center;
+}
+
 #btn a{
 	box-sizing: border-box;
 	color: white;

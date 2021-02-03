@@ -52,8 +52,9 @@ public class ItemsRepo {
 		return item;
 	}
 
-	public void delete(int no) {
-		sst.delete("items.delete",no);
+	public int delete(int no) {
+		int row = sst.delete("items.delete",no);
+		return row;
 	}
 
     public int selectSeq() {

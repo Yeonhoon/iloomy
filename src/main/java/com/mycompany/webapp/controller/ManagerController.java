@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.dto.ImageDTO;
+import com.mycompany.webapp.dto.ItemsDTO;
 import com.mycompany.webapp.service.ImagesService;
 import com.mycompany.webapp.service.ItemsService;
 
@@ -112,7 +112,7 @@ public class ManagerController {
     	int num = imagesService.saveImageAndDetail(dto);
 		System.out.println("num : "+num);
 
-    	return "redirect:/manager/productList";
+    	return "redirect:/";
     }
 
 
@@ -130,7 +130,7 @@ public class ManagerController {
     // 제품 목록으로 돌아가기
     @GetMapping("/productList")
     public String productList() {
-    	return "product/productList";
+    	return "product/boardlist?pageNo=1";
     }
 
     // 수정페이지 이동: 입력된 제품 정보를 수정페이지에 불러오기
@@ -141,7 +141,6 @@ public class ManagerController {
         ImageDTO image = new ImageDTO();
         model.addAttribute("items", items);
         model.addAttribute("image", image);
-      
         return "manager/update";
     }
     
@@ -194,7 +193,6 @@ public class ManagerController {
     	int num = dto.getItemsNo();
     	String str ="redirect:/manager/toDetail?no="+num;
     	return str;
-    	
     }
     
     //상세 업데이트 페이지 불러오기
@@ -318,7 +316,7 @@ public class ManagerController {
     	
     	int aaa= imagesService.updateItem(image);
     	System.out.println("xptmxm : "+aaa);
-    	return "redirect:/product/productList";
+    	return "redirect:/";
     }
     
     //수정 취소
@@ -332,49 +330,52 @@ public class ManagerController {
     //제품 삭제
     @PostMapping("/delete")
     public String delete(int no) {
+    	ItemsDTO dto = new ItemsDTO();
+    	System.out.println(dto.toString());
     	itemsService.delete(no);
-    	return "redirect:/manager/productList";
+    	System.out.println("제품을 삭제합니다.");
+    	return "redirect:/";
     }
 
-    //첨부한 사진리스트 보여주기
-    @GetMapping("/photolist")
-    public String photoList(Model model) {
-    	String saveDir = "D:/MW/uploadfiles/";
-    	File file = new File(saveDir);
-    	String[] fileNames = file.list();
-    	model.addAttribute("fileNames",fileNames);
+//    //첨부한 사진리스트 보여주기
+//    @GetMapping("/photolist")
+//    public String photoList(Model model) {
+//    	String saveDir = "D:/MW/uploadfiles/";
+//    	File file = new File(saveDir);
+//    	String[] fileNames = file.list();
+//    	model.addAttribute("fileNames",fileNames);
+//
+//    	return "manager/updatePhotolist";
+//    }
 
-    	return "manager/updatePhotolist";
-    }
-
-    //사진 다운로드
-
-    @GetMapping(value = "이미지 첨부")  //hyemin  , no parameter
-    public <UpdatePhotoDto, ProductDto> String fileUpload(ProductDto user, MultipartFile uphoto) {
-
-
-			String originalFileName = uphoto.getOriginalFilename();
-			String contentType = uphoto.getContentType();
-			long size = uphoto.getSize();
-
-			logger.info("originalFileName: " + originalFileName);
-			logger.info("contentType: " + contentType);
-			logger.info("size: " + size);
-
-
-			String saveDirPath = "D:/MyWorkspace/uploadfiles/";
-
-			String fileName = new Date().getTime() + "-" + originalFileName;
-			String filePath = saveDirPath + fileName;
-			File file = new File(filePath);
-			try {
-				uphoto.transferTo(file);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-		return "redirect:/manager/writeform2";
-	}
-			return filePath;
-
-    }
+//    //사진 다운로드
+//
+//    @GetMapping(value = "이미지 첨부")  //hyemin , no parameter
+//    public <UpdatePhotoDto, ProductDto> String fileUpload(ProductDto user, MultipartFile uphoto) {
+//
+//
+//			String originalFileName = uphoto.getOriginalFilename();
+//			String contentType = uphoto.getContentType();
+//			long size = uphoto.getSize();
+//
+//			logger.info("originalFileName: " + originalFileName);
+//			logger.info("contentType: " + contentType);
+//			logger.info("size: " + size);
+//
+//
+//			String saveDirPath = "D:/MyWorkspace/uploadfiles/";
+//
+//			String fileName = new Date().getTime() + "-" + originalFileName;
+//			String filePath = saveDirPath + fileName;
+//			File file = new File(filePath);
+//			try {
+//				uphoto.transferTo(file);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//		return "redirect:/manager/writeform2";
+//	}
+//			return filePath;
+//
+//    }
 }

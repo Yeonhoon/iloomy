@@ -224,9 +224,8 @@
 		items_color=#{itemsColor} AND items_option = #{itemsOption}
 	</select>
 	
-	<delete id="itemsNo" parameterType="int">
-		delete from items 
-		where items_no = ${id}
+	<delete id="delete" parameterType="int">
+		delete from items where items_no = #{itemsNo}
 	</delete>
 
 	<insert id="saveImageAndDetail" parameterType="imageDetail">
