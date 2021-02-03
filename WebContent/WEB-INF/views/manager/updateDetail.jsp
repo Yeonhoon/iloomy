@@ -23,22 +23,22 @@
 			<div class="divTitle"><h2><b>상세 정보 수정</b></h2></div>
 			<div class="list">
 				<div class="imgArea">
-					<img class="img-thumbnail" src="${root}/manager/imageattach?no=${detail.itemsItemsNo}"/><br />
+					<img class="img-thumbnail" src="${root}/manager/imageattach?no=${detail.itemsItemsNo}&num=1"/><br />
 					<input type="file" id="image1" name="imageAttach1" value="이미지 변경" />
 				</div>
 				<textarea  class="form-control" name="detail1" id="detail1" cols="50" rows="10">${detail.detail1}</textarea>
 			</div>
 			<div class="list">
 				<div class="imgArea">
-					<img class="img-thumbnail" src="${root}/manager/imageattach?no=${detail.itemsItemsNo}"/><br />
-					<input  type="file" id="image1" name="imageAttach2" value="이미지 변경" />
+					<img class="img-thumbnail" src="${root}/manager/imageattach?no=${detail.itemsItemsNo}&num=2"/><br />
+					<input  type="file" id="image2" name="imageAttach2" value="이미지 변경" />
 				</div>
 				<textarea class="form-control" name="detail2" id="detail2" cols="50" rows="10">${detail.detail2}</textarea>
 			</div>
 			<div class="list" >
 				<div class="imgArea">
-					<img class="img-thumbnail"  src="${root}/manager/imageattach?no=${detail.itemsItemsNo}"/><br />
-					<input type="file" id="image1" name="imageAttach3" value="이미지 변경" />
+					<img class="img-thumbnail"  src="${root}/manager/imageattach?no=${detail.itemsItemsNo}&num=3"/><br />
+					<input type="file" id="image3" name="imageAttach3" value="이미지 변경" />
 				</div>
 				<textarea class="form-control" name="detail3" id="detail3" cols="50" rows="10">${detail.detail3}</textarea>
 			</div>

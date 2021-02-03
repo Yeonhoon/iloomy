@@ -212,50 +212,60 @@ public class ManagerController {
     
     //detail 이미지 불러오기
     @GetMapping("/imageattach")
-    public void imageAttach(int no, HttpSession sesson, HttpServletResponse response) throws Exception {
+    public void imageAttach(int no,int num, HttpSession sesson, HttpServletResponse response) throws Exception {
+		System.out.println("num : "+num);
     	ImageDTO images = imagesService.getDetailImage(no);
-    	System.out.println("int no:" + no);
-    	String filePath1 = null;
-    	String filePath2 = null;
-    	String filePath3 = null;
-    	
-    	if(images.getImageAttachOname1() != null) {
-    		String itemAttach1 = images.getImageAttachSname1();
-    		String itemAttach2 = images.getImageAttachSname2();
-    		String itemAttach3 = images.getImageAttachSname3();
-    		
-    		filePath1 = "D:/MW/uploadfiles/items/" + itemAttach1;
-    		filePath2 = "D:/MW/uploadfiles/items/" + itemAttach2;
-    		filePath3 = "D:/MW/uploadfiles/items/" + itemAttach3;
-    		
-    		response.setContentType(images.getImageAttachType1());
-    		response.setContentType(images.getImageAttachType2());
-    		response.setContentType(images.getImageAttachType3());
+		OutputStream os = response.getOutputStream();
+		InputStream is1= null;
+		InputStream is2= null;
+		InputStream is3= null;
+    	if(num ==1){
+			String filePath1 = null;
+			if(images.getImageAttachOname1() != null) {
+				String itemAttach1 = images.getImageAttachSname1();
+				filePath1 = "D:/MW/uploadfiles/items/" + itemAttach1;
+				response.setContentType(images.getImageAttachType1());
+				String oname1 = images.getImageAttachOname1();
+				oname1 = new String(oname1.getBytes("UTF-8"), "ISO-8859-1");
+				response.setHeader("Content-Disposition", "attachment; filename=\""+ oname1 +"\"");
+			}else{
+				filePath1= "D:/MW/uploadfiles/items/defaultimage.jpg";
+				response.setContentType("image/jpg");
+			}
+			is1 = new FileInputStream(filePath1);
+			FileCopyUtils.copy(is1,os);
+		}else if(num==2){
+			String filePath2 = null;
+			if(images.getImageAttachOname2() != null) {
+				String itemAttach2 = images.getImageAttachSname2();
+				filePath2 = "D:/MW/uploadfiles/items/" + itemAttach2;
+				response.setContentType(images.getImageAttachType2());
+				String oname2 = images.getImageAttachOname2();
+				oname2 = new String(oname2.getBytes("UTF-8"), "ISO-8859-1");
+				response.setHeader("Content-Disposition", "attachment; filename=\""+ oname2 +"\"");
+			}else{
+				filePath2= "D:/MW/uploadfiles/items/defaultimage.jpg";
+				response.setContentType("image/jpg");
+			}
+			is2 = new FileInputStream(filePath2);
+			FileCopyUtils.copy(is2,os);
+		}else if(num==3){
+			String filePath3 = null;
+			if(images.getImageAttachOname3() != null) {
+				String itemAttach3 = images.getImageAttachSname3();
+				filePath3 = "D:/MW/uploadfiles/items/" + itemAttach3;
+				response.setContentType(images.getImageAttachType3());
+				String oname3 = images.getImageAttachOname3();
+				oname3 = new String(oname3.getBytes("UTF-8"), "ISO-8859-1");
+				response.setHeader("Content-Disposition", "attachment; filename=\""+ oname3 +"\"");
+			}else{
+				filePath3= "D:/MW/uploadfiles/items/defaultimage.jpg";
+				response.setContentType("image/jpg");
+			}
+			is3 = new FileInputStream(filePath3);
+			FileCopyUtils.copy(is3,os);
+		}
 
-    		String oname1 = images.getImageAttachOname1();
-    		String oname2 = images.getImageAttachOname2();
-    		String oname3 = images.getImageAttachOname3();
-    		
-    		oname1 = new String(oname1.getBytes("UTF-8"), "ISO-8859-1");
-    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname1 +"\"");
-    		oname2 = new String(oname2.getBytes("UTF-8"), "ISO-8859-1");
-    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname2 +"\"");
-    		oname3 = new String(oname3.getBytes("UTF-8"), "ISO-8859-1");
-    		response.setHeader("Content-Disposition", "attachment; filename=\""+ oname3 +"\"");
-    	} else {
-    		filePath1= "D:/MW/uploadfiles/items/defaultimage.jpg";
-    		filePath2= "D:/MW/uploadfiles/items/defaultimage.jpg";
-    		filePath3= "D:/MW/uploadfiles/items/defaultimage.jpg";
-    		response.setContentType("image/jpg");
-    	}
-    	OutputStream os = response.getOutputStream();
-    	InputStream is1 = new FileInputStream(filePath1);
-    	FileCopyUtils.copy(is1,os);
-    	InputStream is2 = new FileInputStream(filePath2);
-    	FileCopyUtils.copy(is2,os);
-    	InputStream is3 = new FileInputStream(filePath3);
-    	FileCopyUtils.copy(is3,os);
-    	
     	os.flush();
     	os.close();
     	is1.close();
