@@ -26,7 +26,7 @@
 				<result property="street" column="street" />
 				<result property="zipcode" column="zipcode" />
 			</association>
-	</resultMap>
+	</resultMap> 
 	
 	<select id="selecyByPk" parameterType="int" resultMap="tableResultMap">
 		select d.delivery_no as deliveryNo, d.delivery_city as city, d.delivery_street as street, d.delivery_zipcode as zipcode, d.status as status
